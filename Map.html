@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>ModeIL — Map</title>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700;900&family=Inter:wght@300;400;600&family=Space+Grotesk:wght@300;400;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700;900&family=Inter:wght@300;400;600&family=Space+Grotesk:wght@300;400;700&family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
@@ -20,6 +20,11 @@
     display: flex; justify-content: space-between; align-items: center;
     padding: 1.5rem 3rem; height: 72px;
   }
+  [dir="rtl"] { font-family: 'Assistant', 'Inter', sans-serif !important; }
+  [dir="rtl"] .nav-logo, [dir="rtl"] .panel-name { font-family: 'Assistant', 'Epilogue', sans-serif !important; }
+  [dir="rtl"] .nav-links { direction: rtl; }
+  #lang-toggle-map { cursor: pointer; font-family: 'Space Grotesk', sans-serif; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; background: none; border: 1px solid #000; padding: 5px 10px; color: #000; transition: all 0.2s; }
+  #lang-toggle-map:hover { background: #000; color: #fcf9f5; }
   .nav-logo { font-family: 'Epilogue', sans-serif; font-weight: 900; font-size: 1.5rem; letter-spacing: -0.04em; text-transform: uppercase; text-decoration: none; color: #000; }
   .nav-links { display: flex; gap: 2.5rem; font-family: 'Space Grotesk', sans-serif; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; }
   .nav-links a { color: rgba(0,0,0,0.35); text-decoration: none; transition: color 0.2s; }
@@ -98,6 +103,23 @@
   /* Dim unmatched pins */
   .map-pin.dimmed { opacity: 0.15; transform: scale(0.7); }
 
+
+  /* Leaflet tooltip override */
+  .leaflet-tooltip {
+    background: #000 !important;
+    color: #fcf9f5 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    font-family: 'Space Grotesk', sans-serif !important;
+    font-size: 10px !important;
+    letter-spacing: 0.12em !important;
+    text-transform: uppercase !important;
+    padding: 6px 10px !important;
+    box-shadow: none !important;
+    white-space: nowrap !important;
+  }
+  .leaflet-tooltip::before { display: none !important; }
+
   /* Custom pin */
   .map-pin {
     width: 14px; height: 14px;
@@ -136,10 +158,13 @@
   }
   .panel-body { padding: 2rem; display: flex; flex-direction: column; gap: 1rem; }
   .panel-name { font-family: 'Epilogue', sans-serif; font-weight: 900; font-size: 2rem; text-transform: uppercase; letter-spacing: -0.03em; line-height: 1; }
-  .panel-location { font-family: 'Space Grotesk', sans-serif; font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; opacity: 0.45; }
+  .panel-location { font-family: 'Space Grotesk', sans-serif; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.55; line-height: 1.6; }
   .panel-tags { display: flex; flex-wrap: wrap; gap: 6px; }
   .panel-tag { font-family: 'Space Grotesk', sans-serif; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; border: 1px solid #c6c6c6; padding: 3px 8px; }
   .panel-desc { font-family: 'Inter', sans-serif; font-size: 0.8rem; line-height: 1.65; color: #474747; }
+  .panel-extra-block { font-family: 'Space Grotesk', sans-serif; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.6; line-height: 1.8; }
+  .panel-extra-block a { color: inherit; text-decoration: none; }
+  .panel-extra-block a:hover { opacity: 0.6; }
   .panel-link {
     font-family: 'Space Grotesk', sans-serif; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
     text-decoration: underline; text-underline-offset: 4px; color: #000;
@@ -177,12 +202,13 @@
 <!-- Nav -->
 <nav>
   <a href="Israeli Fashion Index.html" class="nav-logo">ModeIL</a>
-  <div class="nav-links">
-    <a href="Israeli Fashion Index.html">Designers</a>
-    <a href="Map.html" class="active">Map</a>
-    <a href="#">About</a>
-    <a href="#">Submit</a>
+  <div class="nav-links" id="map-nav-links">
+    <a href="Israeli Fashion Index.html" id="nav-designers">Designers</a>
+    <a href="Map.html" class="active" id="nav-map">Map</a>
+    <a href="#" id="nav-about">About</a>
+    <a href="#" id="nav-submit">Submit</a>
   </div>
+  <button id="lang-toggle-map" onclick="toggleMapLang()">EN | עב</button>
 </nav>
 
 <!-- Map -->
@@ -204,6 +230,7 @@
     </div>
     <div class="panel-tags" id="panel-tags"></div>
     <div class="panel-desc" id="panel-desc"></div>
+    <div id="panel-extra" style="display:none;flex-direction:column;gap:0.75rem;border-top:1px solid rgba(198,198,198,0.3);padding-top:1rem"></div>
     <a class="panel-link" id="panel-link" href="#" target="_blank" rel="noopener">
       Visit Website
       <span class="material-symbols-outlined" style="font-size:14px">arrow_forward</span>
@@ -235,21 +262,21 @@ const DESIGNERS = [
   { name:"Alembika", url:"https://alembika.co.il/", tags:["Artisan","Minimalist"], desc:"Fluid silhouettes and considered Israeli design for women who move through the world with ease and intention.", img:"https://alembika.co.il/cdn/shop/files/TOP_RT357T_PANTS_RP351M_12.jpg?v=1773061538", city:"Tel Aviv", lat:32.0601, lng:34.7720, fav:false },
   { name:"Aluma", url:"https://alumafashion.com/", tags:["Knitwear","Artisan","Sustainable"], desc:"Former London Fashion Week designer specialising in handmade knitwear. Collections have sold at Selfridges, Harrods, and Neiman Marcus — slow fashion at its most considered.", img:"https://alumafashion.com/cdn/shop/files/Flower_power_cover_new_05893f2b-bc51-4e4d-a47a-08e178d348ad.png?v=1770219704&width=1200", city:"Tel Aviv", lat:32.0840, lng:34.7800, fav:false },
   { name:"Anat Friedman", url:"https://anatfriedman.com/", tags:["Artisan","Minimalist"], desc:"Precise, quietly elegant Israeli womenswear. Anat Friedman's designs speak in restraint — each piece a study in deliberate simplicity.", img:"https://anatfriedman.com/cdn/shop/files/anatf_2524538.jpg?v=1759238472", city:"Tel Aviv", lat:32.0590, lng:34.7760, fav:true },
-  { name:"Anjaly", url:"https://anjaly.com/", tags:["Activewear","Minimalist"], desc:"Effortless unisex loungewear and activewear for women and men — from yoga mat to street, comfort without compromise.", img:"https://anjaly.shop/cdn/shop/files/1184_1_be035c1c-985d-459e-83f8-44b2a92ff465.jpg?v=1700116722&width=4002", city:"Tel Aviv", lat:32.0700, lng:34.7820, fav:true },
-  { name:"Artwear", url:"https://artwear.co.il/", tags:["Prints","Artisan"], desc:"Wearable art through bold, original prints. Each Artwear piece turns the body into a canvas — vivid, unapologetic Israeli design.", img:"https://artwear.co.il/cdn/shop/files/9cff8e210719c9f029748e2ced34082b.png?v=1775505899&width=1200", city:"Tel Aviv", lat:32.0820, lng:34.7690, fav:true },
+  { name:"Anjaly", url:"https://anjaly.com/", tags:["Activewear","Minimalist"], desc:"Effortless unisex loungewear and activewear for women and men — from yoga mat to street, comfort without compromise.", img:"https://anjaly.shop/cdn/shop/files/1184_1_be035c1c-985d-459e-83f8-44b2a92ff465.jpg?v=1700116722&width=4002", city:"Tel Aviv", lat:32.0617, lng:34.7775, fav:true, addresses:["10 Mikveh Israel St, Tel Aviv"], phone:"03-6868733", email:"studio@anjaly.com", hours:["Sun–Thu 10:00–17:00","Fri 09:30–15:00"] },
+  { name:"Artwear", url:"https://artwear.co.il/", tags:["Prints","Artisan"], desc:"Wearable art through bold, original prints. Each Artwear piece turns the body into a canvas — vivid, unapologetic Israeli design.", img:"https://artwear.co.il/cdn/shop/files/9cff8e210719c9f029748e2ced34082b.png?v=1775505899&width=1200", city:"Tel Aviv", lat:32.1640, lng:34.8440, fav:true, addresses:["71 HaNadiv St, Herzliya"] },
   { name:"Assaf Peleg", url:"https://www.assafpelleg.com/", tags:["Luxury","Artisan"], desc:"Designing for the elegant, multi-faceted woman — garments born from emotion and a deep belief in personal style.", img:"https://www.assafpelleg.com/wp-content/uploads/2026/03/Untitled-577-x-1024-px-722-x-1024-px-1000-x-1500-px-30.png", city:"Tel Aviv", lat:32.0553, lng:34.7680, fav:false },
   { name:"Atawear", url:"https://atawear.co.il/", tags:["Heritage","Streetwear"], desc:"A revival of Israel's iconic ATA textile brand, first founded in 1935. The original 'Made in Israel' spirit — workwear heritage reimagined for contemporary street culture.", img:"https://atawear.co.il/cdn/shop/files/C186113C-4B82-46C9-A115-27D1C508644F_dfcac7bd-aece-4a00-88ff-9a23ebe507dd.jpg?v=1774117526&width=5000", city:"Tel Aviv", lat:32.0621, lng:34.7800, fav:true },
   { name:"Aviva Zilberman", url:"https://avivazilberman.com/", tags:["Luxury","Artisan"], desc:"A high-end ready-to-wear house founded 2008. Designing for the elegance every woman possesses — a dialogue between masculine precision and feminine sensuality.", img:"https://avivazilberman.com/cdn/shop/products/The-Scent-Kit-Trial-N3-Hover-Aviva-Zilberman-Personal-Goods_600x.jpg?v=1551284983", city:"Tel Aviv", lat:32.0880, lng:34.7820, fav:false },
-  { name:"Belle and Sue", url:"https://www.belleandsue.co.il/", tags:["Sustainable","Streetwear"], desc:"Israel's pioneering online fashion boutique since 2010 — curating international labels, championing local designers, and launching their own FEZ brand.", img:"https://www.belleandsue.co.il/cdn/shop/files/1155UntitledCapture1459.jpg?v=1761640245", city:"Tel Aviv", lat:32.0755, lng:34.7870, fav:true },
+  { name:"Belle and Sue", url:"https://www.belleandsue.co.il/", tags:["Sustainable","Streetwear"], desc:"Israel's pioneering online fashion boutique since 2010 — curating international labels, championing local designers, and launching their own FEZ brand.", img:"https://www.belleandsue.co.il/cdn/shop/files/1155UntitledCapture1459.jpg?v=1761640245", city:"Tel Aviv", lat:32.0638, lng:34.7723, fav:true, addresses:["Shenkin St, Tel Aviv"] },
   { name:"Biliblond", url:"https://biliblond.com/", tags:["Swimwear"], desc:"Israeli swimwear and beachwear with a playful spirit — designed for the Mediterranean lifestyle.", img:"https://biliblond.com/cdn/shop/files/biliblond_stores.jpg?v=1741343201&width=600", city:"Tel Aviv", lat:32.0921, lng:34.7778, fav:true },
   { name:"Bracha Baron", url:"https://www.baroncollection.com/", tags:["Artisan","Luxury"], desc:"Contemporary Israeli womenswear with a refined aesthetic — each collection a careful conversation between structure and ease.", img:"https://www.baroncollection.com/cdn/shop/files/4H4A1366_99c522a8-c12f-4679-a359-a7da148c7d29.jpg?v=1750246523&width=750", city:"Tel Aviv", lat:32.0673, lng:34.7650, fav:false },
-  { name:"Ciporkin by Dalit", url:"https://www.ciporkin.com/", tags:["Artisan","Minimalist","Prints"], desc:"Bauhaus Tel Aviv meets Japanese aesthetics. Geometric, architectural cuts in flowing fabrics — asymmetric, monochromatic, textured. Limited seasonal editions.", img:"https://www.ciporkin.com/cdn/shop/products/ciporkin_8419_36M.jpg?v=1612946263", city:"Tel Aviv", lat:32.0812, lng:34.7755, fav:true },
+  { name:"Ciporkin by Dalit", url:"https://www.ciporkin.com/", tags:["Artisan","Minimalist","Prints"], desc:"Bauhaus Tel Aviv meets Japanese aesthetics. Geometric, architectural cuts in flowing fabrics — asymmetric, monochromatic, textured. Limited seasonal editions.", img:"https://www.ciporkin.com/cdn/shop/products/ciporkin_8419_36M.jpg?v=1612946263", city:"Tel Aviv", lat:32.0812, lng:34.7755, fav:true, phone:"052-5212177", addresses:["By appointment · Tel Aviv"] },
   { name:"Co.Co", url:"https://collectivecollection.co.il/", tags:["Artisan"], desc:"Collective Collection — a collaborative Israeli womenswear label where strong individual voices become a unified design statement.", img:"https://collectivecollection.co.il/wp-content/uploads/2025/10/VICTORIAS26-1267766-02-CO.CO-172-349242.jpg", city:"Tel Aviv", lat:32.0645, lng:34.7835, fav:true },
-  { name:"Comme il Faut", url:"https://www.comme-il-faut.com/", tags:["Artisan","Minimalist","Prints"], desc:"Original, artistic Israeli womenswear — monochromatic palettes, unexpected textures, and asymmetric construction.", img:"https://comme-il-faut.com/cdn/shop/files/c_il_faut_1849_7016b057-877c-4c12-8259-b131e6480d1a.jpg?v=1773844239&width=600", city:"Tel Aviv", lat:32.0765, lng:34.7693, fav:true },
-  { name:"Cotton", url:"https://cottonet.co.il/", tags:["Sustainable","Artisan"], desc:"Three decades of Israeli womenswear built on natural fabrics, local production, and unwavering quality.", img:"https://cdn.cottonet.co.il/newsite/2026/02/365276f8-cotton6644-copy-1067x1601.jpg", city:"Tel Aviv", lat:32.0693, lng:34.7934, fav:false },
+  { name:"Comme il Faut", url:"https://www.comme-il-faut.com/", tags:["Artisan","Minimalist","Prints"], desc:"Original, artistic Israeli womenswear — monochromatic palettes, unexpected textures, and asymmetric construction.", img:"https://comme-il-faut.com/cdn/shop/files/c_il_faut_1849_7016b057-877c-4c12-8259-b131e6480d1a.jpg?v=1773844239&width=600", city:"Tel Aviv", lat:32.0609, lng:34.7742, fav:true, phone:"03-6020521", addresses:["28 Levontin St, Tel Aviv"], hours:["Sun–Thu 10:00–20:00","Fri 10:00–16:00","Sat 10:00–20:00"] },
+  { name:"Cotton", url:"https://cottonet.co.il/", tags:["Sustainable","Artisan"], desc:"Three decades of Israeli womenswear built on natural fabrics, local production, and unwavering quality.", img:"https://cdn.cottonet.co.il/newsite/2026/02/365276f8-cotton6644-copy-1067x1601.jpg", city:"Tel Aviv", lat:32.0836, lng:34.7736, fav:false, addresses:["218 Dizengoff St, Tel Aviv"], phone:"03-523-4441" },
   { name:"Dana Ashkenazy", url:"https://www.danaashkenazi.com/", tags:["Artisan","Minimalist"], desc:"Easy, considered Israeli womenswear for the modern everyday — designed with an eye for proportion and a commitment to quiet confidence.", img:"https://www.danaashkenazi.com/cdn/shop/files/FCE62873-9D9C-4823-8E61-E8D80AD799E1.png?v=1775326726&width=735", city:"Tel Aviv", lat:32.0860, lng:34.7852, fav:false },
   { name:"Dikla Levsky", url:"https://diklalevsky.com/", tags:["Artisan","Luxury","Prints"], desc:"Printed silk scarves and high-end accessories with a painterly, editorial sensibility.", img:"https://diklalevsky.com/cdn/shop/files/Dikla_Levsky_Printed_Plisse_Silk_Scarf_2.jpg?crop=center&height=720&v=1701244069&width=480", city:"Tel Aviv", lat:32.0618, lng:34.7759, fav:false },
-  { name:"Dorin Frankfurt", url:"https://www.dorinfrankfurt.com/he", tags:["Artisan","Luxury"], desc:"One of Israel's most recognised fashion names — Dorin Frankfurt's work blends European sophistication with a distinctly Israeli sensibility.", img:"https://www.dorinfrankfurt.com/media/wysiwyg/SEV-55.jpg", city:"Tel Aviv", lat:32.0709, lng:34.7715, fav:false },
+  { name:"Dorin Frankfurt", url:"https://www.dorinfrankfurt.com/he", tags:["Artisan","Luxury"], desc:"One of Israel's most recognised fashion names — Dorin Frankfurt's work blends European sophistication with a distinctly Israeli sensibility.", img:"https://www.dorinfrankfurt.com/media/wysiwyg/SEV-55.jpg", city:"Tel Aviv", lat:32.0817, lng:34.7741, fav:false, addresses:["164 Dizengoff St, Tel Aviv"], phone:"03-554-0844", email:"customercare@dorinfrankfurt.com", hours:["Sun–Thu 09:30–19:00","Fri 09:30–14:00"] },
   { name:"Dorit Sade", url:"https://www.doritsade.com/", tags:["Artisan"], desc:"Israeli womenswear with quiet originality — Dorit Sade designs for women who dress with intention.", img:null, city:"Tel Aviv", lat:32.0583, lng:34.7812, fav:false },
   { name:"Dostix", url:"https://dostix.com/", tags:["Streetwear","Heritage"], desc:"Blending modern urban life with practical, dynamic design. International selling points across Europe, Japan, and the USA.", img:"https://dostix.com/cdn/shop/products/IMG_20161026_152044_2048x2048.jpg?v=1623568068", city:"Tel Aviv", lat:32.0732, lng:34.7843, fav:false },
   { name:"Flo by Ella Braitman", url:"https://flobyella.com/", tags:["Artisan","Luxury"], desc:"High-quality women's fashion in limited series, with fine European fabrics. Trained at Moscow's Theatre Design College before Shenkar.", img:"https://flobyella.com/cdn/shop/files/flo_18_2_26237338.jpg?v=1771836666&width=1920", city:"Tel Aviv", lat:32.0571, lng:34.7748, fav:false },
@@ -259,9 +286,9 @@ const DESIGNERS = [
   { name:"Gertrud", url:"https://gertrudshop.com/", tags:["Artisan","Prints"], desc:"Classy, comfortable Israeli womenswear with a playful graphic sensibility.", img:"https://gertrudshop.com/cdn/shop/files/9_mobile_561x824.png?v=1774940996", city:"Tel Aviv", lat:32.0852, lng:34.7720, fav:true },
   { name:"Gon Surfing", url:"https://houseofgon.com/", tags:["Surf","Streetwear"], desc:"Tel Aviv surf culture meets street fashion. Oversized silhouettes for women and men who live between the ocean and the city.", img:"https://houseofgon.com/cdn/shop/files/drill-bermuda-shorts-green-1160258.jpg?v=1774514232&width=800", city:"Tel Aviv", lat:32.0937, lng:34.7765, fav:true },
   { name:"Hagit Tassa", url:"https://hagitassa.com/", tags:["Artisan","Minimalist"], desc:"Contemporary Israeli womenswear focused on denim and versatile day-to-night dressing — clean lines, confident construction.", img:"https://hagitassa.com/cdn/shop/files/1031-hagitassa-26-03-26.jpg?v=1774601613&width=1800", city:"Tel Aviv", lat:32.0559, lng:34.7790, fav:false },
-  { name:"Heroic", url:"https://heroic-online.com/", tags:["Artisan","Minimalist"], desc:"Womenswear built around the perfect pair of pants — comfortable, flattering fits that carry you from morning to night.", img:"https://heroic-online.com/cdn/shop/files/0471-heroic-24-03-26.jpg?v=1774726628&width=800", city:"Tel Aviv", lat:32.0875, lng:34.7793, fav:true },
+  { name:"Heroic", url:"https://heroic-online.com/", tags:["Artisan","Minimalist"], desc:"Womenswear built around the perfect pair of pants — comfortable, flattering fits that carry you from morning to night.", img:"https://heroic-online.com/cdn/shop/files/0471-heroic-24-03-26.jpg?v=1774726628&width=800", city:"Tel Aviv", lat:32.0603, lng:34.7782, fav:true, phone:"077-2090309", addresses:["14 Mikveh Israel St, Tel Aviv"] },
   { name:"Hila Feinberg", url:"https://hilafeinberg.com/", tags:["Minimalist","Artisan"], desc:"Minimalist, oversize Israeli womenswear for those who dress with intention.", img:"https://hilafeinberg.com/cdn/shop/files/forwebsite-267_1899x.jpg?v=1734866867", city:"Tel Aviv", lat:32.0628, lng:34.7836, fav:false },
-  { name:"Holyland Civilians", url:"https://holylandcivilians.com/", tags:["Streetwear","Activewear"], desc:"Edgy Mediterranean streetwear and activewear — all genders, all-black, and unapologetically bold.", img:"https://holylandcivilians.com/cdn/shop/files/IMG_6185-color.jpg?v=1769723876&width=480", city:"Tel Aviv", lat:32.0770, lng:34.7810, fav:true },
+  { name:"Holyland Civilians", url:"https://holylandcivilians.com/", tags:["Streetwear","Activewear"], desc:"Edgy Mediterranean streetwear and activewear — all genders, all-black, and unapologetically bold.", img:"https://holylandcivilians.com/cdn/shop/files/IMG_6185-color.jpg?v=1769723876&width=480", city:"Tel Aviv", lat:32.054, lng:34.7505, fav:true, addresses:["Jaffa, Tel Aviv"] },
   { name:"CALA", url:"https://cala.co.il/", tags:["Artisan"], desc:"Tel Aviv boutique chain founded 2002 — fashion that listens. A personal, intuitive approach to style selection.", img:"https://cala.co.il/cdn/shop/files/RefaelMizrahifashionphotography_1108_dee8b78f-3b73-4e27-a046-f4bd841884ba.jpg?v=1753288930&width=1400", city:"Tel Aviv", lat:32.0742, lng:34.7677, fav:false },
   { name:"JOR-D", url:"https://jor-d.com/", tags:["Streetwear","Artisan"], desc:"Every garment is a canvas, every design a message. Tel Aviv-based statement fashion from Remez Street.", img:"https://jor-d.com/wp-content/uploads/2026/01/MICHALl-911-1.jpg", city:"Tel Aviv", lat:32.0562, lng:34.7726, fav:false },
   { name:"Itay Brands", url:"https://itaybrands.co.il/", tags:["Minimalist","Menswear"], desc:"It's all about the basics. Sharp, affordable everyday wear for women and men — clean cuts, great fits, wardrobe staples.", img:"https://itaybrands.co.il/cdn/shop/files/868b1d6cd000aa1901415efa6dab312b.jpg?crop=center&height=1018&v=1763904574&width=1410", city:"Tel Aviv", lat:32.0802, lng:34.7882, fav:false },
@@ -270,7 +297,7 @@ const DESIGNERS = [
   { name:"Dodo Bar Or", url:"https://www.dodobaror.com/", tags:["Luxury","Prints","Artisan"], desc:"Tel Aviv's most internationally celebrated bohemian label — stocked at Net-a-Porter and Matchesfashion.", img:"https://dodobaror.online/cdn/shop/files/IMG_4272_b116de9f-4452-4602-8f02-5cc9f2c68a2a.jpg?v=1722861928&width=750", city:"Tel Aviv", lat:32.0832, lng:34.7840, fav:true },
   { name:"Maya Bash", url:"https://www.mayabash.com/", tags:["Artisan","Minimalist"], desc:"Established designer with 20+ years of experience. Minimalist, gender-neutral aesthetics with precise tailoring and socially conscious values.", img:"https://www.mayabash.com/f-users/user_106647/website_205343/images/img_6854.jpg", city:"Tel Aviv", lat:32.0572, lng:34.7702, fav:false },
   { name:"On'nanoko", url:"https://www.onnanoko.co.il/", tags:["Artisan","Minimalist","Menswear"], desc:"Seasonal Israeli fashion from Kibbutz Ma'agan Michael — refined collections like ECLIPSE and PULSE.", img:"https://www.onnanoko.co.il/cdn/shop/files/227308BOXITOP227486MERGEPANTS_16.jpg?v=1771416183&width=960", city:"Kibbutz Ma'agan Michael", lat:32.5620, lng:34.9240, fav:false },
-  { name:"OM-ME", url:"https://www.ommetlv.com/", tags:["Activewear","Sustainable","Minimalist"], desc:"Tel Aviv activewear and basics — sustainable fabrics, local production. Store on Ben Yehuda 96.", img:"https://static.wixstatic.com/media/86f77e_f6e859b02eb147d0b5847fd2a1e9ad92~mv2.jpg/v1/fill/w_441,h_589,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/86f77e_f6e859b02eb147d0b5847fd2a1e9ad92~mv2.jpg", city:"Tel Aviv", lat:32.0815, lng:34.7685, fav:false },
+  { name:"OM-ME", url:"https://www.ommetlv.com/", tags:["Activewear","Sustainable","Minimalist"], desc:"Tel Aviv activewear and basics — sustainable fabrics, local production. Store on Ben Yehuda 96.", img:"https://static.wixstatic.com/media/86f77e_f6e859b02eb147d0b5847fd2a1e9ad92~mv2.jpg/v1/fill/w_441,h_589,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/86f77e_f6e859b02eb147d0b5847fd2a1e9ad92~mv2.jpg", city:"Tel Aviv", lat:32.0823, lng:34.7685, fav:false },
   { name:"Blueberry TLV", url:"https://blueberrytlv.co.il/", tags:["Artisan","Contemporary"], desc:"A fresh Tel Aviv label with a playful, considered approach to everyday womenswear.", img:"https://blueberrytlv.co.il/cdn/shop/files/WhatsAppImage2026-02-16at16.46.55.jpg?v=1771266050&width=700", city:"Tel Aviv", lat:32.0748, lng:34.7859, fav:false },
   { name:"Hila Shemesh", url:"https://hilashemesh.com/", tags:["Artisan","Minimalist"], desc:"Israeli womenswear with a careful, artisan-led approach — each piece considered, each season deliberate.", img:"https://hilashemesh.com/cdn/shop/files/5_bda078fa-5477-4095-8394-4b9494d6a3bf.jpg?v=1747813836&width=713", city:"Tel Aviv", lat:32.0596, lng:34.7821, fav:false },
   { name:"IDEE", url:"https://idee.co.il/en", tags:["Artisan","Minimalist"], desc:"Israeli design rooted in idea — womenswear in the space between structure and ease.", img:"https://idee.co.il/cdn/shop/files/Unknown_26.jpg?v=1776154792&width=713", city:"Tel Aviv", lat:32.0871, lng:34.7760, fav:false },
@@ -294,15 +321,26 @@ const DESIGNERS = [
   { name:"The Little Camel", url:"https://thelittlecamel.co.il/", tags:["Accessories","Artisan"], desc:"Colourful, artsy wallets, purses, and accessories with a handcrafted Israeli soul.", img:null, city:"Tel Aviv", lat:32.0586, lng:34.7755, fav:false },
   { name:"Justine Hats", url:"https://justinehats.com/", tags:["Accessories","Artisan"], desc:"Israeli millinery — handcrafted hats for every occasion and every mood.", img:null, city:"Tel Aviv", lat:32.0823, lng:34.7877, fav:false },
   { name:"Take a Nap", url:"https://takeanap.co.il/", tags:["Activewear","Minimalist"], desc:"Soft, minimalist loungewear and homewear in beautifully textured fabrics.", img:"https://takeanap.co.il/cdn/shop/files/2025_10_23_NAP14668.jpg?v=1761659855&width=700", city:"Tel Aviv", lat:32.0784, lng:34.7922, fav:false },
-  { name:"Shirly Halperin", url:"https://www.shirlyhalperin.com/", tags:["Artisan","Minimalist"], desc:"Founded in 2004 on Zamnehoff Street, Tel Aviv. Classical, clean-cut, simple clothes for women.", img:null, city:"Tel Aviv", lat:32.0608, lng:34.7810, fav:false },
-  { name:"Maayan Paz", url:"https://maayanpaz.co.il/", tags:["Minimalist","Artisan"], desc:"Israeli womenswear since 2012 — minimalist lines, flattering cuts, luxurious fabrics made in Israel.", img:null, city:"Tel Aviv", lat:32.0735, lng:34.7748, fav:false },
+  { name:"Shirly Halperin", url:"https://www.shirlyhalperin.com/", tags:["Artisan","Minimalist"], desc:"Founded in 2004 on Zamnehoff Street, Tel Aviv. Classical, clean-cut, simple clothes for women.", img:null, city:"Tel Aviv", lat:32.0649, lng:34.7807, fav:false },
+  { name:"Maayan Paz", url:"https://maayanpaz.co.il/", tags:["Minimalist","Artisan"], desc:"Israeli womenswear since 2012 — minimalist lines, flattering cuts, luxurious fabrics made in Israel.", img:null, city:"Tel Aviv", lat:32.0528, lng:34.7525, fav:false, phone:"077-5625231", addresses:["30 Yehuda Margoza St, Jaffa","36 Bazel St, Tel Aviv"] },
   { name:"Kid A", url:"https://thisiskida.com/", tags:["Minimalist","Artisan","Prints"], desc:"Size-inclusive basics and bold prints — for the Israeli woman who believes in comfort as a political act.", img:null, city:"Tel Aviv", lat:32.0648, lng:34.7922, fav:false },
   { name:"Haia", url:"https://www.haia.co.il/", tags:["Artisan"], desc:"Contemporary Israeli womenswear with a considered, creative approach.", img:"https://www.haia.co.il/cdn/shop/products/image_354a24a0-8109-415a-a29a-35704df586ab.jpg?v=1666088944", city:"Tel Aviv", lat:32.0868, lng:34.7698, fav:false },
-  { name:"TRES TLV", url:"https://trestlv.com/", tags:["Streetwear","Artisan","Jewelry"], desc:"Tel Aviv contemporary label spanning T-shirts, denim, blazers, dresses, and jewellery. Stores on Ahad Haam and Neot Afeka.", img:"https://trestlv.com/cdn/shop/files/TRES9.3.2610788.jpg?v=1773160140&width=1080", city:"Tel Aviv", lat:32.0638, lng:34.7773, fav:false },
+  { name:"TRES TLV", url:"https://trestlv.com/", tags:["Streetwear","Artisan","Jewelry"], desc:"Tel Aviv contemporary label spanning T-shirts, denim, blazers, dresses, and jewellery. Stores on Ahad Haam and Neot Afeka.", img:"https://trestlv.com/cdn/shop/files/TRES9.3.2610788.jpg?v=1773160140&width=1080", city:"Tel Aviv", lat:32.0634, lng:34.7758, fav:false, phone:"073-7437277", email:"customercare@trestlv.com", hours:["Sun–Thu 10:00–19:00","Friday 09:00–15:00","Saturday (Neot Afeka only) 10:00–13:00"], addresses:["65 Pinhas Rosen St, Tel Aviv","58 Ahad Ha'am St, Tel Aviv"] },
   { name:"Hadas Mor", url:"https://hadasmor.com/", tags:["Lingerie","Swimwear"], desc:"Breathing Lingerie — bras, bodysuits, swimwear, and underwear with a focus on comfort and femininity. Based in Pardes Hanna.", img:"https://hadasmor.com/cdn/shop/files/DSC07717.jpg?v=1769592226&width=5000", city:"Pardes Hanna", lat:32.4710, lng:34.9620, fav:false },
   { name:"SAAG", url:"https://saag.co.il/", tags:["Artisan","Streetwear","Accessories"], desc:"Contemporary Israeli womenswear and accessories — tops, dresses, pants, skirts, hats, bags, and earrings.", img:"https://saag.co.il/wp-content/uploads/2025/02/ttyg-82-scaled.jpg", city:"Tel Aviv", lat:32.0760, lng:34.7660, fav:false },
   { name:"Razili", url:"https://www.razili.co.il/", tags:["Artisan","Minimalist"], desc:"Israeli womenswear with a clean, confident identity — considered design rooted in quality craftsmanship.", img:"https://www.razili.co.il/cdn/shop/files/razili14-8-9430.jpg?v=1723725390&width=1800", city:"Tel Aviv", lat:32.0705, lng:34.7845, fav:false },
-  { name:"Roni Bar", url:"https://www.ronibar.com/", tags:["Artisan","Minimalist"], desc:"Wear Your Self — studio at 84 Ben Zvi Rd, Tel Aviv. Womenswear that moves with its wearer.", img:"https://www.ronibar.com/wp-content/uploads/2023/05/0t8a2110-scaled.jpeg", city:"Tel Aviv", lat:32.0540, lng:34.7590, fav:false },
+  { name:"Roni Bar", url:"https://www.ronibar.com/", tags:["Artisan","Minimalist"], desc:"Wear Your Self — studio at 84 Ben Zvi Rd, Tel Aviv. Womenswear that moves with its wearer.", img:"https://www.ronibar.com/wp-content/uploads/2023/05/0t8a2110-scaled.jpeg", city:"Tel Aviv", lat:32.0542, lng:34.7595, phone:"+972 3 6294662", addresses:["84 Ben Zvi Rd, Tel Aviv"], fav:false },
+
+  { name:"Chopshop Corp", url:"https://www.chopshop.co.il/", tags:["Streetwear","Prints","Menswear"], desc:"Unorganized. Unruly. Unmissable. Tel Aviv's cult street clothing brand — graphic tees, wide-leg pants, merch, and a fanzine that keeps the culture alive.", img:"https://static.wixstatic.com/media/64d6e6_971d8318d23a4d0e8d3c73cabf67a858~mv2.jpg/v1/fill/w_980,h_980,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/64d6e6_971d8318d23a4d0e8d3c73cabf67a858~mv2.jpg", city:"Tel Aviv", lat:32.0793, lng:34.7736, fav:true, addresses:["81 Dizengoff St, Tel Aviv"], phone:"054-5951491", email:"yoy@chopshop.co.il" },
+  { name:"Chopshop Corp", url:"https://www.chopshop.co.il/", tags:["Streetwear","Prints","Menswear"], desc:"Unorganized. Unruly. Unmissable. Chopshop Corp — Bograshov location.", img:"https://static.wixstatic.com/media/64d6e6_971d8318d23a4d0e8d3c73cabf67a858~mv2.jpg/v1/fill/w_980,h_980,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/64d6e6_971d8318d23a4d0e8d3c73cabf67a858~mv2.jpg", city:"Tel Aviv", lat:32.0766, lng:34.7708, fav:false, addresses:["64 Bograshov St, Tel Aviv"], phone:"054-5951491", email:"yoy@chopshop.co.il" },
+  { name:"Chopshop Corp", url:"https://www.chopshop.co.il/", tags:["Streetwear","Prints","Menswear"], desc:"Unorganized. Unruly. Unmissable. Chopshop Corp — Sheinkin location.", img:"https://static.wixstatic.com/media/64d6e6_971d8318d23a4d0e8d3c73cabf67a858~mv2.jpg/v1/fill/w_980,h_980,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/64d6e6_971d8318d23a4d0e8d3c73cabf67a858~mv2.jpg", city:"Tel Aviv", lat:32.0638, lng:34.7723, fav:false, addresses:["7 Sheinkin St, Tel Aviv"], phone:"054-5951491", email:"yoy@chopshop.co.il" },
+  { name:"Chopshop Corp", url:"https://www.chopshop.co.il/", tags:["Streetwear","Prints","Menswear"], desc:"Unorganized. Unruly. Unmissable. Chopshop Corp — Simtat Hashuk location.", img:"https://static.wixstatic.com/media/64d6e6_971d8318d23a4d0e8d3c73cabf67a858~mv2.jpg/v1/fill/w_980,h_980,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/64d6e6_971d8318d23a4d0e8d3c73cabf67a858~mv2.jpg", city:"Tel Aviv", lat:32.0655, lng:34.7688, fav:false, addresses:["1 Simtat Hashuk, Tel Aviv"], phone:"054-5951491", email:"yoy@chopshop.co.il" },
+  // Extra TRES TLV location
+  { name:"TRES TLV", url:"https://trestlv.com/", tags:["Streetwear","Artisan","Jewelry"], desc:"TRES TLV — 65 Pinhas Rosen St location.", img:"https://trestlv.com/cdn/shop/files/TRES9.3.2610788.jpg?v=1773160140&width=1080", city:"Tel Aviv", lat:32.0603, lng:34.7832, fav:false, addresses:["65 Pinhas Rosen St, Tel Aviv"], phone:"073-7437277", email:"customercare@trestlv.com", hours:["Sun–Thu 10:00–19:00","Fri 09:00–15:00","Sat 10:00–13:00"] },
+  // Extra Maayan Paz location
+  { name:"Maayan Paz", url:"https://maayanpaz.co.il/", tags:["Minimalist","Artisan"], desc:"Maayan Paz — 36 Bazel St, Tel Aviv.", img:"https://maayanpaz.co.il/cdn/shop/files/new_arrivals.jpg?v=1776327710&width=3200", city:"Tel Aviv", lat:32.0919, lng:34.7823, fav:false, addresses:["36 Bazel St, Tel Aviv"], phone:"03-9597050" },
+  { name:"Ronen Chen", url:"https://www.ronenchen.com/", tags:["Contemporary","Ready-to-Wear","Minimalist"], desc:"A cornerstone of Israeli fashion for over three decades. Ronen Chen designs fluid, wearable pieces for the modern woman.", img:"https://heroic-online.com/cdn/shop/files/0471-heroic-24-03-26.jpg?v=1774726628&width=800", city:"Tel Aviv", lat:32.0781, lng:34.7732, fav:false, addresses:["155 Dizengoff St, Tel Aviv"], phone:"054-3030589" },
+  { name:"Ronen Chen", url:"https://www.ronenchen.com/", tags:["Contemporary","Ready-to-Wear","Minimalist"], desc:"Ronen Chen — Tel Giborim outlet location.", img:"https://heroic-online.com/cdn/shop/files/0471-heroic-24-03-26.jpg?v=1774726628&width=800", city:"Tel Aviv", lat:32.0542, lng:34.7620, fav:false, addresses:["5 Tel Giborim St, Tel Aviv"], phone:"054-3030526" },
 ];
 
 // Init Leaflet map
@@ -333,7 +371,13 @@ let activeMarker = null;
 
 function openPanel(d) {
   panelName.textContent = d.name;
-  panelLocation.textContent = d.city + ', Israel';
+  if (d.addresses && d.addresses.length) {
+    panelLocation.textContent = d.addresses.join(' · ');
+  } else if (d.address) {
+    panelLocation.textContent = d.address;
+  } else {
+    panelLocation.textContent = d.city + ', Israel';
+  }
   panelTags.innerHTML = d.tags.map(t => `<span class="panel-tag">${t}</span>`).join('');
   panelDesc.textContent = d.desc;
   panelLink.href = d.url;
@@ -342,6 +386,23 @@ function openPanel(d) {
   } else {
     panelImgWrap.innerHTML = `<div class="panel-img-placeholder">${d.name}</div>`;
   }
+  // Extra details
+  const extraEl = document.getElementById('panel-extra');
+  let extraHtml = '';
+  if (d.addresses && d.addresses.length) {
+    extraHtml += `<div class="panel-extra-block">${d.addresses.map(a => `<div>${a}</div>`).join('')}</div>`;
+  }
+  if (d.phone || d.email) {
+    extraHtml += `<div class="panel-extra-block">`;
+    if (d.phone) extraHtml += `<div><a href="tel:${d.phone}" style="color:inherit">${d.phone}</a></div>`;
+    if (d.email) extraHtml += `<div><a href="mailto:${d.email}" style="color:inherit">${d.email}</a></div>`;
+    extraHtml += '</div>';
+  }
+  if (d.hours && d.hours.length) {
+    extraHtml += `<div class="panel-extra-block">${d.hours.map(h => `<div>${h}</div>`).join('')}</div>`;
+  }
+  extraEl.innerHTML = extraHtml;
+  extraEl.style.display = extraHtml ? 'flex' : 'none';
   panel.classList.add('open');
 }
 
@@ -373,6 +434,17 @@ const searchClear = document.getElementById('map-search-clear');
 const searchResults = document.getElementById('map-search-results');
 const markers = [];
 
+// Haversine distance in km
+function distKm(lat1, lng1, lat2, lng2) {
+  const R = 6371;
+  const dLat = (lat2-lat1)*Math.PI/180;
+  const dLng = (lng2-lng1)*Math.PI/180;
+  const a = Math.sin(dLat/2)**2 + Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLng/2)**2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+}
+
+let geocodeTimer = null;
+
 function runSearch(q) {
   const query = q.trim().toLowerCase();
   searchClear.style.display = query ? 'block' : 'none';
@@ -383,23 +455,22 @@ function runSearch(q) {
     return;
   }
 
-  const matches = DESIGNERS.filter(d =>
+  // Brand/tag matches
+  const brandMatches = DESIGNERS.filter(d =>
     d.name.toLowerCase().includes(query) ||
-    d.city.toLowerCase().includes(query) ||
     d.tags.some(t => t.toLowerCase().includes(query))
   );
 
-  // Dim non-matching
-  markers.forEach(({d, pin}) => {
-    const match = matches.some(m => m.name === d.name);
-    pin.classList.toggle('dimmed', !match);
-  });
+  // City matches from our own data
+  const cityMatches = DESIGNERS.filter(d => d.city.toLowerCase().includes(query));
+  const isCityQuery = cityMatches.length > 0 && brandMatches.length === 0;
 
-  // Show dropdown
-  if (matches.length === 0) {
-    searchResults.innerHTML = '<div class="no-results">No results found</div>';
-  } else {
-    searchResults.innerHTML = matches.map((d, i) =>
+  if (brandMatches.length > 0) {
+    // Show brand results
+    markers.forEach(({d, pin}) => {
+      pin.classList.toggle('dimmed', !brandMatches.some(m => m.name === d.name));
+    });
+    searchResults.innerHTML = brandMatches.map(d =>
       `<div class="search-result-item" data-idx="${DESIGNERS.indexOf(d)}">
         <div class="sri-name">${d.name}</div>
         <div class="sri-meta">${d.city} · ${d.tags.slice(0,2).join(' · ')}</div>
@@ -409,17 +480,68 @@ function runSearch(q) {
       item.addEventListener('click', () => {
         const d = DESIGNERS[+item.dataset.idx];
         const m = markers.find(x => x.d.name === d.name);
-        if (m) {
-          map.setView([d.lat, d.lng], 15, {animate: true});
-          setTimeout(() => m.marker.fire('click'), 400);
-        }
+        if (m) { map.setView([d.lat, d.lng], 15, {animate: true}); setTimeout(() => m.marker.fire('click'), 400); }
         searchResults.style.display = 'none';
         searchInput.value = d.name;
         markers.forEach(({pin}) => pin.classList.remove('dimmed'));
       });
     });
+    searchResults.style.display = 'block';
+  } else {
+    // Try geocoding with Nominatim
+    clearTimeout(geocodeTimer);
+    searchResults.innerHTML = '<div class="no-results">Searching location…</div>';
+    searchResults.style.display = 'block';
+    geocodeTimer = setTimeout(async () => {
+      try {
+        const res = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(q + ', Israel')}&format=json&limit=1&countrycodes=il`, {
+          headers: { 'Accept-Language': 'en' }
+        });
+        const data = await res.json();
+        if (data.length === 0) {
+          searchResults.innerHTML = '<div class="no-results">No location found</div>';
+          return;
+        }
+        const { lat, lon, display_name } = data[0];
+        const placeLat = +lat, placeLng = +lon;
+        // Find brands within 15km
+        const RADIUS = 15;
+        const nearby = DESIGNERS.filter(d => distKm(placeLat, placeLng, d.lat, d.lng) <= RADIUS);
+        markers.forEach(({d, pin}) => {
+          pin.classList.toggle('dimmed', !nearby.some(n => n.name === d.name));
+        });
+        // Zoom to location
+        const zoom = nearby.length > 5 ? 13 : 11;
+        map.flyTo([placeLat, placeLng], zoom, { animate: true, duration: 1.2 });
+        // Show results
+        const placeName = display_name.split(',')[0];
+        searchResults.innerHTML =
+          `<div class="search-result-item location-header" style="background:#f0ede9;pointer-events:none">
+            <div class="sri-name">${placeName}</div>
+            <div class="sri-meta">${nearby.length} brand${nearby.length !== 1 ? 's' : ''} nearby · within ${RADIUS}km</div>
+          </div>` +
+          (nearby.length > 0
+            ? nearby.map(d => `<div class="search-result-item" data-idx="${DESIGNERS.indexOf(d)}">
+                <div class="sri-name">${d.name}</div>
+                <div class="sri-meta">${d.city} · ${d.tags.slice(0,2).join(' · ')}</div>
+              </div>`).join('')
+            : '<div class="no-results">No brands in this area</div>');
+        searchResults.querySelectorAll('.search-result-item:not(.location-header)').forEach(item => {
+          item.addEventListener('click', () => {
+            const d = DESIGNERS[+item.dataset.idx];
+            const m = markers.find(x => x.d.name === d.name);
+            if (m) { map.setView([d.lat, d.lng], 15, {animate: true}); setTimeout(() => m.marker.fire('click'), 400); }
+            searchResults.style.display = 'none';
+            searchInput.value = d.name;
+            markers.forEach(({pin}) => pin.classList.remove('dimmed'));
+          });
+        });
+        searchResults.style.display = 'block';
+      } catch(e) {
+        searchResults.innerHTML = '<div class="no-results">Could not search location</div>';
+      }
+    }, 500);
   }
-  searchResults.style.display = 'block';
 }
 
 searchInput.addEventListener('input', e => runSearch(e.target.value));
@@ -435,6 +557,9 @@ document.addEventListener('click', e => {
 // Add markers
 DESIGNERS.forEach(d => {
   const marker = L.marker([d.lat, d.lng], { icon: makeIcon(d.fav) }).addTo(map);
+  marker.bindTooltip(`<strong>${d.name}</strong><br>${d.addresses && d.addresses.length ? d.addresses[0] : d.city + ', Israel'}`, {
+    direction: 'top', offset: [0, -8], opacity: 1
+  });
   const pin = marker._icon?.querySelector?.('.map-pin') || null;
   markers.push({ d, marker, get pin() { return marker._icon?.querySelector('.map-pin'); } });
   marker.on('click', () => {
@@ -454,6 +579,70 @@ DESIGNERS.forEach(d => {
 });
 
 document.getElementById('map-count').textContent = `${DESIGNERS.length} Locations`;
+
+// Language support
+const MAP_TRANSLATIONS = {
+  en: {
+    navDesigners: "Designers", navMap: "Map", navAbout: "About", navSubmit: "Submit",
+    searchPlaceholder: "Brand, city, or style…",
+    visitWebsite: "Visit Website",
+    panelAddress: "", panelPhone: "", panelEmail: "", panelHours: "",
+    nearby: (n, r) => `${n} brand${n !== 1 ? 's' : ''} nearby · within ${r}km`,
+    searching: "Searching location…",
+    noLocation: "No location found",
+    noResults: "No results found",
+    noNearby: "No brands in this area",
+    countFn: (n) => `${n} Locations`,
+  },
+  he: {
+    navDesigners: "מעצבים", navMap: "מפה", navAbout: "אודות", navSubmit: "הגשה",
+    searchPlaceholder: "מותג, עיר, או סגנון…",
+    visitWebsite: "לאתר",
+    panelAddress: "", panelPhone: "", panelEmail: "", panelHours: "",
+    nearby: (n, r) => `${n} מותגים בקרבת מקום · ברדיוס ${r} ק"מ`,
+    searching: "מחפש מיקום…",
+    noLocation: "לא נמצא מיקום",
+    noResults: "לא נמצאו תוצאות",
+    noNearby: "אין מותגים באזור זה",
+    countFn: (n) => `${n} מיקומים`,
+  }
+};
+
+let mapLang = localStorage.getItem('modeil-lang') || 'en';
+
+function applyMapLang() {
+  const t = MAP_TRANSLATIONS[mapLang];
+  const isHe = mapLang === 'he';
+  document.documentElement.setAttribute('dir', isHe ? 'rtl' : 'ltr');
+  document.documentElement.setAttribute('lang', isHe ? 'he' : 'en');
+
+  document.getElementById('nav-designers').textContent = t.navDesigners;
+  document.getElementById('nav-map').textContent = t.navMap;
+  document.getElementById('nav-about').textContent = t.navAbout;
+  document.getElementById('nav-submit').textContent = t.navSubmit;
+  document.getElementById('map-search-input').placeholder = t.searchPlaceholder;
+  document.getElementById('map-count').textContent = t.countFn(DESIGNERS.length);
+
+  // Update panel link if open
+  const panelLink = document.getElementById('panel-link');
+  if (panelLink) {
+    const span = panelLink.querySelector('span.font-label, span:first-child');
+    if (!span) panelLink.childNodes[0].textContent = t.visitWebsite + ' ';
+  }
+}
+
+function toggleMapLang() {
+  mapLang = mapLang === 'en' ? 'he' : 'en';
+  localStorage.setItem('modeil-lang', mapLang);
+  document.getElementById('lang-toggle-map').textContent = mapLang === 'en' ? 'EN | עב' : 'עב | EN';
+  applyMapLang();
+}
+
+// Sync lang from index if set
+if (mapLang === 'he') {
+  document.getElementById('lang-toggle-map').textContent = 'עב | EN';
+  applyMapLang();
+}
 </script>
 </body>
 </html>
