@@ -8,14 +8,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700;900&family=Inter:wght@300;400;600&family=Space+Grotesk:wght@300;400;700&family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; border-radius: 0 !important; }
-  html, body { height: 100%; overflow: hidden; font-family: 'Inter', sans-serif; background: #fcf9f5; color: #1c1c19; cursor: crosshair; }
+  html, body { height: 100%; overflow: hidden; font-family: 'Inter', sans-serif; background: #F4F4F4; color: #1A1A18; cursor: crosshair; }
 
   /* Nav */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-    background: rgba(252,249,245,0.96); backdrop-filter: blur(8px);
+    background: rgba(244,244,244,0.96); backdrop-filter: blur(8px);
     border-bottom: 1px solid rgba(198,198,198,0.2);
     display: flex; justify-content: space-between; align-items: center;
     padding: 1.5rem 3rem; height: 72px;
@@ -25,6 +26,8 @@
   [dir="rtl"] .nav-links { direction: rtl; }
   #lang-toggle-map { cursor: pointer; font-family: 'Space Grotesk', sans-serif; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; background: none; border: 1px solid #000; padding: 5px 10px; color: #000; transition: all 0.2s; }
   #lang-toggle-map:hover { background: #000; color: #fcf9f5; }
+  @media (max-width: 600px) { #lang-toggle-map { display: none !important; } #map-mobile-btn { display: flex !important; } }
+  *:focus-visible { outline: 2px solid #B8748A; outline-offset: 2px; }
   .nav-logo { font-family: 'Epilogue', sans-serif; font-weight: 900; font-size: 1.5rem; letter-spacing: -0.04em; text-transform: uppercase; text-decoration: none; color: #000; }
   .nav-links { display: flex; gap: 2.5rem; font-family: 'Space Grotesk', sans-serif; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; }
   .nav-links a { color: rgba(0,0,0,0.35); text-decoration: none; transition: color 0.2s; }
@@ -38,7 +41,7 @@
   }
 
   /* Leaflet overrides */
-  .leaflet-container { background: #f0ede9; cursor: crosshair !important; }
+  .leaflet-container { background: #F0ECE4; cursor: crosshair !important; }
   .leaflet-control-zoom a { border-radius: 0 !important; font-family: 'Space Grotesk', sans-serif; }
   .leaflet-control-attribution { font-family: 'Space Grotesk', sans-serif; font-size: 9px; letter-spacing: 0.05em; }
 
@@ -52,7 +55,7 @@
   }
   #map-search-bar {
     display: flex; align-items: center;
-    background: rgba(252,249,245,0.97); backdrop-filter: blur(10px);
+    background: rgba(244,244,244,0.97); backdrop-filter: blur(10px);
     border: 1.5px solid #000;
     padding: 0 1rem;
     gap: 0.5rem;
@@ -69,42 +72,71 @@
 
   /* Search results dropdown */
   #map-search-results {
-    background: rgba(252,249,245,0.98); border: 1.5px solid #000; border-top: none;
-    max-height: 280px; overflow-y: auto; display: none;
+    background: rgba(244,244,244,0.99); border: 1.5px solid #000; border-top: none;
+    max-height: 340px; overflow-y: auto; display: none;
+  }
+  .sri-section-header {
+    padding: 6px 1rem 4px; font-family: 'Space Grotesk', sans-serif;
+    font-size: 8px; letter-spacing: 0.28em; text-transform: uppercase;
+    opacity: 0.35; background: #F4F4F4; position: sticky; top: 0;
   }
   .search-result-item {
-    padding: 0.75rem 1rem; cursor: pointer;
+    padding: 0.65rem 1rem; cursor: pointer;
     display: flex; flex-direction: column; gap: 2px;
-    border-bottom: 1px solid rgba(198,198,198,0.3);
-    transition: background 0.15s;
+    border-bottom: 1px solid rgba(198,198,198,0.2);
+    transition: background 0.12s;
   }
   .search-result-item:last-child { border-bottom: none; }
-  .search-result-item:hover { background: #f0ede9; }
-  .sri-name { font-family: 'Epilogue', sans-serif; font-weight: 900; font-size: 0.85rem; text-transform: uppercase; letter-spacing: -0.02em; }
-  .sri-meta { font-family: 'Space Grotesk', sans-serif; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.45; }
+  .search-result-item:hover, .search-result-item.focused { background: #F0ECE4; }
+  .sri-name { font-family: 'Epilogue', sans-serif; font-weight: 900; font-size: 0.82rem; text-transform: uppercase; letter-spacing: -0.02em; }
+  .sri-meta { font-family: 'Space Grotesk', sans-serif; font-size: 9px; letter-spacing: 0.13em; text-transform: uppercase; opacity: 0.45; }
+  .sri-tag { display: inline-block; font-family: 'Space Grotesk', sans-serif; font-size: 9px; letter-spacing: 0.13em; text-transform: uppercase; border: 1px solid #c6c6c6; padding: 2px 7px; }
   .no-results { padding: 1rem; font-family: 'Space Grotesk', sans-serif; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.35; text-align: center; }
 
   /* Zoom buttons */
   #zoom-controls {
-    position: fixed; bottom: 2.5rem; right: 2rem;
+    position: fixed; top: 50%; right: 16px;
+    transform: translateY(-50%);
     z-index: 600; display: flex; flex-direction: column; gap: 2px;
+    transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  #panel.open ~ #zoom-controls, body:has(#panel.open) #zoom-controls {
+    right: calc(400px + 16px);
   }
   .zoom-btn {
     width: 40px; height: 40px;
-    background: rgba(252,249,245,0.97); border: 1.5px solid #000;
+    background: rgba(244,244,244,0.97); border: 1.5px solid #000;
     display: flex; align-items: center; justify-content: center;
     cursor: pointer; font-size: 1.1rem; font-weight: 900;
     font-family: 'Space Grotesk', sans-serif;
     transition: background 0.15s;
     user-select: none;
   }
-  .zoom-btn:hover { background: #000; color: #fcf9f5; }
+  .zoom-btn:hover { background: #1A1A18; color: #F4F4F4; }
 
   /* Dim unmatched pins */
   .map-pin.dimmed { opacity: 0.15; transform: scale(0.7); }
 
 
-  /* Leaflet tooltip override */
+  /* Permanent pin labels */
+  .map-label {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    font-family: 'Space Grotesk', sans-serif !important;
+    font-size: 10px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.12em !important;
+    text-transform: uppercase !important;
+    color: #1A1A18 !important;
+    white-space: nowrap !important;
+    pointer-events: none !important;
+
+  }
+  .map-label::before { display: none !important; }
+
+  /* Hover tooltip override */
   .leaflet-tooltip {
     background: #000 !important;
     color: #fcf9f5 !important;
@@ -120,22 +152,24 @@
   }
   .leaflet-tooltip::before { display: none !important; }
 
-  /* Custom pin */
+
+  /* Custom pin — uniform black with white border */
   .map-pin {
-    width: 14px; height: 14px;
-    background: #000;
-    border: 2px solid #fcf9f5;
-    box-shadow: 0 1px 6px rgba(0,0,0,0.35);
-    transition: transform 0.15s, background 0.15s;
+    width: 10px; height: 10px;
+    background: #1A1A18;
+    border: 2px solid #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+    transition: transform 0.15s;
     cursor: pointer !important;
   }
-  .map-pin:hover, .map-pin.active { background: #000; transform: scale(1.6); }
-  .map-pin.featured { background: #000; border: 2px solid #fcf9f5; box-shadow: 0 1px 8px rgba(0,0,0,0.5); }
+  .map-pin:hover { transform: scale(1.5); }
+  .map-pin.active { transform: scale(1.5); }
+  .map-pin.featured { background: #1A1A18; border: 2px solid #fff; }
 
   /* Side panel */
   #panel {
     position: fixed; top: 72px; right: 0; bottom: 0;
-    width: 400px; background: #fcf9f5;
+    width: 400px; background: #FFFFFF;
     border-left: 1px solid rgba(198,198,198,0.3);
     z-index: 500; overflow-y: auto;
     transform: translateX(100%);
@@ -147,11 +181,11 @@
   .panel-img {
     width: 100%; aspect-ratio: 1/1;
     object-fit: cover; display: block;
-    background: #ebe8e4;
+    background: #EDE9E1;
   }
   .panel-img-placeholder {
     width: 100%; aspect-ratio: 1/1;
-    background: repeating-linear-gradient(-45deg, #ebe8e4, #ebe8e4 4px, #f6f3ef 4px, #f6f3ef 12px);
+    background: repeating-linear-gradient(-45deg, #EDE9E1, #EDE9E1 4px, #F4F4F4 4px, #F4F4F4 12px);
     display: flex; align-items: center; justify-content: center;
     font-family: 'Space Grotesk', sans-serif; font-size: 10px;
     letter-spacing: 0.2em; text-transform: uppercase; color: #aaa;
@@ -160,31 +194,51 @@
   .panel-name { font-family: 'Epilogue', sans-serif; font-weight: 900; font-size: 2rem; text-transform: uppercase; letter-spacing: -0.03em; line-height: 1; }
   .panel-location { font-family: 'Space Grotesk', sans-serif; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.55; line-height: 1.6; }
   .panel-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-  .panel-tag { font-family: 'Space Grotesk', sans-serif; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; border: 1px solid #c6c6c6; padding: 3px 8px; }
+  .panel-tag { font-family: 'Space Grotesk', sans-serif; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; border: 1px solid rgba(26,26,24,0.12); padding: 3px 8px; }
   .panel-desc { font-family: 'Inter', sans-serif; font-size: 0.8rem; line-height: 1.65; color: #474747; }
   .panel-extra-block { font-family: 'Space Grotesk', sans-serif; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.6; line-height: 1.8; }
   .panel-extra-block a { color: inherit; text-decoration: none; }
   .panel-extra-block a:hover { opacity: 0.6; }
+  .panel-section-label {
+    font-family: 'Space Grotesk', sans-serif; font-size: 8px; letter-spacing: 0.25em;
+    text-transform: uppercase; opacity: 0.4; margin-bottom: 4px;
+  }
+  .panel-section { padding-top: 1rem; border-top: 1px solid rgba(198,198,198,0.25); }
+  .panel-contact-row { font-family: 'Space Grotesk', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; line-height: 2; }
+  .panel-contact-row a { color: inherit; text-decoration: none; }
+  .panel-contact-row a:hover { opacity: 0.5; }
+  .panel-location-item { padding: 8px 0; border-bottom: 1px solid rgba(198,198,198,0.2); }
+  .panel-location-item:last-child { border-bottom: none; }
+  .panel-location-item .loc-addr { font-family: 'Space Grotesk', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; }
+  .panel-location-item .loc-phone { font-family: 'Space Grotesk', sans-serif; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.5; margin-top: 2px; }
+  .panel-hours-list { list-style: none; padding: 0; margin: 0; }
+  .panel-hours-list li { font-family: 'Space Grotesk', sans-serif; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; line-height: 2; opacity: 0.75; }
+  .panel-heart-btn { background: none; border: none; cursor: pointer; padding: 0; display: flex; align-items: center; gap: 6px; font-family: 'Space Grotesk', sans-serif; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.6; transition: opacity 0.2s; }
+  .panel-heart-btn:hover { opacity: 1; }
+  .panel-heart-btn.saved .ph-icon { font-variation-settings: 'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24; color: #B8748A; }
+  .panel-heart-btn.saved { opacity: 1; color: #B8748A; }
+  @keyframes panelHeartPulse { 0%{transform:scale(1)} 40%{transform:scale(1.4)} 70%{transform:scale(0.9)} 100%{transform:scale(1)} }
+  .panel-heart-pulse { animation: panelHeartPulse 0.35s ease forwards; }
   .panel-link {
     font-family: 'Space Grotesk', sans-serif; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
     text-decoration: underline; text-underline-offset: 4px; color: #000;
     display: flex; align-items: center; gap: 6px; width: fit-content;
     transition: opacity 0.2s;
   }
-  .panel-link:hover { opacity: 0.4; }
+  .panel-link:hover { opacity: 1; color: #B8748A; }
   .panel-close {
     position: absolute; top: 1.25rem; right: 1.25rem;
-    background: rgba(252,249,245,0.9); border: 1px solid #c6c6c6;
+    background: rgba(244,244,244,0.9); border: 1px solid #c6c6c6;
     width: 36px; height: 36px;
     display: flex; align-items: center; justify-content: center;
     cursor: pointer; z-index: 10; transition: background 0.2s;
   }
-  .panel-close:hover { background: #ebe8e4; }
+  .panel-close:hover { background: #EDE9E1; }
 
   /* Count badge */
   #map-count {
     position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%);
-    background: rgba(252,249,245,0.92); border: 1px solid rgba(198,198,198,0.4);
+    background: rgba(244,244,244,0.92); border: 1px solid rgba(198,198,198,0.4);
     font-family: 'Space Grotesk', sans-serif; font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase;
     padding: 8px 18px; z-index: 400; opacity: 0.7;
     pointer-events: none;
@@ -208,8 +262,29 @@
     <a href="#" id="nav-about">About</a>
     <a href="#" id="nav-submit">Submit</a>
   </div>
-  <button id="lang-toggle-map" onclick="toggleMapLang()">EN | עב</button>
+  <div class="flex items-center gap-3">
+    <button id="lang-toggle-map" onclick="toggleMapLang()">EN | עב</button>
+    <button id="map-mobile-btn" onclick="toggleMapMobileMenu()" style="display:none">
+      <span class="material-symbols-outlined" style="font-size:24px;color:#000">menu</span>
+    </button>
+  </div>
 </nav>
+
+<!-- Mobile Menu -->
+<div id="map-mobile-menu" style="display:none;position:fixed;inset:0;background:#F4F4F4;z-index:999;flex-direction:column;padding:1.5rem 2rem;transform:translateX(100%);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1)">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4rem">
+    <a href="Israeli Fashion Index.html" style="font-family:'Epilogue',sans-serif;font-weight:900;font-size:1.5rem;letter-spacing:-0.04em;text-transform:uppercase;color:#000;text-decoration:none">ModeIL</a>
+    <button onclick="toggleMapMobileMenu()">
+      <span class="material-symbols-outlined" style="font-size:24px;color:#000">close</span>
+    </button>
+  </div>
+  <nav style="display:flex;flex-direction:column;gap:2rem">
+    <a href="Israeli Fashion Index.html" style="font-family:'Epilogue',sans-serif;font-weight:900;font-size:3rem;text-transform:uppercase;letter-spacing:-0.03em;color:#000;text-decoration:none;border-bottom:1px solid #e5e2de;padding-bottom:1.5rem" id="mmenu-designers">Designers</a>
+    <a href="Map.html" style="font-family:'Epilogue',sans-serif;font-weight:900;font-size:3rem;text-transform:uppercase;letter-spacing:-0.03em;color:#000;text-decoration:none;border-bottom:1px solid #e5e2de;padding-bottom:1.5rem" id="mmenu-map">Map</a>
+    <a href="#" style="font-family:'Epilogue',sans-serif;font-weight:900;font-size:3rem;text-transform:uppercase;letter-spacing:-0.03em;color:#000;text-decoration:none;border-bottom:1px solid #e5e2de;padding-bottom:1.5rem" id="mmenu-about">About</a>
+    <a href="#" style="font-family:'Epilogue',sans-serif;font-weight:900;font-size:3rem;text-transform:uppercase;letter-spacing:-0.03em;color:#000;text-decoration:none" id="mmenu-submit">Submit</a>
+  </nav>
+</div>
 
 <!-- Map -->
 <div id="map"></div>
@@ -224,17 +299,29 @@
   </button>
   <div id="panel-img-wrap"></div>
   <div class="panel-body">
-    <div>
-      <div class="panel-name" id="panel-name"></div>
-      <div class="panel-location" id="panel-location"></div>
-    </div>
+    <div class="panel-name" id="panel-name"></div>
+    <div class="panel-location" id="panel-location"></div>
     <div class="panel-tags" id="panel-tags"></div>
     <div class="panel-desc" id="panel-desc"></div>
-    <div id="panel-extra" style="display:none;flex-direction:column;gap:0.75rem;border-top:1px solid rgba(198,198,198,0.3);padding-top:1rem"></div>
+    <div id="panel-fav" style="margin-top:4px"></div>
+    <div id="panel-contact" style="display:none"></div>
+    <div id="panel-extra-locations" style="display:none"></div>
+    <div id="panel-hours" style="display:none"></div>
     <a class="panel-link" id="panel-link" href="#" target="_blank" rel="noopener">
-      Visit Website
-      <span class="material-symbols-outlined" style="font-size:14px">arrow_forward</span>
+      Visit Website →
     </a>
+  </div>
+
+  <!-- Location panel (multi-brand) -->
+  <div id="location-panel" style="display:none; flex-direction:column; height:100%;">
+    <div id="loc-panel-img-wrap"></div>
+    <div class="panel-body" id="loc-panel-body">
+      <button class="panel-back-btn" id="loc-back-btn" style="display:none" onclick="showLocationPanel(currentLocation)">
+        <span class="material-symbols-outlined" style="font-size:14px">arrow_back</span>
+        <span>All locations</span>
+      </button>
+      <div id="loc-panel-content"></div>
+    </div>
   </div>
 </div>
 
@@ -256,91 +343,111 @@
 
 <script>
 const DESIGNERS = [
-  { name:"Agas & Tamar", url:"https://agasandtamar.com/", tags:["Jewelry","Artisan","Luxury"], desc:"Since 1998, a Tel Aviv jewelry institution. Pieces featured in Vogue, Cosmopolitan, and People — with collaborations spanning Sex and the City and a dedicated Donna Karan collection in New York.", img:"https://agasandtamar.com/wp-content/uploads/2023/06/9527-2.jpg", city:"Tel Aviv", lat:32.0660, lng:34.7710, fav:true },
-  { name:"AKA My Culture", url:"https://aka-online.co.il/", tags:["Sustainable","Streetwear"], desc:"A curated selection of international eco-conscious labels alongside the in-house brand IN BLOOM, crafting casual Israeli fashion with an environmental conscience.", img:"https://aka-online.co.il/wp-content/uploads/2026/04/Untitled-design-37.png", city:"Tel Aviv", lat:32.0780, lng:34.7750, fav:true },
-  { name:"Alef Alef", url:"https://www.alefalef.co.il/", tags:["Artisan","Minimalist"], desc:"Contemporary Israeli womenswear with a focus on quality, considered design, and the enduring appeal of the everyday.", img:"https://www.alefalef.co.il/wp-content/uploads/2026/03/8_wo_1400_1814.jpg", city:"Tel Aviv", lat:32.0720, lng:34.7900, fav:true },
+  { name:"Agas & Tamar", url:"https://agasandtamar.com/", tags:["Jewelry","Artisan","Luxury"], desc:"Since 1998, a Tel Aviv jewelry institution. Pieces featured in Vogue, Cosmopolitan, and People — with collaborations spanning Sex and the City and a dedicated Donna Karan collection in New York.", img:"https://agasandtamar.com/wp-content/uploads/2023/06/9527-2.jpg", city:"Tel Aviv", lat:32.0572, lng:34.7565, fav:true, addresses:["43 Shabazi St, Tel Aviv"], phone:"03-5168421", email:"shop@agasandtamar.com", hours:["Sun–Thu 11:00–19:00","Fri 10:00–15:00"] },
+  { name:"AKA My Culture", url:"https://aka-online.co.il/", tags:["Sustainable","Streetwear"], desc:"A curated selection of international eco-conscious labels alongside the in-house brand IN BLOOM, crafting casual Israeli fashion with an environmental conscience.", img:"https://aka-online.co.il/wp-content/uploads/2026/04/Untitled-design-37.png", city:"Giv'atayim", lat:32.0696, lng:34.8124, fav:true, addresses:["43 Rambam St, Giv'atayim"], phone:"03-730-0331", hours:["Sun–Thu 10:00–19:00","Fri 10:00–14:00"] },
+  { name:"Alef Alef", url:"https://www.alefalef.co.il/", tags:["Artisan","Minimalist"], desc:"Contemporary Israeli womenswear with a focus on quality, considered design, and the enduring appeal of the everyday.", img:"https://www.alefalef.co.il/wp-content/uploads/2026/03/8_wo_1400_1814.jpg", city:"Tel Aviv", lat:32.082, lng:34.7853, fav:true, addresses:["9 Ashtori HaFarhi St, Tel Aviv"], phone:"03-6046095", hours:["Sun–Thu 07:30–19:30","Fri 09:00–13:00"] },
   { name:"Alembika", url:"https://alembika.co.il/", tags:["Artisan","Minimalist"], desc:"Fluid silhouettes and considered Israeli design for women who move through the world with ease and intention.", img:"https://alembika.co.il/cdn/shop/files/TOP_RT357T_PANTS_RP351M_12.jpg?v=1773061538", city:"Tel Aviv", lat:32.0601, lng:34.7720, fav:false },
-  { name:"Aluma", url:"https://alumafashion.com/", tags:["Knitwear","Artisan","Sustainable"], desc:"Former London Fashion Week designer specialising in handmade knitwear. Collections have sold at Selfridges, Harrods, and Neiman Marcus — slow fashion at its most considered.", img:"https://alumafashion.com/cdn/shop/files/Flower_power_cover_new_05893f2b-bc51-4e4d-a47a-08e178d348ad.png?v=1770219704&width=1200", city:"Tel Aviv", lat:32.0840, lng:34.7800, fav:false },
-  { name:"Anat Friedman", url:"https://anatfriedman.com/", tags:["Artisan","Minimalist"], desc:"Precise, quietly elegant Israeli womenswear. Anat Friedman's designs speak in restraint — each piece a study in deliberate simplicity.", img:"https://anatfriedman.com/cdn/shop/files/anatf_2524538.jpg?v=1759238472", city:"Tel Aviv", lat:32.0590, lng:34.7760, fav:true },
-  { name:"Anjaly", url:"https://anjaly.com/", tags:["Activewear","Minimalist"], desc:"Effortless unisex loungewear and activewear for women and men — from yoga mat to street, comfort without compromise.", img:"https://anjaly.shop/cdn/shop/files/1184_1_be035c1c-985d-459e-83f8-44b2a92ff465.jpg?v=1700116722&width=4002", city:"Tel Aviv", lat:32.0617, lng:34.7775, fav:true, addresses:["10 Mikveh Israel St, Tel Aviv"], phone:"03-6868733", email:"studio@anjaly.com", hours:["Sun–Thu 10:00–17:00","Fri 09:30–15:00"] },
-  { name:"Artwear", url:"https://artwear.co.il/", tags:["Prints","Artisan"], desc:"Wearable art through bold, original prints. Each Artwear piece turns the body into a canvas — vivid, unapologetic Israeli design.", img:"https://artwear.co.il/cdn/shop/files/9cff8e210719c9f029748e2ced34082b.png?v=1775505899&width=1200", city:"Tel Aviv", lat:32.1640, lng:34.8440, fav:true, addresses:["71 HaNadiv St, Herzliya"] },
+  { name:"Anat Friedman", url:"https://anatfriedman.com/", tags:["Artisan","Minimalist"], desc:"Precise, quietly elegant Israeli womenswear. Anat Friedman's designs speak in restraint — each piece a study in deliberate simplicity.", img:"https://anatfriedman.com/cdn/shop/files/anatf_2524538.jpg?v=1759238472", city:"Jerusalem", lat:31.777, lng:35.2152, fav:true, addresses:["6 Betzalel St, Jerusalem"], phone:"054-8939494", email:"info@anatfriedman.com" },
+  { name:"Anjaly", url:"https://anjaly.com/", tags:["Activewear","Minimalist"], desc:"Effortless unisex loungewear and activewear for women and men — from yoga mat to street, comfort without compromise.", img:"https://anjaly.shop/cdn/shop/files/1184_1_be035c1c-985d-459e-83f8-44b2a92ff465.jpg?v=1700116722&width=4002", city:"Tel Aviv", lat:32.0607, lng:34.7783, fav:true, addresses:["10 Mikveh Israel St, Tel Aviv"], phone:"03-6868734", email:"j@anjaly.com", hours:["Sun–Thu 09:30–19:00","Fri 09:30–15:00","Sat Closed"] },
+  { name:"Artwear", url:"https://artwear.co.il/", tags:["Prints","Artisan"], desc:"Wearable art through bold, original prints. Each Artwear piece turns the body into a canvas — vivid, unapologetic Israeli design.", img:"https://artwear.co.il/cdn/shop/files/9cff8e210719c9f029748e2ced34082b.png?v=1775505899&width=1200", city:"Herzliya", lat:32.164, lng:34.844, fav:true, addresses:["71 HaNadiv St, Herzliya"], phone:"050-4749018", email:"info@artwear.co.il" },
   { name:"Assaf Peleg", url:"https://www.assafpelleg.com/", tags:["Luxury","Artisan"], desc:"Designing for the elegant, multi-faceted woman — garments born from emotion and a deep belief in personal style.", img:"https://www.assafpelleg.com/wp-content/uploads/2026/03/Untitled-577-x-1024-px-722-x-1024-px-1000-x-1500-px-30.png", city:"Tel Aviv", lat:32.0553, lng:34.7680, fav:false },
-  { name:"Atawear", url:"https://atawear.co.il/", tags:["Heritage","Streetwear"], desc:"A revival of Israel's iconic ATA textile brand, first founded in 1935. The original 'Made in Israel' spirit — workwear heritage reimagined for contemporary street culture.", img:"https://atawear.co.il/cdn/shop/files/C186113C-4B82-46C9-A115-27D1C508644F_dfcac7bd-aece-4a00-88ff-9a23ebe507dd.jpg?v=1774117526&width=5000", city:"Tel Aviv", lat:32.0621, lng:34.7800, fav:true },
-  { name:"Aviva Zilberman", url:"https://avivazilberman.com/", tags:["Luxury","Artisan"], desc:"A high-end ready-to-wear house founded 2008. Designing for the elegance every woman possesses — a dialogue between masculine precision and feminine sensuality.", img:"https://avivazilberman.com/cdn/shop/products/The-Scent-Kit-Trial-N3-Hover-Aviva-Zilberman-Personal-Goods_600x.jpg?v=1551284983", city:"Tel Aviv", lat:32.0880, lng:34.7820, fav:false },
-  { name:"Belle and Sue", url:"https://www.belleandsue.co.il/", tags:["Sustainable","Streetwear"], desc:"Israel's pioneering online fashion boutique since 2010 — curating international labels, championing local designers, and launching their own FEZ brand.", img:"https://www.belleandsue.co.il/cdn/shop/files/1155UntitledCapture1459.jpg?v=1761640245", city:"Tel Aviv", lat:32.0638, lng:34.7723, fav:true, addresses:["Shenkin St, Tel Aviv"] },
-  { name:"Biliblond", url:"https://biliblond.com/", tags:["Swimwear"], desc:"Israeli swimwear and beachwear with a playful spirit — designed for the Mediterranean lifestyle.", img:"https://biliblond.com/cdn/shop/files/biliblond_stores.jpg?v=1741343201&width=600", city:"Tel Aviv", lat:32.0921, lng:34.7778, fav:true },
-  { name:"Bracha Baron", url:"https://www.baroncollection.com/", tags:["Artisan","Luxury"], desc:"Contemporary Israeli womenswear with a refined aesthetic — each collection a careful conversation between structure and ease.", img:"https://www.baroncollection.com/cdn/shop/files/4H4A1366_99c522a8-c12f-4679-a359-a7da148c7d29.jpg?v=1750246523&width=750", city:"Tel Aviv", lat:32.0673, lng:34.7650, fav:false },
-  { name:"Ciporkin by Dalit", url:"https://www.ciporkin.com/", tags:["Artisan","Minimalist","Prints"], desc:"Bauhaus Tel Aviv meets Japanese aesthetics. Geometric, architectural cuts in flowing fabrics — asymmetric, monochromatic, textured. Limited seasonal editions.", img:"https://www.ciporkin.com/cdn/shop/products/ciporkin_8419_36M.jpg?v=1612946263", city:"Tel Aviv", lat:32.0812, lng:34.7755, fav:true, phone:"052-5212177", addresses:["By appointment · Tel Aviv"] },
-  { name:"Co.Co", url:"https://collectivecollection.co.il/", tags:["Artisan"], desc:"Collective Collection — a collaborative Israeli womenswear label where strong individual voices become a unified design statement.", img:"https://collectivecollection.co.il/wp-content/uploads/2025/10/VICTORIAS26-1267766-02-CO.CO-172-349242.jpg", city:"Tel Aviv", lat:32.0645, lng:34.7835, fav:true },
-  { name:"Comme il Faut", url:"https://www.comme-il-faut.com/", tags:["Artisan","Minimalist","Prints"], desc:"Original, artistic Israeli womenswear — monochromatic palettes, unexpected textures, and asymmetric construction.", img:"https://comme-il-faut.com/cdn/shop/files/c_il_faut_1849_7016b057-877c-4c12-8259-b131e6480d1a.jpg?v=1773844239&width=600", city:"Tel Aviv", lat:32.0609, lng:34.7742, fav:true, phone:"03-6020521", addresses:["28 Levontin St, Tel Aviv"], hours:["Sun–Thu 10:00–20:00","Fri 10:00–16:00","Sat 10:00–20:00"] },
-  { name:"Cotton", url:"https://cottonet.co.il/", tags:["Sustainable","Artisan"], desc:"Three decades of Israeli womenswear built on natural fabrics, local production, and unwavering quality.", img:"https://cdn.cottonet.co.il/newsite/2026/02/365276f8-cotton6644-copy-1067x1601.jpg", city:"Tel Aviv", lat:32.0836, lng:34.7736, fav:false, addresses:["218 Dizengoff St, Tel Aviv"], phone:"03-523-4441" },
+  { name:"Atawear", url:"https://atawear.co.il/", tags:["Heritage","Streetwear"], desc:"A revival of Israel's iconic ATA textile brand, first founded in 1935. The original 'Made in Israel' spirit — workwear heritage reimagined for contemporary street culture.", img:"https://atawear.co.il/cdn/shop/files/C186113C-4B82-46C9-A115-27D1C508644F_dfcac7bd-aece-4a00-88ff-9a23ebe507dd.jpg?v=1774117526&width=5000", city:"Tel Aviv", lat:32.0625, lng:34.7728, fav:true, addresses:["93 Allenby St, Tel Aviv"], phone:"054-6810369", email:"support@atawear.com", hours:["Sun–Thu 10:00–20:00","Fri 10:00–16:00"] },
+  { name:"Aviva Zilberman", url:"https://avivazilberman.com/", tags:["Luxury","Artisan"], desc:"A high-end ready-to-wear house founded 2008. Designing for the elegance every woman possesses — a dialogue between masculine precision and feminine sensuality.", img:"https://avivazilberman.com/cdn/shop/products/The-Scent-Kit-Trial-N3-Hover-Aviva-Zilberman-Personal-Goods_600x.jpg?v=1551284983", city:"Tel Aviv", lat:32.0629, lng:34.7698, fav:false, addresses:["23 Melchett St, Tel Aviv"], phone:"+972 3 6411682", email:"cheektocheek@avivazilberman.com" },
+  { name:"Belle and Sue", url:"https://www.belleandsue.co.il/", tags:["Sustainable","Streetwear"], desc:"Israel's pioneering online fashion boutique since 2010 — curating international labels, championing local designers, and launching their own FEZ brand.", img:"https://www.belleandsue.co.il/cdn/shop/files/1155UntitledCapture1459.jpg?v=1761640245", city:"Tel Aviv", lat:32.064, lng:34.772, fav:true, addresses:["41 Shenkin St, Tel Aviv"], phone:"03-7508050", email:"contact@belleandsue.co.il" },
+  { name:"Biliblond", url:"https://biliblond.com/", tags:["Swimwear"], desc:"Israeli swimwear and beachwear with a playful spirit — designed for the Mediterranean lifestyle.", img:"https://biliblond.com/cdn/shop/files/biliblond_stores.jpg?v=1741343201&width=600", city:"Tel Aviv", lat:32.0969, lng:34.7687, fav:true, addresses:["1 Yordei HaSira St, Tel Aviv Port"], email:"sales@biliblond.com" },
+  { name:"Bracha Baron", url:"https://www.baroncollection.com/", tags:["Artisan","Luxury"], desc:"Contemporary Israeli womenswear with a refined aesthetic — each collection a careful conversation between structure and ease.", img:"https://www.baroncollection.com/cdn/shop/files/4H4A1366_99c522a8-c12f-4679-a359-a7da148c7d29.jpg?v=1750246523&width=750", city:"Tel Aviv", lat:32.0876, lng:34.7732, fav:false, addresses:["255 Dizengoff St, Tel Aviv"], phone:"052-246-2462" },
+  { name:"Ciporkin by Dalit", url:"https://www.ciporkin.com/", tags:["Artisan","Minimalist","Prints"], desc:"Bauhaus Tel Aviv meets Japanese aesthetics. Geometric, architectural cuts in flowing fabrics — asymmetric, monochromatic, textured. Limited seasonal editions.", img:"https://www.ciporkin.com/cdn/shop/products/ciporkin_8419_36M.jpg?v=1612946263", city:"Tel Aviv", lat:32.0812, lng:34.7755, fav:true, addresses:["By appointment, Tel Aviv"], phone:"052-5212177", email:"dalitciporkin@gmail.com" },
+  { name:"Co.Co", url:"https://collectivecollection.co.il/", tags:["Artisan"], desc:"Collective Collection — a collaborative Israeli womenswear label where strong individual voices become a unified design statement.", img:"https://collectivecollection.co.il/wp-content/uploads/2025/10/VICTORIAS26-1267766-02-CO.CO-172-349242.jpg", city:"Tel Aviv", lat:32.0683, lng:34.7851, fav:true, addresses:["7 Kehilat Venezia St, Tel Aviv"] },
+  { name:"Comme il Faut", url:"https://www.comme-il-faut.com/", tags:["Artisan","Minimalist","Prints"], desc:"Original, artistic Israeli womenswear — monochromatic palettes, unexpected textures, and asymmetric construction.", img:"https://comme-il-faut.com/cdn/shop/files/c_il_faut_1849_7016b057-877c-4c12-8259-b131e6480d1a.jpg?v=1773844239&width=600", city:"Tel Aviv", lat:32.0601, lng:34.7748, fav:true, addresses:["28 Levontin St, Tel Aviv"], phone:"03-5336405", email:"sybil@comme-il-faut.com", hours:["Sun–Thu 10:00–20:00","Fri 10:00–15:00"] },
+  { name:"Cotton", url:"https://cottonet.co.il/", tags:["Sustainable","Artisan"], desc:"Three decades of Israeli womenswear built on natural fabrics, local production, and unwavering quality.", img:"https://cdn.cottonet.co.il/newsite/2026/02/365276f8-cotton6644-copy-1067x1601.jpg", city:"Tel Aviv", lat:32.0843, lng:34.7733, fav:false, addresses:["218 Dizengoff St, Tel Aviv"], phone:"03-5234441", hours:["Sun–Thu 09:00–19:00","Fri 09:00–14:00"], addresses:["218 Dizengoff St, Tel Aviv"], phone:"03-523-4441" },
   { name:"Dana Ashkenazy", url:"https://www.danaashkenazi.com/", tags:["Artisan","Minimalist"], desc:"Easy, considered Israeli womenswear for the modern everyday — designed with an eye for proportion and a commitment to quiet confidence.", img:"https://www.danaashkenazi.com/cdn/shop/files/FCE62873-9D9C-4823-8E61-E8D80AD799E1.png?v=1775326726&width=735", city:"Tel Aviv", lat:32.0860, lng:34.7852, fav:false },
-  { name:"Dikla Levsky", url:"https://diklalevsky.com/", tags:["Artisan","Luxury","Prints"], desc:"Printed silk scarves and high-end accessories with a painterly, editorial sensibility.", img:"https://diklalevsky.com/cdn/shop/files/Dikla_Levsky_Printed_Plisse_Silk_Scarf_2.jpg?crop=center&height=720&v=1701244069&width=480", city:"Tel Aviv", lat:32.0618, lng:34.7759, fav:false },
-  { name:"Dorin Frankfurt", url:"https://www.dorinfrankfurt.com/he", tags:["Artisan","Luxury"], desc:"One of Israel's most recognised fashion names — Dorin Frankfurt's work blends European sophistication with a distinctly Israeli sensibility.", img:"https://www.dorinfrankfurt.com/media/wysiwyg/SEV-55.jpg", city:"Tel Aviv", lat:32.0817, lng:34.7741, fav:false, addresses:["164 Dizengoff St, Tel Aviv"], phone:"03-554-0844", email:"customercare@dorinfrankfurt.com", hours:["Sun–Thu 09:30–19:00","Fri 09:30–14:00"] },
-  { name:"Dorit Sade", url:"https://www.doritsade.com/", tags:["Artisan"], desc:"Israeli womenswear with quiet originality — Dorit Sade designs for women who dress with intention.", img:null, city:"Tel Aviv", lat:32.0583, lng:34.7812, fav:false },
-  { name:"Dostix", url:"https://dostix.com/", tags:["Streetwear","Heritage"], desc:"Blending modern urban life with practical, dynamic design. International selling points across Europe, Japan, and the USA.", img:"https://dostix.com/cdn/shop/products/IMG_20161026_152044_2048x2048.jpg?v=1623568068", city:"Tel Aviv", lat:32.0732, lng:34.7843, fav:false },
-  { name:"Flo by Ella Braitman", url:"https://flobyella.com/", tags:["Artisan","Luxury"], desc:"High-quality women's fashion in limited series, with fine European fabrics. Trained at Moscow's Theatre Design College before Shenkar.", img:"https://flobyella.com/cdn/shop/files/flo_18_2_26237338.jpg?v=1771836666&width=1920", city:"Tel Aviv", lat:32.0571, lng:34.7748, fav:false },
-  { name:"Forest", url:"https://www.forest-tlv.com/", tags:["Streetwear","Prints","Sustainable"], desc:"Tel Aviv's green lung of fashion — original prints, small editions by local manufacturers in Tel Aviv.", img:"https://static.wixstatic.com/media/4edae6_9a97b4b5b2264a70b5dee46d0dcb3b68~mv2.jpg/v1/fill/w_498,h_748,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/4edae6_9a97b4b5b2264a70b5dee46d0dcb3b68~mv2.jpg", city:"Tel Aviv", lat:32.0900, lng:34.7866, fav:true },
-  { name:"Frett", url:"https://frett.life/", tags:["Knitwear","Sustainable","Minimalist"], desc:"A designer knitwear studio: timeless design, fine natural fibres, responsible production in limited quantities.", img:"https://frett.life/cdn/shop/files/frett16.132623-crop.jpg?v=1765380986&width=1200", city:"Tel Aviv", lat:32.0640, lng:34.7688, fav:false },
-  { name:"Galler", url:"https://gallerdesign.com/", tags:["Prints","Artisan"], desc:"Women's fashion with bold patterns, optimistic prints, and playful asymmetry.", img:"https://gallerdesign.com/cdn/shop/products/LW_GALLER_LOOK93_1864@2x.jpg?v=1678270351", city:"Tel Aviv", lat:32.0790, lng:34.7940, fav:true },
+  
+  
+  
+  { name:"Dostix", url:"https://dostix.com/", tags:["Streetwear","Heritage"], desc:"Blending modern urban life with practical, dynamic design. International selling points across Europe, Japan, and the USA.", img:"https://dostix.com/cdn/shop/products/IMG_20161026_152044_2048x2048.jpg?v=1623568068", city:"Tel Aviv", lat:32.0653, lng:34.7752, fav:false, addresses:["25 Tchernihovsky St, Tel Aviv"], phone:"+972 3 5258596", email:"dostixfuture@gmail.com", hours:["Sun–Wed 11:00–19:00","Fri 10:00–15:00"] },
+  { name:"Flo by Ella Braitman", url:"https://flobyella.com/", tags:["Artisan","Luxury"], desc:"High-quality women's fashion in limited series, with fine European fabrics. Trained at Moscow's Theatre Design College before Shenkar.", img:"https://flobyella.com/cdn/shop/files/flo_18_2_26237338.jpg?v=1771836666&width=1920", city:"Jaffa", lat:32.0492, lng:34.7534, fav:false, addresses:["16 Yehuda Margoza St, Jaffa"], email:"flobyella@gmail.com" },
+  
+  { name:"Frett", url:"https://frett.life/", tags:["Knitwear","Sustainable","Minimalist"], desc:"A designer knitwear studio: timeless design, fine natural fibres, responsible production in limited quantities.", img:"https://frett.life/cdn/shop/files/frett16.132623-crop.jpg?v=1765380986&width=1200", city:"Tel Aviv", lat:32.0795, lng:34.7723, fav:false, addresses:["77 Frishman St, Tel Aviv"], phone:"+972 54 8142477", email:"frett@frett.life", hours:["Sun, Tue, Wed, Thu 10:30–18:30","Fri 10:00–15:00","Mon Closed"] },
+  { name:"Galler", url:"https://gallerdesign.com/", tags:["Prints","Artisan"], desc:"Women's fashion with bold patterns, optimistic prints, and playful asymmetry.", img:"https://gallerdesign.com/cdn/shop/products/LW_GALLER_LOOK93_1864@2x.jpg?v=1678270351", city:"Tel Aviv", lat:32.0932, lng:34.7823, fav:true, addresses:["5 Alkalai St (Bazel Complex), Tel Aviv"], email:"galler@gallerdesign.com" },
   { name:"Gertrud", url:"https://gertrudshop.com/", tags:["Artisan","Prints"], desc:"Classy, comfortable Israeli womenswear with a playful graphic sensibility.", img:"https://gertrudshop.com/cdn/shop/files/9_mobile_561x824.png?v=1774940996", city:"Tel Aviv", lat:32.0852, lng:34.7720, fav:true },
-  { name:"Gon Surfing", url:"https://houseofgon.com/", tags:["Surf","Streetwear"], desc:"Tel Aviv surf culture meets street fashion. Oversized silhouettes for women and men who live between the ocean and the city.", img:"https://houseofgon.com/cdn/shop/files/drill-bermuda-shorts-green-1160258.jpg?v=1774514232&width=800", city:"Tel Aviv", lat:32.0937, lng:34.7765, fav:true },
+  { name:"Gon Surfing", url:"https://houseofgon.com/", tags:["Surf","Streetwear"], desc:"Tel Aviv surf culture meets street fashion. Oversized silhouettes for women and men who live between the ocean and the city.", img:"https://houseofgon.com/cdn/shop/files/drill-bermuda-shorts-green-1160258.jpg?v=1774514232&width=800", city:"Tel Aviv", lat:32.0636, lng:34.7716, fav:true, addresses:["4 Sheinkin St, Tel Aviv"], phone:"07-47004554", email:"gon@houseofgon.com", hours:["Call ahead to confirm hours"] },
   { name:"Hagit Tassa", url:"https://hagitassa.com/", tags:["Artisan","Minimalist"], desc:"Contemporary Israeli womenswear focused on denim and versatile day-to-night dressing — clean lines, confident construction.", img:"https://hagitassa.com/cdn/shop/files/1031-hagitassa-26-03-26.jpg?v=1774601613&width=1800", city:"Tel Aviv", lat:32.0559, lng:34.7790, fav:false },
-  { name:"Heroic", url:"https://heroic-online.com/", tags:["Artisan","Minimalist"], desc:"Womenswear built around the perfect pair of pants — comfortable, flattering fits that carry you from morning to night.", img:"https://heroic-online.com/cdn/shop/files/0471-heroic-24-03-26.jpg?v=1774726628&width=800", city:"Tel Aviv", lat:32.0603, lng:34.7782, fav:true, phone:"077-2090309", addresses:["14 Mikveh Israel St, Tel Aviv"] },
-  { name:"Hila Feinberg", url:"https://hilafeinberg.com/", tags:["Minimalist","Artisan"], desc:"Minimalist, oversize Israeli womenswear for those who dress with intention.", img:"https://hilafeinberg.com/cdn/shop/files/forwebsite-267_1899x.jpg?v=1734866867", city:"Tel Aviv", lat:32.0628, lng:34.7836, fav:false },
-  { name:"Holyland Civilians", url:"https://holylandcivilians.com/", tags:["Streetwear","Activewear"], desc:"Edgy Mediterranean streetwear and activewear — all genders, all-black, and unapologetically bold.", img:"https://holylandcivilians.com/cdn/shop/files/IMG_6185-color.jpg?v=1769723876&width=480", city:"Tel Aviv", lat:32.054, lng:34.7505, fav:true, addresses:["Jaffa, Tel Aviv"] },
-  { name:"CALA", url:"https://cala.co.il/", tags:["Artisan"], desc:"Tel Aviv boutique chain founded 2002 — fashion that listens. A personal, intuitive approach to style selection.", img:"https://cala.co.il/cdn/shop/files/RefaelMizrahifashionphotography_1108_dee8b78f-3b73-4e27-a046-f4bd841884ba.jpg?v=1753288930&width=1400", city:"Tel Aviv", lat:32.0742, lng:34.7677, fav:false },
-  { name:"JOR-D", url:"https://jor-d.com/", tags:["Streetwear","Artisan"], desc:"Every garment is a canvas, every design a message. Tel Aviv-based statement fashion from Remez Street.", img:"https://jor-d.com/wp-content/uploads/2026/01/MICHALl-911-1.jpg", city:"Tel Aviv", lat:32.0562, lng:34.7726, fav:false },
-  { name:"Itay Brands", url:"https://itaybrands.co.il/", tags:["Minimalist","Menswear"], desc:"It's all about the basics. Sharp, affordable everyday wear for women and men — clean cuts, great fits, wardrobe staples.", img:"https://itaybrands.co.il/cdn/shop/files/868b1d6cd000aa1901415efa6dab312b.jpg?crop=center&height=1018&v=1763904574&width=1410", city:"Tel Aviv", lat:32.0802, lng:34.7882, fav:false },
-  { name:"NewG Lingerie", url:"https://newglingerie.com/", tags:["Lingerie","Activewear"], desc:"Founded by Alex — herself a size 70H — NewG exists to solve the lingerie problem for larger cup sizes. Wire-free bras in every size.", img:"https://newglingerie.com/cdn/shop/files/2-modells-withsupport-tank-top-large-breasts-built-in-bra-front-view-black-brown.webp?v=1773519588", city:"Tel Aviv", lat:32.0688, lng:34.7762, fav:false },
-  { name:"Ugly Duckling TLV", url:"https://gal-angel.com/", tags:["Swimwear","Lingerie"], desc:"A Tel Aviv fashion house born in summer 2008 — flattering swimwear with a retro-nostalgic spirit, plus comfortable lingerie.", img:"https://gal-angel.com/cdn/shop/files/DSC_2557_1024x1024.jpg?v=1724230686", city:"Tel Aviv", lat:32.0615, lng:34.7740, fav:false },
-  { name:"Dodo Bar Or", url:"https://www.dodobaror.com/", tags:["Luxury","Prints","Artisan"], desc:"Tel Aviv's most internationally celebrated bohemian label — stocked at Net-a-Porter and Matchesfashion.", img:"https://dodobaror.online/cdn/shop/files/IMG_4272_b116de9f-4452-4602-8f02-5cc9f2c68a2a.jpg?v=1722861928&width=750", city:"Tel Aviv", lat:32.0832, lng:34.7840, fav:true },
-  { name:"Maya Bash", url:"https://www.mayabash.com/", tags:["Artisan","Minimalist"], desc:"Established designer with 20+ years of experience. Minimalist, gender-neutral aesthetics with precise tailoring and socially conscious values.", img:"https://www.mayabash.com/f-users/user_106647/website_205343/images/img_6854.jpg", city:"Tel Aviv", lat:32.0572, lng:34.7702, fav:false },
-  { name:"On'nanoko", url:"https://www.onnanoko.co.il/", tags:["Artisan","Minimalist","Menswear"], desc:"Seasonal Israeli fashion from Kibbutz Ma'agan Michael — refined collections like ECLIPSE and PULSE.", img:"https://www.onnanoko.co.il/cdn/shop/files/227308BOXITOP227486MERGEPANTS_16.jpg?v=1771416183&width=960", city:"Kibbutz Ma'agan Michael", lat:32.5620, lng:34.9240, fav:false },
-  { name:"OM-ME", url:"https://www.ommetlv.com/", tags:["Activewear","Sustainable","Minimalist"], desc:"Tel Aviv activewear and basics — sustainable fabrics, local production. Store on Ben Yehuda 96.", img:"https://static.wixstatic.com/media/86f77e_f6e859b02eb147d0b5847fd2a1e9ad92~mv2.jpg/v1/fill/w_441,h_589,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/86f77e_f6e859b02eb147d0b5847fd2a1e9ad92~mv2.jpg", city:"Tel Aviv", lat:32.0823, lng:34.7685, fav:false },
-  { name:"Blueberry TLV", url:"https://blueberrytlv.co.il/", tags:["Artisan","Contemporary"], desc:"A fresh Tel Aviv label with a playful, considered approach to everyday womenswear.", img:"https://blueberrytlv.co.il/cdn/shop/files/WhatsAppImage2026-02-16at16.46.55.jpg?v=1771266050&width=700", city:"Tel Aviv", lat:32.0748, lng:34.7859, fav:false },
-  { name:"Hila Shemesh", url:"https://hilashemesh.com/", tags:["Artisan","Minimalist"], desc:"Israeli womenswear with a careful, artisan-led approach — each piece considered, each season deliberate.", img:"https://hilashemesh.com/cdn/shop/files/5_bda078fa-5477-4095-8394-4b9494d6a3bf.jpg?v=1747813836&width=713", city:"Tel Aviv", lat:32.0596, lng:34.7821, fav:false },
-  { name:"IDEE", url:"https://idee.co.il/en", tags:["Artisan","Minimalist"], desc:"Israeli design rooted in idea — womenswear in the space between structure and ease.", img:"https://idee.co.il/cdn/shop/files/Unknown_26.jpg?v=1776154792&width=713", city:"Tel Aviv", lat:32.0871, lng:34.7760, fav:false },
-  { name:"Maskit", url:"https://maskit.com/", tags:["Artisan","Heritage","Luxury"], desc:"Founded in 1954 by Ruth Dayan — Israel's first and only haute couture house. Revived in 2014 by Sharon Tal.", img:"https://maskit.com/cdn/shop/files/Maskit_11-03-26_3167.jpg?v=1773583176&width=1800", city:"Tel Aviv", lat:32.0808, lng:34.7774, fav:true },
-  { name:"Pioo Pioo", url:"https://pioopioo.com/", tags:["Artisan","Luxury","Prints"], desc:"Founded 2008 by Mor Valin (Shenkar). Since 2020 every piece is made to order — you become a design partner in your garment.", img:"https://pioopioo.com/cdn/shop/files/IMG_1777_a6547564-0cac-4e5f-8707-cbb31f6e5171.jpg?v=1748971395&width=720", city:"Tel Aviv", lat:32.0654, lng:34.7797, fav:true },
-  { name:"Seestarz", url:"https://seestarz.com/", tags:["Streetwear","Swimwear","Prints"], desc:"Born from a sisterhood and a wildly popular Instagram fashion blog — from swimwear to streetwear.", img:"https://seestarz.com/cdn/shop/files/017A1703_0b116fe1-b3c1-4e6d-b421-82923d2984f6.jpg?v=1774079930&width=1800", city:"Tel Aviv", lat:32.0680, lng:34.7851, fav:false },
-  { name:"Lazyeyeppl", url:"https://lazyeyeppl.com", tags:["Streetwear","Artisan"], desc:"A Tel Aviv label with a distinctive editorial eye — considered, original Israeli fashion.", img:"https://lazyeyeppl.com/cdn/shop/files/lazy_eye_8_2_26232840.jpg?v=1770804433", city:"Tel Aviv", lat:32.0727, lng:34.7768, fav:false },
-  { name:"Tonari", url:"https://tonari.co.il/", tags:["Artisan","Minimalist","Prints"], desc:"Japanese-inspired Israeli fashion — minimalist clothing, colourful accessories and home objects with wabi-sabi spirit.", img:"https://tonari.co.il/cdn/shop/files/tc_day_1_34744.jpg?v=1756382771&width=1800", city:"Tel Aviv", lat:32.0760, lng:34.7730, fav:false },
-  { name:"Kedem Sasson", url:"https://www.kedem-sasson.com", tags:["Artisan","Luxury"], desc:"Dramatic, sculptural Israeli womenswear — architectural precision and an unapologetic sense of theatre.", img:"https://www.kedem-sasson.com/wp-content/uploads/2026/03/p47-pur.webp", city:"Tel Aviv", lat:32.0570, lng:34.7870, fav:false },
-  { name:"Kimka Studio", url:"https://kimka-studio.com/", tags:["Artisan","Sustainable","Heritage"], desc:"Kim Dror's studio specialises in indigo-dyed clothing, informed by traditional Japanese mastery. Based in Haifa.", img:"https://kimka-studio.com/cdn/shop/products/Kimka_-572_1024x1024.jpg?v=1644521255", city:"Haifa", lat:32.7940, lng:34.9896, fav:false },
-  { name:"Lara Rosnovsky", url:"https://www.lararosnovsky.com/", tags:["Artisan","Prints","Swimwear"], desc:"Kimono-inspired, colourful, and deeply feminine — patterned loungewear and beachwear.", img:"https://cdn.shopify.com/s/files/1/0036/2083/1301/files/20240409_091330.jpg?v=1718518881", city:"Tel Aviv", lat:32.0843, lng:34.7907, fav:false },
-  { name:"Layou", url:"https://layoudesign.com/", tags:["Minimalist","Artisan"], desc:"Size-inclusive Israeli womenswear — oversize silhouettes, textured fabrics, considered minimalism.", img:"https://layoudesign.com/cdn/shop/files/LAYOU7313102.jpg?v=1757712998&width=700", city:"Tel Aviv", lat:32.0610, lng:34.7775, fav:false },
-  { name:"Liah by Liat Raziel", url:"https://www.liah-online.com/", tags:["Artisan","Prints"], desc:"Liat Raziel designs from a belief that fashion is both necessity and self-expression.", img:"https://www.liah-online.com/cdn/shop/files/081A1393.jpg?v=1746905462&width=1445", city:"Tel Aviv", lat:32.0778, lng:34.7896, fav:false },
-  { name:"Macchia Studio", url:"https://macchiastudio.com/", tags:["Activewear","Sustainable","Artisan"], desc:"Natural tie-dye, organic fabrics, and ethically produced activewear and loungewear.", img:"https://macchiastudio.com/cdn/shop/files/SHP_2207_1100x.jpg?v=1768990914", city:"Tel Aviv", lat:32.0667, lng:34.7718, fav:false },
-  { name:"Madam Bubu", url:"https://madambubu.com/", tags:["Artisan","Minimalist"], desc:"Relaxed, achromatic, and body-celebrating — generous sizing (38–46), premium fabrics, personal honesty.", img:"https://madambubu.com/wp-content/uploads/2025/10/MADAM_BUBU_1750-683x1024.jpg", city:"Tel Aviv", lat:32.0894, lng:34.7837, fav:false },
-  { name:"Jessa Grey", url:"https://jessagrey.com/", tags:["Minimalist","Artisan"], desc:"Size-inclusive Israeli basics — oversized, comfortable, and endlessly versatile.", img:"https://jessagrey.com/cdn/shop/files/JESA_GREY_0020_2048x2048.jpg?v=1773505649", city:"Tel Aviv", lat:32.0633, lng:34.7860, fav:false },
-  { name:"Karen Mizrahi", url:"https://karenmizrahi.co.il/", tags:["Artisan","Luxury"], desc:"Israeli womenswear for day and night — elegant, wearable, and considered.", img:"https://karenmizrahi.co.il/cdn/shop/files/karen59486.jpg?v=1763364640&width=3000", city:"Tel Aviv", lat:32.0715, lng:34.7779, fav:false },
-  { name:"Karen Shavit", url:"https://karen-shavit.com/", tags:["Prints","Artisan"], desc:"Fun, colourful, and size-inclusive Israeli womenswear with a joyful, optimistic spirit.", img:"https://karen-shavit.com/cdn/shop/files/1_fa3d181f-42b0-4a6d-927a-5b535668b8f6_1285x1799.jpg?v=1757927964", city:"Tel Aviv", lat:32.0858, lng:34.7745, fav:false },
-  { name:"Gartenbanken Shoes", url:"https://gartenbankshoes.com/", tags:["Accessories"], desc:"Israeli-designed women's shoes and sandals — considered, wearable, crafted for the streets of Tel Aviv.", img:null, city:"Tel Aviv", lat:32.0697, lng:34.7833, fav:false },
-  { name:"Kisim", url:"https://kisim.com/he/", tags:["Accessories"], desc:"Bags, wallets, purses, and backpacks with a distinctive Israeli design sensibility.", img:"https://kisim.com/wp-content/uploads/2025/05/%D7%9E%D7%AA%D7%A7%D7%A4%D7%9C-%D7%9B%D7%A4%D7%95%D7%9C-%D7%9C%D7%95%D7%A7%D7%91%D7%95%D7%A7-17.webp", city:"Tel Aviv", lat:32.0740, lng:34.7700, fav:false },
-  { name:"The Little Camel", url:"https://thelittlecamel.co.il/", tags:["Accessories","Artisan"], desc:"Colourful, artsy wallets, purses, and accessories with a handcrafted Israeli soul.", img:null, city:"Tel Aviv", lat:32.0586, lng:34.7755, fav:false },
-  { name:"Justine Hats", url:"https://justinehats.com/", tags:["Accessories","Artisan"], desc:"Israeli millinery — handcrafted hats for every occasion and every mood.", img:null, city:"Tel Aviv", lat:32.0823, lng:34.7877, fav:false },
-  { name:"Take a Nap", url:"https://takeanap.co.il/", tags:["Activewear","Minimalist"], desc:"Soft, minimalist loungewear and homewear in beautifully textured fabrics.", img:"https://takeanap.co.il/cdn/shop/files/2025_10_23_NAP14668.jpg?v=1761659855&width=700", city:"Tel Aviv", lat:32.0784, lng:34.7922, fav:false },
-  { name:"Shirly Halperin", url:"https://www.shirlyhalperin.com/", tags:["Artisan","Minimalist"], desc:"Founded in 2004 on Zamnehoff Street, Tel Aviv. Classical, clean-cut, simple clothes for women.", img:null, city:"Tel Aviv", lat:32.0649, lng:34.7807, fav:false },
-  { name:"Maayan Paz", url:"https://maayanpaz.co.il/", tags:["Minimalist","Artisan"], desc:"Israeli womenswear since 2012 — minimalist lines, flattering cuts, luxurious fabrics made in Israel.", img:null, city:"Tel Aviv", lat:32.0528, lng:34.7525, fav:false, phone:"077-5625231", addresses:["30 Yehuda Margoza St, Jaffa","36 Bazel St, Tel Aviv"] },
-  { name:"Kid A", url:"https://thisiskida.com/", tags:["Minimalist","Artisan","Prints"], desc:"Size-inclusive basics and bold prints — for the Israeli woman who believes in comfort as a political act.", img:null, city:"Tel Aviv", lat:32.0648, lng:34.7922, fav:false },
-  { name:"Haia", url:"https://www.haia.co.il/", tags:["Artisan"], desc:"Contemporary Israeli womenswear with a considered, creative approach.", img:"https://www.haia.co.il/cdn/shop/products/image_354a24a0-8109-415a-a29a-35704df586ab.jpg?v=1666088944", city:"Tel Aviv", lat:32.0868, lng:34.7698, fav:false },
-  { name:"TRES TLV", url:"https://trestlv.com/", tags:["Streetwear","Artisan","Jewelry"], desc:"Tel Aviv contemporary label spanning T-shirts, denim, blazers, dresses, and jewellery. Stores on Ahad Haam and Neot Afeka.", img:"https://trestlv.com/cdn/shop/files/TRES9.3.2610788.jpg?v=1773160140&width=1080", city:"Tel Aviv", lat:32.0634, lng:34.7758, fav:false, phone:"073-7437277", email:"customercare@trestlv.com", hours:["Sun–Thu 10:00–19:00","Friday 09:00–15:00","Saturday (Neot Afeka only) 10:00–13:00"], addresses:["65 Pinhas Rosen St, Tel Aviv","58 Ahad Ha'am St, Tel Aviv"] },
-  { name:"Hadas Mor", url:"https://hadasmor.com/", tags:["Lingerie","Swimwear"], desc:"Breathing Lingerie — bras, bodysuits, swimwear, and underwear with a focus on comfort and femininity. Based in Pardes Hanna.", img:"https://hadasmor.com/cdn/shop/files/DSC07717.jpg?v=1769592226&width=5000", city:"Pardes Hanna", lat:32.4710, lng:34.9620, fav:false },
-  { name:"SAAG", url:"https://saag.co.il/", tags:["Artisan","Streetwear","Accessories"], desc:"Contemporary Israeli womenswear and accessories — tops, dresses, pants, skirts, hats, bags, and earrings.", img:"https://saag.co.il/wp-content/uploads/2025/02/ttyg-82-scaled.jpg", city:"Tel Aviv", lat:32.0760, lng:34.7660, fav:false },
-  { name:"Razili", url:"https://www.razili.co.il/", tags:["Artisan","Minimalist"], desc:"Israeli womenswear with a clean, confident identity — considered design rooted in quality craftsmanship.", img:"https://www.razili.co.il/cdn/shop/files/razili14-8-9430.jpg?v=1723725390&width=1800", city:"Tel Aviv", lat:32.0705, lng:34.7845, fav:false },
-  { name:"Roni Bar", url:"https://www.ronibar.com/", tags:["Artisan","Minimalist"], desc:"Wear Your Self — studio at 84 Ben Zvi Rd, Tel Aviv. Womenswear that moves with its wearer.", img:"https://www.ronibar.com/wp-content/uploads/2023/05/0t8a2110-scaled.jpeg", city:"Tel Aviv", lat:32.0542, lng:34.7595, phone:"+972 3 6294662", addresses:["84 Ben Zvi Rd, Tel Aviv"], fav:false },
+  { name:"Heroic", url:"https://heroic-online.com/", tags:["Artisan","Minimalist"], desc:"Womenswear built around the perfect pair of pants — comfortable, flattering fits that carry you from morning to night.", img:"https://heroic-online.com/cdn/shop/files/0471-heroic-24-03-26.jpg?v=1774726628&width=800", city:"Tel Aviv", lat:32.0605, lng:34.7781, fav:true, addresses:["14 Mikveh Israel St, Tel Aviv"], phone:"077-2090309", hours:["Sun–Thu 10:00–20:00","Fri 09:00–15:00"] },
+  { name:"Hila Feinberg", url:"https://hilafeinberg.com/", tags:["Minimalist","Artisan"], desc:"Minimalist, oversize Israeli womenswear for those who dress with intention.", img:"https://hilafeinberg.com/cdn/shop/files/forwebsite-267_1899x.jpg?v=1734866867", city:"Givat Haim Ihud", lat:32.4628, lng:34.9326, fav:false, addresses:["Givat Haim Ihud (studio, by appointment)"], phone:"054-9001824" },
+  { name:"Holyland Civilians", url:"https://holylandcivilians.com/", tags:["Streetwear","Activewear"], desc:"Edgy Mediterranean streetwear and activewear — all genders, all-black, and unapologetically bold.", img:"https://holylandcivilians.com/cdn/shop/files/IMG_6185-color.jpg?v=1769723876&width=480", city:"Tel Aviv", lat:32.0636, lng:34.7724, fav:true, addresses:["30 Sheinkin St, Tel Aviv"], email:"shop@holylandcivilians.com", hours:["Sun–Thu 12:00–16:00","Fri 11:00–15:00"] },
+  { name:"CALA", url:"https://cala.co.il/", tags:["Artisan"], desc:"Tel Aviv boutique chain founded 2002 — fashion that listens. A personal, intuitive approach to style selection.", img:"https://cala.co.il/cdn/shop/files/RefaelMizrahifashionphotography_1108_dee8b78f-3b73-4e27-a046-f4bd841884ba.jpg?v=1753288930&width=1400", city:"Tel Aviv", lat:32.064, lng:34.772, fav:false, addresses:["18 Shenkin St, Tel Aviv"], hours:["Sun–Thu 09:30–20:00","Fri 09:30–15:00"] },
+  
+  
+  { name:"Kisim", url:"https://kisim.com/he/", tags:["Accessories"], desc:"Bags, wallets, purses, and backpacks with a distinctive Israeli design sensibility.", img:"https://kisim.com/wp-content/uploads/2025/05/%D7%9E%D7%AA%D7%A7%D7%A4%D7%9C-%D7%9B%D7%A4%D7%95%D7%9C-%D7%9C%D7%95%D7%A7%D7%91%D7%95%D7%A7-17.webp", city:"Tel Aviv", lat:32.058, lng:34.773, fav:false, addresses:["11 Barzilai St, Tel Aviv"], phone:"054-5633046" },
+  
+  { name:"Take a Nap", url:"https://takeanap.co.il/", tags:["Activewear","Minimalist"], desc:"Soft, minimalist loungewear and homewear in beautifully textured fabrics.", img:"https://takeanap.co.il/cdn/shop/files/2025_10_23_NAP14668.jpg?v=1761659855&width=700", city:"Tel Aviv", lat:32.0784, lng:34.7922, fav:false, addresses:["96 Hashmona'im St, Tel Aviv (TLV Mall)"], phone:"050-3144495", hours:["Sun–Thu 10:00–21:30","Fri 09:00–15:00","Sat from Shabbat end to 23:00"] },
+  { name:"Maayan Paz", url:"https://maayanpaz.co.il/", tags:["Minimalist","Artisan"], desc:"Israeli womenswear since 2012 — minimalist lines, flattering cuts, luxurious fabrics made in Israel.", img:null, city:"Tel Aviv", lat:32.0492, lng:34.7534, fav:false, phone:"077-5625231", addresses:["30 Yehuda Margoza St, Jaffa","36 Bazel St, Tel Aviv"] },
+  { name:"TRES TLV", url:"https://trestlv.com/", tags:["Streetwear","Artisan","Jewelry"], desc:"Tel Aviv contemporary label spanning T-shirts, denim, blazers, dresses, and jewellery. Stores on Ahad Haam and Neot Afeka.", img:"https://trestlv.com/cdn/shop/files/TRES9.3.2610788.jpg?v=1773160140&width=1080", city:"Tel Aviv", lat:32.0629, lng:34.7757, fav:false, phone:"073-7437277", email:"customercare@trestlv.com", hours:["Sun–Thu 10:00–19:00","Friday 09:00–15:00","Saturday (Neot Afeka only) 10:00–13:00"], addresses:["65 Pinhas Rosen St, Tel Aviv","58 Ahad Ha'am St, Tel Aviv"] },
+  { name:"Roni Bar", url:"https://www.ronibar.com/", tags:["Artisan","Minimalist"], desc:"Wear Your Self — studio at 84 Ben Zvi Rd, Tel Aviv. Womenswear that moves with its wearer.", img:"https://www.ronibar.com/wp-content/uploads/2023/05/0t8a2110-scaled.jpeg", city:"Tel Aviv", lat:32.0534, lng:34.759, phone:"+972 3 6294662", addresses:["84 Ben Zvi Rd, Tel Aviv"], fav:false },
 
-  { name:"Chopshop Corp", url:"https://www.chopshop.co.il/", tags:["Streetwear","Prints","Menswear"], desc:"Unorganized. Unruly. Unmissable. Tel Aviv's cult street clothing brand — graphic tees, wide-leg pants, merch, and a fanzine that keeps the culture alive.", img:"https://static.wixstatic.com/media/64d6e6_971d8318d23a4d0e8d3c73cabf67a858~mv2.jpg/v1/fill/w_980,h_980,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/64d6e6_971d8318d23a4d0e8d3c73cabf67a858~mv2.jpg", city:"Tel Aviv", lat:32.0793, lng:34.7736, fav:true, addresses:["81 Dizengoff St, Tel Aviv"], phone:"054-5951491", email:"yoy@chopshop.co.il" },
-  { name:"Chopshop Corp", url:"https://www.chopshop.co.il/", tags:["Streetwear","Prints","Menswear"], desc:"Unorganized. Unruly. Unmissable. Chopshop Corp — Bograshov location.", img:"https://static.wixstatic.com/media/64d6e6_971d8318d23a4d0e8d3c73cabf67a858~mv2.jpg/v1/fill/w_980,h_980,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/64d6e6_971d8318d23a4d0e8d3c73cabf67a858~mv2.jpg", city:"Tel Aviv", lat:32.0766, lng:34.7708, fav:false, addresses:["64 Bograshov St, Tel Aviv"], phone:"054-5951491", email:"yoy@chopshop.co.il" },
-  { name:"Chopshop Corp", url:"https://www.chopshop.co.il/", tags:["Streetwear","Prints","Menswear"], desc:"Unorganized. Unruly. Unmissable. Chopshop Corp — Sheinkin location.", img:"https://static.wixstatic.com/media/64d6e6_971d8318d23a4d0e8d3c73cabf67a858~mv2.jpg/v1/fill/w_980,h_980,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/64d6e6_971d8318d23a4d0e8d3c73cabf67a858~mv2.jpg", city:"Tel Aviv", lat:32.0638, lng:34.7723, fav:false, addresses:["7 Sheinkin St, Tel Aviv"], phone:"054-5951491", email:"yoy@chopshop.co.il" },
-  { name:"Chopshop Corp", url:"https://www.chopshop.co.il/", tags:["Streetwear","Prints","Menswear"], desc:"Unorganized. Unruly. Unmissable. Chopshop Corp — Simtat Hashuk location.", img:"https://static.wixstatic.com/media/64d6e6_971d8318d23a4d0e8d3c73cabf67a858~mv2.jpg/v1/fill/w_980,h_980,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/64d6e6_971d8318d23a4d0e8d3c73cabf67a858~mv2.jpg", city:"Tel Aviv", lat:32.0655, lng:34.7688, fav:false, addresses:["1 Simtat Hashuk, Tel Aviv"], phone:"054-5951491", email:"yoy@chopshop.co.il" },
+  { name:"Chopshop Corp", url:"https://www.chopshop.co.il/", tags:["Streetwear","Prints","Menswear"], desc:"Unorganized. Unruly. Unmissable. Tel Aviv's cult street clothing brand — graphic tees, wide-leg pants, merch, and a fanzine that keeps the culture alive.", img:"https://static.wixstatic.com/media/64d6e6_971d8318d23a4d0e8d3c73cabf67a858~mv2.jpg/v1/fill/w_980,h_980,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/64d6e6_971d8318d23a4d0e8d3c73cabf67a858~mv2.jpg", city:"Tel Aviv", lat:32.0762, lng:34.7736, fav:true, addresses:["81 Dizengoff St, Tel Aviv"], phone:"054-5951491", email:"yoy@chopshop.co.il" },
+  { name:"Chopshop Corp", url:"https://www.chopshop.co.il/", tags:["Streetwear","Prints","Menswear"], desc:"Unorganized. Unruly. Unmissable. Chopshop Corp — Bograshov location.", img:"https://static.wixstatic.com/media/64d6e6_971d8318d23a4d0e8d3c73cabf67a858~mv2.jpg/v1/fill/w_980,h_980,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/64d6e6_971d8318d23a4d0e8d3c73cabf67a858~mv2.jpg", city:"Tel Aviv", lat:32.0763, lng:34.7712, fav:false, addresses:["64 Bograshov St, Tel Aviv"], phone:"054-5951491", email:"yoy@chopshop.co.il" },
+  { name:"Chopshop Corp", url:"https://www.chopshop.co.il/", tags:["Streetwear","Prints","Menswear"], desc:"Unorganized. Unruly. Unmissable. Chopshop Corp — Sheinkin location.", img:"https://static.wixstatic.com/media/64d6e6_971d8318d23a4d0e8d3c73cabf67a858~mv2.jpg/v1/fill/w_980,h_980,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/64d6e6_971d8318d23a4d0e8d3c73cabf67a858~mv2.jpg", city:"Tel Aviv", lat:32.0635, lng:34.772, fav:false, addresses:["7 Sheinkin St, Tel Aviv"], phone:"054-5951491", email:"yoy@chopshop.co.il" },
+  { name:"Chopshop Corp", url:"https://www.chopshop.co.il/", tags:["Streetwear","Prints","Menswear"], desc:"Unorganized. Unruly. Unmissable. Chopshop Corp — Simtat Hashuk location.", img:"https://static.wixstatic.com/media/64d6e6_971d8318d23a4d0e8d3c73cabf67a858~mv2.jpg/v1/fill/w_980,h_980,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/64d6e6_971d8318d23a4d0e8d3c73cabf67a858~mv2.jpg", city:"Tel Aviv", lat:32.0643, lng:34.7688, fav:false, addresses:["1 Simtat Hashuk, Tel Aviv"], phone:"054-5951491", email:"yoy@chopshop.co.il" },
   // Extra TRES TLV location
-  { name:"TRES TLV", url:"https://trestlv.com/", tags:["Streetwear","Artisan","Jewelry"], desc:"TRES TLV — 65 Pinhas Rosen St location.", img:"https://trestlv.com/cdn/shop/files/TRES9.3.2610788.jpg?v=1773160140&width=1080", city:"Tel Aviv", lat:32.0603, lng:34.7832, fav:false, addresses:["65 Pinhas Rosen St, Tel Aviv"], phone:"073-7437277", email:"customercare@trestlv.com", hours:["Sun–Thu 10:00–19:00","Fri 09:00–15:00","Sat 10:00–13:00"] },
+  { name:"TRES TLV", url:"https://trestlv.com/", tags:["Streetwear","Artisan","Jewelry"], desc:"TRES TLV — 65 Pinhas Rosen St location.", img:"https://trestlv.com/cdn/shop/files/TRES9.3.2610788.jpg?v=1773160140&width=1080", city:"Tel Aviv", lat:32.0564, lng:34.7821, fav:false, addresses:["65 Pinhas Rosen St, Tel Aviv"], phone:"073-7437277", email:"customercare@trestlv.com", hours:["Sun–Thu 10:00–19:00","Fri 09:00–15:00","Sat 10:00–13:00"] },
   // Extra Maayan Paz location
-  { name:"Maayan Paz", url:"https://maayanpaz.co.il/", tags:["Minimalist","Artisan"], desc:"Maayan Paz — 36 Bazel St, Tel Aviv.", img:"https://maayanpaz.co.il/cdn/shop/files/new_arrivals.jpg?v=1776327710&width=3200", city:"Tel Aviv", lat:32.0919, lng:34.7823, fav:false, addresses:["36 Bazel St, Tel Aviv"], phone:"03-9597050" },
-  { name:"Ronen Chen", url:"https://www.ronenchen.com/", tags:["Contemporary","Ready-to-Wear","Minimalist"], desc:"A cornerstone of Israeli fashion for over three decades. Ronen Chen designs fluid, wearable pieces for the modern woman.", img:"https://heroic-online.com/cdn/shop/files/0471-heroic-24-03-26.jpg?v=1774726628&width=800", city:"Tel Aviv", lat:32.0781, lng:34.7732, fav:false, addresses:["155 Dizengoff St, Tel Aviv"], phone:"054-3030589" },
-  { name:"Ronen Chen", url:"https://www.ronenchen.com/", tags:["Contemporary","Ready-to-Wear","Minimalist"], desc:"Ronen Chen — Tel Giborim outlet location.", img:"https://heroic-online.com/cdn/shop/files/0471-heroic-24-03-26.jpg?v=1774726628&width=800", city:"Tel Aviv", lat:32.0542, lng:34.7620, fav:false, addresses:["5 Tel Giborim St, Tel Aviv"], phone:"054-3030526" },
+  { name:"Maayan Paz", url:"https://maayanpaz.co.il/", tags:["Minimalist","Artisan"], desc:"Maayan Paz — 36 Bazel St, Tel Aviv.", img:"https://maayanpaz.co.il/cdn/shop/files/new_arrivals.jpg?v=1776327710&width=3200", city:"Tel Aviv", lat:32.094, lng:34.7823, fav:false, addresses:["36 Bazel St, Tel Aviv"], phone:"03-9597050" },
+  { name:"Ronen Chen", url:"https://www.ronenchen.com/", tags:["Contemporary","Ready-to-Wear","Minimalist"], desc:"A cornerstone of Israeli fashion for over three decades. Ronen Chen designs fluid, wearable pieces for the modern woman.", img:"https://heroic-online.com/cdn/shop/files/0471-heroic-24-03-26.jpg?v=1774726628&width=800", city:"Tel Aviv", lat:32.0793, lng:34.7734, fav:false, addresses:["155 Dizengoff St, Tel Aviv"], phone:"054-3030589" },
+  { name:"Ronen Chen", url:"https://www.ronenchen.com/", tags:["Contemporary","Ready-to-Wear","Minimalist"], desc:"Ronen Chen — Tel Giborim outlet location.", img:"https://heroic-online.com/cdn/shop/files/0471-heroic-24-03-26.jpg?v=1774726628&width=800", city:"Tel Aviv", lat:32.0522, lng:34.7624, fav:false, addresses:["5 Tel Giborim St, Tel Aviv"], phone:"054-3030526" },
+  // Atawear 2nd location - 141 Rothschild Blvd
+  { name:"Atawear", url:"https://atawear.co.il/", tags:["Heritage","Streetwear"], desc:"Atawear — Rothschild location.", img:"https://atawear.co.il/cdn/shop/files/C186113C-4B82-46C9-A115-27D1C508644F_dfcac7bd-aece-4a00-88ff-9a23ebe507dd.jpg?v=1774117526&width=5000", city:"Tel Aviv", lat:32.0635, lng:34.7750, fav:false, addresses:["141 Rothschild Blvd, Tel Aviv"], phone:"054-6810573", email:"support@atawear.com", hours:["Sun–Thu 10:00–20:00","Fri 10:00–16:00"] },
+  // Assaf Peleg - 119 Dizengoff (main TLV)
+  { name:"Assaf Peleg", url:"https://www.assafpelleg.com/", tags:["Luxury","Artisan"], desc:"Assaf Peleg — 119 Dizengoff St, Tel Aviv.", img:"https://www.assafpelleg.com/wp-content/uploads/2026/03/Untitled-577-x-1024-px-722-x-1024-px-1000-x-1500-px-30.png", city:"Tel Aviv", lat:32.0770, lng:34.7737, fav:false, addresses:["119 Dizengoff St, Tel Aviv"], phone:"03-5178785", hours:["Sun–Thu 10:00–19:00","Fri 10:00–14:00"] },
+  { name:"Assaf Peleg", url:"https://www.assafpelleg.com/", tags:["Luxury","Artisan"], desc:"Assaf Peleg — Ra'anana, Raneneem Mall.", img:"https://www.assafpelleg.com/wp-content/uploads/2026/03/Untitled-577-x-1024-px-722-x-1024-px-1000-x-1500-px-30.png", city:"Ra'anana", lat:32.1836, lng:34.8710, fav:false, addresses:["Raneneem Mall, Ra'anana"], phone:"09-8355532", hours:["Sun–Thu 10:00–19:00","Fri 10:00–14:00"] },
+  // Comme il Faut extra locations
+  { name:"Comme il Faut", url:"https://www.comme-il-faut.com/", tags:["Artisan","Minimalist","Prints"], desc:"Comme il Faut — Studio & Outlet, Kibbutz Galuyot 29.", img:"https://comme-il-faut.com/cdn/shop/files/c_il_faut_1849_7016b057-877c-4c12-8259-b131e6480d1a.jpg?v=1773844239&width=600", city:"Tel Aviv", lat:32.0476, lng:34.7665, fav:false, addresses:["29 Kibbutz Galuyot St, Tel Aviv"], phone:"03-602-0521", hours:["Sun–Thu 10:00–20:00","Fri 10:00–16:00"] },
+  { name:"Comme il Faut", url:"https://www.comme-il-faut.com/", tags:["Artisan","Minimalist","Prints"], desc:"Comme il Faut — Ramat HaSharon.", img:"https://comme-il-faut.com/cdn/shop/files/c_il_faut_1849_7016b057-877c-4c12-8259-b131e6480d1a.jpg?v=1773844239&width=600", city:"Ramat HaSharon", lat:32.1462, lng:34.8401, fav:false, addresses:["44 Ussishkin St, Ramat HaSharon"], phone:"03-5400010", hours:["Sun 10:00–19:00","Mon–Thu 10:00–19:00","Fri 10:00–14:00"] },
+  { name:"Comme il Faut", url:"https://www.comme-il-faut.com/", tags:["Artisan","Minimalist","Prints"], desc:"Comme il Faut — Kikar Rabin.", img:"https://comme-il-faut.com/cdn/shop/files/c_il_faut_1849_7016b057-877c-4c12-8259-b131e6480d1a.jpg?v=1773844239&width=600", city:"Tel Aviv", lat:32.0817, lng:34.7810, fav:false, addresses:["9 Malkhei Yisrael St, Tel Aviv"], phone:"03-5290719", hours:["Sun–Thu 10:00–19:00","Fri 10:00–14:00"] },
+  // Alembika main TLV - 87 Ibn Gvirol
+  { name:"Alembika", url:"https://alembika.co.il/", tags:["Artisan","Minimalist"], desc:"Alembika flagship store — 87 Ibn Gvirol, Tel Aviv.", img:"https://alembika.co.il/cdn/shop/files/TOP_RT357T_PANTS_RP351M_12.jpg?v=1773061538", city:"Tel Aviv", lat:32.0823, lng:34.7813, fav:false, addresses:["87 Ibn Gvirol St, Tel Aviv"], phone:"03-5220091", hours:["Sun–Thu 09:30–19:00","Fri 10:00–14:00"] },
+  { name:"Alembika", url:"https://alembika.co.il/", tags:["Artisan","Minimalist"], desc:"Alembika Outlet — 5 Tel Giborim, Tel Aviv.", img:"https://alembika.co.il/cdn/shop/files/TOP_RT357T_PANTS_RP351M_12.jpg?v=1773061538", city:"Tel Aviv", lat:32.0522, lng:34.7624, fav:false, addresses:["5 Tel Giborim St, Tel Aviv (Outlet)"], phone:"03-6837157", hours:["Sun–Thu 10:00–17:00","Fri 10:00–14:00"] },
+  { name:"Alembika", url:"https://alembika.co.il/", tags:["Artisan","Minimalist"], desc:"Alembika — Rosh Pina.", img:"https://alembika.co.il/cdn/shop/files/TOP_RT357T_PANTS_RP351M_12.jpg?v=1773061538", city:"Rosh Pina", lat:32.9697, lng:35.5469, fav:false, addresses:["34 David Shuv St, Rosh Pina"], phone:"04-6800807", hours:["Sun–Thu 10:00–19:00","Fri 10:00–14:00"] },
+  { name:"Alembika", url:"https://alembika.co.il/", tags:["Artisan","Minimalist"], desc:"Alembika — Haifa Horev Center.", img:"https://alembika.co.il/cdn/shop/files/TOP_RT357T_PANTS_RP351M_12.jpg?v=1773061538", city:"Haifa", lat:32.7940, lng:34.9896, fav:false, addresses:["15 Horev St, Haifa"], phone:"04-6545002", hours:["Sun–Thu 09:30–20:00","Fri 09:30–14:00"] },
+  { name:"Alembika", url:"https://alembika.co.il/", tags:["Artisan","Minimalist"], desc:"Alembika — Jerusalem.", img:"https://alembika.co.il/cdn/shop/files/TOP_RT357T_PANTS_RP351M_12.jpg?v=1773061538", city:"Jerusalem", lat:31.7767, lng:35.2238, fav:false, addresses:["16 HaAyal St, Jerusalem"], phone:"02-6785989", hours:["Sun–Thu 10:00–19:00","Fri 10:00–14:00"] },
+  // Cotton locations
+  { name:"Cotton", url:"https://cottonet.co.il/", tags:["Sustainable","Artisan"], desc:"Cotton — Tel Aviv, 218 Dizengoff St.", img:"https://cdn.cottonet.co.il/newsite/2026/02/365276f8-cotton6644-copy-1067x1601.jpg", city:"Tel Aviv", lat:32.0843, lng:34.7733, fav:false, addresses:["218 Dizengoff St, Tel Aviv"], phone:"03-5234441", hours:["Sun–Thu 09:00–19:00","Fri 09:00–14:00"] },
+  { name:"Cotton", url:"https://cottonet.co.il/", tags:["Sustainable","Artisan"], desc:"Cotton — Beer Sheva, 91 Herzl St.", img:"https://cdn.cottonet.co.il/newsite/2026/02/365276f8-cotton6644-copy-1067x1601.jpg", city:"Beer Sheva", lat:31.2530, lng:34.7915, fav:false, addresses:["91 Herzl St, Beer Sheva"], phone:"08-6482578", hours:["Sun–Thu 09:30–19:00","Fri 09:30–13:30"] },
+  { name:"Cotton", url:"https://cottonet.co.il/", tags:["Sustainable","Artisan"], desc:"Cotton — Herzliya, Tzameret Center.", img:"https://cdn.cottonet.co.il/newsite/2026/02/365276f8-cotton6644-copy-1067x1601.jpg", city:"Herzliya", lat:32.1640, lng:34.8440, fav:false, addresses:["Tzameret Center, Herzliya"], phone:"09-9585614", hours:["Sun–Thu 10:00–18:00","Fri 10:00–14:00"] },
+  { name:"Cotton", url:"https://cottonet.co.il/", tags:["Sustainable","Artisan"], desc:"Cotton — Jerusalem, Beit HaKerem.", img:"https://cdn.cottonet.co.il/newsite/2026/02/365276f8-cotton6644-copy-1067x1601.jpg", city:"Jerusalem", lat:31.7815, lng:35.1896, fav:false, addresses:["8 Avizohur St, Beit HaKerem, Jerusalem"], phone:"02-5471141", hours:["Sun–Thu 10:00–18:00","Fri 10:00–14:00"] },
+  { name:"Cotton", url:"https://cottonet.co.il/", tags:["Sustainable","Artisan"], desc:"Cotton — Jerusalem, Hadassah Ein Kerem.", img:"https://cdn.cottonet.co.il/newsite/2026/02/365276f8-cotton6644-copy-1067x1601.jpg", city:"Jerusalem", lat:31.7648, lng:35.1022, fav:false, addresses:["Yisphro Center, Hadassah Ein Kerem, Jerusalem"], phone:"02-6793584", hours:["Sun–Thu 09:00–20:00"] },
+  { name:"Cotton", url:"https://cottonet.co.il/", tags:["Sustainable","Artisan"], desc:"Cotton — Kfar Saba, 70 Weizmann St.", img:"https://cdn.cottonet.co.il/newsite/2026/02/365276f8-cotton6644-copy-1067x1601.jpg", city:"Kfar Saba", lat:32.1752, lng:34.9078, fav:false, addresses:["70 Weizmann St, Kfar Saba"], phone:"09-9556551", hours:["Sun–Thu 09:00–19:00","Fri 09:00–14:00"] },
+  { name:"Cotton", url:"https://cottonet.co.il/", tags:["Sustainable","Artisan"], desc:"Cotton — Carmiel, Hutzot Carmiel Mall.", img:"https://cdn.cottonet.co.il/newsite/2026/02/365276f8-cotton6644-copy-1067x1601.jpg", city:"Carmiel", lat:32.9150, lng:35.2983, fav:false, addresses:["5 Ma'ale Kamon St, Carmiel"], phone:"04-9822455", hours:["Sun–Thu 10:00–18:00","Fri 10:00–14:00"] },
+  { name:"Cotton", url:"https://cottonet.co.il/", tags:["Sustainable","Artisan"], desc:"Cotton — Rishon LeZion, Ben Gurion Center.", img:"https://cdn.cottonet.co.il/newsite/2026/02/365276f8-cotton6644-copy-1067x1601.jpg", city:"Rishon LeZion", lat:31.9730, lng:34.8007, fav:false, addresses:["4 Ben Gurion St, Rishon LeZion"], phone:"03-6413960", hours:["Sun–Thu 09:30–19:30","Fri 09:00–14:00"] },
+  { name:"Cotton", url:"https://cottonet.co.il/", tags:["Sustainable","Artisan"], desc:"Cotton — Rehovot, HaNasi Center.", img:"https://cdn.cottonet.co.il/newsite/2026/02/365276f8-cotton6644-copy-1067x1601.jpg", city:"Rehovot", lat:31.8940, lng:34.8078, fav:false, addresses:["76 Carmel St, Rehovot"], phone:"08-8506080", hours:["Sun–Thu 09:00–20:00","Fri 09:00–14:00"] },
+  { name:"Cotton", url:"https://cottonet.co.il/", tags:["Sustainable","Artisan"], desc:"Cotton — Or Akiva, Orot Mall.", img:"https://cdn.cottonet.co.il/newsite/2026/02/365276f8-cotton6644-copy-1067x1601.jpg", city:"Or Akiva", lat:32.5072, lng:34.9183, fav:false, addresses:["Orot Mall, Or Akiva"], phone:"04-8216720", hours:["Sun–Thu 09:00–21:00","Fri 10:00–15:00"] },
+  { name:"Cotton", url:"https://cottonet.co.il/", tags:["Sustainable","Artisan"], desc:"Cotton — Gedera, 11 HaBiluyim St.", img:"https://cdn.cottonet.co.il/newsite/2026/02/365276f8-cotton6644-copy-1067x1601.jpg", city:"Gedera", lat:31.8108, lng:34.7771, fav:false, addresses:["11 HaBiluyim St, Gedera"], phone:"08-8596166", hours:["Sun–Thu 10:00–18:30","Fri 09:00–14:00"] },
+  { name:"Cotton", url:"https://cottonet.co.il/", tags:["Sustainable","Artisan"], desc:"Cotton — Ra'anana, Neve Zemer.", img:"https://cdn.cottonet.co.il/newsite/2026/02/365276f8-cotton6644-copy-1067x1601.jpg", city:"Ra'anana", lat:32.1836, lng:34.8710, fav:false, addresses:["23 Sasha Argov St, Ra'anana"], hours:["Sun–Thu 09:00–19:30","Fri 09:00–14:30"] },
+  // Dana Ashkenazy locations
+  { name:"Dana Ashkenazy", url:"https://www.danaashkenazi.com/", tags:["Artisan","Minimalist"], desc:"Dana Ashkenazy — Ramat Aviv Mall, Tel Aviv.", img:"https://www.danaashkenazi.com/cdn/shop/files/FCE62873-9D9C-4823-8E61-E8D80AD799E1.png?v=1775326726&width=735", city:"Tel Aviv", lat:32.1102, lng:34.8027, fav:false, addresses:["Ramat Aviv Mall, Tel Aviv"], hours:["Sun–Thu 09:30–21:30","Fri 09:00–15:00","Sat from Shabbat end to 22:30"] },
+  { name:"Dana Ashkenazy", url:"https://www.danaashkenazi.com/", tags:["Artisan","Minimalist"], desc:"Dana Ashkenazy — Savyonim, Yehud.", img:"https://www.danaashkenazi.com/cdn/shop/files/FCE62873-9D9C-4823-8E61-E8D80AD799E1.png?v=1775326726&width=735", city:"Yehud", lat:32.0333, lng:34.8896, fav:false, addresses:["Savyonim Mall, Yehud"], hours:["Sun–Thu 09:30–20:00","Fri 09:00–15:00"] },
+  // Gertrud locations
+  { name:"Gertrud", url:"https://gertrudshop.com/", tags:["Artisan","Prints"], desc:"Gertrud — 77 Frishman St, Tel Aviv.", img:"https://gertrudshop.com/cdn/shop/files/9_mobile_561x824.png?v=1774940996", city:"Tel Aviv", lat:32.0795, lng:34.7723, fav:false, addresses:["77 Frishman St, Tel Aviv"], phone:"03-5239902", email:"info@gertrud.co.il", hours:["Sun–Thu 10:00–19:00","Fri 10:00–14:00"] },
+  { name:"Gertrud", url:"https://gertrudshop.com/", tags:["Artisan","Prints"], desc:"Gertrud — Ramat HaSharon.", img:"https://gertrudshop.com/cdn/shop/files/9_mobile_561x824.png?v=1774940996", city:"Ramat HaSharon", lat:32.1462, lng:34.8401, fav:false, addresses:["44a Ossishkin St, Ramat HaSharon"], phone:"03-5473648", hours:["Sun–Thu 09:30–19:00","Fri 09:30–14:00"] },
+  { name:"Gertrud", url:"https://gertrudshop.com/", tags:["Artisan","Prints"], desc:"Gertrud — Bitan Aharon.", img:"https://gertrudshop.com/cdn/shop/files/9_mobile_561x824.png?v=1774940996", city:"Bitan Aharon", lat:32.3603, lng:34.8785, fav:false, addresses:["Bitans Shopping Center, Bitan Aharon"], phone:"09-8665716", hours:["Sun–Thu 09:30–19:00","Fri 09:30–14:00"] },
+  // Hagit Tassa locations
+  { name:"Hagit Tassa", url:"https://hagitassa.com/", tags:["Artisan","Minimalist"], desc:"Hagit Tassa — 214 Dizengoff, Tel Aviv.", img:"https://hagitassa.com/cdn/shop/files/1031-hagitassa-26-03-26.jpg?v=1774601613&width=1800", city:"Tel Aviv", lat:32.0832, lng:34.7734, fav:false, addresses:["214 Dizengoff St, Tel Aviv"], phone:"03-5242211", hours:["Sun–Thu 10:00–19:00","Fri 09:00–15:00"] },
+  { name:"Hagit Tassa", url:"https://hagitassa.com/", tags:["Artisan","Minimalist"], desc:"Hagit Tassa — Ramat HaSharon.", img:"https://hagitassa.com/cdn/shop/files/1031-hagitassa-26-03-26.jpg?v=1774601613&width=1800", city:"Ramat HaSharon", lat:32.1462, lng:34.8401, fav:false, addresses:["55 Ossishkin St, Ramat HaSharon"], phone:"03-5491101", hours:["Sun,Tue,Wed,Thu 09:00–19:30","Mon 09:00–17:00","Fri 09:00–15:00"] },
+  { name:"Hagit Tassa", url:"https://hagitassa.com/", tags:["Artisan","Minimalist"], desc:"Hagit Tassa — Sharonim Mall, Hod HaSharon.", img:"https://hagitassa.com/cdn/shop/files/1031-hagitassa-26-03-26.jpg?v=1774601613&width=1800", city:"Hod HaSharon", lat:32.1500, lng:34.8987, fav:false, addresses:["Sharonim Mall, 2 HaYarkon, Hod HaSharon"], phone:"09-7734795", hours:["Sun–Thu 09:30–21:00","Fri 09:00–15:00"] },
+  { name:"Hagit Tassa", url:"https://hagitassa.com/", tags:["Artisan","Minimalist"], desc:"Hagit Tassa — Outlet, 5 Tel Giborim, Tel Aviv.", img:"https://hagitassa.com/cdn/shop/files/1031-hagitassa-26-03-26.jpg?v=1774601613&width=1800", city:"Tel Aviv", lat:32.0522, lng:34.7624, fav:false, addresses:["5 Tel Giborim St, Tel Aviv (Outlet)"], phone:"03-6823892", hours:["Sun–Thu 09:30–17:00","Fri 09:00–14:00"] },
+  { name:"Hagit Tassa", url:"https://hagitassa.com/", tags:["Artisan","Minimalist"], desc:"Hagit Tassa — Renanim Mall, Ra'anana.", img:"https://hagitassa.com/cdn/shop/files/1031-hagitassa-26-03-26.jpg?v=1774601613&width=1800", city:"Ra'anana", lat:32.1836, lng:34.8710, fav:false, addresses:["2 HaMelakha St, Ra'anana"], phone:"09-7937519", hours:["Sun–Thu 10:00–22:00","Fri 09:00–15:00","Sat from end of Shabbat to 23:00"] },
+  { name:"Hagit Tassa", url:"https://hagitassa.com/", tags:["Artisan","Minimalist"], desc:"Hagit Tassa — Outlet, Hutzot HaMifratz Mall, Haifa.", img:"https://hagitassa.com/cdn/shop/files/1031-hagitassa-26-03-26.jpg?v=1774601613&width=1800", city:"Haifa", lat:32.7940, lng:34.9896, fav:false, addresses:["Hutzot HaMifratz Mall, Haifa (Outlet)"], phone:"04-8401342", hours:["Sun–Thu 09:30–21:30","Fri 09:00–15:00","Sat 10:30–22:30"] },
+  { name:"Hagit Tassa", url:"https://hagitassa.com/", tags:["Artisan","Minimalist"], desc:"Hagit Tassa — Studio & Outlet, 21 Klisher St, Tel Aviv.", img:"https://hagitassa.com/cdn/shop/files/1031-hagitassa-26-03-26.jpg?v=1774601613&width=1800", city:"Tel Aviv", lat:32.0588, lng:34.7728, fav:false, addresses:["21 Klisher St, Tel Aviv (Studio & Outlet)"], phone:"03-5102111", hours:["Sun–Thu 09:30–17:30","Fri 09:30–14:30"] },
+  // Holyland Civilians studio
+  { name:"Holyland Civilians", url:"https://holylandcivilians.com/", tags:["Streetwear","Activewear"], desc:"Holyland Civilians — Studio, Kibbutz Ramat HaShofet.", img:"https://holylandcivilians.com/cdn/shop/files/IMG_6185-color.jpg?v=1769723876&width=480", city:"Kibbutz Ramat HaShofet", lat:32.6285, lng:35.0847, fav:false, addresses:["Kibbutz Ramat HaShofet (Fridays & by appointment)"], email:"holyhelp@holylandcivilians.com", hours:["Fri 10:00–13:00","Or by appointment"] },
+  // CALA Jerusalem
+  { name:"CALA", url:"https://cala.co.il/", tags:["Artisan"], desc:"CALA — Jerusalem.", img:"https://cala.co.il/cdn/shop/files/RefaelMizrahifashionphotography_1108_dee8b78f-3b73-4e27-a046-f4bd841884ba.jpg?v=1753288930&width=1400", city:"Jerusalem", lat:31.7767, lng:35.2238, fav:false, addresses:["4 HaHistadrut St, Jerusalem"], phone:"02-5388857", hours:["Sun–Thu 11:00–19:00","Fri 09:30–14:30"] },
+  // Take a Nap locations
+  { name:"Take a Nap", url:"https://takeanap.co.il/", tags:["Activewear","Minimalist"], desc:"Take a Nap — TLV Mall (Hashmona'im).", img:"https://takeanap.co.il/cdn/shop/files/2025_10_23_NAP14668.jpg?v=1761659855&width=700", city:"Tel Aviv", lat:32.0698, lng:34.7932, fav:false, addresses:["96 Hashmona'im St / 4 Karlbach / 97 Menachem Begin, Tel Aviv"], phone:"050-3144495", hours:["Sun–Thu 10:00–21:30","Fri 09:00–15:00","Sat from Shabbat end to 23:00"] },
+  { name:"Take a Nap", url:"https://takeanap.co.il/", tags:["Activewear","Minimalist"], desc:"Take a Nap — Bazel, Tel Aviv.", img:"https://takeanap.co.il/cdn/shop/files/2025_10_23_NAP14668.jpg?v=1761659855&width=700", city:"Tel Aviv", lat:32.0932, lng:34.7823, fav:false, addresses:["3 HaShalah St, Tel Aviv"], phone:"03-5271757", hours:["Sun–Thu 09:00–19:00","Fri 09:00–15:00"] },
+  { name:"Take a Nap", url:"https://takeanap.co.il/", tags:["Activewear","Minimalist"], desc:"Take a Nap — Shenkin, Tel Aviv.", img:"https://takeanap.co.il/cdn/shop/files/2025_10_23_NAP14668.jpg?v=1761659855&width=700", city:"Tel Aviv", lat:32.0638, lng:34.7718, fav:false, addresses:["48 Shenkin St, Tel Aviv"], phone:"03-9741112", hours:["Sun–Thu 09:00–19:00","Fri 09:00–15:00"] },
+  { name:"Take a Nap", url:"https://takeanap.co.il/", tags:["Activewear","Minimalist"], desc:"Take a Nap — Ramat HaSharon.", img:"https://takeanap.co.il/cdn/shop/files/2025_10_23_NAP14668.jpg?v=1761659855&width=700", city:"Ramat HaSharon", lat:32.1462, lng:34.8401, fav:false, addresses:["31 Ossishkin St, Ramat HaSharon"], phone:"03-6746255", hours:["Sun–Thu 09:00–19:00","Fri 09:00–15:00"] },
+  { name:"Take a Nap", url:"https://takeanap.co.il/", tags:["Activewear","Minimalist"], desc:"Take a Nap — Beit Herut.", img:"https://takeanap.co.il/cdn/shop/files/2025_10_23_NAP14668.jpg?v=1761659855&width=700", city:"Beit Herut", lat:32.3650, lng:34.8900, fav:false, addresses:["1 HaRishonim St, Beit Herut"], phone:"050-6906690", hours:["Sun–Thu 09:00–18:00","Fri 09:00–14:30"] },
 ];
 
 // Init Leaflet map
@@ -369,10 +476,35 @@ const panelImgWrap = document.getElementById('panel-img-wrap');
 
 let activeMarker = null;
 
+// Map panel favorites
+let MAP_FAVORITES = new Set(JSON.parse(localStorage.getItem('modeil-favs') || '[]'));
+
+function togglePanelFav(btn, name) {
+  btn.classList.remove('panel-heart-pulse');
+  void btn.offsetWidth;
+  btn.classList.add('panel-heart-pulse');
+  const icon = btn.querySelector('.ph-icon');
+  if (MAP_FAVORITES.has(name)) {
+    MAP_FAVORITES.delete(name);
+    btn.classList.remove('saved');
+    icon.style.fontVariationSettings = "'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24";
+    icon.style.color = '';
+    btn.querySelector('span:last-child').textContent = 'Save';
+  } else {
+    MAP_FAVORITES.add(name);
+    btn.classList.add('saved');
+    icon.style.fontVariationSettings = "'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24";
+    icon.style.color = '#B8748A';
+    btn.querySelector('span:last-child').textContent = 'Saved';
+  }
+  localStorage.setItem('modeil-favs', JSON.stringify([...MAP_FAVORITES]));
+}
+
 function openPanel(d) {
   panelName.textContent = d.name;
+  // Primary address
   if (d.addresses && d.addresses.length) {
-    panelLocation.textContent = d.addresses.join(' · ');
+    panelLocation.textContent = d.addresses[0];
   } else if (d.address) {
     panelLocation.textContent = d.address;
   } else {
@@ -381,33 +513,77 @@ function openPanel(d) {
   panelTags.innerHTML = d.tags.map(t => `<span class="panel-tag">${t}</span>`).join('');
   panelDesc.textContent = d.desc;
   panelLink.href = d.url;
+
+  // Image
   if (d.img) {
     panelImgWrap.innerHTML = `<img class="panel-img" src="${d.img}" alt="${d.name}" onerror="this.parentElement.innerHTML='<div class=\'panel-img-placeholder\'>${d.name}</div>'"/>`;
   } else {
     panelImgWrap.innerHTML = `<div class="panel-img-placeholder">${d.name}</div>`;
   }
-  // Extra details
-  const extraEl = document.getElementById('panel-extra');
-  let extraHtml = '';
-  if (d.addresses && d.addresses.length) {
-    extraHtml += `<div class="panel-extra-block">${d.addresses.map(a => `<div>${a}</div>`).join('')}</div>`;
+
+  // Heart/Save
+  const isSaved = MAP_FAVORITES.has(d.name);
+  const favEl = document.getElementById('panel-fav');
+  if (favEl) {
+    const safeName = d.name.replace(/'/g, "\\'");
+    favEl.innerHTML = `<button class="panel-heart-btn${isSaved ? ' saved' : ''}" onclick="togglePanelFav(this, '${safeName}')">
+      <span class="material-symbols-outlined ph-icon" style="font-size:18px;${isSaved ? "font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24;color:#e53e3e" : ''}">favorite</span>
+      <span>${isSaved ? 'Saved' : 'Save'}</span>
+    </button>`;
   }
-  if (d.phone || d.email) {
-    extraHtml += `<div class="panel-extra-block">`;
-    if (d.phone) extraHtml += `<div><a href="tel:${d.phone}" style="color:inherit">${d.phone}</a></div>`;
-    if (d.email) extraHtml += `<div><a href="mailto:${d.email}" style="color:inherit">${d.email}</a></div>`;
-    extraHtml += '</div>';
+
+  // Contact
+  const contactEl = document.getElementById('panel-contact');
+  if (contactEl) {
+    if (d.phone || d.email) {
+      let cHtml = '<div class="panel-section"><div class="panel-section-label">Contact</div>';
+      if (d.phone) cHtml += `<div class="panel-contact-row"><a href="tel:${d.phone}">${d.phone}</a></div>`;
+      if (d.email) cHtml += `<div class="panel-contact-row"><a href="mailto:${d.email}">${d.email}</a></div>`;
+      cHtml += '</div>';
+      contactEl.innerHTML = cHtml;
+      contactEl.style.display = 'block';
+    } else { contactEl.style.display = 'none'; }
   }
-  if (d.hours && d.hours.length) {
-    extraHtml += `<div class="panel-extra-block">${d.hours.map(h => `<div>${h}</div>`).join('')}</div>`;
+
+  // Extra locations
+  const locEl = document.getElementById('panel-extra-locations');
+  if (locEl) {
+    if (d.addresses && d.addresses.length > 1) {
+      let lHtml = '<div class="panel-section"><div class="panel-section-label">All Locations</div>';
+      d.addresses.forEach(addr => {
+        lHtml += `<div class="panel-location-item"><div class="loc-addr">${addr}</div></div>`;
+      });
+      lHtml += '</div>';
+      locEl.innerHTML = lHtml;
+      locEl.style.display = 'block';
+    } else { locEl.style.display = 'none'; }
   }
-  extraEl.innerHTML = extraHtml;
-  extraEl.style.display = extraHtml ? 'flex' : 'none';
+
+  // Hours
+  const hoursEl = document.getElementById('panel-hours');
+  if (hoursEl) {
+    if (d.hours && d.hours.length) {
+      let hHtml = '<div class="panel-section"><div class="panel-section-label">Opening Hours</div><ul class="panel-hours-list">';
+      d.hours.forEach(h => { hHtml += `<li>${h}</li>`; });
+      hHtml += '</ul></div>';
+      hoursEl.innerHTML = hHtml;
+      hoursEl.style.display = 'block';
+    } else { hoursEl.style.display = 'none'; }
+  }
+
   panel.classList.add('open');
+  document.getElementById('zoom-controls').style.right = (window.innerWidth < 600 ? '16px' : '416px');
 }
 
-panelClose.addEventListener('click', () => {
+panelClose.addEventListener('click', function() {
   panel.classList.remove('open');
+  document.getElementById('zoom-controls').style.right = '16px';
+  document.getElementById('location-panel').style.display = 'none';
+  document.getElementById('panel-img-wrap').style.display = '';
+  const brandBody = document.getElementById('panel').querySelector('.panel-body:not(#loc-panel-body)');
+  if (brandBody) brandBody.style.display = 'flex';
+  document.getElementById('loc-back-btn').style.display = 'none';
+  currentLocation = null;
   if (activeMarker) {
     activeMarker._icon?.querySelector('.map-pin')?.classList.remove('active');
     activeMarker = null;
@@ -418,9 +594,9 @@ panelClose.addEventListener('click', () => {
 function makeIcon(featured) {
   return L.divIcon({
     className: '',
-    html: `<div class="map-pin${featured ? ' featured' : ''}"></div>`,
-    iconSize: [14, 14],
-    iconAnchor: [7, 7],
+    html: '<div class="map-pin"></div>',
+    iconSize: [10, 10],
+    iconAnchor: [5, 5],
   });
 }
 
@@ -443,105 +619,191 @@ function distKm(lat1, lng1, lat2, lng2) {
   return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 }
 
+const ALL_TAGS = ["Jewelry","Artisan","Luxury","Sustainable","Streetwear","Minimalist","Knitwear","Activewear","Prints","Heritage","Swimwear","Surf","Menswear","Lingerie","Contemporary","Accessories","Ready-to-Wear"];
+
 let geocodeTimer = null;
+let focusedIdx = -1;
+
+function resetMap() {
+  markers.forEach(({pin}) => { if(pin) pin.classList.remove('dimmed','active'); });
+  searchInput.value = '';
+  searchClear.style.display = 'none';
+  searchResults.style.display = 'none';
+  focusedIdx = -1;
+}
+
+function dimAllExcept(names) {
+  const nameSet = new Set(names);
+  markers.forEach(({d, pin}) => {
+    if(pin) pin.classList.toggle('dimmed', !nameSet.has(d.name));
+  });
+}
+
+function showDropdown(sections) {
+  if (!sections.length) {
+    searchResults.innerHTML = '<div class="no-results">No results found</div>';
+    searchResults.style.display = 'block';
+    return;
+  }
+  let out = '';
+  sections.forEach(function(sec) {
+    out += '<div class="sri-section-header">' + sec.header + '</div>';
+    sec.items.forEach(function(item) {
+      out += '<div class="search-result-item" data-action-idx="' + item.actionIdx + '">';
+      out += '<div class="sri-name">' + item.label + '</div>';
+      if (item.meta) out += '<div class="sri-meta">' + item.meta + '</div>';
+      out += '</div>';
+    });
+  });
+  searchResults.innerHTML = out;
+  searchResults.style.display = 'block';
+}
+
+// Build action list for keyboard nav
+let currentActions = [];
 
 function runSearch(q) {
   const query = q.trim().toLowerCase();
   searchClear.style.display = query ? 'block' : 'none';
+  focusedIdx = -1;
 
   if (!query) {
     searchResults.style.display = 'none';
-    markers.forEach(({pin}) => pin.classList.remove('dimmed'));
+    markers.forEach(({pin}) => { if(pin) pin.classList.remove('dimmed'); });
+    currentActions = [];
     return;
   }
 
-  // Brand/tag matches
-  const brandMatches = DESIGNERS.filter(d =>
-    d.name.toLowerCase().includes(query) ||
-    d.tags.some(t => t.toLowerCase().includes(query))
-  );
+  const sections = [];
+  currentActions = [];
 
-  // City matches from our own data
-  const cityMatches = DESIGNERS.filter(d => d.city.toLowerCase().includes(query));
-  const isCityQuery = cityMatches.length > 0 && brandMatches.length === 0;
+  // 1. Brand matches
+  const uniqueBrands = [...new Map(DESIGNERS.filter(d =>
+    d.name.toLowerCase().includes(query)
+  ).map(d => [d.name, d])).values()];
 
-  if (brandMatches.length > 0) {
-    // Show brand results
-    markers.forEach(({d, pin}) => {
-      pin.classList.toggle('dimmed', !brandMatches.some(m => m.name === d.name));
-    });
-    searchResults.innerHTML = brandMatches.map(d =>
-      `<div class="search-result-item" data-idx="${DESIGNERS.indexOf(d)}">
-        <div class="sri-name">${d.name}</div>
-        <div class="sri-meta">${d.city} · ${d.tags.slice(0,2).join(' · ')}</div>
-      </div>`
-    ).join('');
-    searchResults.querySelectorAll('.search-result-item').forEach(item => {
-      item.addEventListener('click', () => {
-        const d = DESIGNERS[+item.dataset.idx];
-        const m = markers.find(x => x.d.name === d.name);
-        if (m) { map.setView([d.lat, d.lng], 15, {animate: true}); setTimeout(() => m.marker.fire('click'), 400); }
-        searchResults.style.display = 'none';
+  if (uniqueBrands.length > 0) {
+    const items = uniqueBrands.slice(0, 6).map(d => {
+      const locs = DESIGNERS.filter(x => x.name === d.name);
+      const meta = locs.length > 1
+        ? (locs.length + ' locations · ' + locs.map(function(l){ return l.addresses && l.addresses[0] ? l.addresses[0] : l.city; }).join(' & '))
+        : (d.addresses && d.addresses[0] ? d.addresses[0] : d.city + ', Israel');
+      const actionIdx = currentActions.length;
+      currentActions.push(() => {
         searchInput.value = d.name;
-        markers.forEach(({pin}) => pin.classList.remove('dimmed'));
-      });
-    });
-    searchResults.style.display = 'block';
-  } else {
-    // Try geocoding with Nominatim
-    clearTimeout(geocodeTimer);
-    searchResults.innerHTML = '<div class="no-results">Searching location…</div>';
-    searchResults.style.display = 'block';
-    geocodeTimer = setTimeout(async () => {
-      try {
-        const res = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(q + ', Israel')}&format=json&limit=1&countrycodes=il`, {
-          headers: { 'Accept-Language': 'en' }
-        });
-        const data = await res.json();
-        if (data.length === 0) {
-          searchResults.innerHTML = '<div class="no-results">No location found</div>';
-          return;
+        searchResults.style.display = 'none';
+        dimAllExcept(locs.map(l => l.name));
+        if (locs.length === 1) {
+          const m = markers.find(x => x.d.name === d.name);
+          if (m) { map.setView([d.lat, d.lng], 15, {animate:true}); setTimeout(() => m.marker.fire('click'), 500); }
+        } else {
+          // Fit all locations in view
+          const bounds = L.latLngBounds(locs.map(l => [l.lat, l.lng]));
+          map.fitBounds(bounds.pad(0.3), {animate:true});
         }
-        const { lat, lon, display_name } = data[0];
-        const placeLat = +lat, placeLng = +lon;
-        // Find brands within 15km
-        const RADIUS = 15;
-        const nearby = DESIGNERS.filter(d => distKm(placeLat, placeLng, d.lat, d.lng) <= RADIUS);
-        markers.forEach(({d, pin}) => {
-          pin.classList.toggle('dimmed', !nearby.some(n => n.name === d.name));
-        });
-        // Zoom to location
-        const zoom = nearby.length > 5 ? 13 : 11;
-        map.flyTo([placeLat, placeLng], zoom, { animate: true, duration: 1.2 });
-        // Show results
-        const placeName = display_name.split(',')[0];
-        searchResults.innerHTML =
-          `<div class="search-result-item location-header" style="background:#f0ede9;pointer-events:none">
-            <div class="sri-name">${placeName}</div>
-            <div class="sri-meta">${nearby.length} brand${nearby.length !== 1 ? 's' : ''} nearby · within ${RADIUS}km</div>
-          </div>` +
-          (nearby.length > 0
-            ? nearby.map(d => `<div class="search-result-item" data-idx="${DESIGNERS.indexOf(d)}">
-                <div class="sri-name">${d.name}</div>
-                <div class="sri-meta">${d.city} · ${d.tags.slice(0,2).join(' · ')}</div>
-              </div>`).join('')
-            : '<div class="no-results">No brands in this area</div>');
-        searchResults.querySelectorAll('.search-result-item:not(.location-header)').forEach(item => {
-          item.addEventListener('click', () => {
-            const d = DESIGNERS[+item.dataset.idx];
-            const m = markers.find(x => x.d.name === d.name);
-            if (m) { map.setView([d.lat, d.lng], 15, {animate: true}); setTimeout(() => m.marker.fire('click'), 400); }
-            searchResults.style.display = 'none';
-            searchInput.value = d.name;
-            markers.forEach(({pin}) => pin.classList.remove('dimmed'));
-          });
-        });
-        searchResults.style.display = 'block';
-      } catch(e) {
-        searchResults.innerHTML = '<div class="no-results">Could not search location</div>';
-      }
-    }, 500);
+        markers.forEach(({pin}) => { if(pin) pin.classList.remove('dimmed'); });
+      });
+      return { label: d.name, meta, actionIdx };
+    });
+    sections.push({ header: 'Brands · ' + uniqueBrands.length + ' found', items });
   }
+
+  // 2. Tag/style matches
+  const tagMatches = ALL_TAGS.filter(t => t.toLowerCase().includes(query));
+  if (tagMatches.length > 0) {
+    const items = tagMatches.map(tag => {
+      const tagCount = DESIGNERS.filter(d => d.tags.includes(tag)).length;
+      const actionIdx = currentActions.length;
+      currentActions.push(() => {
+        searchInput.value = tag;
+        searchResults.style.display = 'none';
+        const matching = DESIGNERS.filter(d => d.tags.includes(tag)).map(d => d.name);
+        dimAllExcept(matching);
+        const bounds = L.latLngBounds(
+          DESIGNERS.filter(d => d.tags.includes(tag)).map(d => [d.lat, d.lng])
+        );
+        map.fitBounds(bounds.pad(0.2), {animate:true});
+      });
+      return { label: tag, meta: tagCount + ' brands', actionIdx };
+    });
+    sections.push({ header: 'Styles', items });
+  }
+
+  // 3. Location suggestions (show immediately, geocode on select)
+  const knownAreas = [
+    {name:'Dizengoff', lat:32.0793, lng:34.7736, zoom:15},
+    {name:'Sheinkin', lat:32.0638, lng:34.7720, zoom:16},
+    {name:'Florentin', lat:32.0548, lng:34.7650, zoom:15},
+    {name:'Neve Tzedek', lat:32.0565, lng:34.7560, zoom:15},
+    {name:'Rothschild', lat:32.0626, lng:34.7745, zoom:15},
+    {name:'Carmel Market', lat:32.0643, lng:34.7692, zoom:16},
+    {name:'Jaffa', lat:32.0505, lng:34.7507, zoom:14},
+    {name:'Tel Aviv', lat:32.0853, lng:34.7818, zoom:13},
+    {name:'Jerusalem', lat:31.7767, lng:35.2345, zoom:13},
+    {name:'Haifa', lat:32.7940, lng:34.9896, zoom:13},
+    {name:'Herzliya', lat:32.1640, lng:34.8440, zoom:13},
+    {name:'Ramat HaSharon', lat:32.1462, lng:34.8401, zoom:13},
+    {name:'Ramat Aviv', lat:32.1102, lng:34.8027, zoom:14},
+    {name:'North Tel Aviv', lat:32.1010, lng:34.7818, zoom:13},
+    {name:'Pardes Hanna', lat:32.4710, lng:34.9620, zoom:13},
+  ];
+  const areaMatches = knownAreas.filter(a => a.name.toLowerCase().includes(query));
+  // Also try geocode for unknowns
+  const needsGeocode = areaMatches.length === 0 && uniqueBrands.length === 0 && tagMatches.length === 0;
+
+  if (areaMatches.length > 0) {
+    const items = areaMatches.map(area => {
+      const RADIUS = area.zoom >= 15 ? 1 : area.zoom >= 14 ? 3 : 10;
+      const nearby = DESIGNERS.filter(d => distKm(area.lat, area.lng, d.lat, d.lng) <= RADIUS);
+      const actionIdx = currentActions.length;
+      currentActions.push(() => {
+        searchInput.value = area.name;
+        searchResults.style.display = 'none';
+        map.flyTo([area.lat, area.lng], area.zoom, {animate:true, duration:1.2});
+        if (nearby.length > 0) {
+          dimAllExcept(nearby.map(d => d.name));
+          setTimeout(() => {
+            markers.forEach(({pin}) => { if(pin) pin.classList.remove('dimmed'); });
+          }, 8000);
+        }
+      });
+      return { label: area.name, meta: nearby.length > 0 ? (nearby.length + ' brands nearby') : 'Area', actionIdx };
+    });
+    sections.push({ header: 'Areas', items });
+  }
+
+  if (needsGeocode) {
+    // Show "Search for location" option
+    const actionIdx = currentActions.length;
+    currentActions.push(async () => {
+      searchResults.innerHTML = '<div class="no-results">Searching…</div>';
+      searchResults.style.display = 'block';
+      try {
+        const res = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(q + ', Israel')}&format=json&limit=1&countrycodes=il`, { headers: {'Accept-Language':'en'} });
+        const data = await res.json();
+        if (!data.length) { searchResults.innerHTML = '<div class="no-results">No location found</div>'; return; }
+        const {lat, lon, display_name} = data[0];
+        const placeLat = +lat, placeLng = +lon;
+        const RADIUS = 10;
+        const nearby = DESIGNERS.filter(d => distKm(placeLat, placeLng, d.lat, d.lng) <= RADIUS);
+        map.flyTo([placeLat, placeLng], 14, {animate:true, duration:1.2});
+        dimAllExcept(nearby.map(d => d.name));
+        searchInput.value = display_name.split(',')[0];
+        searchResults.style.display = 'none';
+      } catch(e) { searchResults.innerHTML = '<div class="no-results">Could not find location</div>'; }
+    });
+    sections.push({ header: 'Location', items: [{ label: 'Search "' + q + '" on map', meta: 'Geocode search', actionIdx }] });
+  }
+
+  showDropdown(sections);
+
+  // Wire up click handlers
+  searchResults.querySelectorAll('.search-result-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const idx = +item.dataset.actionIdx;
+      if (currentActions[idx]) currentActions[idx]();
+    });
+  });
 }
 
 searchInput.addEventListener('input', e => runSearch(e.target.value));
@@ -554,31 +816,160 @@ document.addEventListener('click', e => {
   if (!e.target.closest('#map-search-wrap')) searchResults.style.display = 'none';
 });
 
-// Add markers
-DESIGNERS.forEach(d => {
-  const marker = L.marker([d.lat, d.lng], { icon: makeIcon(d.fav) }).addTo(map);
-  marker.bindTooltip(`<strong>${d.name}</strong><br>${d.addresses && d.addresses.length ? d.addresses[0] : d.city + ', Israel'}`, {
-    direction: 'top', offset: [0, -8], opacity: 1
+// Escape to clear
+searchInput.addEventListener('keydown', e => {
+  const items = searchResults.querySelectorAll('.search-result-item');
+  if (e.key === 'Escape') { resetMap(); }
+  else if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    focusedIdx = Math.min(focusedIdx + 1, items.length - 1);
+    items.forEach((el, i) => el.classList.toggle('focused', i === focusedIdx));
+  } else if (e.key === 'ArrowUp') {
+    e.preventDefault();
+    focusedIdx = Math.max(focusedIdx - 1, 0);
+    items.forEach((el, i) => el.classList.toggle('focused', i === focusedIdx));
+  } else if (e.key === 'Enter' && focusedIdx >= 0) {
+    e.preventDefault();
+    items[focusedIdx]?.click();
+  }
+});
+
+// Build location-first data model
+function coordKey(lat, lng) {
+  return Math.round(lat * 5000) / 5000 + ',' + Math.round(lng * 5000) / 5000;
+}
+
+const locationMap = new Map();
+DESIGNERS.forEach(function(d) {
+  const key = coordKey(d.lat, d.lng);
+  if (!locationMap.has(key)) {
+    locationMap.set(key, { lat: d.lat, lng: d.lng, address: (d.addresses && d.addresses[0]) ? d.addresses[0] : d.city + ', Israel', brands: [] });
+  }
+  locationMap.get(key).brands.push(d);
+});
+
+const locations = [...locationMap.values()];
+let currentLocation = null;
+
+function showLocationPanel(loc) {
+  currentLocation = loc;
+  const brandBody = document.getElementById('panel').querySelector('.panel-body:not(#loc-panel-body)');
+  if (brandBody) brandBody.style.display = 'none';
+  document.getElementById('panel-img-wrap').style.display = 'none';
+  document.getElementById('location-panel').style.display = 'flex';
+  document.getElementById('loc-back-btn').style.display = 'none';
+  document.getElementById('loc-panel-img-wrap').innerHTML = '';
+  const content = document.getElementById('loc-panel-content');
+  let out = '<div class="loc-panel-header">' + loc.address + '</div>';
+  out += '<div class="loc-panel-sub">' + loc.brands.length + ' brands at this address</div>';
+  out += '<div style="margin-top:1.5rem">';
+  loc.brands.forEach(function(d, i) {
+    const thumb = d.img ? '<img class="loc-brand-thumb" src="' + d.img + '" alt="' + d.name + '"/>' : '<div class="loc-brand-thumb-placeholder"></div>';
+    const tags = d.tags.slice(0,2).map(function(t){ return '<span class="loc-brand-tag">' + t + '</span>'; }).join('');
+    out += '<div class="loc-brand-row" data-bidx="' + i + '">' + thumb + '<div><div class="loc-brand-name">' + d.name + '</div><div class="loc-brand-tags">' + tags + '</div></div></div>';
   });
-  const pin = marker._icon?.querySelector?.('.map-pin') || null;
-  markers.push({ d, marker, get pin() { return marker._icon?.querySelector('.map-pin'); } });
-  marker.on('click', () => {
+  out += '</div>';
+  content.innerHTML = out;
+  content.querySelectorAll('.loc-brand-row').forEach(function(row) {
+    row.addEventListener('click', function() { showBrandFromLocation(loc.brands[+row.dataset.bidx]); });
+  });
+  panel.classList.add('open');
+  document.getElementById('zoom-controls').style.right = (window.innerWidth < 600 ? '16px' : '416px');
+}
+
+function showBrandFromLocation(d) {
+  document.getElementById('location-panel').style.display = 'none';
+  document.getElementById('panel-img-wrap').style.display = '';
+  const brandBody = document.getElementById('panel').querySelector('.panel-body:not(#loc-panel-body)');
+  if (brandBody) brandBody.style.display = 'flex';
+  document.getElementById('loc-back-btn').style.display = 'flex';
+  openPanel(d);
+}
+
+// One marker per unique location
+locations.forEach(function(loc) {
+  const isSingle = loc.brands.length === 1;
+  const sz = isSingle ? 10 : 14;
+  const icon = L.divIcon({
+    className: '',
+    html: '<div class="map-pin"></div>',
+    iconSize: [sz, sz],
+    iconAnchor: [sz/2, sz/2],
+  });
+  const marker = L.marker([loc.lat, loc.lng], { icon }).addTo(map);
+  loc.marker = marker;
+  // push first brand for search compat
+  markers.push({ d: loc.brands[0], marker, get pin() { return marker._icon?.querySelector('.map-pin'); } });
+
+  // Click handler
+  marker.on('click', function() {
     if (activeMarker && activeMarker !== marker) {
       activeMarker._icon?.querySelector('.map-pin')?.classList.remove('active');
     }
     activeMarker = marker;
     marker._icon?.querySelector('.map-pin')?.classList.add('active');
-    openPanel(d);
-    // Offset map center to account for panel
-    const px = map.latLngToContainerPoint([d.lat, d.lng]);
+    if (loc.brands.length === 1) {
+      document.getElementById('location-panel').style.display = 'none';
+      document.getElementById('panel-img-wrap').style.display = '';
+      const brandBody = document.getElementById('panel').querySelector('.panel-body:not(#loc-panel-body)');
+      if (brandBody) brandBody.style.display = 'flex';
+      document.getElementById('loc-back-btn').style.display = 'none';
+      openPanel(loc.brands[0]);
+    } else {
+      showLocationPanel(loc);
+    }
+    const px = map.latLngToContainerPoint([loc.lat, loc.lng]);
     const offset = window.innerWidth < 600 ? 0 : 200;
-    const newPx = L.point(px.x - offset, px.y);
-    const newLatLng = map.containerPointToLatLng(newPx);
-    map.panTo(newLatLng, { animate: true });
+    map.panTo(map.containerPointToLatLng(L.point(px.x - offset, px.y)), { animate: true });
   });
+
+  // Label
+  const labelText = loc.brands.length === 1 ? loc.brands[0].name : loc.brands.length + ' brands';
+  const labelIcon = L.divIcon({
+    className: 'map-label-div',
+    html: '<span class="map-label">' + labelText + '</span>',
+    iconSize: null, iconAnchor: [-10, 7],
+  });
+  L.marker([loc.lat, loc.lng], { icon: labelIcon, interactive: false, zIndexOffset: -1 }).addTo(map);
+
+  // Hover tooltip
+  const tipName = loc.brands.length === 1 ? loc.brands[0].name : loc.brands.length + ' brands';
+  marker.bindTooltip(
+    '<div class="tip-name">' + tipName + '</div><div class="tip-addr">' + loc.address + '</div>',
+    { direction: 'top', offset: [0, -10], opacity: 1, className: 'map-hover-tip' }
+  );
 });
 
-document.getElementById('map-count').textContent = `${DESIGNERS.length} Locations`;
+document.getElementById('map-count').textContent = DESIGNERS.length + ' Locations';
+
+// Show/hide labels based on zoom
+const LABEL_MIN_ZOOM = 14;
+
+function updateLabels() {
+  const zoom = map.getZoom();
+  // Show/hide permanent text labels
+  document.querySelectorAll('.map-label-div').forEach(el => {
+    el.style.display = zoom < LABEL_MIN_ZOOM ? 'none' : '';
+  });
+}
+
+map.on('zoomend', updateLabels);
+map.on('load', updateLabels);
+setTimeout(updateLabels, 500);
+
+// Auto-open brand from URL param
+const urlParams = new URLSearchParams(window.location.search);
+const brandParam = urlParams.get('brand');
+if (brandParam) {
+  const decoded = decodeURIComponent(brandParam).toLowerCase();
+  const match = markers.find(m => m.d.name.toLowerCase() === decoded);
+  if (match) {
+    setTimeout(() => {
+      map.setView([match.d.lat, match.d.lng], 15, { animate: true });
+      setTimeout(() => match.marker.fire('click'), 600);
+    }, 300);
+  }
+}
 
 // Language support
 const MAP_TRANSLATIONS = {
@@ -643,6 +1034,396 @@ if (mapLang === 'he') {
   document.getElementById('lang-toggle-map').textContent = 'עב | EN';
   applyMapLang();
 }
+let mapMobileOpen = false;
+const mapMobileMenu = document.getElementById('map-mobile-menu');
+
+function toggleMapMobileMenu() {
+  mapMobileOpen = !mapMobileOpen;
+  if (mapMobileOpen) {
+    mapMobileMenu.style.display = 'flex';
+    requestAnimationFrame(() => { mapMobileMenu.style.transform = 'translateX(0)'; });
+    document.body.style.overflow = 'hidden';
+  } else {
+    mapMobileMenu.style.transform = 'translateX(100%)';
+    document.body.style.overflow = '';
+    setTimeout(() => { mapMobileMenu.style.display = 'none'; }, 350);
+  }
+}
+
+// Update map mobile menu lang
+const _origApplyMapLang = applyMapLang;
+applyMapLang = function() {
+  _origApplyMapLang();
+  const t = MAP_TRANSLATIONS[mapLang];
+  const d = document.getElementById('mmenu-designers');
+  const m = document.getElementById('mmenu-map');
+  const a = document.getElementById('mmenu-about');
+  const s = document.getElementById('mmenu-submit');
+  if (d) d.textContent = t.navDesigners;
+  if (m) m.textContent = t.navMap;
+  if (a) a.textContent = t.navAbout;
+  if (s) s.textContent = t.navSubmit;
+};
+
 </script>
+</body>
+</html>
+  // Maskit - multiple locations found
+  { name:"Maskit", url:"https://maskit.com/", tags:["Artisan","Heritage","Luxury"], desc:"Founded in 1954 by Ruth Dayan — Israel's first and only haute couture house. Store in Jaffa, Ramat HaSharon, Hod HaSharon, and new Dizengoff flagship.", img:"https://maskit.com/cdn/shop/files/Maskit_11-03-26_3167.jpg?v=1773583176&width=1800", city:"Jaffa", lat:32.0508, lng:34.7523, fav:true, addresses:["14 HaTsorfim St, Jaffa"], phone:"03-6884004", email:"marketing@maskit.com", hours:["Sun–Thu 10:00–19:00","Fri 10:00–15:00"] },
+  { name:"Maskit", url:"https://maskit.com/", tags:["Artisan","Heritage","Luxury"], desc:"Maskit — Ramat HaSharon, 28 Ossishkin St.", img:"https://maskit.com/cdn/shop/files/Maskit_11-03-26_3167.jpg?v=1773583176&width=1800", city:"Ramat HaSharon", lat:32.1462, lng:34.8401, fav:false, addresses:["28 Ossishkin St, Ramat HaSharon"], phone:"03-6884004", email:"marketing@maskit.com" },
+  { name:"Maskit", url:"https://maskit.com/", tags:["Artisan","Heritage","Luxury"], desc:"Maskit — New Dizengoff flagship, 173 Dizengoff St, Tel Aviv.", img:"https://maskit.com/cdn/shop/files/Maskit_11-03-26_3167.jpg?v=1773583176&width=1800", city:"Tel Aviv", lat:32.0818, lng:34.7737, fav:false, addresses:["173 Dizengoff St, Tel Aviv"] },
+  // Dodo Bar Or - studio address (Groniman 36 is likely studio/atelier, not retail)
+  // Aluma - Basel Square, online only now - skip
+  // Karen Mizrahi - need to verify
+
+  // Maskit locations
+  { name:"Maskit", url:"https://maskit.com/", tags:["Artisan","Heritage","Luxury"], desc:"Founded in 1954 by Ruth Dayan — Israel's first and only haute couture house. Revived by Sharon Tal.", img:"https://maskit.com/cdn/shop/files/Maskit_11-03-26_3167.jpg?v=1773583176&width=1800", city:"Jaffa", lat:32.0508, lng:34.7523, fav:true, addresses:["14 HaTsorfim St, Jaffa"], phone:"03-6884004", email:"marketing@maskit.com", hours:["Sun–Thu 10:00–19:00","Fri 10:00–15:00"] },
+  { name:"Maskit", url:"https://maskit.com/", tags:["Artisan","Heritage","Luxury"], desc:"Maskit — Ramat HaSharon.", img:"https://maskit.com/cdn/shop/files/Maskit_11-03-26_3167.jpg?v=1773583176&width=1800", city:"Ramat HaSharon", lat:32.1462, lng:34.8401, fav:false, addresses:["28 Ossishkin St, Ramat HaSharon"], phone:"03-6884004" },
+  { name:"Maskit", url:"https://maskit.com/", tags:["Artisan","Heritage","Luxury"], desc:"Maskit — New Dizengoff flagship.", img:"https://maskit.com/cdn/shop/files/Maskit_11-03-26_3167.jpg?v=1773583176&width=1800", city:"Tel Aviv", lat:32.0818, lng:34.7737, fav:false, addresses:["173 Dizengoff St, Tel Aviv"] },
+];
+
+// Build location-first"en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ModeIL — Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700;900&family=Inter:wght@300;400;600&family=Space+Grotesk:wght@300;400;700&family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; border-radius: 0 !important; }
+  html, body { height: 100%; overflow: hidden; font-family: 'Inter', sans-serif; background: #F4F4F4; color: #1A1A18; cursor: crosshair; }
+
+  /* Nav */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(244,244,244,0.96); backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(198,198,198,0.2);
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.5rem 3rem; height: 72px;
+  }
+  [dir="rtl"] { font-family: 'Assistant', 'Inter', sans-serif !important; }
+  [dir="rtl"] .nav-logo, [dir="rtl"] .panel-name { font-family: 'Assistant', 'Epilogue', sans-serif !important; }
+  [dir="rtl"] .nav-links { direction: rtl; }
+  #lang-toggle-map { cursor: pointer; font-family: 'Space Grotesk', sans-serif; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; background: none; border: 1px solid #000; padding: 5px 10px; color: #000; transition: all 0.2s; }
+  #lang-toggle-map:hover { background: #000; color: #fcf9f5; }
+  @media (max-width: 600px) { #lang-toggle-map { display: none !important; } #map-mobile-btn { display: flex !important; } }
+  *:focus-visible { outline: 2px solid #B8748A; outline-offset: 2px; }
+  .nav-logo { font-family: 'Epilogue', sans-serif; font-weight: 900; font-size: 1.5rem; letter-spacing: -0.04em; text-transform: uppercase; text-decoration: none; color: #000; }
+  .nav-links { display: flex; gap: 2.5rem; font-family: 'Space Grotesk', sans-serif; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; }
+  .nav-links a { color: rgba(0,0,0,0.35); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: #000; }
+  .nav-links a.active { color: #000; border-bottom: 2px solid #000; padding-bottom: 2px; }
+
+  /* Map */
+  #map {
+    position: fixed; top: 72px; left: 0; right: 0; bottom: 0;
+    z-index: 1;
+  }
+
+  /* Leaflet overrides */
+  .leaflet-container { background: #F0ECE4; cursor: crosshair !important; }
+  .leaflet-control-zoom a { border-radius: 0 !important; font-family: 'Space Grotesk', sans-serif; }
+  .leaflet-control-attribution { font-family: 'Space Grotesk', sans-serif; font-size: 9px; letter-spacing: 0.05em; }
+
+  /* Hide default zoom */
+  .leaflet-control-zoom { display: none !important; }
+
+  /* Search overlay */
+  #map-search-wrap {
+    position: fixed; top: 92px; left: 50%; transform: translateX(-50%);
+    z-index: 600; width: min(520px, calc(100vw - 3rem));
+  }
+  #map-search-bar {
+    display: flex; align-items: center;
+    background: rgba(244,244,244,0.97); backdrop-filter: blur(10px);
+    border: 1.5px solid #000;
+    padding: 0 1rem;
+    gap: 0.5rem;
+  }
+  #map-search-input {
+    flex: 1; background: transparent; border: none; outline: none;
+    font-family: 'Space Grotesk', sans-serif; font-size: 0.7rem;
+    letter-spacing: 0.15em; text-transform: uppercase; color: #000;
+    padding: 0.9rem 0; cursor: text;
+  }
+  #map-search-input::placeholder { color: rgba(0,0,0,0.3); }
+  #map-search-clear { background: none; border: none; cursor: pointer; opacity: 0.4; display: none; padding: 0; }
+  #map-search-clear:hover { opacity: 1; }
+
+  /* Search results dropdown */
+  #map-search-results {
+    background: rgba(244,244,244,0.99); border: 1.5px solid #000; border-top: none;
+    max-height: 340px; overflow-y: auto; display: none;
+  }
+  .sri-section-header {
+    padding: 6px 1rem 4px; font-family: 'Space Grotesk', sans-serif;
+    font-size: 8px; letter-spacing: 0.28em; text-transform: uppercase;
+    opacity: 0.35; background: #F4F4F4; position: sticky; top: 0;
+  }
+  .search-result-item {
+    padding: 0.65rem 1rem; cursor: pointer;
+    display: flex; flex-direction: column; gap: 2px;
+    border-bottom: 1px solid rgba(198,198,198,0.2);
+    transition: background 0.12s;
+  }
+  .search-result-item:last-child { border-bottom: none; }
+  .search-result-item:hover, .search-result-item.focused { background: #F0ECE4; }
+  .sri-name { font-family: 'Epilogue', sans-serif; font-weight: 900; font-size: 0.82rem; text-transform: uppercase; letter-spacing: -0.02em; }
+  .sri-meta { font-family: 'Space Grotesk', sans-serif; font-size: 9px; letter-spacing: 0.13em; text-transform: uppercase; opacity: 0.45; }
+  .sri-tag { display: inline-block; font-family: 'Space Grotesk', sans-serif; font-size: 9px; letter-spacing: 0.13em; text-transform: uppercase; border: 1px solid #c6c6c6; padding: 2px 7px; }
+  .no-results { padding: 1rem; font-family: 'Space Grotesk', sans-serif; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.35; text-align: center; }
+
+  /* Zoom buttons */
+  #zoom-controls {
+    position: fixed; top: 50%; right: 16px;
+    transform: translateY(-50%);
+    z-index: 600; display: flex; flex-direction: column; gap: 2px;
+    transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  #panel.open ~ #zoom-controls, body:has(#panel.open) #zoom-controls {
+    right: calc(400px + 16px);
+  }
+  .zoom-btn {
+    width: 40px; height: 40px;
+    background: rgba(244,244,244,0.97); border: 1.5px solid #000;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; font-size: 1.1rem; font-weight: 900;
+    font-family: 'Space Grotesk', sans-serif;
+    transition: background 0.15s;
+    user-select: none;
+  }
+  .zoom-btn:hover { background: #1A1A18; color: #F4F4F4; }
+
+  /* Dim unmatched pins */
+  .map-pin.dimmed { opacity: 0.15; transform: scale(0.7); }
+
+
+  /* Permanent pin labels */
+  .map-label {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    font-family: 'Space Grotesk', sans-serif !important;
+    font-size: 10px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.12em !important;
+    text-transform: uppercase !important;
+    color: #1A1A18 !important;
+    white-space: nowrap !important;
+    pointer-events: none !important;
+
+  }
+  .map-label::before { display: none !important; }
+
+  /* Hover tooltip override */
+  .leaflet-tooltip {
+    background: #000 !important;
+    color: #fcf9f5 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    font-family: 'Space Grotesk', sans-serif !important;
+    font-size: 10px !important;
+    letter-spacing: 0.12em !important;
+    text-transform: uppercase !important;
+    padding: 6px 10px !important;
+    box-shadow: none !important;
+    white-space: nowrap !important;
+  }
+  .leaflet-tooltip::before { display: none !important; }
+
+
+  /* Custom pin — uniform black with white border */
+  .map-pin {
+    width: 10px; height: 10px;
+    background: #1A1A18;
+    border: 2px solid #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+    transition: transform 0.15s;
+    cursor: pointer !important;
+  }
+  .map-pin:hover { transform: scale(1.5); }
+  .map-pin.active { transform: scale(1.5); }
+  .map-pin.featured { background: #1A1A18; border: 2px solid #fff; }
+
+  /* Side panel */
+  #panel {
+    position: fixed; top: 72px; right: 0; bottom: 0;
+    width: 400px; background: #FFFFFF;
+    border-left: 1px solid rgba(198,198,198,0.3);
+    z-index: 500; overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex; flex-direction: column;
+  }
+  #panel.open { transform: translateX(0); }
+
+  .panel-img {
+    width: 100%; aspect-ratio: 1/1;
+    object-fit: cover; display: block;
+    background: #EDE9E1;
+  }
+  .panel-img-placeholder {
+    width: 100%; aspect-ratio: 1/1;
+    background: repeating-linear-gradient(-45deg, #EDE9E1, #EDE9E1 4px, #F4F4F4 4px, #F4F4F4 12px);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Space Grotesk', sans-serif; font-size: 10px;
+    letter-spacing: 0.2em; text-transform: uppercase; color: #aaa;
+  }
+  .panel-body { padding: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+  .panel-name { font-family: 'Epilogue', sans-serif; font-weight: 900; font-size: 2rem; text-transform: uppercase; letter-spacing: -0.03em; line-height: 1; }
+  .panel-location { font-family: 'Space Grotesk', sans-serif; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.55; line-height: 1.6; }
+  .panel-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .panel-tag { font-family: 'Space Grotesk', sans-serif; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; border: 1px solid rgba(26,26,24,0.12); padding: 3px 8px; }
+  .panel-desc { font-family: 'Inter', sans-serif; font-size: 0.8rem; line-height: 1.65; color: #474747; }
+  .panel-extra-block { font-family: 'Space Grotesk', sans-serif; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.6; line-height: 1.8; }
+  .panel-extra-block a { color: inherit; text-decoration: none; }
+  .panel-extra-block a:hover { opacity: 0.6; }
+  .panel-section-label {
+    font-family: 'Space Grotesk', sans-serif; font-size: 8px; letter-spacing: 0.25em;
+    text-transform: uppercase; opacity: 0.4; margin-bottom: 4px;
+  }
+  .panel-section { padding-top: 1rem; border-top: 1px solid rgba(198,198,198,0.25); }
+  .panel-contact-row { font-family: 'Space Grotesk', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; line-height: 2; }
+  .panel-contact-row a { color: inherit; text-decoration: none; }
+  .panel-contact-row a:hover { opacity: 0.5; }
+  .panel-location-item { padding: 8px 0; border-bottom: 1px solid rgba(198,198,198,0.2); }
+  .panel-location-item:last-child { border-bottom: none; }
+  .panel-location-item .loc-addr { font-family: 'Space Grotesk', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; }
+  .panel-location-item .loc-phone { font-family: 'Space Grotesk', sans-serif; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.5; margin-top: 2px; }
+  .panel-hours-list { list-style: none; padding: 0; margin: 0; }
+  .panel-hours-list li { font-family: 'Space Grotesk', sans-serif; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; line-height: 2; opacity: 0.75; }
+  .panel-heart-btn { background: none; border: none; cursor: pointer; padding: 0; display: flex; align-items: center; gap: 6px; font-family: 'Space Grotesk', sans-serif; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.6; transition: opacity 0.2s; }
+  .panel-heart-btn:hover { opacity: 1; }
+  .panel-heart-btn.saved .ph-icon { font-variation-settings: 'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24; color: #B8748A; }
+  .panel-heart-btn.saved { opacity: 1; color: #B8748A; }
+  @keyframes panelHeartPulse { 0%{transform:scale(1)} 40%{transform:scale(1.4)} 70%{transform:scale(0.9)} 100%{transform:scale(1)} }
+  .panel-heart-pulse { animation: panelHeartPulse 0.35s ease forwards; }
+  .panel-link {
+    font-family: 'Space Grotesk', sans-serif; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+    text-decoration: underline; text-underline-offset: 4px; color: #000;
+    display: flex; align-items: center; gap: 6px; width: fit-content;
+    transition: opacity 0.2s;
+  }
+  .panel-link:hover { opacity: 1; color: #B8748A; }
+  .panel-close {
+    position: absolute; top: 1.25rem; right: 1.25rem;
+    background: rgba(244,244,244,0.9); border: 1px solid #c6c6c6;
+    width: 36px; height: 36px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; z-index: 10; transition: background 0.2s;
+  }
+  .panel-close:hover { background: #EDE9E1; }
+
+  /* Count badge */
+  #map-count {
+    position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%);
+    background: rgba(244,244,244,0.92); border: 1px solid rgba(198,198,198,0.4);
+    font-family: 'Space Grotesk', sans-serif; font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase;
+    padding: 8px 18px; z-index: 400; opacity: 0.7;
+    pointer-events: none;
+  }
+
+  @media (max-width: 600px) {
+    #panel { width: 100%; }
+    nav { padding: 1.25rem 1.5rem; }
+    .nav-links { gap: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+  <a href="Israeli Fashion Index.html" class="nav-logo">ModeIL</a>
+  <div class="nav-links" id="map-nav-links">
+    <a href="Israeli Fashion Index.html" id="nav-designers">Designers</a>
+    <a href="Map.html" class="active" id="nav-map">Map</a>
+    <a href="#" id="nav-about">About</a>
+    <a href="#" id="nav-submit">Submit</a>
+  </div>
+  <div class="flex items-center gap-3">
+    <button id="lang-toggle-map" onclick="toggleMapLang()">EN | עב</button>
+    <button id="map-mobile-btn" onclick="toggleMapMobileMenu()" style="display:none">
+      <span class="material-symbols-outlined" style="font-size:24px;color:#000">menu</span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div id="map-mobile-menu" style="display:none;position:fixed;inset:0;background:#F4F4F4;z-index:999;flex-direction:column;padding:1.5rem 2rem;transform:translateX(100%);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1)">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4rem">
+    <a href="Israeli Fashion Index.html" style="font-family:'Epilogue',sans-serif;font-weight:900;font-size:1.5rem;letter-spacing:-0.04em;text-transform:uppercase;color:#000;text-decoration:none">ModeIL</a>
+    <button onclick="toggleMapMobileMenu()">
+      <span class="material-symbols-outlined" style="font-size:24px;color:#000">close</span>
+    </button>
+  </div>
+  <nav style="display:flex;flex-direction:column;gap:2rem">
+    <a href="Israeli Fashion Index.html" style="font-family:'Epilogue',sans-serif;font-weight:900;font-size:3rem;text-transform:uppercase;letter-spacing:-0.03em;color:#000;text-decoration:none;border-bottom:1px solid #e5e2de;padding-bottom:1.5rem" id="mmenu-designers">Designers</a>
+    <a href="Map.html" style="font-family:'Epilogue',sans-serif;font-weight:900;font-size:3rem;text-transform:uppercase;letter-spacing:-0.03em;color:#000;text-decoration:none;border-bottom:1px solid #e5e2de;padding-bottom:1.5rem" id="mmenu-map">Map</a>
+    <a href="#" style="font-family:'Epilogue',sans-serif;font-weight:900;font-size:3rem;text-transform:uppercase;letter-spacing:-0.03em;color:#000;text-decoration:none;border-bottom:1px solid #e5e2de;padding-bottom:1.5rem" id="mmenu-about">About</a>
+    <a href="#" style="font-family:'Epilogue',sans-serif;font-weight:900;font-size:3rem;text-transform:uppercase;letter-spacing:-0.03em;color:#000;text-decoration:none" id="mmenu-submit">Submit</a>
+  </nav>
+</div>
+
+<!-- Map -->
+<div id="map"></div>
+
+<!-- Count -->
+<div id="map-count">74 Locations</div>
+
+<!-- Side Panel -->
+<div id="panel">
+  <button class="panel-close" id="panel-close">
+    <span class="material-symbols-outlined" style="font-size:18px">close</span>
+  </button>
+  <div id="panel-img-wrap"></div>
+  <div class="panel-body">
+    <div class="panel-name" id="panel-name"></div>
+    <div class="panel-location" id="panel-location"></div>
+    <div class="panel-tags" id="panel-tags"></div>
+    <div class="panel-desc" id="panel-desc"></div>
+    <div id="panel-fav" style="margin-top:4px"></div>
+    <div id="panel-contact" style="display:none"></div>
+    <div id="panel-extra-locations" style="display:none"></div>
+    <div id="panel-hours" style="display:none"></div>
+    <a class="panel-link" id="panel-link" href="#" target="_blank" rel="noopener">
+      Visit Website →
+    </a>
+  </div>
+
+  <!-- Location panel (multi-brand) -->
+  <div id="location-panel" style="display:none; flex-direction:column; height:100%;">
+    <div id="loc-panel-img-wrap"></div>
+    <div class="panel-body" id="loc-panel-body">
+      <button class="panel-back-btn" id="loc-back-btn" style="display:none" onclick="showLocationPanel(currentLocation)">
+        <span class="material-symbols-outlined" style="font-size:14px">arrow_back</span>
+        <span>All locations</span>
+      </button>
+      <div id="loc-panel-content"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Map search -->
+<div id="map-search-wrap">
+  <div id="map-search-bar">
+    <span class="material-symbols-outlined" style="font-size:16px;opacity:0.35">search</span>
+    <input id="map-search-input" type="text" placeholder="Brand, city, or style…" autocomplete="off"/>
+    <button id="map-search-clear"><span class="material-symbols-outlined" style="font-size:16px">close</span></button>
+  </div>
+  <div id="map-search-results"></div>
+</div>
+
+<!-- Zoom buttons -->
+<div id="zoom-controls">
+  <button class="zoom-btn" id="zoom-in">+</button>
+  <button class="zoom-btn" id="zoom-out">−</button>
+</div>
+
+
 </body>
 </html>
