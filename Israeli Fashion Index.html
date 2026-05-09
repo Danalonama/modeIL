@@ -69,7 +69,7 @@
   .group:hover .designer-img { filter: grayscale(0%); }
   .designer-card { transition: opacity 0.35s ease; }
   .designer-card.hidden-card { display: none !important; }
-  .filter-btn.active { background-color: #F4ECF0 !important; color: #B8748A !important; border-color: #B8748A !important; }
+  .filter-btn.active { background-color: #000 !important; color: #fff !important; border-color: #000 !important; }
   @keyframes countFlash {
     0% { opacity: 0; transform: translateY(3px); }
     100% { opacity: 0.45; transform: translateY(0); }
@@ -113,6 +113,7 @@
   <div class="hidden md:flex items-center gap-12">
     <div class="flex gap-8 font-label uppercase tracking-widest text-sm">
       <a class="text-black border-b-2 border-black pb-1" href="Israeli Fashion Index.html">Designers</a>
+      <a class="text-black/40 hover:text-black transition-colors duration-300" href="Stores.html">Stores</a>
       <a class="text-black/40 hover:text-black transition-colors duration-300" href="Map.html">Map</a>
       <a class="text-black/40 hover:text-black transition-colors duration-300" href="#">About</a>
       <a class="text-black/40 hover:text-black transition-colors duration-300" href="#">Submit</a>
@@ -134,6 +135,7 @@
   </div>
   <nav class="flex flex-col gap-8">
     <a href="Israeli Fashion Index.html" class="font-headline font-black text-5xl uppercase tracking-tighter text-black hover:opacity-40 transition-opacity border-b border-[#1A1A18]/10 pb-6">Designers</a>
+    <a href="Stores.html" class="font-headline font-black text-5xl uppercase tracking-tighter text-black hover:opacity-40 transition-opacity border-b border-[#1A1A18]/10 pb-6">Stores</a>
     <a href="Map.html" class="font-headline font-black text-5xl uppercase tracking-tighter text-black hover:opacity-40 transition-opacity border-b border-[#1A1A18]/10 pb-6">Map</a>
     <a href="#" class="font-headline font-black text-5xl uppercase tracking-tighter text-black hover:opacity-40 transition-opacity border-b border-[#1A1A18]/10 pb-6">About</a>
     <a href="#" class="font-headline font-black text-5xl uppercase tracking-tighter text-black hover:opacity-40 transition-opacity pb-6">Submit</a>
@@ -185,6 +187,7 @@
           <button class="filter-btn font-label text-[10px] tracking-widest uppercase px-5 py-3 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="lingerie">Lingerie</button>
           <button class="filter-btn font-label text-[10px] tracking-widest uppercase px-5 py-3 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="menswear">Menswear</button>
           <button class="filter-btn font-label text-[10px] tracking-widest uppercase px-5 py-3 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="accessories">Accessories</button>
+          <button class="filter-btn font-label text-[10px] tracking-widest uppercase px-5 py-3 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="size-inclusive">Size Inclusive</button>
         </div>
         <button id="filter-next" class="hidden md:flex absolute right-0 top-0 bottom-2 items-center bg-gradient-to-l from-[#fcf9f5] to-transparent pl-4 z-10 opacity-50 hover:opacity-100 transition-opacity">
           <span class="material-symbols-outlined" style="font-size:18px">arrow_forward</span>
@@ -192,7 +195,7 @@
       </div>
       <div class="flex items-center gap-3 mt-4">
         <div class="w-2 h-2 bg-primary"></div>
-        <span id="designer-count" class="font-label text-[9px] tracking-[0.25em] uppercase opacity-40 count-flash">74 Designers</span>
+        <span id="designer-count" class="font-label text-[9px] tracking-[0.25em] uppercase opacity-40 count-flash">105 Designers</span>
       </div>
     </div>
 
@@ -429,6 +432,15 @@ const DESIGNERS = [
     fav: false
   },
   {
+    name: "Dalit Peer",
+    url: "https://dalitpeer.com/",
+    tags: ["artisan", "minimalist"],
+    tagLabels: ["Artisan", "Minimalist"],
+    desc: "Israeli womenswear by designer Dalit Peer — soft, considered silhouettes with a quiet, contemporary hand.",
+    img: "https://dalitpeer.com/cdn/shop/files/992_09a1ba2a-afa2-4194-ae4a-73f989e9337b.jpg?v=1777738688&width=720",
+    fav: false
+  },
+  {
     name: "Dikla Levsky",
     url: "https://diklalevsky.com/",
     tags: ["artisan", "luxury", "prints"],
@@ -444,15 +456,6 @@ const DESIGNERS = [
     tagLabels: ["Artisan", "Luxury"],
     desc: "One of Israel's most recognised fashion names — Dorin Frankfurt's work blends European sophistication with a distinctly Israeli sensibility.",
     img: "https://www.dorinfrankfurt.com/media/wysiwyg/SEV-55.jpg",
-    fav: false
-  },
-  {
-    name: "Dorit Sade",
-    url: "https://www.doritsade.com/",
-    tags: ["artisan"],
-    tagLabels: ["Artisan"],
-    desc: "Israeli womenswear with quiet originality — Dorit Sade designs for women who dress with intention and wear their clothes on their own terms.",
-    img: null,
     fav: false
   },
   {
@@ -489,6 +492,15 @@ const DESIGNERS = [
     tagLabels: ["Knitwear", "Sustainable", "Minimalist"],
     desc: "A designer knitwear studio: timeless design, fine natural fibres, responsible production in limited quantities. Minimalistic, effortless pieces ethically crafted in Europe.",
     img: "https://frett.life/cdn/shop/files/frett16.132623-crop.jpg?v=1765380986&width=1200",
+    fav: false
+  },
+  {
+    name: "Gala",
+    url: "https://www.galalabel.com/",
+    tags: ["artisan", "minimalist"],
+    tagLabels: ["Artisan", "Minimalist"],
+    desc: "Israeli womenswear label with a refined, contemporary point of view — considered silhouettes and quietly confident essentials.",
+    img: "https://static.wixstatic.com/media/4ff179_943fb2098cab4c02a9e3889daec6dfe0~mv2.jpg/v1/fill/w_441,h_665,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/4ff179_943fb2098cab4c02a9e3889daec6dfe0~mv2.jpg",
     fav: false
   },
   {
@@ -684,30 +696,12 @@ const DESIGNERS = [
     fav: true
   },
   {
-    name: "Seestarz",
-    url: "https://seestarz.com/",
-    tags: ["streetwear", "swimwear", "prints"],
-    tagLabels: ["Streetwear", "Swimwear", "Prints"],
-    desc: "Born from a sisterhood and a wildly popular Instagram fashion blog — Alona and Daniela turned follower demand into a full fashion brand. From swimwear to streetwear, Seestarz is a home for many women.",
-    img: "https://seestarz.com/cdn/shop/files/017A1703_0b116fe1-b3c1-4e6d-b421-82923d2984f6.jpg?v=1774079930&width=1800",
-    fav: false
-  },
-  {
     name: "Lazyeyeppl",
     url: "https://lazyeyeppl.com",
     tags: ["streetwear", "artisan"],
     tagLabels: ["Streetwear", "Artisan"],
     desc: "A Tel Aviv label with a distinctive editorial eye — considered, original Israeli fashion that refuses easy categorisation.",
     img: "https://lazyeyeppl.com/cdn/shop/files/lazy_eye_8_2_26232840.jpg?v=1770804433",
-    fav: false
-  },
-  {
-    name: "Tonari",
-    url: "https://tonari.co.il/",
-    tags: ["artisan", "minimalist", "prints"],
-    tagLabels: ["Artisan", "Minimalist", "Prints"],
-    desc: "Japanese-inspired Israeli fashion — minimalist clothing, colourful accessories and home objects with a spirit of wabi-sabi. High-end, fun, and deeply original.",
-    img: "https://tonari.co.il/cdn/shop/files/tc_day_1_34744.jpg?v=1756382771&width=1800",
     fav: false
   },
   {
@@ -833,7 +827,7 @@ const DESIGNERS = [
     tags: ["accessories", "artisan"],
     tagLabels: ["Accessories", "Artisan"],
     desc: "Israeli millinery — handcrafted hats for every occasion and every mood.",
-    img: null,
+    img: "https://justinehats.com/wp-content/uploads/2023/03/black-fashion-visor-ha-for-women-2.jpg",
     fav: false
   },
   {
@@ -851,7 +845,7 @@ const DESIGNERS = [
     tags: ["artisan", "minimalist"],
     tagLabels: ["Artisan", "Minimalist"],
     desc: "Founded in 2004 on Zamnehoff Street, Tel Aviv — a small independent label grown into a unique clothing and lifestyle brand. Classical, clean-cut, simple, and comfortable clothes for women, and occasionally men and children.",
-    img: null,
+    img: "https://images.squarespace-cdn.com/content/v1/5aa5328f0dbda33f405240b1/1721348790873-Y0YYX8ILAFGRQO3JIANK/8205F3A7-299C-4147-9A46-6908F9408B65.jpeg?format=750w",
     fav: false
   },
   {
@@ -905,7 +899,7 @@ const DESIGNERS = [
     tags: ["streetwear", "prints", "activewear"],
     tagLabels: ["Streetwear", "Prints", "Activewear"],
     desc: "An artist collective making psychedelic and urban tribe clothing — handmade in-house with a true passion for art. Trance-inspired prints, festival-ready hoodies, kimonos, pareos, and more. Abstract designs and wearable art from the lab.",
-    img: "https://cdn.modulus.co.il/plazmalab/www.plazmalab.com/images/MEN%20BANNERS%20W26%20copy.jpg?width=620&height=&rmode=crop&mode=crop&format=png",
+    img: "https://cdn.modulus.co.il//plazmalab/www.plazmalab.com/images/GRID%20THEORY%20BROWN%20TD_0005_Layer%2084.jpg?width=1000&height=1200&mode=pad",
     fav: false
   },
   {
@@ -979,6 +973,383 @@ const DESIGNERS = [
     tagLabels: ["Sustainable", "Artisan", "Activewear"],
     desc: "Israel's first yoga muslin blanket — soft, natural, breathable. Inhale Exhale creates yoga blankets, shawls, pareos, and T-shirts printed with original illustrations by Israeli women artists. Designed and made in Israel with ecological printing technology.",
     img: "https://static.wixstatic.com/media/2bd9a3_d0c79b8b3abe43dbb0661bb2a0d42769~mv2.jpg/v1/fill/w_640,h_360,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/2bd9a3_d0c79b8b3abe43dbb0661bb2a0d42769~mv2.jpg",
+    fav: false
+  },
+  {
+    name: "Ripple Yoga Wear",
+    url: "https://rippleyogawear.com/",
+    tags: ["activewear", "sustainable", "minimalist"],
+    tagLabels: ["Activewear", "Sustainable", "Minimalist"],
+    desc: "Israeli yoga and movement wear designed for flow — soft, breathable fabrics in calm, considered palettes for studio and everyday.",
+    img: "https://rippleyogawear.com/cdn/shop/files/IMG_4231_2048x.jpg?v=1707993718",
+    fav: false
+  },
+  {
+    name: "Miss Nori",
+    url: "https://missnori.com/",
+    tags: ["artisan", "minimalist"],
+    tagLabels: ["Artisan", "Minimalist"],
+    desc: "Israeli womenswear label by designer Nori — easy, wearable pieces with a soft, feminine sensibility and considered everyday silhouettes.",
+    img: "https://missnori.com/cdn/shop/files/2025_01_21-MN46178.jpg?v=1769020710&width=1800",
+    fav: false
+  },
+  {
+    name: "Vered Grebelsky",
+    url: "https://www.veredgrebelsky.com/",
+    tags: ["artisan", "luxury"],
+    tagLabels: ["Artisan", "Luxury"],
+    desc: "Tel Aviv–based designer crafting sculptural, feminine pieces that blend romantic detail with contemporary tailoring.",
+    img: "https://www.veredgrebelsky.com/cdn/shop/files/IMG_0214-Edit_1800x1800.jpg?v=1711366715",
+    fav: false
+  },
+  {
+    name: "Nataly Shevilly",
+    url: "https://natalyshevilly.co.il/",
+    tags: ["artisan", "luxury"],
+    tagLabels: ["Artisan", "Luxury"],
+    desc: "Israeli designer label by Nataly Shevilly — elegant, occasion-ready pieces with a feminine, considered hand.",
+    img: "https://natalyshevilly.co.il/wp-content/uploads/2026/05/372103-1.jpg",
+    fav: false
+  },
+  {
+    name: "Dorit Sade",
+    url: "https://www.doritsade.com/",
+    tags: ["artisan"],
+    tagLabels: ["Artisan"],
+    desc: "Israeli womenswear with quiet originality — Dorit Sade designs for women who dress with intention and wear their clothes on their own terms.",
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1dJoT9yJ3g_pCnpMe1TO8udfM6LgLGPN6Dg&s",
+    fav: false
+  },
+  {
+    name: "Gelada",
+    url: "https://flygelada.com/",
+    tags: ["artisan", "minimalist"],
+    tagLabels: ["Artisan", "Minimalist"],
+    desc: "Israeli design label with a fresh, contemporary point of view — considered silhouettes and a confident voice.",
+    img: "https://scontent.ftlv5-1.fna.fbcdn.net/v/t1.6435-9/38085937_1922703217794266_150900205611384832_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=13d280&_nc_ohc=GnG3t3iFYgUQ7kNvwE_KNPv&_nc_oc=AdpuGWPHTGsn6pV9zQN_D9eDzMV7EMhuGJNNJyNjUStvDXXd_1jL2ydKtFSi3CVQE4z8ffa5wYdNPefpg0K2SjZj&_nc_zt=23&_nc_ht=scontent.ftlv5-1.fna&_nc_gid=cV9Djk6wPC1iZZQlsjoplA&_nc_ss=7b2a8&oh=00_Af5G4S6seNH6oJYOIGRBqpq-U8EfMvQkDm9xCGrE8jz2rA&oe=6A2554CF",
+    fav: false
+  },
+  {
+    name: "Con.fail",
+    url: "https://www.con.fail/",
+    tags: ["streetwear", "artisan"],
+    tagLabels: ["Streetwear", "Artisan"],
+    desc: "Israeli label working in a streetwear-meets-conceptual register — playful, slightly off-kilter pieces that break the rules on purpose.",
+    img: "https://images.squarespace-cdn.com/content/v1/6348fddd5b3c37055ef9a9ca/c529e4f3-f172-4a11-b57a-665d9586178b/DR_02.jpg?format=750w",
+    fav: false
+  },
+  {
+    name: "Maya Negri",
+    url: "https://mayanegri.com/",
+    tags: ["artisan", "minimalist"],
+    tagLabels: ["Artisan", "Minimalist"],
+    desc: "Maya Negri — Israeli womenswear designer creating soft, considered silhouettes with a quiet, contemporary hand.",
+    img: "https://mayanegri.com/cdn/shop/files/E1B4B2FD-5361-4EDA-92B0-57833D1F48EE_1350x1800.jpg?v=1776700300",
+    fav: false
+  },
+  {
+    name: "Mishi",
+    url: "https://mishi.style/",
+    tags: ["artisan", "minimalist"],
+    tagLabels: ["Artisan", "Minimalist"],
+    desc: "Israeli label Mishi — easy, considered everyday pieces with a clean, modern silhouette.",
+    img: "https://mishi.style/cdn/shop/files/WhatsAppImage2026-04-28at19.38.54_5_1800x1800.jpg?v=1777406798",
+    fav: false
+  },
+  {
+    name: "Nina by Mili",
+    url: "https://www.ninabymili.com/",
+    tags: ["artisan", "minimalist"],
+    tagLabels: ["Artisan", "Minimalist"],
+    desc: "Nina by Mili — Israeli womenswear with a soft, feminine sensibility and contemporary tailoring.",
+    img: "https://www.ninabymili.com/cdn/shop/files/Untitled_800x1200px_800x1200px_23.jpg?v=1773861711",
+    fav: false
+  },
+  {
+    name: "Ruti",
+    url: "https://ruti.com/",
+    tags: ["minimalist", "luxury"],
+    tagLabels: ["Minimalist", "Luxury"],
+    desc: "Ruti — Israeli-born, globally-stocked womenswear known for clean, modern silhouettes and elevated everyday essentials.",
+    img: "https://ruti.com/cdn/shop/files/May-MothersDay-homepage-web_New-small_db320ccc-6165-462f-bc39-d7b84646ed56.jpg?v=1778099398&width=1500",
+    fav: false
+  },
+  {
+    name: "Keren Wolf",
+    url: "https://kerenwolf.co.il/",
+    tags: ["accessories", "artisan"],
+    tagLabels: ["Accessories", "Artisan"],
+    desc: "Keren Wolf — Israeli accessories label known for handcrafted bags and shoes with a sculptural, contemporary point of view.",
+    img: "https://kerenwolf.co.il/cdn/shop/files/KW_1800_800_copy_5_3ba06fac-fc81-4cf8-9df3-29b7d539250e_2000x.jpg?v=1765453226",
+    fav: false
+  },
+  {
+    name: "Ustabelle",
+    url: "https://ustabelle.co.il/",
+    tags: ["knitwear", "minimalist", "luxury"],
+    tagLabels: ["Knitwear", "Minimalist", "Luxury"],
+    desc: "Founded in 2016 as a children's label, Ustabelle expanded into womenswear in 2023 — premium denim, cashmere blends, and timeless tailored basics, with custom-dyed fabrics that go through two rounds of quality control before reaching your wardrobe.",
+    img: "https://ustabelle.co.il/cdn/shop/files/0014--ustabelle-15-03-261.jpg?v=1773655306&width=1667",
+    fav: false
+  },
+  {
+    name: "Gottex",
+    url: "https://gottex.co.il/",
+    tags: ["swimwear", "heritage", "luxury"],
+    tagLabels: ["Swimwear", "Heritage", "Luxury"],
+    desc: "Israel's most iconic swimwear house since 1956 — Gottex dressed Hollywood and royalty long before the country had a fashion industry. Today: full collections from Turkiz to Flirtt, plus modest, plus-size, and cover-up lines.",
+    img: "https://gottex.co.il/cdn/shop/files/GOTTEXlookbook1190_720x.jpg?v=1778070249",
+    fav: true
+  },
+  {
+    name: "Neta Efrati",
+    url: "https://netaefrati.com/",
+    tags: ["luxury", "artisan"],
+    tagLabels: ["Luxury", "Artisan"],
+    desc: "Tel Aviv evening-wear designer with a flagship on Dizengoff Square — Neta Efrati specialises in occasion dresses, jumpsuits, and tailored suits with a precise, considered hand. The Israeli wardrobe for prom, bride-to-be, and beyond.",
+    img: "https://netaefrati.com/cdn/shop/files/2Q6A8065.jpg?v=1774444165&width=1600",
+    fav: false
+  },
+  {
+    name: "Raven",
+    url: "https://raven.co.il/",
+    tags: ["streetwear", "artisan"],
+    tagLabels: ["Streetwear", "Artisan"],
+    desc: "Israeli contemporary label with an independent, edgy point of view — Raven designs with attitude and craft for those who refuse to dress quietly.",
+    img: "https://raven.co.il/cdn/shop/files/GenerativeFill_5e458c74-74b4-4104-8295-2377876a0dd4.jpg?v=1755092364&width=600",
+    fav: false
+  },
+  {
+    name: "Sheron Designs",
+    url: "https://www.sherondesigns.com/",
+    tags: ["artisan", "luxury"],
+    tagLabels: ["Artisan", "Luxury"],
+    desc: "Sculptural, considered Israeli design from Sheron — pieces that move between art and apparel, made for the woman who collects clothes the way others collect objects.",
+    img: "https://www.sherondesigns.com/cdn/shop/files/Untitleddesign-2024-01-18T144603.419_9d6ae016-8de5-41af-a5ad-ab5d75d2a81b.jpg?v=1748861511&width=600",
+    fav: false
+  },
+  {
+    name: "Ayoola",
+    url: "https://ayoola.co.il/",
+    tags: ["artisan", "minimalist"],
+    tagLabels: ["Artisan", "Minimalist"],
+    desc: "Israeli womenswear with a soft, contemporary sensibility — Ayoola designs everyday pieces with thoughtful proportion and a quiet confidence.",
+    img: "https://ayoola.co.il/cdn/shop/files/DSC_2682.jpg?v=1744199730&width=1800",
+    fav: false
+  },
+  {
+    name: "OZ Capsule",
+    url: "https://ozcapsule.com/",
+    tags: ["minimalist", "sustainable"],
+    tagLabels: ["Minimalist", "Sustainable"],
+    desc: "A capsule-wardrobe philosophy translated into Israeli design — OZ Capsule builds tightly edited collections of considered essentials, made to last across seasons.",
+    img: "https://ozcapsule.com/cdn/shop/files/lin-643863.jpg?v=1730735611&width=4096",
+    fav: false
+  },
+  {
+    name: "Yodfat",
+    url: "https://yodfat.shop/",
+    tags: ["artisan", "minimalist"],
+    tagLabels: ["Artisan", "Minimalist"],
+    desc: "Bo'acha Yodfat — a local business compound at the entrance to Moshav Yodfat in the Galilee, set among oak trees with breathtaking views. Founded by Michal Ezroni and Aviv Galon, the compound's Malbushia shop curates an exclusive edit of designed colorful socks, Carhartt clothing, and quality apparel alongside neighbour Holech BaTel's olive oil, honey, and seasonal flower bulbs.",
+    img: "https://yodfat.shop/wp-content/uploads/2026/03/4G8A9624.jpg",
+    fav: false
+  },
+  {
+    name: "Toppatsu",
+    url: "https://toppatsu.co.il/",
+    tags: ["streetwear", "prints", "artisan"],
+    tagLabels: ["Streetwear", "Prints", "Artisan"],
+    desc: "Playful, graphic Israeli design with a Japanese-leaning sensibility — Toppatsu makes the kind of pieces you reach for when you want to feel a little more yourself.",
+    img: "https://toppatsu.co.il/cdn/shop/files/tupatzu_18-365423.jpg?v=1774848018&width=840",
+    fav: false
+  },
+  {
+    name: "Shahar Avnet",
+    url: "https://shahar-avnet.com/",
+    tags: ["luxury", "artisan", "prints"],
+    tagLabels: ["Luxury", "Artisan", "Prints"],
+    desc: "Couture-leaning Israeli designer Shahar Avnet — known internationally for tulle, hand-painting, and dreamlike eveningwear that blurs costume, art, and fashion. Worn by Beyoncé, Lady Gaga, and Lizzo.",
+    img: "https://cdn.shopify.com/s/files/1/0695/8255/3190/files/s.a_336_1200x.jpg?v=1776669153&width=700&format=webp",
+    fav: true
+  },
+  {
+    name: "Assemble",
+    url: "https://assembleofficial.com/",
+    tags: ["streetwear", "minimalist"],
+    tagLabels: ["Streetwear", "Minimalist"],
+    desc: "Contemporary Israeli streetwear with a tightly considered aesthetic — Assemble designs garments that read clean, modern, and distinctly local.",
+    img: "https://assembleofficial.com/cdn/shop/files/Assemble_pleated_polo_t-shirt_front_2048x2048.jpg?v=1769523893",
+    fav: false
+  },
+  {
+    name: "Barbatana",
+    url: "https://barbatana.shop/",
+    tags: ["streetwear", "prints"],
+    tagLabels: ["Streetwear", "Prints"],
+    desc: "Israeli streetwear label trading in cheeky local humor — Barbatana's tees lean on Hebrew puns, in-jokes, and a distinctly Israeli sense of mischief.",
+    img: "https://barbatana.shop/cdn/shop/files/DSCF9840-14.jpg?v=1756055492&width=1680",
+    fav: false
+  },
+  {
+    name: "Bewear",
+    url: "https://bewear.co.il/",
+    tags: ["minimalist", "sustainable"],
+    tagLabels: ["Minimalist", "Sustainable"],
+    desc: "Israeli everyday basics — Bewear designs for the foundational layers of a wardrobe, with comfortable fits and quietly modern silhouettes.",
+    img: "https://bewear.co.il/cdn/shop/files/bwear39054.jpg?v=1758026451&width=4096",
+    fav: false
+  },
+  {
+    name: "Bring Wear",
+    url: "https://bringwear.co.il/",
+    tags: ["streetwear", "minimalist"],
+    tagLabels: ["Streetwear", "Minimalist"],
+    desc: "Israeli unisex everyday wear with a relaxed, contemporary sensibility — Bring Wear builds pieces meant to travel from morning to night without changing.",
+    img: "https://bringwear.co.il/cdn/shop/files/GAV_GREEN_1.jpg?v=1778080854&width=600",
+    fav: false
+  },
+  {
+    name: "Bazz and Lutra",
+    url: "https://bazzandlutra.com/",
+    tags: ["artisan", "prints"],
+    tagLabels: ["Artisan", "Prints"],
+    desc: "A whimsical Israeli design duo — Bazz and Lutra make playful, pattern-rich pieces with a strong creative voice and a sense of mischief.",
+    img: "https://bazzandlutra.com/cdn/shop/files/Bazz14.111367.jpg?v=1769451140&width=2048",
+    fav: false
+  },
+  {
+    name: "House of Shine",
+    url: "https://www.houseofshine.co.il/",
+    tags: ["luxury", "artisan", "prints"],
+    tagLabels: ["Luxury", "Artisan", "Prints"],
+    desc: "House of Shine — Israeli occasion-wear with shimmer, sequins, and statement silhouettes for the nights you want to be seen.",
+    img: "https://www.houseofshine.co.il/cdn/shop/files/hous10.254716.jpg?v=1771166670&width=1080",
+    fav: false
+  },
+  {
+    name: "Sugar & Spice TLV",
+    url: "https://sugarandspicetlv.com/",
+    tags: ["streetwear", "artisan"],
+    tagLabels: ["Streetwear", "Artisan"],
+    desc: "Tel Aviv-based label with a sweet-meets-sharp edge — Sugar & Spice TLV designs for the woman who plays with contrast.",
+    img: "https://sugarandspicetlv.com/cdn/shop/files/99BEBA23-025B-48B0-85E8-67990FFB6A43.jpg?v=1774265435&width=1780",
+    fav: false
+  },
+  {
+    name: "Studio Oh Design",
+    url: "https://studioohdesign.com/",
+    tags: ["artisan", "minimalist"],
+    tagLabels: ["Artisan", "Minimalist"],
+    desc: "An Israeli design studio working at the intersection of considered womenswear and craft-led production — clean lines, quality fabrics, and a calm sensibility.",
+    img: "https://studioohdesign.com/cdn/shop/files/BlackCoalGemStud05_5000x.jpg?v=1771069545",
+    fav: false
+  },
+  {
+    name: "Magia",
+    url: "https://www.magiaworldwide.com/",
+    tags: ["artisan", "luxury"],
+    tagLabels: ["Artisan", "Luxury"],
+    desc: "Magia Worldwide — Israeli design with international ambition. Considered pieces for a wardrobe that travels, made with a careful, contemporary hand.",
+    img: "https://static.wixstatic.com/media/f13a3b_91da0431ed974124bbbb90ad8d516f86~mv2.png/v1/fill/w_898,h_1348,al_c,usm_0.66_1.00_0.01/f13a3b_91da0431ed974124bbbb90ad8d516f86~mv2.png",
+    fav: false
+  },
+  {
+    name: "Uniform Apparel",
+    url: "https://shopuniformapparel.com/",
+    tags: ["menswear", "streetwear", "minimalist"],
+    tagLabels: ["Menswear", "Streetwear", "Minimalist"],
+    desc: "Israeli menswear and unisex essentials built around the idea of a personal uniform — clean, repeatable pieces designed to anchor a daily wardrobe.",
+    img: "https://shopuniformapparel.com/cdn/shop/files/retroextra.jpg?v=1776777380&width=3000",
+    fav: false
+  },
+  {
+    name: "Ulla",
+    url: "https://ulla.co.il/",
+    tags: ["lingerie", "swimwear"],
+    tagLabels: ["Lingerie", "Swimwear"],
+    desc: "Israeli lingerie and swimwear brand Ulla — soft, feminine pieces designed for real bodies and real days.",
+    img: "https://ulla.co.il/wp-content/uploads/images/3c64da34-d0f6-11f0-878c-6e119a947c39-scaled.jpg",
+    fav: false
+  },
+  {
+    name: "Jin-G",
+    url: "https://jin-g.co.il/",
+    tags: ["streetwear", "artisan"],
+    tagLabels: ["Streetwear", "Artisan"],
+    desc: "Jin-G — Israeli contemporary label working in a relaxed streetwear register with a considered, design-forward eye.",
+    img: "https://jin-g.co.il/cdn/shop/files/JINGspTEESchn_0026_4W7A7449.jpg?v=1777362978&width=1600",
+    fav: false
+  },
+  {
+    name: "Luka Chari",
+    url: "https://lukachari.co.il/",
+    tags: ["artisan", "minimalist"],
+    tagLabels: ["Artisan", "Minimalist"],
+    desc: "Designer Luka Chari's Israeli label — softly tailored womenswear with a contemporary, intentional sensibility.",
+    img: "https://lukachari.co.il/cdn/shop/files/3-black-7.jpg?v=1775543564&width=2000",
+    fav: false
+  },
+  {
+    name: "Subtle Body",
+    url: "https://subtlebody.store/",
+    tags: ["lingerie", "minimalist", "sustainable"],
+    tagLabels: ["Lingerie", "Minimalist", "Sustainable"],
+    desc: "Subtle Body — Israeli intimates and second-skin basics designed with quiet sensuality and considered minimalism.",
+    img: "https://subtlebody.store/cdn/shop/files/IWJ_4.jpg?v=1744636097&width=713",
+    fav: false
+  },
+  {
+    name: "Saisei",
+    url: "https://wearesaisei.co.il/",
+    tags: ["sustainable", "artisan", "minimalist"],
+    tagLabels: ["Sustainable", "Artisan", "Minimalist"],
+    desc: "Saisei — meaning rebirth in Japanese — an Israeli label rooted in regeneration: considered fabrics, mindful production, and clothes designed to be lived in for years.",
+    img: "https://wearesaisei.co.il/cdn/shop/collections/Untitled_design_-_2026-04-15T125340.527.jpg?v=1776677846&width=1800",
+    fav: false
+  },
+  {
+    name: "Above Layers",
+    url: "https://www.above-layers.com/",
+    tags: ["artisan", "minimalist"],
+    tagLabels: ["Artisan", "Minimalist"],
+    desc: "Above Layers — Israeli womenswear built around the idea of layering: considered outerwear, soft mid-pieces, and base layers designed to work as a system.",
+    img: "https://static.wixstatic.com/media/e59cf8_f0080d0ee82349f188de22ed0c5d4cc2~mv2.jpg/v1/fill/w_1804,h_765,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/e59cf8_f0080d0ee82349f188de22ed0c5d4cc2~mv2.jpg",
+    fav: false
+  },
+  {
+    name: "Orly Yaron",
+    url: "https://www.instagram.com/orlyyaron/",
+    tags: ["artisan", "minimalist"],
+    tagLabels: ["Artisan", "Minimalist"],
+    desc: "Designer Orly Yaron's eponymous Israeli label — independent womenswear with a personal, considered point of view.",
+    fav: false
+  },
+  {
+    name: "Yael Orgad",
+    url: "https://yaelorgad.co.il/en",
+    tags: ["artisan", "minimalist"],
+    tagLabels: ["Artisan", "Minimalist"],
+    desc: "Designer Yael Orgad's eponymous Israeli label — considered womenswear with a careful, contemporary point of view.",
+    img: "https://yaelorgad.co.il/cdn/shop/files/YaelOrgad28042642576.jpg?v=1777553479&width=1445",
+    fav: false
+  },
+  {
+    name: "Cottna",
+    url: "https://www.cottna.co.il/",
+    tags: ["lingerie", "sustainable"],
+    tagLabels: ["Lingerie", "Sustainable"],
+    desc: "Israeli period and everyday underwear in soft cotton — Cottna designs reusable, leak-proof basics built for comfort, sustainability, and real life.",
+    img: "https://cdn.cashcow.co.il/images/3cd39d89-4b3c-4447-8fb3-e65cfe6aae7c.webp",
+    fav: false
+  },
+  {
+    name: "Slimz",
+    url: "https://slimz.co.il/",
+    tags: ["minimalist", "activewear"],
+    tagLabels: ["Minimalist", "Activewear"],
+    desc: "Israeli shapewear and second-skin essentials — Slimz designs sleek, sculpting basics built to layer invisibly under everything.",
+    img: "https://slimz.co.il/cdn/shop/files/SLIMZ15.12-0502.webp?v=1766504477&width=700",
     fav: false
   },
 ];
@@ -1241,7 +1612,7 @@ const TRANSLATIONS = {
     filterStreetwear: "Streetwear", filterPrints: "Prints", filterMinimalist: "Minimalist",
     filterSustainable: "Sustainable", filterActivewear: "Activewear", filterArtisan: "Artisan",
     filterHeritage: "Heritage", filterSurf: "Surf", filterLuxury: "Luxury",
-    filterLingerie: "Lingerie", filterMenswear: "Menswear", filterAccessories: "Accessories",
+    filterLingerie: "Lingerie", filterMenswear: "Menswear", filterAccessories: "Accessories", filterSizeInclusive: "Size Inclusive",
     searchPlaceholder: "Search designers...",
     visitWebsite: "Visit Website",
     designersCount: (n, t) => n === t ? `${t} Designers` : `${n} of ${t} Designers`,
@@ -1264,7 +1635,7 @@ const TRANSLATIONS = {
     filterStreetwear: "סטריטוור", filterPrints: "הדפסים", filterMinimalist: "מינימליסטי",
     filterSustainable: "בר-קיימא", filterActivewear: "ספורטסוור", filterArtisan: "בוטיק",
     filterHeritage: "מורשת", filterSurf: "גלישה", filterLuxury: "יוקרה",
-    filterLingerie: "לינג'רי", filterMenswear: "גברים", filterAccessories: "אקסססוריז",
+    filterLingerie: "לינג'רי", filterMenswear: "גברים", filterAccessories: "אקסססוריז", filterSizeInclusive: "מגוון מידות",
     searchPlaceholder: "חיפוש מעצבים...",
     visitWebsite: "לאתר",
     designersCount: (n, t) => n === t ? `${t} מעצבים` : `${n} מתוך ${t} מעצבים`,
@@ -1315,7 +1686,7 @@ function applyLang() {
   if (filterLabelEl) filterLabelEl.textContent = t.filterLabel;
 
   // Filter buttons
-  const filterMap = { all:t.filterAll, jewelry:t.filterJewelry, swimwear:t.filterSwimwear, knitwear:t.filterKnitwear, streetwear:t.filterStreetwear, prints:t.filterPrints, minimalist:t.filterMinimalist, sustainable:t.filterSustainable, activewear:t.filterActivewear, artisan:t.filterArtisan, heritage:t.filterHeritage, surf:t.filterSurf, luxury:t.filterLuxury, lingerie:t.filterLingerie, menswear:t.filterMenswear, accessories:t.filterAccessories };
+  const filterMap = { all:t.filterAll, jewelry:t.filterJewelry, swimwear:t.filterSwimwear, knitwear:t.filterKnitwear, streetwear:t.filterStreetwear, prints:t.filterPrints, minimalist:t.filterMinimalist, sustainable:t.filterSustainable, activewear:t.filterActivewear, artisan:t.filterArtisan, heritage:t.filterHeritage, surf:t.filterSurf, luxury:t.filterLuxury, lingerie:t.filterLingerie, menswear:t.filterMenswear, accessories:t.filterAccessories, "size-inclusive":t.filterSizeInclusive };
   document.querySelectorAll('.filter-btn').forEach(btn => {
     const f = btn.dataset.filter;
     if (filterMap[f]) btn.textContent = filterMap[f];

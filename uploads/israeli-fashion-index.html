@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>IL MODE — Israeli Fashion Index</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700;900&family=Inter:wght@300;400;600&family=Space+Grotesk:wght@300;400;700&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "primary-container": "#3b3b3b",
+          "error-container": "#ffdad6",
+          "surface-container-highest": "#e5e2de",
+          "on-tertiary-container": "#ffffff",
+          "surface-tint": "#5e5e5e",
+          "error": "#ba1a1a",
+          "surface-container": "#f0ede9",
+          "secondary": "#5e5e5e",
+          "on-background": "#1c1c19",
+          "on-error": "#ffffff",
+          "tertiary": "#3b3b3b",
+          "surface-dim": "#dcdad6",
+          "outline": "#777777",
+          "primary": "#000000",
+          "on-surface-variant": "#474747",
+          "surface-container-low": "#f6f3ef",
+          "surface-container-high": "#ebe8e4",
+          "on-surface": "#1c1c19",
+          "inverse-primary": "#c6c6c6",
+          "background": "#fcf9f5",
+          "inverse-on-surface": "#f3f0ec",
+          "outline-variant": "#c6c6c6",
+          "surface-container-lowest": "#ffffff",
+          "tertiary-container": "#747474",
+          "secondary-fixed": "#c6c6c6",
+          "on-primary": "#e2e2e2",
+          "surface": "#fcf9f5",
+          "on-tertiary": "#e2e2e2",
+          "primary-fixed": "#5e5e5e",
+          "surface-variant": "#e5e2de",
+          "on-primary-fixed": "#ffffff",
+          "surface-bright": "#fcf9f5",
+          "on-error-container": "#410002",
+          "on-secondary": "#ffffff",
+          "on-secondary-container": "#1b1b1b",
+          "on-primary-container": "#ffffff",
+          "inverse-surface": "#31302e",
+          "secondary-container": "#d4d4d4",
+        },
+        borderRadius: {
+          "DEFAULT": "0px",
+          "lg": "0px",
+          "xl": "0px",
+          "full": "9999px"
+        },
+        fontFamily: {
+          "headline": ["Epilogue", "sans-serif"],
+          "body": ["Inter", "sans-serif"],
+          "label": ["Space Grotesk", "sans-serif"]
+        }
+      }
+    }
+  }
+</script>
+<style>
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+  * { border-radius: 0px !important; }
+  body { cursor: crosshair; }
+
+  .designer-card {
+    transition: opacity 0.4s ease;
+  }
+  .designer-card.hidden-card {
+    display: none;
+  }
+  .filter-btn.active {
+    background-color: #000 !important;
+    color: #e2e2e2 !important;
+  }
+  /* Subtle noise texture on background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.018;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 200px;
+  }
+  main, nav, footer { position: relative; z-index: 1; }
+  /* Image grayscale subtle */
+  .designer-img {
+    filter: grayscale(8%);
+    transition: filter 0.5s ease, transform 0.7s ease;
+  }
+  .group:hover .designer-img {
+    filter: grayscale(0%);
+  }
+  /* Count flash */
+  @keyframes countFlash {
+    0% { opacity: 0; transform: translateY(4px); }
+    100% { opacity: 0.5; transform: translateY(0); }
+  }
+  .count-flash { animation: countFlash 0.3s ease forwards; }
+</style>
+</head>
+
+<body class="bg-background text-primary font-body selection:bg-primary-container selection:text-white">
+
+<!-- ─── Top Nav ─────────────────────────────────────────────────────── -->
+<nav class="fixed top-0 w-full z-50 bg-[#fcf9f5]/95 backdrop-blur-sm border-b border-outline-variant/20 flex justify-between items-center px-8 md:px-12 py-6">
+  <a href="#" class="font-headline font-black text-2xl tracking-tighter text-black uppercase active:opacity-70">
+    IL MODE
+  </a>
+  <div class="hidden md:flex items-center gap-12">
+    <div class="flex gap-8 font-label uppercase tracking-widest text-sm">
+      <a class="text-black border-b-2 border-black pb-1 transition-colors duration-300" href="#">Designers</a>
+      <a class="text-black/40 hover:text-black transition-colors duration-300" href="#">About</a>
+      <a class="text-black/40 hover:text-black transition-colors duration-300" href="#">Submit</a>
+    </div>
+  </div>
+  <span class="material-symbols-outlined text-black md:hidden">menu</span>
+</nav>
+
+<!-- ─── Main ──────────────────────────────────────────────────────────── -->
+<main class="pt-40 pb-24 px-6 md:px-12 max-w-[1800px] mx-auto">
+
+  <!-- Hero & Filter -->
+  <header class="mb-24 flex flex-col xl:flex-row items-start xl:items-end justify-between gap-16">
+    <div class="max-w-3xl">
+      <p class="font-label text-[10px] tracking-[0.3em] uppercase text-on-surface-variant mb-6 opacity-60">
+        Tel Aviv · New York · Paris · Global
+      </p>
+      <h1 class="font-headline font-black text-[clamp(4rem,12vw,9rem)] leading-[0.82] tracking-tighter mb-8 uppercase">
+        Israeli<br/>Fashion<br/>Index
+      </h1>
+      <p class="font-body text-lg text-on-surface-variant max-w-lg leading-relaxed">
+        A curated directory of Israeli designers and brands — from heritage houses to the names redefining global fashion from Tel Aviv to Paris.
+      </p>
+    </div>
+
+    <!-- Filter Bar -->
+    <div class="w-full xl:w-auto shrink-0">
+      <div class="overflow-x-auto pb-2">
+        <div class="flex gap-3 items-center min-w-max">
+          <span class="font-label text-[9px] tracking-[0.25em] uppercase opacity-40 mr-2">Filter:</span>
+          <button class="filter-btn active font-label text-[10px] tracking-widest uppercase px-5 py-3 transition-all duration-200 border border-black bg-black text-[#e2e2e2]" data-filter="all">All</button>
+          <button class="filter-btn font-label text-[10px] tracking-widest uppercase px-5 py-3 transition-all duration-200 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary" data-filter="bridal">Bridal</button>
+          <button class="filter-btn font-label text-[10px] tracking-widest uppercase px-5 py-3 transition-all duration-200 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary" data-filter="couture">Couture</button>
+          <button class="filter-btn font-label text-[10px] tracking-widest uppercase px-5 py-3 transition-all duration-200 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary" data-filter="minimalist">Minimalist</button>
+          <button class="filter-btn font-label text-[10px] tracking-widest uppercase px-5 py-3 transition-all duration-200 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary" data-filter="avant-garde">Avant-Garde</button>
+          <button class="filter-btn font-label text-[10px] tracking-widest uppercase px-5 py-3 transition-all duration-200 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary" data-filter="luxury">Luxury</button>
+          <button class="filter-btn font-label text-[10px] tracking-widest uppercase px-5 py-3 transition-all duration-200 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary" data-filter="ready-to-wear">Ready-to-Wear</button>
+          <button class="filter-btn font-label text-[10px] tracking-widest uppercase px-5 py-3 transition-all duration-200 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary" data-filter="evening-wear">Evening Wear</button>
+          <button class="filter-btn font-label text-[10px] tracking-widest uppercase px-5 py-3 transition-all duration-200 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary" data-filter="heritage">Heritage</button>
+          <button class="filter-btn font-label text-[10px] tracking-widest uppercase px-5 py-3 transition-all duration-200 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary" data-filter="swimwear">Swimwear</button>
+          <button class="filter-btn font-label text-[10px] tracking-widest uppercase px-5 py-3 transition-all duration-200 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary" data-filter="contemporary">Contemporary</button>
+        </div>
+      </div>
+      <div class="flex items-center gap-3 mt-4 pl-0.5">
+        <div class="w-2 h-2 bg-primary"></div>
+        <span id="designer-count" class="font-label text-[9px] tracking-[0.25em] uppercase opacity-40">12 Designers</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ─── Asymmetric Designer Grid ──────────────────────────────────── -->
+  <section id="designer-grid" class="grid grid-cols-1 md:grid-cols-12 gap-y-28 gap-x-10">
+
+    <!-- ── 1. NILI LOTAN — Large left (cols 1-7) ── -->
+    <div class="designer-card col-span-1 md:col-span-7 flex flex-col group" data-tags="minimalist luxury ready-to-wear">
+      <div class="relative overflow-hidden aspect-[4/5] bg-surface-container-low">
+        <img class="designer-img w-full h-full object-cover group-hover:scale-105"
+             src="https://picsum.photos/seed/nililotan-mode/900/1100"
+             alt="Nili Lotan — fashion editorial"/>
+        <div class="absolute inset-0 bg-primary/8 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div class="absolute top-6 left-6">
+          <span class="font-label text-[9px] tracking-widest uppercase bg-[#fcf9f5] text-black px-3 py-1.5">01</span>
+        </div>
+      </div>
+      <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div>
+          <h2 class="font-headline font-black text-5xl uppercase tracking-tighter mb-3 leading-none">Nili Lotan</h2>
+          <div class="flex flex-wrap gap-2 mb-2">
+            <span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">Minimalist</span>
+            <span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">Luxury</span>
+            <span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">Ready-to-Wear</span>
+          </div>
+          <p class="font-label text-[9px] tracking-[0.2em] uppercase opacity-40 mt-3">Tel Aviv → New York</p>
+        </div>
+        <div class="flex flex-col justify-end">
+          <p class="font-body text-sm text-on-surface-variant leading-relaxed mb-5">
+            New York-based Israeli designer celebrated for her effortlessly minimal aesthetic. Known for precise tailoring and luxurious basics that transcend seasons — the wardrobe backbone of the considered dresser.
+          </p>
+          <a class="font-label text-[10px] tracking-widest uppercase underline underline-offset-4 hover:opacity-40 transition-opacity flex items-center gap-2 group/link w-fit"
+             href="https://www.nililotan.com" target="_blank" rel="noopener">
+            Visit Website
+            <span class="material-symbols-outlined text-sm group-hover/link:translate-x-1.5 transition-transform">arrow_forward</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 2. INBAL DROR — Small right (cols 9-12), offset top ── -->
+    <div class="designer-card col-span-1 md:col-span-4 md:col-start-9 flex flex-col pt-0 md:pt-32 group" data-tags="bridal couture evening-wear">
+      <div class="relative overflow-hidden aspect-[3/4] bg-surface-container-low">
+        <img class="designer-img w-full h-full object-cover group-hover:scale-105"
+             src="https://picsum.photos/seed/inbaldror-mode/700/900"
+             alt="Inbal Dror — bridal couture"/>
+        <div class="absolute top-6 left-6">
+          <span class="font-label text-[9px] tracking-widest uppercase bg-[#fcf9f5] text-black px-3 py-1.5">02</span>
+        </div>
+      </div>
+      <div class="mt-8">
+        <h2 class="font-headline font-black text-4xl uppercase tracking-tighter mb-3 leading-none">Inbal Dror</h2>
+        <div class="flex flex-wrap gap-2 mb-3">
+          <span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">Bridal</span>
+          <span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">Couture</span>
+          <span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">Evening Wear</span>
+        </div>
+        <p class="font-body text-sm text-on-surface-variant leading-relaxed mb-5">
+          Intricate lace and embroidered creations favored by royalty and celebrities worldwide. Each gown a dialogue between tradition and contemporary femininity.
+        </p>
+        <a class="font-label text-[10px] tracking-widest uppercase underline underline-offset-4 hover:opacity-40 transition-opacity flex items-center gap-2 group/link w-fit"
+           href="https://www.inbaldror.com" target="_blank" rel="noopener">
+          Visit Website
+          <span class="material-symbols-outlined text-sm group-hover/link:translate-x-1.5 transition-transform">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- ── 3. ALON LIVNÉ — Wide center (cols 2-9) ── -->
+    <div class="designer-card col-span-1 md:col-span-8 md:col-start-2 flex flex-col group" data-tags="bridal couture evening-wear luxury">
+      <div class="relative overflow-hidden aspect-[16/9] bg-surface-container-low">
+        <img class="designer-img w-full h-full object-cover group-hover:scale-105"
+             src="https://picsum.photos/seed/alonlivne-mode/1200/680"
+             alt="Alon Livné — couture gown"/>
+        <div class="absolute inset-0 bg-primary/8 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div class="absolute top-6 left-6">
+          <span class="font-label text-[9px] tracking-widest uppercase bg-[#fcf9f5] text-black px-3 py-1.5">03</span>
+        </div>
+      </div>
+      <div class="mt-8 flex flex-col md:flex-row justify-between items-start gap-10">
+        <div class="max-w-lg">
+          <h2 class="font-headline font-black text-5xl uppercase tracking-tighter mb-3 leading-none">Alon Livné</h2>
+          <p class="font-body text-sm text-on-surface-variant leading-relaxed">
+            Tel Aviv couturier beloved by Hollywood's elite. His sculptural gowns blend architectural precision with sensual femininity — worn by Beyoncé, Kim Kardashian, and Jennifer Lopez on the world's biggest stages.
+          </p>
+        </div>
+        <div class="flex flex-col items-start gap-4 shrink-0">
+          <div class="flex flex-wrap gap-2">
+            <span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">Bridal</span>
+            <span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">Couture</span>
+            <span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">Luxury</span>
+          </div>
+          <a class="font-label text-[10px] tracking-widest uppercase underline underline-offset-4 hover:opacity-40 transition-opacity flex items-center gap-2 group/link w-fit"
+             href="https://www.alonlivne.com" target="_blank" rel="noopener">
+            Visit Website
+            <span class="material-symbols-outlined text-sm group-hover/link:translate-x-1.5 transition-transform">arrow_forward</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 4. GOTTEX — Left narrow (cols 1-4) ── -->
+    <div class="designer-card col-span-1 md:col-span-4 flex flex-col group pt-0 md:pt-12" data-tags="swimwear luxury heritage">
+      <div class="relative overflow-hidden aspect-[2/3] bg-surface-container-low">
+        <img class="designer-img w-full h-full object-cover group-hover:scale-105"
+             src="https://picsum.photos/seed/gottex-mode/600/900"
+             alt="Gottex — resort swimwear"/>
+        <div class="absolute top-6 left-6">
+          <span class="font-label text-[9px] tracking-widest uppercase bg-[#fcf9f5] text-black px-3 py-1.5">04</span>
+        </div>
+      </div>
+      <div class="mt-8">
+        <h2 class="font-headline font-black text-4xl uppercase tracking-tighter mb-3 leading-none">Gottex</h2>
+        <div class="flex flex-wrap gap-2 mb-3">
+          <span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">Swimwear</span>
+          <span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">Luxury</span>
+          <span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">Heritage</span>
+        </div>
+        <p class="font-body text-sm text-on-surface-variant leading-relaxed mb-5">
+          Israel's most iconic swimwear house, founded in 1956. Gottex redefined resort wear with bold prints and masterful construction, dressing royalty and screen legends across seven decades.
+        </p>
+        <a class="font-label text-[10px] tracking-widest uppercase underline underline-offset-4 hover:opacity-40 transition-opacity flex items-center gap-2 group/link w-fit"
+           href="https://www.gottex.com" target="_blank" rel="noopener">
+          Visit Website
+          <span class="material-symbols-outlined text-sm group-hover/link:translate-x-1.5 transition-transform">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- ── 5. ALBER ELBAZ / AZ FACTORY — Right large (cols 5-12) ── -->
+    <div class="designer-card col-span-1 md:col-span-8 md:col-start-5 flex flex-col group" data-tags="luxury ready-to-wear avant-garde">
+      <div class="relative overflow-hidden aspect-[4/5] bg-surface-container-low">
+        <img class="designer-img w-full h-full object-cover group-hover:scale-105"
+             src="https://picsum.photos/seed/alberelbaz-mode/900/1100"
+             alt="Alber Elbaz — AZ Factory"/>
+        <div class="absolute inset-0 bg-primary/8 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div class="absolute top-6 left-6">
+          <span class="font-label text-[9px] tracking-widest uppercase bg-[#fcf9f5] text-black px-3 py-1.5">05</span>
+        </div>
+      </div>
+      <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div>
+          <h2 class="font-headline font-black text-5xl uppercase tracking-tighter mb-1 leading-none">Alber Elbaz</h2>
+          <p class="font-label text-[9px] tracking-[0.25em] uppercase opacity-40 mb-3">AZ Factory</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">Luxury</span>
+            <span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">Avant-Garde</span>
+            <span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">Ready-to-Wear</span>
+          </div>
+        </div>
+        <div>
+          <p class="font-body text-sm text-on-surface-variant leading-relaxed mb-5">
+            The visionary behind Lanvin's golden era and founder of AZ Factory. Elbaz's enduring legacy champions joyful, body-conscious design and radical inclusivity — a gift to the entire fashion world.
+          </p>
+          <a class="font-label text-[10px] tracking-widest uppercase underline underline-offset-4 hover:opacity-40 transition-opacity flex items-center gap-2 group/link w-fit"
+             href="https://www.azfactory.com" target="_blank" rel="noopener">
+            Visit Website
+            <span class="material-symbols-outlined text-sm group-hover/link:translate-x-1.5 transition-transform">arrow_forward</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 6. LIHI HOD — Left mid (cols 1-5) ── -->
+    <div class="designer-card col-span-1 md:col-span-5 flex flex-col group" data-tags="bridal ready-to-wear contemporary">
+      <div class="relative overflow-hidden aspect-[3/4] bg-surface-container-low">
+        <img class="designer-img w-full h-full object-cover group-hover:scale-105"
+             src="https://picsum.photos/seed/lihihod-mode/700/950"
+             alt="Lihi Hod — bridal collection"/>
+        <div class="absolute top-6 left-6">
+          <span class="font-label text-[9px] tracking-widest uppercase bg-[#fcf9f5] text-black px-3 py-1.5">06</span>
+        </div>
+      </div>
+      <div class="mt-8">
+        <h2 class="font-headline font-black text-4xl uppercase tracking-tighter mb-3 leading-none">Lihi Hod</h2>
+        <div class="flex flex-wrap gap-2 mb-3">
+          <span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">Bridal</span>
+          <span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">Ready-to-Wear</span>
+          <span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">Contemporary</span>
+        </div>
+        <p class="font-body text-sm text-on-surface-variant leading-relaxed mb-5">
+          Romantic aesthetic meets modern sensibility. Lihi Hod's dreamy collections balance feminine delicacy with wearable confidence — bridal and ready-to-wear that moves with the woman, not against her.
+        </p>
+        <a class="font-label text-[10px] tracking-widest uppercase underline underline-offset-4 hover:opacity-40 transition-opacity flex items-center gap-2 group/link w-fit"
+           href="https://www.lihi-hod.com" target="_blank" rel="noopener">
+          Visit Website
+          <span class="material-symbols-outlined text-sm group-hover/link:translate-x-1.5 transition-transform">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- ── 7. RONEN CHEN — Right mid (cols 7-12), offset top ── -->
+    <div class="designer-card col-span-1 md:col-span-6 md:col-start-7 flex flex-col group pt-0 md:pt-20" data-tags="contemporary ready-to-wear minimalist">
+      <div class="relative overflow-hidden aspect-[3/4] bg-surface-container-low">
+        <img class="designer-img w-full h-full object-cover group-hover:scale-105"
+             src="https://picsum.photos/seed/ronench-mode/700/950"
+             alt="Ronen Chen — contemporary womenswear"/>
+        <div class="absolute top-6 left-6">
+          <span class="font-label text-[9px] tracking-widest uppercase bg-[#fcf9f5] text-black px-3 py-1.5">07</span>
+        </div>
+      </div>
+      <div class="mt-8">
+        <h2 class="font-headline font-black text-4xl uppercase tracking-tighter mb-3 leading-none">Ronen Chen</h2>
+        <div class="flex flex-wrap gap-2 mb-3">
+          <span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">Contemporary</span>
+          <span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">Ready-to-Wear</span>
+          <span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">Minimalist</span>
+        </div>
+        <p class="font-body text-sm text-on-surface-variant leading-relaxed mb-5">
+          A cornerstone of Israeli fashion for over three decades. Ronen Chen designs fluid, wearable pieces for the modern woman — elegant simplicity executed with unwavering consistency.
+        </p>
+        <a class="font-label text-[10px] tracking-widest uppercase underline underline-offset-4 hover:opacity-40 transition-opacity flex items-center gap-2 group/link w-fit"
+           href="https://www.ronenchen.com" target="_blank" rel="noopener">
+          Visit Website
+          <span class="material-symbols-outlined text-sm group-hover/link:translate-x-1.5 transition-transform">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- ── 8. MASKIT — Wide center (cols 2-10) ── -->
+    <div class="designer-card col-span-1 md:col-span-9 md:col-start-2 flex flex-col group" data-tags="heritage contemporary sustainable">
+      <div class="relative overflow-hidden aspect-[16/9] bg-surface-container-low">
+        <img class="designer-img w-full h-full object-cover group-hover:scale-105"
+             src="https://picsum.photos/seed/maskit-mode/1200/680"
+             alt="Maskit — Israeli heritage fashion"/>
+        <div class="absolute inset-0 bg-primary/8 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div class="absolute top-6 left-6">
+          <span class="font-label text-[9px] tracking-widest uppercase bg-[#fcf9f5] text-black px-3 py-1.5">08</span>
+        </div>
+      </div>
+      <div class="mt-8 flex flex-col md:flex-row justify-between items-start gap-10">
+        <div>
+          <h2 class="font-headline font-black text-5xl uppercase tracking-tighter mb-3 leading-none">Maskit</h2>
+          <p class="font-label text-[9px] tracking-[0.2em] uppercase opacity-40 mb-4">Est. 1954 · Jerusalem</p>
+          <p class="font-body text-sm text-on-surface-variant leading-relaxed max-w-md">
+            Israel's oldest fashion house, originally founded to preserve traditional crafts and employ new immigrants through textile arts. Recently revived, blending cultural heritage with contemporary design for the global market.
+          </p>
+        </div>
+        <div class="flex flex-col items-start gap-4 shrink-0">
+          <div class="flex flex-wrap gap-2">
+            <span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">Heritage</span>
+            <span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">Contemporary</span>
+            <span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">Sustainable</span>
+          </div>
+          <a class="font-label text-[10px] tracking-widest uppercase underline underline-offset-4 hover:opacity-40 transition-opacity flex items-center gap-2 group/link w-fit"
+             href="https://www.maskit.co.il" target="_blank" rel="noopener">
+            Visit Website
+            <span class="material-symbols-outlined text-sm group-hover/link:translate-x-1.5 transition-transform">arrow_forward</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 9. KEDEM SASSON — Left narrow (cols 1-4) ── -->
+    <div class="designer-card col-span-1 md:col-span-4 flex flex-col group pt-0 md:pt-16" data-tags="avant-garde couture evening-wear">
+      <div class="relative overflow-hidden aspect-[2/3] bg-surface-container-low">
+        <img class="designer-img w-full h-full object-cover group-hover:scale-105"
+             src="https://picsum.photos/seed/kedemsasson-mode/600/900"
+             alt="Kedem Sasson — avant-garde couture"/>
+        <div class="absolute top-6 left-6">
+          <span class="font-label text-[9px] tracking-widest uppercase bg-[#fcf9f5] text-black px-3 py-1.5">09</span>
+        </div>
+      </div>
+      <div class="mt-8">
+        <h2 class="font-headline font-black text-3xl uppercase tracking-tighter mb-3 leading-none">Kedem Sasson</h2>
+        <div class="flex flex-wrap gap-2 mb-3">
+          <span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">Avant-Garde</span>
+          <span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">Couture</span>
+          <span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">Evening Wear</span>
+        </div>
+        <p class="font-body text-sm text-on-surface-variant leading-relaxed mb-5">
+          Theatrical and uncompromising. Kedem Sasson's work reads as wearable sculpture — complex constructions that challenge the relationship between body and garment.
+        </p>
+        <a class="font-label text-[10px] tracking-widest uppercase underline underline-offset-4 hover:opacity-40 transition-opacity flex items-center gap-2 group/link w-fit"
+           href="https://www.kedemsasson.com" target="_blank" rel="noopener">
+          Visit Website
+          <span class="material-symbols-outlined text-sm group-hover/link:translate-x-1.5 transition-transform">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- ── 10. TAL SHEYN — Large right (cols 5-12) ── -->
+    <div class="designer-card col-span-1 md:col-span-7 md:col-start-6 flex flex-col group" data-tags="evening-wear avant-garde couture">
+      <div class="relative overflow-hidden aspect-[4/5] bg-surface-container-low">
+        <img class="designer-img w-full h-full object-cover group-hover:scale-105"
+             src="https://picsum.photos/seed/talsheyn-mode/900/1100"
+             alt="Tal Sheyn — evening wear"/>
+        <div class="absolute inset-0 bg-primary/8 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div class="absolute top-6 left-6">
+          <span class="font-label text-[9px] tracking-widest uppercase bg-[#fcf9f5] text-black px-3 py-1.5">10</span>
+        </div>
+      </div>
+      <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div>
+          <h2 class="font-headline font-black text-5xl uppercase tracking-tighter mb-3 leading-none">Tal Sheyn</h2>
+          <div class="flex flex-wrap gap-2">
+            <span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">Evening Wear</span>
+            <span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">Avant-Garde</span>
+            <span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">Couture</span>
+          </div>
+        </div>
+        <div>
+          <p class="font-body text-sm text-on-surface-variant leading-relaxed mb-5">
+            Dramatic evening silhouettes that push the boundaries of wearable art. The go-to name for bold red carpet statements — Israeli celebrities' couturier of choice.
+          </p>
+          <a class="font-label text-[10px] tracking-widest uppercase underline underline-offset-4 hover:opacity-40 transition-opacity flex items-center gap-2 group/link w-fit"
+             href="https://www.talsheyn.com" target="_blank" rel="noopener">
+            Visit Website
+            <span class="material-symbols-outlined text-sm group-hover/link:translate-x-1.5 transition-transform">arrow_forward</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 11. NAAMA BEZALEL — Left large (cols 1-6) ── -->
+    <div class="designer-card col-span-1 md:col-span-6 flex flex-col group" data-tags="bridal couture luxury">
+      <div class="relative overflow-hidden aspect-[4/5] bg-surface-container-low">
+        <img class="designer-img w-full h-full object-cover group-hover:scale-105"
+             src="https://picsum.photos/seed/naamabez-mode/800/1000"
+             alt="Naama Bezalel — bridal couture"/>
+        <div class="absolute top-6 left-6">
+          <span class="font-label text-[9px] tracking-widest uppercase bg-[#fcf9f5] text-black px-3 py-1.5">11</span>
+        </div>
+      </div>
+      <div class="mt-8">
+        <h2 class="font-headline font-black text-5xl uppercase tracking-tighter mb-3 leading-none">Naama Bezalel</h2>
+        <div class="flex flex-wrap gap-2 mb-3">
+          <span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">Bridal</span>
+          <span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">Couture</span>
+          <span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">Luxury</span>
+        </div>
+        <p class="font-body text-sm text-on-surface-variant leading-relaxed mb-5">
+          A defining name in Israeli couture bridal. Naama Bezalel's sculptural gowns are a study in femininity, precision, and quiet opulence — crafted for women who command attention without effort.
+        </p>
+        <a class="font-label text-[10px] tracking-widest uppercase underline underline-offset-4 hover:opacity-40 transition-opacity flex items-center gap-2 group/link w-fit"
+           href="https://www.naamabezalel.com" target="_blank" rel="noopener">
+          Visit Website
+          <span class="material-symbols-outlined text-sm group-hover/link:translate-x-1.5 transition-transform">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- ── 12. CASTRO — Right mid (cols 8-12), offset top ── -->
+    <div class="designer-card col-span-1 md:col-span-5 md:col-start-8 flex flex-col group pt-0 md:pt-20" data-tags="contemporary ready-to-wear streetwear">
+      <div class="relative overflow-hidden aspect-[3/4] bg-surface-container-low">
+        <img class="designer-img w-full h-full object-cover group-hover:scale-105"
+             src="https://picsum.photos/seed/castro-mode/700/950"
+             alt="Castro — Israeli fashion brand"/>
+        <div class="absolute top-6 left-6">
+          <span class="font-label text-[9px] tracking-widest uppercase bg-[#fcf9f5] text-black px-3 py-1.5">12</span>
+        </div>
+      </div>
+      <div class="mt-8">
+        <h2 class="font-headline font-black text-4xl uppercase tracking-tighter mb-3 leading-none">Castro</h2>
+        <div class="flex flex-wrap gap-2 mb-3">
+          <span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">Contemporary</span>
+          <span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">Ready-to-Wear</span>
+          <span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">Streetwear</span>
+        </div>
+        <p class="font-body text-sm text-on-surface-variant leading-relaxed mb-5">
+          Israel's most beloved fashion brand, defining local street style since 1986. Translating global trend intelligence into accessible, proudly local fashion with consistent Israeli identity.
+        </p>
+        <a class="font-label text-[10px] tracking-widest uppercase underline underline-offset-4 hover:opacity-40 transition-opacity flex items-center gap-2 group/link w-fit"
+           href="https://www.castro.co.il" target="_blank" rel="noopener">
+          Visit Website
+          <span class="material-symbols-outlined text-sm group-hover/link:translate-x-1.5 transition-transform">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- No results message -->
+  <div id="no-results" class="hidden col-span-full py-32 text-center">
+    <p class="font-label text-xs tracking-widest uppercase opacity-30">No designers match this filter</p>
+  </div>
+
+  <!-- ─── CTA Section ─────────────────────────────────────────────────── -->
+  <section class="mt-56 mb-24 border-t border-outline-variant/25 pt-24">
+    <div class="flex flex-col md:flex-row items-start md:items-end justify-between gap-12">
+      <div>
+        <h2 class="font-headline font-black text-[clamp(3rem,8vw,6.5rem)] uppercase tracking-tighter leading-[0.85] mb-8">
+          Israeli<br/>Fashion<br/>Redefined
+        </h2>
+        <p class="font-body text-lg text-on-surface-variant max-w-md leading-relaxed">
+          From the shores of Tel Aviv to the runways of Paris and New York — Israeli designers are rewriting the global fashion narrative.
+        </p>
+      </div>
+      <div class="flex flex-col gap-6">
+        <a class="group flex items-center gap-5 border-b border-black pb-3 hover:opacity-50 transition-opacity" href="#">
+          <span class="font-label text-sm tracking-widest uppercase">Submit a Designer</span>
+          <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
+        </a>
+        <a class="group flex items-center gap-5 border-b border-black pb-3 hover:opacity-50 transition-opacity" href="#">
+          <span class="font-label text-sm tracking-widest uppercase">Browse A–Z</span>
+          <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ─── Footer ──────────────────────────────────────────────────────── -->
+<footer class="bg-[#ebe8e4] text-black flex flex-col md:flex-row justify-between items-center w-full px-8 md:px-12 py-14">
+  <div class="mb-8 md:mb-0">
+    <div class="font-headline font-black text-xl tracking-tighter uppercase text-black">IL MODE</div>
+    <div class="font-label text-[9px] tracking-[0.25em] uppercase opacity-50 mt-2">Israeli Fashion Index · © 2024 · All Rights Reserved</div>
+  </div>
+  <div class="flex gap-10 font-label text-[9px] tracking-[0.25em] uppercase">
+    <a class="opacity-50 hover:opacity-100 transition-opacity" href="#">Instagram</a>
+    <a class="opacity-50 hover:opacity-100 transition-opacity" href="#">Submit</a>
+    <a class="opacity-50 hover:opacity-100 transition-opacity" href="#">Contact</a>
+    <a class="opacity-50 hover:opacity-100 transition-opacity" href="#">Privacy</a>
+  </div>
+</footer>
+
+<!-- ─── Filter Script ─────────────────────────────────────────────────── -->
+<script>
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.designer-card');
+  const countEl = document.getElementById('designer-count');
+  const noResults = document.getElementById('no-results');
+  const total = cards.length;
+
+  function updateCount(visible) {
+    countEl.classList.remove('count-flash');
+    void countEl.offsetWidth; // reflow for animation restart
+    countEl.classList.add('count-flash');
+    countEl.textContent = visible === total
+      ? `${total} Designers`
+      : `${visible} of ${total} Designers`;
+  }
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter;
+
+      // Update active button
+      filterBtns.forEach(b => {
+        b.classList.remove('active', 'bg-primary', 'text-on-primary', 'border-black');
+        b.classList.add('bg-surface-container-highest', 'text-primary', 'border-transparent');
+      });
+      btn.classList.add('active', 'bg-primary', 'text-on-primary', 'border-black');
+      btn.classList.remove('bg-surface-container-highest', 'text-primary', 'border-transparent');
+
+      // Filter cards
+      let visibleCount = 0;
+      cards.forEach(card => {
+        if (filter === 'all') {
+          card.classList.remove('hidden-card');
+          visibleCount++;
+        } else {
+          const tags = card.dataset.tags.split(' ');
+          if (tags.includes(filter)) {
+            card.classList.remove('hidden-card');
+            visibleCount++;
+          } else {
+            card.classList.add('hidden-card');
+          }
+        }
+      });
+
+      noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+      updateCount(visibleCount);
+    });
+  });
+
+  // Init count
+  updateCount(total);
+</script>
+
+</body>
+</html>
