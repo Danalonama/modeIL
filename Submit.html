@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ModeIL — Submit</title>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700;900&family=Inter:wght@300;400;600&family=Space+Grotesk:wght@300;400;700&family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { min-height: 100%; font-family: 'Inter', sans-serif; background: #F4F4F4; color: #1A1A18; }
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(244,244,244,0.96); backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(198,198,198,0.2);
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.5rem 3rem; height: 72px;
+  }
+  .nav-logo { font-family: 'Epilogue', sans-serif; font-weight: 900; font-size: 1.5rem; letter-spacing: -0.04em; text-transform: uppercase; text-decoration: none; color: #000; }
+  .nav-links { display: flex; gap: 2.5rem; font-family: 'Space Grotesk', sans-serif; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; }
+  .nav-links a { color: rgba(0,0,0,0.35); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: #000; }
+  .nav-links a.active { color: #000; border-bottom: 2px solid #000; padding-bottom: 2px; }
+
+  main {
+    min-height: 100vh; padding-top: 72px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+  }
+  @media (max-width: 880px) { main { grid-template-columns: 1fr; } }
+
+  .left {
+    padding: 5rem 4rem; display: flex; flex-direction: column; justify-content: center;
+    border-right: 1px solid rgba(0,0,0,0.08);
+  }
+  @media (max-width: 880px) { .left { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.08); padding: 3.5rem 2rem 2.5rem; } }
+
+  .label {
+    font-family: 'Space Grotesk', sans-serif; font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: rgba(0,0,0,0.4); margin-bottom: 2rem;
+  }
+  .pulse { display: inline-block; width: 8px; height: 8px; background: #000; margin-right: 10px; animation: pulse 1.6s ease-in-out infinite; vertical-align: middle; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
+  .hed {
+    font-family: 'Epilogue', sans-serif; font-weight: 900; font-size: clamp(3.25rem, 8vw, 6rem);
+    letter-spacing: -0.05em; line-height: 0.88; text-transform: uppercase; color: #000;
+  }
+  .blurb {
+    font-family: 'Inter', sans-serif; font-weight: 300; font-size: 1.05rem; line-height: 1.6;
+    color: rgba(0,0,0,0.6); max-width: 440px; margin-top: 2.5rem;
+  }
+  .blurb b { font-weight: 600; color: #000; }
+  .ideas {
+    margin-top: 2rem; display: flex; flex-direction: column; gap: 0.5rem;
+    font-family: 'Space Grotesk', sans-serif; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(0,0,0,0.5);
+  }
+  .ideas span::before { content: "→"; margin-right: 12px; color: rgba(0,0,0,0.3); }
+
+  .right {
+    padding: 5rem 4rem; display: flex; flex-direction: column; justify-content: center;
+  }
+  @media (max-width: 880px) { .right { padding: 2.5rem 2rem 5rem; } }
+
+  form { display: flex; flex-direction: column; gap: 2rem; max-width: 460px; width: 100%; }
+  .field { display: flex; flex-direction: column; gap: 0.6rem; }
+  .field-label {
+    font-family: 'Space Grotesk', sans-serif; font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase;
+    color: rgba(0,0,0,0.55);
+  }
+  .field input, .field textarea {
+    font-family: 'Inter', sans-serif; font-weight: 400; font-size: 1rem; color: #000;
+    background: transparent; border: none; border-bottom: 1.5px solid rgba(0,0,0,0.15);
+    padding: 0.65rem 0; outline: none; transition: border-color 0.25s;
+    resize: none; width: 100%;
+  }
+  .field input:focus, .field textarea:focus { border-bottom-color: #000; }
+  .field input::placeholder, .field textarea::placeholder { color: rgba(0,0,0,0.25); font-weight: 300; }
+  .field textarea { min-height: 110px; line-height: 1.5; }
+
+  button[type=submit] {
+    margin-top: 1rem; align-self: flex-start;
+    font-family: 'Space Grotesk', sans-serif; font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
+    background: #000; color: #F4F4F4; border: none; padding: 1.1rem 2.4rem; cursor: pointer;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  button[type=submit]:hover { opacity: 0.85; }
+  button[type=submit]:disabled { opacity: 0.4; cursor: wait; }
+
+  .thanks { display: none; flex-direction: column; gap: 1.5rem; max-width: 460px; }
+  .thanks.show { display: flex; }
+  .thanks-hed {
+    font-family: 'Epilogue', sans-serif; font-weight: 900; font-size: clamp(2.5rem, 5vw, 4rem);
+    letter-spacing: -0.04em; line-height: 0.9; text-transform: uppercase; color: #000;
+  }
+  .thanks-text {
+    font-family: 'Inter', sans-serif; font-weight: 300; font-size: 1rem; line-height: 1.6;
+    color: rgba(0,0,0,0.6);
+  }
+  .thanks-link {
+    font-family: 'Space Grotesk', sans-serif; font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: #000; text-decoration: none; border-bottom: 1px solid #000; padding-bottom: 4px; align-self: flex-start;
+  }
+  .thanks-link:hover { opacity: 0.5; }
+
+  .err {
+    font-family: 'Space Grotesk', sans-serif; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: #B8748A; display: none;
+  }
+  .err.show { display: block; }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">ModeIL</a>
+  <div class="nav-links">
+    <a href="index.html">Designers</a>
+    <a href="Stores.html">Stores</a>
+    <a href="Map.html">Map</a>
+    <a href="About.html">About</a>
+    <a href="Submit.html" class="active">Submit</a>
+  </div>
+</nav>
+
+<main>
+  <section class="left">
+    <div class="label"><span class="pulse"></span>Talk to me</div>
+    <h1 class="hed">Send me<br/>your<br/>ideas.</h1>
+    <p class="blurb">Designers I should add. Brands you love. Stores worth a visit. Bugs, broken pins, missing labels. Or just hi.
+
+Buy me cool socks. Send me your favorite obscure Israeli label</p>
+    <div class="ideas">
+      <span>A designer to add</span>
+      <span>A correction or update</span>
+      <span>A collaboration</span>
+      <span>Cool socks</span>
+    </div>
+  </section>
+
+  <section class="right">
+    <form id="contact-form" autocomplete="on">
+      <div class="field">
+        <label class="field-label" for="f-name">Full name</label>
+        <input type="text" id="f-name" name="name" required placeholder="Jane Cohen"/>
+      </div>
+      <div class="field">
+        <label class="field-label" for="f-email">Email</label>
+        <input type="email" id="f-email" name="email" required placeholder="you@example.com"/>
+      </div>
+      <div class="field">
+        <label class="field-label" for="f-comment">Comment</label>
+        <textarea id="f-comment" name="comment" required placeholder="Tell me anything…"></textarea>
+      </div>
+      <div class="err" id="form-err">Something went wrong. Try again, or email danalonama@gmail.com directly.</div>
+      <button type="submit" id="submit-btn">Send →</button>
+    </form>
+
+    <div class="thanks" id="thanks">
+      <div class="label"><span class="pulse"></span>Got it</div>
+      <h2 class="thanks-hed">Thanks.</h2>
+      <p class="thanks-text">Your message is on its way. I'll get back to you soon.</p>
+      <a href="index.html" class="thanks-link">← Back to the index</a>
+    </div>
+  </section>
+</main>
+
+<script>
+  // Formspree endpoint — sends submissions to danalonama@gmail.com.
+  // ⚠️ ACTION REQUIRED: To activate the form, sign up at https://formspree.io
+  // with danalonama@gmail.com, create a new form, and replace the URL below
+  // with your real endpoint (looks like: https://formspree.io/f/xxxxxxxx).
+  const FORM_ENDPOINT = "https://formspree.io/f/mykobzkv";
+
+  const form = document.getElementById('contact-form');
+  const thanks = document.getElementById('thanks');
+  const errBox = document.getElementById('form-err');
+  const btn = document.getElementById('submit-btn');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errBox.classList.remove('show');
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    const data = new FormData(form);
+    // Helpful subject line in the inbox
+    data.append('_subject', `ModeIL — message from ${data.get('name')}`);
+    data.append('_replyto', data.get('email'));
+
+    try {
+      const res = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        form.style.display = 'none';
+        thanks.classList.add('show');
+      } else {
+        throw new Error('bad response');
+      }
+    } catch (err) {
+      errBox.classList.add('show');
+      btn.disabled = false;
+      btn.textContent = 'Send →';
+    }
+  });
+</script>
+</body>
+</html>
