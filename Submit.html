@@ -1,171 +1,135 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="light" lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>ModeIL — Submit</title>
-<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700;900&family=Inter:wght@300;400;600&family=Space+Grotesk:wght@300;400;700&family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700;900&amp;family=Inter:wght@300;400;600&amp;family=Space+Grotesk:wght@300;400;700&amp;family=Assistant:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: { extend: {
+      colors: {
+        "primary": "#000000", "background": "#F4F4F4", "on-background": "#1A1A18",
+        "outline-variant": "#c6c6c6", "surface-container-high": "#EDE9E1"
+      },
+      borderRadius: { "DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "9999px" },
+      fontFamily: {
+        "headline": ["Epilogue", "sans-serif"],
+        "body": ["Inter", "sans-serif"],
+        "label": ["Space Grotesk", "sans-serif"]
+      }
+    }}
+  }
+</script>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { min-height: 100%; font-family: 'Inter', sans-serif; background: #F4F4F4; color: #1A1A18; }
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(244,244,244,0.96); backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(198,198,198,0.2);
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 1.5rem 3rem; height: 72px;
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+  * { border-radius: 0px !important; }
+  body { cursor: crosshair; }
+  body::before {
+    content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: 0.012;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat; background-size: 200px;
   }
-  .nav-logo { font-family: 'Epilogue', sans-serif; font-weight: 900; font-size: 1.5rem; letter-spacing: -0.04em; text-transform: uppercase; text-decoration: none; color: #000; }
-  .nav-links { display: flex; gap: 2.5rem; font-family: 'Space Grotesk', sans-serif; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; }
-  .nav-links a { color: rgba(0,0,0,0.35); text-decoration: none; transition: color 0.2s; }
-  .nav-links a:hover { color: #000; }
-  .nav-links a.active { color: #000; border-bottom: 2px solid #000; padding-bottom: 2px; }
-
-  main {
-    min-height: 100vh; padding-top: 72px;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 0;
-  }
-  @media (max-width: 880px) { main { grid-template-columns: 1fr; } }
-
-  .left {
-    padding: 5rem 4rem; display: flex; flex-direction: column; justify-content: center;
-    border-right: 1px solid rgba(0,0,0,0.08);
-  }
-  @media (max-width: 880px) { .left { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.08); padding: 3.5rem 2rem 2.5rem; } }
-
-  .label {
-    font-family: 'Space Grotesk', sans-serif; font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
-    color: rgba(0,0,0,0.4); margin-bottom: 2rem;
-  }
-  .pulse { display: inline-block; width: 8px; height: 8px; background: #000; margin-right: 10px; animation: pulse 1.6s ease-in-out infinite; vertical-align: middle; }
-  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
-  .hed {
-    font-family: 'Epilogue', sans-serif; font-weight: 900; font-size: clamp(3.25rem, 8vw, 6rem);
-    letter-spacing: -0.05em; line-height: 0.88; text-transform: uppercase; color: #000;
-  }
-  .blurb {
-    font-family: 'Inter', sans-serif; font-weight: 300; font-size: 1.05rem; line-height: 1.6;
-    color: rgba(0,0,0,0.6); max-width: 440px; margin-top: 2.5rem;
-  }
-  .blurb b { font-weight: 600; color: #000; }
-  .ideas {
-    margin-top: 2rem; display: flex; flex-direction: column; gap: 0.5rem;
-    font-family: 'Space Grotesk', sans-serif; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(0,0,0,0.5);
-  }
-  .ideas span::before { content: "→"; margin-right: 12px; color: rgba(0,0,0,0.3); }
-
-  .right {
-    padding: 5rem 4rem; display: flex; flex-direction: column; justify-content: center;
-  }
-  @media (max-width: 880px) { .right { padding: 2.5rem 2rem 5rem; } }
-
-  form { display: flex; flex-direction: column; gap: 2rem; max-width: 460px; width: 100%; }
-  .field { display: flex; flex-direction: column; gap: 0.6rem; }
-  .field-label {
-    font-family: 'Space Grotesk', sans-serif; font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase;
-    color: rgba(0,0,0,0.55);
-  }
+  main, nav, footer { position: relative; z-index: 1; }
+  *:focus-visible { outline: 2px solid #B8748A; outline-offset: 2px; }
+  .pulse-dot { display: inline-block; width: 8px; height: 8px; background: #000; margin-right: 10px; animation: pulseAnim 1.6s ease-in-out infinite; vertical-align: middle; }
+  @keyframes pulseAnim { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
   .field input, .field textarea {
     font-family: 'Inter', sans-serif; font-weight: 400; font-size: 1rem; color: #000;
     background: transparent; border: none; border-bottom: 1.5px solid rgba(0,0,0,0.15);
-    padding: 0.65rem 0; outline: none; transition: border-color 0.25s;
-    resize: none; width: 100%;
+    padding: 0.65rem 0; outline: none; transition: border-color 0.25s; width: 100%; resize: none;
   }
   .field input:focus, .field textarea:focus { border-bottom-color: #000; }
   .field input::placeholder, .field textarea::placeholder { color: rgba(0,0,0,0.25); font-weight: 300; }
   .field textarea { min-height: 110px; line-height: 1.5; }
-
-  button[type=submit] {
-    margin-top: 1rem; align-self: flex-start;
-    font-family: 'Space Grotesk', sans-serif; font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
-    background: #000; color: #F4F4F4; border: none; padding: 1.1rem 2.4rem; cursor: pointer;
-    transition: opacity 0.2s, transform 0.2s;
-  }
-  button[type=submit]:hover { opacity: 0.85; }
-  button[type=submit]:disabled { opacity: 0.4; cursor: wait; }
-
-  .thanks { display: none; flex-direction: column; gap: 1.5rem; max-width: 460px; }
-  .thanks.show { display: flex; }
-  .thanks-hed {
-    font-family: 'Epilogue', sans-serif; font-weight: 900; font-size: clamp(2.5rem, 5vw, 4rem);
-    letter-spacing: -0.04em; line-height: 0.9; text-transform: uppercase; color: #000;
-  }
-  .thanks-text {
-    font-family: 'Inter', sans-serif; font-weight: 300; font-size: 1rem; line-height: 1.6;
-    color: rgba(0,0,0,0.6);
-  }
-  .thanks-link {
-    font-family: 'Space Grotesk', sans-serif; font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase;
-    color: #000; text-decoration: none; border-bottom: 1px solid #000; padding-bottom: 4px; align-self: flex-start;
-  }
-  .thanks-link:hover { opacity: 0.5; }
-
-  .err {
-    font-family: 'Space Grotesk', sans-serif; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
-    color: #B8748A; display: none;
-  }
-  .err.show { display: block; }
 </style>
 </head>
-<body>
-<nav>
-  <a href="index.html" class="nav-logo">ModeIL</a>
-  <div class="nav-links">
-    <a href="index.html">Designers</a>
-    <a href="Stores.html">Stores</a>
-    <a href="Map.html">Map</a>
-    <a href="About.html">About</a>
-    <a href="Submit.html" class="active">Submit</a>
+<body class="bg-background text-primary font-body">
+
+<!-- Nav -->
+<nav class="fixed top-0 w-full z-50 bg-[#F4F4F4]/95 backdrop-blur-sm border-b border-[#1A1A18]/10 flex justify-between items-center px-8 md:px-12 py-6">
+  <a href="index.html" class="font-headline font-black text-2xl tracking-tighter text-black uppercase">ModeIL</a>
+  <div class="hidden md:flex items-center gap-12">
+    <div class="flex gap-8 font-label uppercase tracking-widest text-sm">
+      <a class="text-black/40 hover:text-black transition-colors duration-300" href="index.html">Designers</a>
+      <a class="text-black/40 hover:text-black transition-colors duration-300" href="Stores.html">Stores</a>
+      <a class="text-black/40 hover:text-black transition-colors duration-300" href="Map.html">Map</a>
+      <a class="text-black/40 hover:text-black transition-colors duration-300" href="About.html">About</a>
+      <a class="text-black border-b-2 border-black pb-1" href="Submit.html">Submit</a>
+    </div>
+  </div>
+  <div class="flex items-center gap-4">
+    <button id="mobile-menu-btn" class="md:hidden flex items-center" onclick="toggleMobileMenu()">
+      <span class="material-symbols-outlined text-black">menu</span>
+    </button>
   </div>
 </nav>
 
-<main>
-  <section class="left">
-    <div class="label"><span class="pulse"></span>Talk to me</div>
-    <h1 class="hed">Send me<br/>your<br/>ideas.</h1>
-    <p class="blurb">Designers I should add. Brands you love. Stores worth a visit. Bugs, broken pins, missing labels. Or just hi.
+<!-- Mobile Menu Overlay -->
+<div id="mobile-menu" class="fixed inset-0 bg-[#F4F4F4] z-[999] flex flex-col px-8 py-6 md:hidden" style="display:none!important;transform:translateX(100%);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1);">
+  <div class="flex justify-between items-center mb-16">
+    <a href="index.html" class="font-headline font-black text-2xl tracking-tighter text-black uppercase">ModeIL</a>
+    <button onclick="toggleMobileMenu()">
+      <span class="material-symbols-outlined text-black">close</span>
+    </button>
+  </div>
+  <nav class="flex flex-col gap-8">
+    <a href="index.html" class="font-headline font-black text-5xl uppercase tracking-tighter text-black hover:opacity-40 transition-opacity border-b border-[#1A1A18]/10 pb-6">Designers</a>
+    <a href="Stores.html" class="font-headline font-black text-5xl uppercase tracking-tighter text-black hover:opacity-40 transition-opacity border-b border-[#1A1A18]/10 pb-6">Stores</a>
+    <a href="Map.html" class="font-headline font-black text-5xl uppercase tracking-tighter text-black hover:opacity-40 transition-opacity border-b border-[#1A1A18]/10 pb-6">Map</a>
+    <a href="About.html" class="font-headline font-black text-5xl uppercase tracking-tighter text-black hover:opacity-40 transition-opacity border-b border-[#1A1A18]/10 pb-6">About</a>
+    <a href="Submit.html" class="font-headline font-black text-5xl uppercase tracking-tighter text-black hover:opacity-40 transition-opacity pb-6">Submit</a>
+  </nav>
+</div>
 
-Buy me cool socks. Send me your favorite obscure Israeli label</p>
-    <div class="ideas">
-      <span>A designer to add</span>
-      <span>A correction or update</span>
-      <span>A collaboration</span>
-      <span>Cool socks</span>
+<main class="min-h-screen pt-24 grid grid-cols-1 md:grid-cols-2">
+  <section class="px-8 md:px-16 py-12 md:py-24 flex flex-col justify-center md:border-r border-b md:border-b-0 border-black/10">
+    <div class="font-label text-[10px] tracking-[0.3em] uppercase text-black/40 mb-8"><span class="pulse-dot"></span>Talk to me</div>
+    <h1 class="font-headline font-black uppercase tracking-tighter text-black leading-[0.88]" style="font-size:clamp(3rem,8vw,6rem)">Send me<br/>your<br/>ideas.</h1>
+    <p class="font-body font-light text-black/60 max-w-md mt-10 leading-relaxed text-base md:text-lg">
+      Designers I should add. Brands you love. Stores worth a visit. Bugs, broken pins, missing labels. Or just hi.
+      <br/><br/>
+      <b class="font-semibold text-black">Buy me cool socks.</b> Send me your favourite obscure Israeli label. This index lives because people send things in.
+    </p>
+    <div class="mt-8 flex flex-col gap-2 font-label text-[10px] tracking-widest uppercase text-black/50">
+      <span>→ A designer to add</span>
+      <span>→ A correction or update</span>
+      <span>→ A collaboration</span>
+      <span>→ Cool socks</span>
     </div>
   </section>
 
-  <section class="right">
-    <form id="contact-form" autocomplete="on">
-      <div class="field">
-        <label class="field-label" for="f-name">Full name</label>
+  <section class="px-8 md:px-16 py-12 md:py-24 flex flex-col justify-center">
+    <form id="contact-form" class="flex flex-col gap-8 max-w-md w-full" autocomplete="on">
+      <div class="field flex flex-col gap-2">
+        <label class="font-label text-[10px] tracking-[0.28em] uppercase text-black/55" for="f-name">Full name</label>
         <input type="text" id="f-name" name="name" required placeholder="Jane Cohen"/>
       </div>
-      <div class="field">
-        <label class="field-label" for="f-email">Email</label>
+      <div class="field flex flex-col gap-2">
+        <label class="font-label text-[10px] tracking-[0.28em] uppercase text-black/55" for="f-email">Email</label>
         <input type="email" id="f-email" name="email" required placeholder="you@example.com"/>
       </div>
-      <div class="field">
-        <label class="field-label" for="f-comment">Comment</label>
+      <div class="field flex flex-col gap-2">
+        <label class="font-label text-[10px] tracking-[0.28em] uppercase text-black/55" for="f-comment">Comment</label>
         <textarea id="f-comment" name="comment" required placeholder="Tell me anything…"></textarea>
       </div>
-      <div class="err" id="form-err">Something went wrong. Try again, or email danalonama@gmail.com directly.</div>
-      <button type="submit" id="submit-btn">Send →</button>
+      <div id="form-err" class="hidden font-label text-[11px] tracking-widest uppercase" style="color:#B8748A">Something went wrong. Try again, or email danalonama@gmail.com directly.</div>
+      <button type="submit" id="submit-btn" class="self-start bg-black text-[#F4F4F4] font-label text-xs tracking-[0.22em] uppercase px-10 py-4 hover:opacity-85 transition-opacity disabled:opacity-40 disabled:cursor-wait">Send →</button>
     </form>
 
-    <div class="thanks" id="thanks">
-      <div class="label"><span class="pulse"></span>Got it</div>
-      <h2 class="thanks-hed">Thanks.</h2>
-      <p class="thanks-text">Your message is on its way. I'll get back to you soon.</p>
-      <a href="index.html" class="thanks-link">← Back to the index</a>
+    <div id="thanks" class="hidden flex-col gap-6 max-w-md">
+      <div class="font-label text-[10px] tracking-[0.3em] uppercase text-black/40"><span class="pulse-dot"></span>Got it</div>
+      <h2 class="font-headline font-black uppercase tracking-tighter text-black leading-[0.9]" style="font-size:clamp(2.5rem,5vw,4rem)">Thanks.</h2>
+      <p class="font-body font-light text-black/60 leading-relaxed">Your message is on its way. I'll get back to you soon.</p>
+      <a href="index.html" class="self-start font-label text-[11px] tracking-[0.22em] uppercase text-black border-b border-black pb-1 hover:opacity-50">← Back to the index</a>
     </div>
   </section>
 </main>
 
 <script>
-  // Formspree endpoint — sends submissions to danalonama@gmail.com.
-  // ⚠️ ACTION REQUIRED: To activate the form, sign up at https://formspree.io
-  // with danalonama@gmail.com, create a new form, and replace the URL below
-  // with your real endpoint (looks like: https://formspree.io/f/xxxxxxxx).
   const FORM_ENDPOINT = "https://formspree.io/f/mykobzkv";
 
   const form = document.getElementById('contact-form');
@@ -175,33 +139,41 @@ Buy me cool socks. Send me your favorite obscure Israeli label</p>
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    errBox.classList.remove('show');
+    errBox.classList.add('hidden');
     btn.disabled = true;
     btn.textContent = 'Sending…';
 
     const data = new FormData(form);
-    // Helpful subject line in the inbox
     data.append('_subject', `ModeIL — message from ${data.get('name')}`);
     data.append('_replyto', data.get('email'));
 
     try {
       const res = await fetch(FORM_ENDPOINT, {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
+        method: 'POST', body: data, headers: { 'Accept': 'application/json' }
       });
       if (res.ok) {
         form.style.display = 'none';
-        thanks.classList.add('show');
-      } else {
-        throw new Error('bad response');
-      }
+        thanks.classList.remove('hidden');
+        thanks.classList.add('flex');
+      } else { throw new Error('bad response'); }
     } catch (err) {
-      errBox.classList.add('show');
+      errBox.classList.remove('hidden');
       btn.disabled = false;
       btn.textContent = 'Send →';
     }
   });
+
+  function toggleMobileMenu() {
+    const m = document.getElementById('mobile-menu');
+    const isOpen = m.style.transform === 'translateX(0%)';
+    if (isOpen) {
+      m.style.transform = 'translateX(100%)';
+      setTimeout(() => m.style.setProperty('display', 'none', 'important'), 350);
+    } else {
+      m.style.setProperty('display', 'flex', 'important');
+      requestAnimationFrame(() => { m.style.transform = 'translateX(0%)'; });
+    }
+  }
 </script>
 </body>
 </html>
