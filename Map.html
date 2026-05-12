@@ -1092,7 +1092,7 @@ const MAP_TRANSLATIONS = {
   }
 };
 
-let mapLang = localStorage.getItem('modeil-lang') || 'en';
+let mapLang = 'en';
 
 function applyMapLang() {
   const t = MAP_TRANSLATIONS[mapLang];
@@ -1118,7 +1118,6 @@ function applyMapLang() {
 
 function toggleMapLang() {
   mapLang = mapLang === 'en' ? 'he' : 'en';
-  localStorage.setItem('modeil-lang', mapLang);
   document.getElementById('lang-toggle-map').textContent = mapLang === 'en' ? 'EN | עב' : 'עב | EN';
   applyMapLang();
 }
