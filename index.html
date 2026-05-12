@@ -128,7 +128,7 @@
       </button>
       <input id="search-input" type="text" placeholder="Search by brand name" class="font-body text-sm outline-none px-2 bg-transparent" style="width:0;border:0;flex:1;min-width:0;"/>
     </div>
-    <button id="lang-toggle" onclick="toggleLang()" class="font-label text-[10px] tracking-widest uppercase border border-black px-3 py-1.5 hover:bg-black hover:text-[#fcf9f5] transition-all duration-200">EN | עב</button>
+    <button id="lang-toggle" onclick="toggleLang()" class="font-label text-[10px] tracking-widest uppercase border border-black hover:opacity-80 transition-all duration-200 flex items-stretch overflow-hidden"><span id="lang-en" class="px-2 py-1.5 bg-black text-[#fcf9f5]">EN</span><span class="px-1 py-1.5">|</span><span id="lang-he" class="px-2 py-1.5 text-black">עב</span></button>
     <button id="mobile-menu-btn" class="md:hidden flex items-center" onclick="toggleMobileMenu()">
     <span class="material-symbols-outlined text-black" id="mobile-menu-icon">menu</span>
   </button>
@@ -2133,7 +2133,7 @@ const TAG_LABELS = {
   he: { jewelry:"תכשיטים", swimwear:"בגדי ים", knitwear:"סריגה", streetwear:"סטריטוור", prints:"הדפסים", minimalist:"מינימליסטי", sustainable:"בר-קיימא", activewear:"ספורטסוור", artisan:"בוטיק", heritage:"מורשת", surf:"גלישה", luxury:"יוקרה", lingerie:"לינג'רי", menswear:"גברים", accessories:"אקסססוריז", contemporary:"עכשווי" }
 };
 
-let currentLang = localStorage.getItem('modeil-lang') || 'en';
+let currentLang = 'en';
 
 function applyLang() {
   const t = TRANSLATIONS[currentLang];
@@ -2200,10 +2200,22 @@ function applyLang() {
 
 function toggleLang() {
   currentLang = currentLang === 'en' ? 'he' : 'en';
-  localStorage.setItem('modeil-lang', currentLang);
-  document.getElementById('lang-toggle').textContent = currentLang === 'en' ? 'EN | עב' : 'עב | EN';
+  updateLangToggle();
   applyLang();
   applyFilters();
+}
+
+function updateLangToggle() {
+  const en = document.getElementById('lang-en');
+  const he = document.getElementById('lang-he');
+  if (!en || !he) return;
+  if (currentLang === 'en') {
+    en.className = 'px-2 py-1.5 bg-black text-[#fcf9f5]';
+    he.className = 'px-2 py-1.5 text-black';
+  } else {
+    en.className = 'px-2 py-1.5 text-black';
+    he.className = 'px-2 py-1.5 bg-black text-[#fcf9f5]';
+  }
 }
 
 // Patch tagHtml to use current lang
@@ -2325,8 +2337,8 @@ window.renderCards = function(filtered) {
 
 // Init lang on load
 document.addEventListener('DOMContentLoaded', () => {
+  updateLangToggle();
   if (currentLang === 'he') {
-    document.getElementById('lang-toggle').textContent = 'עב | EN';
     applyLang();
     applyFilters();
   }
