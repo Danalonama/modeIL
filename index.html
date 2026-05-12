@@ -6,7 +6,7 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>ModeIL — Israeli Fashion Index</title>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700;900&amp;family=Inter:wght@300;400;600&amp;family=Space+Grotesk:wght@300;400;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700;900&amp;family=Inter:wght@300;400;600&amp;family=Space+Grotesk:wght@300;400;700&amp;family=Noto+Sans+Hebrew:wght@300;400;600;700;900&amp;display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script>
   tailwind.config = {
@@ -89,9 +89,10 @@
     letter-spacing: 0.2em; text-transform: uppercase; color: #aaa;
     text-align: center; padding: 2rem;
   }
-  [dir="rtl"] { font-family: 'Assistant', 'Inter', sans-serif !important; }
-  [dir="rtl"] .font-headline { font-family: 'Assistant', 'Epilogue', sans-serif !important; }
-  [dir="rtl"] .font-label { font-family: 'Assistant', 'Space Grotesk', sans-serif !important; }
+  [dir="rtl"] { font-family: 'Noto Sans Hebrew', 'Inter', sans-serif !important; }
+  [dir="rtl"] .font-headline { font-family: 'Noto Sans Hebrew', 'Epilogue', sans-serif !important; font-weight: 900 !important; }
+  [dir="rtl"] .font-body { font-family: 'Noto Sans Hebrew', 'Inter', sans-serif !important; }
+  [dir="rtl"] .font-label { font-family: 'Noto Sans Hebrew', 'Space Grotesk', sans-serif !important; }
   [dir="rtl"] .tracking-tighter { letter-spacing: -0.01em !important; }
   [dir="rtl"] .tracking-widest { letter-spacing: 0.05em !important; }
   #lang-toggle { cursor: pointer; } *:focus-visible { outline: 2px solid #B8748A; outline-offset: 2px; }
@@ -110,7 +111,7 @@
 
 <!-- Nav -->
 <nav class="fixed top-0 w-full z-50 bg-[#F4F4F4]/95 backdrop-blur-sm border-b border-[#1A1A18]/10 flex justify-between items-center px-8 md:px-12 py-6">
-  <a href="index.html" class="font-headline font-black text-2xl tracking-tighter text-black uppercase">ModeIL</a>
+  <a href="index.html" class="font-headline font-black text-2xl tracking-tighter text-black uppercase" style="font-family: Inter">ModeIL</a>
   <div class="hidden md:flex items-center gap-12">
     <div class="flex gap-8 font-label uppercase tracking-widest text-sm">
       <a class="text-black border-b-2 border-black pb-1" href="index.html">Designers</a>
@@ -120,7 +121,13 @@
       <a class="text-black/40 hover:text-black transition-colors duration-300" href="Submit.html">Submit</a>
     </div>
   </div>
-  <div class="flex items-center gap-4">
+  <div class="flex items-center gap-3">
+    <div id="nav-search" class="flex items-center border border-black overflow-hidden" style="height:34px;width:34px;transition:width 0.35s cubic-bezier(0.16,1,0.3,1);">
+      <button id="nav-search-toggle" type="button" onclick="toggleNavSearch()" class="flex items-center justify-center flex-shrink-0 hover:bg-black hover:text-[#fcf9f5] transition-colors duration-200" style="width:34px;height:34px;" aria-label="Search">
+        <span class="material-symbols-outlined" style="font-size:18px;">search</span>
+      </button>
+      <input id="search-input" type="text" placeholder="Search by brand name" class="font-body text-sm outline-none px-2 bg-transparent" style="width:0;border:0;flex:1;min-width:0;"/>
+    </div>
     <button id="lang-toggle" onclick="toggleLang()" class="font-label text-[10px] tracking-widest uppercase border border-black px-3 py-1.5 hover:bg-black hover:text-[#fcf9f5] transition-all duration-200">EN | עב</button>
     <button id="mobile-menu-btn" class="md:hidden flex items-center" onclick="toggleMobileMenu()">
     <span class="material-symbols-outlined text-black" id="mobile-menu-icon">menu</span>
@@ -154,12 +161,10 @@
   <!-- Hero & Filter -->
   <header class="mb-16 flex flex-col gap-12">
     <div class="max-w-3xl">
-      <h1 class="font-headline font-black leading-[0.82] tracking-tighter mb-8 uppercase" style="font-size: 82px">
-        Israeli<br>Fashion<br>Index
-      </h1>
-      <p class="font-body text-lg text-on-surface-variant max-w-lg leading-relaxed" style="font-size: 16px">
-        I track Israeli fashion so you don't have to. Small boutiques to established brands and everything in between - classic to quirky, formal to fun, morning to evening, work to play.
-      </p>
+      <h1 class="font-headline font-black leading-[0.82] tracking-tighter mb-8 uppercase" style="font-size: 82px">רשימת
+האופנה
+הישראלית</h1>
+      <p class="font-body text-lg text-on-surface-variant max-w-lg leading-relaxed" style="font-size: 16px">אני עוקבת אחרי האופנה הישראלית בשבילך. בוטיקים קטנים עם מעצבת מבריק אחת מאחוריהם, מותגים מבוססים שכבר מכירים, וכל מה שביניהם - מהגבוה לנמוך, מהקלאסי לבועט, רשמי לכיפי, בוקר לערב, עבודה לפנאי.</p>
     </div>
     <div class="w-full">
       <div class="overflow-x-auto pb-2 relative" id="filter-scroll-container">
@@ -190,6 +195,9 @@
         <button id="filter-next" class="hidden md:flex absolute right-0 top-0 bottom-2 items-center bg-gradient-to-l from-[#fcf9f5] to-transparent pl-4 z-10 opacity-50 hover:opacity-100 transition-opacity">
           <span class="material-symbols-outlined" style="font-size:18px">arrow_forward</span>
         </button>
+      </div>
+      <div id="alpha-bar" class="flex flex-wrap gap-1 mt-4">
+        <button class="alpha-btn active font-label text-[10px] tracking-widest uppercase px-2.5 py-1.5 border border-black bg-white text-black" data-letter="all">All</button>
       </div>
       <div class="flex items-center gap-3 mt-4">
         <div class="w-2 h-2 bg-primary"></div>
@@ -1695,6 +1703,15 @@ const DESIGNERS = [
     fav: false
   },
   {
+    name: "Muslin Brothers",
+    url: "https://www.muslinbrothers.com/",
+    tags: ["conceptual", "artisan"],
+    tagLabels: ["Conceptual", "Artisan"],
+    desc: "Founded in Tel Aviv in 2011 by Tamar Levit and Yaen Levi, now based in Brussels. Part fashion brand, part research studio - work sits between design and art, investigating how clothes shape personal and social systems through wearables, performance, and image-making.",
+    img: "https://static.wixstatic.com/media/a25c6e_aba9669ec6634536a94cf10a7e42b5f1~mv2.jpg/v1/fill/w_441,h_601,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/a25c6e_aba9669ec6634536a94cf10a7e42b5f1~mv2.jpg",
+    fav: false
+  },
+  {
     name: "Hagomels",
     url: "https://hagomels.com/",
     tags: ["artisan", "minimalist"],
@@ -1808,6 +1825,7 @@ const noResults = document.getElementById('no-results');
 const total = DESIGNERS.length;
 let activeFilters = new Set();
 let currentSearch = '';
+let currentLetter = 'all';
 
 // Sort key: brands starting with a number sort by the spelled-out name (e.g. "101" → "one hundred one")
 const NUM_WORDS = { '0':'zero','1':'one','2':'two','3':'three','4':'four','5':'five','6':'six','7':'seven','8':'eight','9':'nine','10':'ten','11':'eleven','12':'twelve','101':'one hundred one' };
@@ -1826,10 +1844,10 @@ function applyFilters() {
       (isFavOnly && FAVORITES.has(d.name)) ||
       (!isFavOnly && d.tags.some(t => activeFilters.has(t)));
     const matchesSearch = currentSearch === '' ||
-      d.name.toLowerCase().includes(currentSearch) ||
-      d.desc.toLowerCase().includes(currentSearch) ||
-      d.tags.some(t => t.includes(currentSearch));
-    return matchesFilter && matchesSearch;
+      (d.name || '').toLowerCase().includes(currentSearch);
+    const matchesLetter = currentLetter === 'all' ||
+      sortKey(d.name).charAt(0).toLowerCase() === currentLetter;
+    return matchesFilter && matchesSearch && matchesLetter;
   }).sort((a, b) => sortKey(a.name).localeCompare(sortKey(b.name)));
   renderCards(filtered);
 }
@@ -1886,7 +1904,7 @@ function renderCards(filtered) {
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
             </button>` : ''}
           </div>
-          <p class="font-body text-sm text-on-surface-variant leading-relaxed">${d.desc}</p>
+          <p class="font-body text-sm text-on-surface-variant leading-relaxed desc-text" data-desc-en="${(d.desc || '').replace(/"/g, '&quot;')}">${d.desc}</p>
           <div class="flex flex-wrap gap-4 items-center">
             <a class="font-label text-[10px] tracking-widest uppercase underline underline-offset-4 hover:opacity-40 transition-opacity w-fit"
                href="${d.url}" target="_blank" rel="noopener">Visit Website →</a>
@@ -2022,6 +2040,38 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
 
 // Search removed
 
+// Build alpha bar
+(function buildAlphaBar(){
+  const bar = document.getElementById('alpha-bar');
+  if (!bar) return;
+  const letters = new Set();
+  DESIGNERS.forEach(d => {
+    const c = sortKey(d.name).charAt(0).toLowerCase();
+    if (c && /[a-z]/.test(c)) letters.add(c);
+  });
+  const sorted = [...letters].sort();
+  sorted.forEach(l => {
+    const btn = document.createElement('button');
+    btn.className = 'alpha-btn font-label text-[10px] tracking-widest uppercase px-2.5 py-1.5 border border-transparent bg-surface-container-highest text-primary';
+    btn.dataset.letter = l;
+    btn.textContent = l.toUpperCase();
+    bar.appendChild(btn);
+  });
+  bar.querySelectorAll('.alpha-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const letter = btn.dataset.letter;
+      currentLetter = letter;
+      bar.querySelectorAll('.alpha-btn').forEach(b => {
+        b.classList.remove('active', 'bg-white', 'text-black', 'border-black');
+        b.classList.add('bg-surface-container-highest', 'text-primary', 'border-transparent');
+      });
+      btn.classList.add('active', 'bg-white', 'text-black', 'border-black');
+      btn.classList.remove('bg-surface-container-highest', 'text-primary', 'border-transparent');
+      applyFilters();
+    });
+  });
+})();
+
 // Init
 applyFilters();
 </script>
@@ -2041,7 +2091,7 @@ const TRANSLATIONS = {
     filterSustainable: "Sustainable", filterActivewear: "Activewear", filterArtisan: "Artisan",
     filterHeritage: "Heritage", filterSurf: "Surf", filterLuxury: "Luxury",
     filterLingerie: "Lingerie", filterMenswear: "Menswear", filterAccessories: "Accessories", filterSizeInclusive: "Size Inclusive",
-    searchPlaceholder: "Search designers...",
+    searchPlaceholder: "Search by brand name",
     visitWebsite: "Visit Website",
     designersCount: (n, t) => n === t ? `${t} Designers` : `${n} of ${t} Designers`,
     noResults: "No designers match this filter",
@@ -2055,8 +2105,8 @@ const TRANSLATIONS = {
   },
   he: {
     tagline: "תל אביב · ירושלים · ניו יורק · פריז · עולמי",
-    heroTitle: "מדד\nהאופנה\nהישראלית",
-    heroDesc: "אני עוקבת אחרי האופנה הישראלית בשבילך. בוטיקים קטנים עם מעצב מבריק אחד מאחוריהם, מותגים מבוססים שכבר מכירים, וכל מה שביניהם — מהגבוה לנמוך, מהקלאסי לאקסצנטרי, מהרשמי לכיפי, מבוקר לערב, מעבודה לפנאי.",
+    heroTitle: "אינדקס\nאופנה\nישראלית",
+    heroDesc: "אני עוקבת אחרי מותגים מהארץ מכל הסוגים ",
     filterLabel: "סינון:",
     filterAll: "הכל",
     filterJewelry: "תכשיטים", filterSwimwear: "בגדי ים", filterKnitwear: "סריגה",
@@ -2064,7 +2114,7 @@ const TRANSLATIONS = {
     filterSustainable: "בר-קיימא", filterActivewear: "ספורטסוור", filterArtisan: "בוטיק",
     filterHeritage: "מורשת", filterSurf: "גלישה", filterLuxury: "יוקרה",
     filterLingerie: "לינג'רי", filterMenswear: "גברים", filterAccessories: "אקסססוריז", filterSizeInclusive: "מגוון מידות",
-    searchPlaceholder: "חיפוש מעצבים...",
+    searchPlaceholder: "חיפוש לפי שם מותג",
     visitWebsite: "לאתר",
     designersCount: (n, t) => n === t ? `${t} מעצבים` : `${n} מתוך ${t} מעצבים`,
     noResults: "לא נמצאו מעצבים לפילטר זה",
@@ -2102,7 +2152,7 @@ function applyLang() {
   }
 
   // Hero
-  const tagline = document.querySelector('p.font-label.tracking-\[0\.3em\]');
+  const tagline = document.querySelector('p[class*="tracking-[0.3em"]');
   if (tagline) tagline.textContent = t.tagline;
   const h1 = document.querySelector('h1.font-headline');
   if (h1) h1.innerHTML = t.heroTitle.replace(/\n/g, '<br>');
@@ -2123,7 +2173,6 @@ function applyLang() {
   // Search
   const searchInput = document.getElementById('search-input');
   if (searchInput) searchInput.placeholder = t.searchPlaceholder;
-
   // CTA section
   const ctaH2 = document.querySelector('section.mt-56 h2');
   if (ctaH2) ctaH2.innerHTML = t.ctaTitle.replace(/\n/g, '<br>');
@@ -2134,7 +2183,7 @@ function applyLang() {
   if (ctaLinks[1]) ctaLinks[1].textContent = t.ctaBrowse;
 
   // Footer
-  const footerTagline = document.querySelector('footer .font-label.text-\[9px\].tracking-\[0\.25em\]');
+  const footerTagline = document.querySelector('footer p[class*="tracking-[0.25em"]');
   if (footerTagline) footerTagline.textContent = t.footerTagline;
   const footerLinks = document.querySelectorAll('footer a');
   if (footerLinks[0]) footerLinks[0].textContent = t.footerInstagram;
@@ -2154,6 +2203,7 @@ function toggleLang() {
   localStorage.setItem('modeil-lang', currentLang);
   document.getElementById('lang-toggle').textContent = currentLang === 'en' ? 'EN | עב' : 'עב | EN';
   applyLang();
+  applyFilters();
 }
 
 // Patch tagHtml to use current lang
@@ -2169,18 +2219,107 @@ window.tagHtml = function(labels) {
   return _origTagHtml(labels);
 };
 
+// Description translation cache (English -> Hebrew)
+const descCache = (() => {
+  try { return JSON.parse(localStorage.getItem('descHeCache') || '{}'); }
+  catch { return {}; }
+})();
+let translationInFlight = false;
+
+async function translateBatch(batch) {
+  // Build numbered prompt; expect JSON array back
+  const list = batch.map((b, i) => `[${i + 1}] ${b.en}`).join('\n\n');
+  const prompt = `Translate these English fashion brand descriptions into natural, fluent Hebrew. Rules:
+- Keep brand names (e.g. "Tel Aviv", "Comme il Faut", "Donna Karan") in their original form.
+- Keep punctuation, em-dashes, and tone faithful to the original.
+- Do NOT add a preamble, notes, or numbering text. Return ONLY a JSON array of strings — one per input, in the same order.
+
+Inputs:
+${list}`;
+  let raw;
+  try {
+    raw = await window.claude.complete({ messages: [{ role: 'user', content: prompt }] });
+  } catch (e) {
+    console.error('translate failed', e);
+    return null;
+  }
+  // Extract first JSON array
+  const m = raw.match(/\[[\s\S]*\]/);
+  if (!m) return null;
+  try {
+    const arr = JSON.parse(m[0]);
+    if (!Array.isArray(arr) || arr.length !== batch.length) return null;
+    return arr;
+  } catch { return null; }
+}
+
+async function translateDescriptions() {
+  if (currentLang !== 'he') return;
+  const elements = document.querySelectorAll('.desc-text');
+  const toTranslate = [];
+  elements.forEach(el => {
+    const en = el.dataset.descEn;
+    if (!en) return;
+    const enClean = en.replace(/&quot;/g, '"');
+    if (descCache[enClean]) {
+      // Always apply cached — even on re-renders during in-flight fetches
+      el.textContent = descCache[enClean];
+      el.style.opacity = '';
+    } else {
+      toTranslate.push({ el, en: enClean });
+    }
+  });
+  // Only the fetch loop is guarded so we don't issue duplicate batches
+  if (toTranslate.length === 0 || translationInFlight) return;
+  translationInFlight = true;
+  toTranslate.forEach(({ el }) => { el.style.opacity = '0.5'; });
+  const batchSize = 5;
+  for (let i = 0; i < toTranslate.length; i += batchSize) {
+    const batch = toTranslate.slice(i, i + batchSize);
+    const translations = await translateBatch(batch);
+    if (translations) {
+      batch.forEach((b, idx) => {
+        const he = translations[idx];
+        if (he) {
+          descCache[b.en] = he;
+          if (currentLang === 'he') {
+            // Re-query current DOM element (card may have been re-rendered)
+            const live = document.querySelector(`.desc-text[data-desc-en="${CSS.escape(b.en).replace(/\\\"/g,'\\"')}"]`) || b.el;
+            live.textContent = he;
+            live.style.opacity = '';
+          }
+        }
+      });
+      try { localStorage.setItem('descHeCache', JSON.stringify(descCache)); } catch {}
+    } else {
+      batch.forEach(b => { b.el.style.opacity = ''; });
+    }
+  }
+  translationInFlight = false;
+  // After batch completes, re-apply cache to any cards that re-rendered during the wait
+  document.querySelectorAll('.desc-text').forEach(el => {
+    const en = (el.dataset.descEn || '').replace(/&quot;/g, '"');
+    if (descCache[en] && currentLang === 'he') {
+      el.textContent = descCache[en];
+      el.style.opacity = '';
+    }
+  });
+}
+
 // Patch visitWebsite text
 const _origRender = renderCards;
 window.renderCards = function(filtered) {
   _origRender(filtered);
   if (currentLang === 'he') {
-    document.querySelectorAll('.designer-card a.panel-link, .designer-card a.group\/link').forEach(a => {
+    document.querySelectorAll('.designer-card a').forEach(a => {
       const span = a.querySelector('span.font-label');
-      if (span) span.textContent = TRANSLATIONS.he.visitWebsite;
+      if (span && /visit website/i.test(span.textContent)) span.textContent = TRANSLATIONS.he.visitWebsite;
     });
     // Update count
     const n = document.querySelectorAll('.designer-card:not(.hidden-card)').length;
     countEl.textContent = TRANSLATIONS.he.designersCount(n, total);
+    // Translate descriptions (async, uses cache)
+    translateDescriptions();
   }
 };
 
@@ -2189,6 +2328,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (currentLang === 'he') {
     document.getElementById('lang-toggle').textContent = 'עב | EN';
     applyLang();
+    applyFilters();
   }
 });
 </script>
@@ -2213,5 +2353,61 @@ function toggleMobileMenu() {
     setTimeout(() => { mobileMenu.style.display = 'none!important'; }, 350);
   }
 }
+
+// Nav search toggle
+let navSearchOpen = false;
+function toggleNavSearch() {
+  const wrap = document.getElementById('nav-search');
+  const input = document.getElementById('search-input');
+  if (!navSearchOpen) {
+    navSearchOpen = true;
+    wrap.style.width = '240px';
+    setTimeout(() => input.focus(), 100);
+  } else {
+    // If empty, close. If has content, clear + close.
+    if (input.value.trim() === '') {
+      closeNavSearch();
+    } else {
+      input.value = '';
+      currentSearch = '';
+      applyFilters();
+      input.focus();
+    }
+  }
+}
+function closeNavSearch() {
+  navSearchOpen = false;
+  const wrap = document.getElementById('nav-search');
+  const input = document.getElementById('search-input');
+  wrap.style.width = '34px';
+  input.value = '';
+  if (currentSearch !== '') {
+    currentSearch = '';
+    applyFilters();
+  }
+}
+document.addEventListener('DOMContentLoaded', () => {
+  const input = document.getElementById('search-input');
+  if (input) {
+    input.addEventListener('input', e => {
+      const v = e.target.value.trim().toLowerCase();
+      // Only filter at >=2 chars; clear filter below that
+      currentSearch = v.length >= 2 ? v : '';
+      applyFilters();
+    });
+    input.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeNavSearch();
+    });
+  }
+  // Click outside closes if empty
+  document.addEventListener('click', (e) => {
+    const wrap = document.getElementById('nav-search');
+    if (!wrap || !navSearchOpen) return;
+    if (!wrap.contains(e.target)) {
+      const input = document.getElementById('search-input');
+      if (input && input.value.trim() === '') closeNavSearch();
+    }
+  });
+});
 </script>
 </body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>
