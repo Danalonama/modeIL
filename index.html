@@ -2,6 +2,7 @@
 
 
 <meta charset="utf-8">
+<link rel="icon" type="image/png" href="favicon.png">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>ModeIL — Israeli Fashion Index</title>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
@@ -153,13 +154,10 @@
   <!-- Hero & Filter -->
   <header class="mb-16 flex flex-col gap-12">
     <div class="max-w-3xl">
-      <p class="font-label text-[10px] tracking-[0.3em] uppercase text-on-surface-variant mb-6 opacity-60">
-        Tel Aviv · Jerusalem · New York · Paris · Global
-      </p>
-      <h1 class="font-headline font-black leading-[0.82] tracking-tighter mb-8 uppercase" style="font-size:clamp(3rem,12vw,100px)">
+      <h1 class="font-headline font-black leading-[0.82] tracking-tighter mb-8 uppercase" style="font-size: 82px">
         Israeli<br>Fashion<br>Index
       </h1>
-      <p class="font-body text-lg text-on-surface-variant max-w-lg leading-relaxed">
+      <p class="font-body text-lg text-on-surface-variant max-w-lg leading-relaxed" style="font-size: 16px">
         I track Israeli fashion so you don't have to. Small boutiques to established brands and everything in between - classic to quirky, formal to fun, morning to evening, work to play.
       </p>
     </div>
@@ -199,17 +197,6 @@
       </div>
     </div>
 
-    <!-- Search -->
-    <div class="flex items-center gap-0 border-b border-[#1A1A18]/20 max-w-xl relative pl-2">
-      <div class="absolute left-2 flex items-center pointer-events-none">
-        <span class="material-symbols-outlined text-black opacity-30" style="font-size:18px">search</span>
-      </div>
-      <input id="search-input" type="text" placeholder="Search designers..."
-        class="w-full bg-transparent font-label text-sm tracking-widest uppercase placeholder:opacity-30 placeholder:text-black text-black outline-none py-3 pl-9 pr-8"/>
-      <button id="search-clear" class="hidden absolute right-0 opacity-40 hover:opacity-100 transition-opacity">
-        <span class="material-symbols-outlined" style="font-size:18px">close</span>
-      </button>
-    </div>
   </header>
 
   <!-- Grid -->
@@ -2033,20 +2020,7 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
   });
 });
 
-// Search
-const searchInput = document.getElementById('search-input');
-const searchClear = document.getElementById('search-clear');
-searchInput.addEventListener('input', () => {
-  currentSearch = searchInput.value.trim().toLowerCase();
-  searchClear.classList.toggle('hidden', currentSearch === '');
-  applyFilters();
-});
-searchClear.addEventListener('click', () => {
-  searchInput.value = '';
-  currentSearch = '';
-  searchClear.classList.add('hidden');
-  applyFilters();
-});
+// Search removed
 
 // Init
 applyFilters();
