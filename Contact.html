@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <link rel="icon" type="image/png" href="favicon.png">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>ModeIL — About</title>
+<title>ModeIL — Contact</title>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700;900&amp;family=Inter:wght@300;400;600&amp;family=Space+Grotesk:wght@300;400;700&amp;family=Assistant:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -35,10 +35,17 @@
     background-repeat: repeat; background-size: 200px;
   }
   main, nav, footer { position: relative; z-index: 1; }
-  #lang-toggle { cursor: pointer; }
   *:focus-visible { outline: 2px solid #B8748A; outline-offset: 2px; }
   .pulse-dot { display: inline-block; width: 8px; height: 8px; background: #000; margin-right: 10px; animation: pulseAnim 1.6s ease-in-out infinite; vertical-align: middle; }
   @keyframes pulseAnim { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
+  .field input, .field textarea {
+    font-family: 'Inter', sans-serif; font-weight: 400; font-size: 1rem; color: #000;
+    background: transparent; border: none; border-bottom: 1.5px solid rgba(0,0,0,0.15);
+    padding: 0.65rem 0; outline: none; transition: border-color 0.25s; width: 100%; resize: none;
+  }
+  .field input:focus, .field textarea:focus { border-bottom-color: #000; }
+  .field input::placeholder, .field textarea::placeholder { color: rgba(0,0,0,0.25); font-weight: 300; }
+  .field textarea { min-height: 110px; line-height: 1.5; }
 </style>
 </head>
 <body class="bg-background text-primary font-body">
@@ -51,8 +58,8 @@
       <a class="text-black/40 hover:text-black transition-colors duration-300" href="index.html">Designers</a>
       <a class="text-black/40 hover:text-black transition-colors duration-300" href="Stores.html">Stores</a>
       <a class="text-black/40 hover:text-black transition-colors duration-300" href="Map.html">Map</a>
-      <a class="text-black border-b-2 border-black pb-1" href="About.html">About</a>
-      <a class="text-black/40 hover:text-black transition-colors duration-300" href="Contact.html">Talk To Me</a>
+      <a class="text-black/40 hover:text-black transition-colors duration-300" href="About.html">About</a>
+      <a class="text-black border-b-2 border-black pb-1" href="Contact.html">Talk To Me</a>
     </div>
   </div>
   <div class="flex items-center gap-4">
@@ -79,13 +86,77 @@
   </nav>
 </div>
 
-<main class="min-h-screen flex flex-col items-center justify-center text-center px-6 pt-24">
-  <div class="font-label text-[10px] tracking-[0.3em] uppercase text-black/40 mb-8"><span class="pulse-dot"></span>About</div>
-  <h1 class="font-headline font-black uppercase tracking-tighter text-black leading-[0.85]" style="font-size: 82px">Coming<br/>Soon</h1>
-  <p class="font-body font-light text-black/60 max-w-md mt-10 leading-relaxed">basically it's just me (Dana) checking out what's new in Israeli fashion...</p>
+<main class="min-h-screen pt-24 grid grid-cols-1 md:grid-cols-2">
+  <section class="px-8 md:px-16 py-12 md:py-24 flex flex-col justify-center md:border-r border-b md:border-b-0 border-black/10">
+    <div class="font-label text-[10px] tracking-[0.3em] uppercase text-black/40 mb-8"><span class="pulse-dot"></span>Talk to me</div>
+    <h1 class="font-headline font-black uppercase tracking-tighter text-black leading-[0.88]" style="font-size: 82px">TALK
+TO ME.</h1>
+    <p class="font-body font-light text-black/60 max-w-md mt-10 leading-relaxed" style='font: 400 15px / 1.6 "Helvetica Neue"'>
+      Send me your favorite obscure Israeli label, designers I should add, brands you love, Bugs, broken pins, etc.<br>Your brand is listed, and something's not right, or you'd rather not be? Or just hi
+    </p>
+  </section>
+
+  <section class="px-8 md:px-16 py-12 md:py-24 flex flex-col justify-center">
+    <form id="contact-form" class="flex flex-col gap-8 max-w-md w-full" autocomplete="on">
+      <div class="field flex flex-col gap-2">
+        <label class="font-label text-[10px] tracking-[0.28em] uppercase text-black/55" for="f-name">Full name</label>
+        <input type="text" id="f-name" name="name" required placeholder="Jane Cohen"/>
+      </div>
+      <div class="field flex flex-col gap-2">
+        <label class="font-label text-[10px] tracking-[0.28em] uppercase text-black/55" for="f-email">Email</label>
+        <input type="email" id="f-email" name="email" required placeholder="you@example.com"/>
+      </div>
+      <div class="field flex flex-col gap-2">
+        <label class="font-label text-[10px] tracking-[0.28em] uppercase text-black/55" for="f-comment">Comment</label>
+        <textarea id="f-comment" name="comment" required placeholder="Tell me anything…"></textarea>
+      </div>
+      <div id="form-err" class="hidden font-label text-[11px] tracking-widest uppercase" style="color:#B8748A">Something went wrong. Try again, or email danalonama@gmail.com directly.</div>
+      <button type="submit" id="submit-btn" class="self-start bg-black text-[#F4F4F4] font-label text-xs tracking-[0.22em] uppercase px-10 py-4 hover:opacity-85 transition-opacity disabled:opacity-40 disabled:cursor-wait">Send →</button>
+    </form>
+
+    <div id="thanks" class="hidden flex-col gap-6 max-w-md">
+      <div class="font-label text-[10px] tracking-[0.3em] uppercase text-black/40"><span class="pulse-dot"></span>Got it</div>
+      <h2 class="font-headline font-black uppercase tracking-tighter text-black leading-[0.9]" style="font-size:clamp(2.5rem,5vw,4rem)">Thanks.</h2>
+      <p class="font-body font-light text-black/60 leading-relaxed">Your message is on its way. I'll get back to you soon.</p>
+      <a href="index.html" class="self-start font-label text-[11px] tracking-[0.22em] uppercase text-black border-b border-black pb-1 hover:opacity-50">← Back to the index</a>
+    </div>
+  </section>
 </main>
 
 <script>
+  const FORM_ENDPOINT = "https://formspree.io/f/mykobzkv";
+
+  const form = document.getElementById('contact-form');
+  const thanks = document.getElementById('thanks');
+  const errBox = document.getElementById('form-err');
+  const btn = document.getElementById('submit-btn');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errBox.classList.add('hidden');
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    const data = new FormData(form);
+    data.append('_subject', `ModeIL — message from ${data.get('name')}`);
+    data.append('_replyto', data.get('email'));
+
+    try {
+      const res = await fetch(FORM_ENDPOINT, {
+        method: 'POST', body: data, headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        form.style.display = 'none';
+        thanks.classList.remove('hidden');
+        thanks.classList.add('flex');
+      } else { throw new Error('bad response'); }
+    } catch (err) {
+      errBox.classList.remove('hidden');
+      btn.disabled = false;
+      btn.textContent = 'Send →';
+    }
+  });
+
   function toggleMobileMenu() {
     const m = document.getElementById('mobile-menu');
     const isOpen = m.style.transform === 'translateX(0%)';

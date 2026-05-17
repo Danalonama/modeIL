@@ -347,7 +347,7 @@
     <a href="Stores.html" id="nav-stores">Stores</a>
     <a href="Map.html" class="active" id="nav-map">Map</a>
     <a href="About.html" id="nav-about">About</a>
-    <a href="Submit.html" id="nav-submit">Submit</a>
+    <a href="Contact.html" id="nav-submit">Talk To Me</a>
   </div>
   <div class="flex items-center gap-3">
     <button id="lang-toggle-map" onclick="toggleMapLang()">EN | עב</button>
@@ -370,7 +370,7 @@
     <a href="Stores.html" style="font-family:'Epilogue',sans-serif;font-weight:900;font-size:3rem;text-transform:uppercase;letter-spacing:-0.03em;color:#000;text-decoration:none;border-bottom:1px solid #e5e2de;padding-bottom:1.5rem" id="mmenu-stores">Stores</a>
     <a href="Map.html" style="font-family:'Epilogue',sans-serif;font-weight:900;font-size:3rem;text-transform:uppercase;letter-spacing:-0.03em;color:#000;text-decoration:none;border-bottom:1px solid #e5e2de;padding-bottom:1.5rem" id="mmenu-map">Map</a>
     <a href="About.html" style="font-family:'Epilogue',sans-serif;font-weight:900;font-size:3rem;text-transform:uppercase;letter-spacing:-0.03em;color:#000;text-decoration:none;border-bottom:1px solid #e5e2de;padding-bottom:1.5rem" id="mmenu-about">About</a>
-    <a href="Submit.html" style="font-family:'Epilogue',sans-serif;font-weight:900;font-size:3rem;text-transform:uppercase;letter-spacing:-0.03em;color:#000;text-decoration:none" id="mmenu-submit">Submit</a>
+    <a href="Contact.html" style="font-family:'Epilogue',sans-serif;font-weight:900;font-size:3rem;text-transform:uppercase;letter-spacing:-0.03em;color:#000;text-decoration:none" id="mmenu-submit">Talk To Me</a>
   </nav>
 </div>
 
@@ -535,6 +535,7 @@ const DESIGNERS = [
   { name:"Take a Nap", url:"https://takeanap.co.il/", tags:["Activewear","Minimalist"], desc:"Take a Nap — Bazel, Tel Aviv.", img:"https://takeanap.co.il/cdn/shop/files/2025_10_23_NAP14668.jpg?v=1761659855&width=700", city:"Tel Aviv", lat:32.0932, lng:34.7823, fav:false, addresses:["3 HaShalah St, Tel Aviv"], phone:"03-5271757", hours:["Sun–Thu 09:00–19:00","Fri 09:00–15:00"] },
   { name:"Take a Nap", url:"https://takeanap.co.il/", tags:["Activewear","Minimalist"], desc:"Take a Nap — Shenkin, Tel Aviv.", img:"https://takeanap.co.il/cdn/shop/files/2025_10_23_NAP14668.jpg?v=1761659855&width=700", city:"Tel Aviv", lat:32.0638, lng:34.7718, fav:false, addresses:["48 Shenkin St, Tel Aviv"], phone:"03-9741112", hours:["Sun–Thu 09:00–19:00","Fri 09:00–15:00"] },
   { name:"Take a Nap", url:"https://takeanap.co.il/", tags:["Activewear","Minimalist"], desc:"Take a Nap — Ramat HaSharon.", img:"https://takeanap.co.il/cdn/shop/files/2025_10_23_NAP14668.jpg?v=1761659855&width=700", city:"Ramat HaSharon", lat:32.1462, lng:34.8401, fav:false, addresses:["31 Ossishkin St, Ramat HaSharon"], phone:"03-6746255", hours:["Sun–Thu 09:00–19:00","Fri 09:00–15:00"] },
+  { name:"Palms and Tigers", url:"https://palmsandtigers.info/", tags:["Prints","Artisan"], desc:"A prints collection inhabiting a world of ancient ruins, Greek statues, botanical elements and exotic animals. The studio has grown into a one-stop shop for prints, homeware and apparel, produced in small batches and limited editions. Instagram @palms.and.tigers · WhatsApp 054-793-0523.", img:"https://palmsandtigers.info/cdn/shop/files/zoom_in_new.png?v=1767369845&width=493", city:"Tel Aviv", lat:32.0563, lng:34.7691, fav:false, addresses:["55 Hahalutzim St, Tel Aviv"], phone:"054-793-0523", email:"palmsandtigersinfo@gmail.com" },
   { name:"Take a Nap", url:"https://takeanap.co.il/", tags:["Activewear","Minimalist"], desc:"Take a Nap — Beit Herut.", img:"https://takeanap.co.il/cdn/shop/files/2025_10_23_NAP14668.jpg?v=1761659855&width=700", city:"Beit Herut", lat:32.3650, lng:34.8900, fav:false, addresses:["1 HaRishonim St, Beit Herut"], phone:"050-6906690", hours:["Sun–Thu 09:00–18:00","Fri 09:00–14:30"] },
 ];
 
@@ -1067,7 +1068,7 @@ if (brandParam) {
 // Language support
 const MAP_TRANSLATIONS = {
   en: {
-    navDesigners: "Designers", navStores: "Stores", navMap: "Map", navAbout: "About", navSubmit: "Submit",
+    navDesigners: "Designers", navStores: "Stores", navMap: "Map", navAbout: "About", navSubmit: "Talk To Me",
     searchPlaceholder: "Brand, city, or style…",
     visitWebsite: "Visit Website",
     panelAddress: "", panelPhone: "", panelEmail: "", panelHours: "",
@@ -1079,7 +1080,7 @@ const MAP_TRANSLATIONS = {
     countFn: (n) => `${n} Locations`,
   },
   he: {
-    navDesigners: "מעצבים", navStores: "חנויות", navMap: "מפה", navAbout: "אודות", navSubmit: "הגשה",
+    navDesigners: "מעצבים", navStores: "חנויות", navMap: "מפה", navAbout: "אודות", navSubmit: "דברו איתי",
     searchPlaceholder: "מותג, עיר, או סגנון…",
     visitWebsite: "לאתר",
     panelAddress: "", panelPhone: "", panelEmail: "", panelHours: "",
