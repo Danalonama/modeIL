@@ -7,271 +7,285 @@
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="manifest" href="site.webmanifest">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>ModeIL — Multi-Brand Stores</title>
+<title>ModeIL, Multi-Brand Stores</title>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700;900&amp;family=Inter:wght@300;400;600&amp;family=Space+Grotesk:wght@300;400;700&amp;display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script>
-  tailwind.config = {
-    darkMode: "class",
-    theme: {
-      extend: {
-        colors: {
-          "primary-container": "#3b3b3b",
-          "surface-container-highest": "#e5e2de",
-          "surface-container": "#F0ECE4",
-          "secondary": "#5e5e5e",
-          "on-background": "#1A1A18",
-          "tertiary": "#3b3b3b",
-          "outline": "#777777",
-          "primary": "#000000",
-          "on-surface-variant": "#474747",
-          "surface-container-low": "#F4F4F4",
-          "surface-container-high": "#EDE9E1",
-          "on-surface": "#1A1A18",
-          "background": "#F4F4F4",
-          "outline-variant": "#c6c6c6",
-          "surface-container-lowest": "#ffffff",
-          "on-primary": "#e2e2e2",
-          "surface": "#F4F4F4",
-          "inverse-surface": "#31302e",
-          "secondary-container": "#d4d4d4",
-        },
-        borderRadius: { "DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "9999px" },
-        fontFamily: {
-          "headline": ["Epilogue", "sans-serif"],
-          "body": ["Inter", "sans-serif"],
-          "label": ["Space Grotesk", "sans-serif"]
-        }
-      }
-    }
-  }
+ tailwind.config = {
+ darkMode: "class",
+ theme: {
+ extend: {
+ colors: {
+ "primary-container": "#3b3b3b",
+ "surface-container-highest": "#e5e2de",
+ "surface-container": "#F0ECE4",
+ "secondary": "#5e5e5e",
+ "on-background": "#1A1A18",
+ "tertiary": "#3b3b3b",
+ "outline": "#777777",
+ "primary": "#000000",
+ "on-surface-variant": "#474747",
+ "surface-container-low": "#F4F4F4",
+ "surface-container-high": "#EDE9E1",
+ "on-surface": "#1A1A18",
+ "background": "#F4F4F4",
+ "outline-variant": "#c6c6c6",
+ "surface-container-lowest": "#ffffff",
+ "on-primary": "#e2e2e2",
+ "surface": "#F4F4F4",
+ "inverse-surface": "#31302e",
+ "secondary-container": "#d4d4d4",
+ },
+ borderRadius: { "DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "9999px" },
+ fontFamily: {
+ "headline": ["Epilogue", "sans-serif"],
+ "body": ["Inter", "sans-serif"],
+ "label": ["Space Grotesk", "sans-serif"]
+ }
+ }
+ }
+ }
 </script>
 <style>
-  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
-  * { border-radius: 0px !important; }
-  body { cursor: crosshair; }
-  body::before {
-    content: '';
-    position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: 0.012;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    background-repeat: repeat; background-size: 200px;
-  }
-  main, nav, footer { position: relative; z-index: 1; }
-  .heart-btn { background: none; border: none; cursor: pointer; padding: 0; line-height: 1; transition: transform 0.15s; }
-  .heart-btn:active { transform: scale(1.3); }
-  .store-card a[href]:hover { color: #B8748A !important; }
-  .heart-btn.saved .heart-icon { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; color: #B8748A; }
-  @keyframes heartPulse { 0% { transform: scale(1); } 40% { transform: scale(1.35); } 70% { transform: scale(0.9); } 100% { transform: scale(1); } }
-  .heart-pulse { animation: heartPulse 0.35s ease forwards; }
-  .store-img {
-    filter: grayscale(10%);
-    transition: filter 0.5s ease, transform 0.7s ease;
-  }
-  .group:hover .store-img { filter: grayscale(0%); }
-  .placeholder-img {
-    background: repeating-linear-gradient(
-      -45deg,
-      #EDE9E1,
-      #EDE9E1 4px,
-      #F4F4F4 4px,
-      #F4F4F4 12px
-    );
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Space Grotesk', monospace; font-size: 10px;
-    letter-spacing: 0.2em; text-transform: uppercase; color: #aaa;
-    text-align: center; padding: 2rem;
-  }
-  *:focus-visible { outline: 2px solid #B8748A; outline-offset: 2px; }
+ .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+ * { border-radius: 0px !important; }
+ body { cursor: crosshair; }
+ body::before {
+ content: '';
+ position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: 0.012;
+ background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+ background-repeat: repeat; background-size: 200px;
+ }
+ main, nav, footer { position: relative; z-index: 1; }
+ .heart-btn { background: none; border: none; cursor: pointer; padding: 0; line-height: 1; transition: transform 0.15s; }
+ .heart-btn:active { transform: scale(1.3); }
+ .store-card a[href]:hover { color: #B8748A !important; }
+ .heart-btn.saved .heart-icon { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; color: #B8748A; }
+ @keyframes heartPulse { 0% { transform: scale(1); } 40% { transform: scale(1.35); } 70% { transform: scale(0.9); } 100% { transform: scale(1); } }
+ .heart-pulse { animation: heartPulse 0.35s ease forwards; }
+ .store-img {
+ filter: grayscale(10%);
+ transition: filter 0.5s ease, transform 0.7s ease;
+ }
+ .group:hover .store-img { filter: grayscale(0%); }
+ .placeholder-img {
+ background: repeating-linear-gradient(
+ -45deg,
+ #EDE9E1,
+ #EDE9E1 4px,
+ #F4F4F4 4px,
+ #F4F4F4 12px
+ );
+ display: flex; align-items: center; justify-content: center;
+ font-family: 'Space Grotesk', monospace; font-size: 10px;
+ letter-spacing: 0.2em; text-transform: uppercase; color: #aaa;
+ text-align: center; padding: 2rem;
+ }
+ *:focus-visible { outline: 2px solid #B8748A; outline-offset: 2px; }
 </style>
 </head>
 <body class="bg-background text-primary font-body selection:bg-primary-container selection:text-white" style="cursor: crosshair;">
 
 <!-- Nav -->
 <nav class="fixed top-0 w-full z-50 bg-[#F4F4F4]/95 backdrop-blur-sm border-b border-[#1A1A18]/10 flex justify-between items-center px-8 md:px-12 py-6">
-  <a href="index.html" class="font-headline font-black text-2xl tracking-tighter text-black uppercase">ModeIL</a>
-  <div class="hidden md:flex items-center gap-12">
-    <div class="flex gap-8 font-label uppercase tracking-widest text-sm">
-      <a class="text-black/40 hover:text-black transition-colors duration-300" href="index.html">Designers</a>
-      <a class="text-black border-b-2 border-black pb-1" href="Stores.html">Stores</a>
-      <a class="text-black/40 hover:text-black transition-colors duration-300" href="Map.html">Map</a>
-      <a class="text-black/40 hover:text-black transition-colors duration-300" href="About.html">About</a>
-      <a class="text-black/40 hover:text-black transition-colors duration-300" href="Contact.html">Talk To Me</a>
-    </div>
-  </div>
-  <div class="flex items-center gap-4">
-    <button class="font-label text-[10px] tracking-widest uppercase border border-black px-3 py-1.5 hover:bg-black hover:text-[#fcf9f5] transition-all duration-200">EN | עב</button>
-    <button id="mobile-menu-btn-stores" class="md:hidden flex items-center" onclick="toggleStoresMobileMenu()">
-      <span class="material-symbols-outlined text-black">menu</span>
-    </button>
-  </div>
+ <a href="index.html" class="font-headline font-black text-2xl tracking-tighter text-black uppercase">ModeIL</a>
+ <div class="hidden md:flex items-center gap-12">
+ <div class="flex gap-8 font-label uppercase tracking-widest text-sm">
+ <a class="text-black/40 hover:text-black transition-colors duration-300" href="index.html">Designers</a>
+ <a class="text-black border-b-2 border-black pb-1" href="Stores.html">Stores</a>
+ <a class="text-black/40 hover:text-black transition-colors duration-300" href="Map.html">Map</a>
+ <a class="text-black/40 hover:text-black transition-colors duration-300" href="About.html">About</a>
+ <a class="text-black/40 hover:text-black transition-colors duration-300" href="Contact.html">Talk To Me</a>
+ </div>
+ </div>
+ <div class="flex items-center gap-4">
+ <button class="font-label text-[10px] tracking-widest uppercase border border-black px-3 py-1.5 hover:bg-black hover:text-[#fcf9f5] transition-all duration-200">EN | עב</button>
+ <button id="mobile-menu-btn-stores" class="md:hidden flex items-center" onclick="toggleStoresMobileMenu()">
+ <span class="material-symbols-outlined text-black">menu</span>
+ </button>
+ </div>
 </nav>
 
 <!-- Mobile Menu Overlay -->
-<div id="mobile-menu-stores" class="fixed inset-0 bg-[#F4F4F4] z-[999] flex-col px-8 py-6 md:hidden" style="display:none;transform:translateX(100%);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1);">
-  <div class="flex justify-between items-center mb-16">
-    <a href="index.html" class="font-headline font-black text-2xl tracking-tighter text-black uppercase">ModeIL</a>
-    <button onclick="toggleStoresMobileMenu()">
-      <span class="material-symbols-outlined text-black">close</span>
-    </button>
-  </div>
-  <nav class="flex flex-col gap-8">
-    <a href="index.html" class="font-headline font-black text-5xl uppercase tracking-tighter text-black border-b border-[#1A1A18]/10 pb-6">Designers</a>
-    <a href="Stores.html" class="font-headline font-black text-5xl uppercase tracking-tighter text-black border-b border-[#1A1A18]/10 pb-6">Stores</a>
-    <a href="Map.html" class="font-headline font-black text-5xl uppercase tracking-tighter text-black border-b border-[#1A1A18]/10 pb-6">Map</a>
-    <a href="About.html" class="font-headline font-black text-5xl uppercase tracking-tighter text-black border-b border-[#1A1A18]/10 pb-6">About</a>
-    <a href="Contact.html" class="font-headline font-black text-5xl uppercase tracking-tighter text-black pb-6">Talk To Me</a>
-  </nav>
+<div id="mobile-menu-stores" class="fixed inset-0 bg-[#F4F4F4] z-[999] flex-col px-8 py-6 md:hidden" style="display:none;transform:translateX(100%);transition:transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
+ <div class="flex justify-between items-center mb-16">
+ <a href="index.html" class="font-headline font-black text-2xl tracking-tighter text-black uppercase">ModeIL</a>
+ <button onclick="toggleStoresMobileMenu()">
+ <span class="material-symbols-outlined text-black">close</span>
+ </button>
+ </div>
+ <nav class="flex flex-col gap-8">
+ <a href="index.html" class="font-headline font-black text-5xl uppercase tracking-tighter text-black border-b border-[#1A1A18]/10 pb-6">Designers</a>
+ <a href="Stores.html" class="font-headline font-black text-5xl uppercase tracking-tighter text-black border-b border-[#1A1A18]/10 pb-6">Stores</a>
+ <a href="Map.html" class="font-headline font-black text-5xl uppercase tracking-tighter text-black border-b border-[#1A1A18]/10 pb-6">Map</a>
+ <a href="About.html" class="font-headline font-black text-5xl uppercase tracking-tighter text-black border-b border-[#1A1A18]/10 pb-6">About</a>
+ <a href="Contact.html" class="font-headline font-black text-5xl uppercase tracking-tighter text-black pb-6">Talk To Me</a>
+ </nav>
 </div>
 <script>
 function toggleStoresMobileMenu(){
-  const m = document.getElementById('mobile-menu-stores');
-  const open = m.style.display === 'flex';
-  if (open) {
-    m.style.transform = 'translateX(100%)';
-    setTimeout(() => { m.style.display = 'none'; }, 350);
-  } else {
-    m.style.display = 'flex';
-    requestAnimationFrame(() => { m.style.transform = 'translateX(0)'; });
-  }
+ const m = document.getElementById('mobile-menu-stores');
+ const open = m.style.display === 'flex';
+ if (open) {
+ m.style.transform = 'translateX(100%)';
+ setTimeout(() => { m.style.display = 'none'; }, 350);
+ } else {
+ m.style.display = 'flex';
+ requestAnimationFrame(() => { m.style.transform = 'translateX(0)'; });
+ }
 }
 </script>
 
 <!-- Main -->
 <main class="pt-40 pb-24 px-6 md:px-12 max-w-[1800px] mx-auto">
 
-  <!-- Hero -->
-  <header class="mb-20 flex flex-col gap-8">
-    <div class="max-w-3xl">
-      <p class="font-label text-[10px] tracking-[0.3em] uppercase text-on-surface-variant mb-6 opacity-60">
-        Concept Stores · Multi-Brand Boutiques · Curated Edits
-      </p>
-      <h1 class="font-headline font-black leading-[0.82] tracking-tighter mb-8 uppercase" style="font-size: 82px">
-        Concept Stores
-      </h1>
-      <p class="font-body text-lg text-on-surface-variant max-w-lg leading-relaxed">
-        Where Israeli design lives together. Concept stores, boutiques and curated edits stocking multiple Israeli brands - the easiest place to discover, try on, and shop the local scene in one stop.
-      </p>
-    </div>
-    <div class="flex items-center gap-3 mt-2">
-      <div class="w-2 h-2 bg-primary"></div>
-      <span id="store-count" class="font-label text-[9px] tracking-[0.25em] uppercase opacity-40"></span>
-    </div>
-  </header>
+ <!-- Hero -->
+ <header class="mb-20 flex flex-col gap-8">
+ <div class="max-w-3xl">
+ <p class="font-label text-[10px] tracking-[0.3em] uppercase text-on-surface-variant mb-6 opacity-60">
+ Concept Stores · Multi-Brand Boutiques · Curated Edits
+ </p>
+ <h1 class="font-headline font-black leading-[0.82] tracking-tighter mb-8 uppercase" style="font-size: 82px">
+ Concept Stores
+ </h1>
+ <p class="font-body text-lg text-on-surface-variant max-w-lg leading-relaxed">
+ Where Israeli design lives together. Concept stores, boutiques and curated edits stocking multiple Israeli brands - the easiest place to discover, try on, and shop the local scene in one stop.
+ </p>
+ </div>
+ <div class="flex items-center gap-3 mt-2">
+ <div class="w-2 h-2 bg-primary"></div>
+ <span id="store-count" class="font-label text-[9px] tracking-[0.25em] uppercase opacity-40"></span>
+ </div>
+ </header>
 
-  <!-- Grid -->
-  <section id="store-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-20 gap-x-8"></section>
+ <!-- Grid -->
+ <section id="store-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-20 gap-x-8"></section>
 
-  <!-- CTA -->
-  <section class="mt-56 mb-12 border-t border-[#1A1A18]/12 pt-24">
-    <div class="flex flex-col md:flex-row items-start md:items-end justify-between gap-12">
-      <div>
-        <h2 class="font-headline font-black text-[clamp(3rem,8vw,6.5rem)] uppercase tracking-tighter leading-[0.85] mb-8">
-          Know a<br>Store?
-        </h2>
-        <p class="font-body text-lg text-on-surface-variant max-w-md leading-relaxed">
-          Boutiques, concept stores, pop-ups stocking Israeli brands — if we're missing one, tell us.
-        </p>
-      </div>
-      <div class="flex flex-col gap-6">
-        <a class="group flex items-center gap-5 border-b border-black pb-3 hover:opacity-50 transition-opacity" href="#">
-          <span class="font-label text-sm tracking-widest uppercase">Submit a Store</span>
-          <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
-        </a>
-        <a class="group flex items-center gap-5 border-b border-black pb-3 hover:opacity-50 transition-opacity" href="index.html">
-          <span class="font-label text-sm tracking-widest uppercase">Browse Designers</span>
-          <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
-        </a>
-      </div>
-    </div>
-  </section>
+ <!-- CTA -->
+ <section class="mt-56 mb-12 border-t border-[#1A1A18]/12 pt-24">
+ <div class="flex flex-col md:flex-row items-start md:items-end justify-between gap-12">
+ <div>
+ <h2 class="font-headline font-black text-[clamp(3rem, 8vw, 6.5rem)] uppercase tracking-tighter leading-[0.85] mb-8">
+ Know a<br>Store?
+ </h2>
+ <p class="font-body text-lg text-on-surface-variant max-w-md leading-relaxed">
+ Boutiques, concept stores, pop-ups stocking Israeli brands, if we're missing one, tell us.
+ </p>
+ </div>
+ <div class="flex flex-col gap-6">
+ <a class="group flex items-center gap-5 border-b border-black pb-3 hover:opacity-50 transition-opacity" href="#">
+ <span class="font-label text-sm tracking-widest uppercase">Submit a Store</span>
+ <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
+ </a>
+ <a class="group flex items-center gap-5 border-b border-black pb-3 hover:opacity-50 transition-opacity" href="index.html">
+ <span class="font-label text-sm tracking-widest uppercase">Browse Designers</span>
+ <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
+ </a>
+ </div>
+ </div>
+ </section>
 </main>
 
 <!-- Footer -->
 <footer class="bg-[#EDE9E1] text-black flex flex-col md:flex-row justify-between items-center w-full px-8 md:px-12 py-14">
-  <div class="mb-8 md:mb-0">
-    <div class="font-headline font-black text-xl tracking-tighter uppercase text-black">ModeIL</div>
-    <div class="font-label text-[9px] tracking-[0.25em] uppercase opacity-50 mt-2">Israeli Fashion Index · © 2026 · All Rights Reserved</div>
-  </div>
-  <div class="flex gap-10 font-label text-[9px] tracking-[0.25em] uppercase">
-    <a class="opacity-50 hover:opacity-100 transition-opacity" href="Contact.html">Talk To Me</a>
-  </div>
+ <div class="mb-8 md:mb-0">
+ <div class="font-headline font-black text-xl tracking-tighter uppercase text-black">ModeIL</div>
+ <div class="font-label text-[9px] tracking-[0.25em] uppercase opacity-50 mt-2">Israeli Fashion Index · © 2026 · All Rights Reserved</div>
+ </div>
+ <div class="flex gap-10 font-label text-[9px] tracking-[0.25em] uppercase">
+ <a class="opacity-50 hover:opacity-100 transition-opacity" href="Contact.html">Talk To Me</a>
+ </div>
 </footer>
 
 <script>
 const STORES = [
-  {
-    name: "Tonari",
-    url: "https://tonari.co.il/",
-    tagLabels: ["Multi-Brand", "Concept Store", "Home"],
-    desc: "Japanese-inspired Israeli concept shop — minimalist clothing, colourful accessories and home objects under one roof, with a spirit of wabi-sabi.",
-    img: "https://tonari.co.il/cdn/shop/files/tc_day_1_34744.jpg?v=1756382771&width=1800",
-  },
-  {
-    name: "Seestarz",
-    url: "https://seestarz.com/",
-    tagLabels: ["Multi-Brand", "Boutique"],
-    desc: "Born from a sisterhood and a wildly popular Instagram fashion blog — Alona and Daniela's curated edit covers swimwear, streetwear and more from a roster of brands they love.",
-    img: "https://seestarz.com/cdn/shop/files/017A1703_0b116fe1-b3c1-4e6d-b421-82923d2984f6.jpg?v=1774079930&width=1800",
-  },
-  {
-    name: "Zohi Sabina",
-    url: "https://www.zohisabina.co.il/",
-    tagLabels: ["Multi-Brand", "Womenswear"],
-    desc: "A curated multi-brand boutique stocking a refined edit of Israeli womenswear and accessories — quietly confident essentials and considered seasonal pieces in one place.",
-    img: "https://www.zohisabina.co.il/cdn/shop/files/573_41a8cae3-08f4-4634-a891-5ee37bdd4cbc.jpg?v=1777837389&width=1445",
-  },
-  {
-    name: "Shmua",
-    url: "https://shmua.co.il/",
-    tagLabels: ["Multi-Brand", "Concept Store"],
-    desc: "An Israeli concept shop bringing together a thoughtful mix of local labels — clothing, accessories and lifestyle pieces under one quietly opinionated roof.",
-    img: null,
-  },
-  {
-    name: "Tema",
-    url: "https://www.tema-shop.com/",
-    tagLabels: ["Multi-Brand", "Concept Store"],
-    desc: "A Tel Aviv concept store curating an edited selection of Israeli and international designers — clothing, objects and accessories chosen with a strong point of view.",
-    img: null,
-  },
-  {
-    name: "Haparlament",
-    url: "https://www.instagram.com/haparlament_atar/",
-    tagLabels: ["Multi-Brand", "Boutique"],
-    desc: "A multi-brand boutique stocking Israeli designers — followed and shopped through Instagram.",
-    img: "https://madambubu.com/wp-content/uploads/2025/10/MADAM_BUBU_1750-683x1024.jpg",
-    instagram: "haparlament_atar",
-  },
-  {
-    name: "DA Studio",
-    url: "https://www.instagram.com/da_studio.il/",
-    tagLabels: ["Multi-Brand", "Studio"],
-    desc: "An Israeli studio-shop curating local design — a small, considered roster of brands and pieces shared via Instagram.",
-    img: "https://tula-tula.com/cdn/shop/files/spring_26_cover_1280x.jpg?v=1774461209",
-    instagram: "da_studio.il",
-  },
-  {
-    name: "Razili",
-    url: "https://www.razili.co.il/",
-    tagLabels: ["Multi-Brand", "Boutique"],
-    desc: "Razili — also operating as a multi-brand store stocking a curated mix of Israeli labels alongside her own line.",
-    img: null,
-  },
-  {
-    name: "AKA My Culture",
-    url: "https://aka-online.co.il/",
-    tagLabels: ["Multi-Brand", "Sustainable"],
-    desc: "A curated selection of international eco-conscious labels — DR. DENIM, THINKING MU, BAGGU — alongside the in-house brand IN BLOOM, crafting casual Israeli fashion with an environmental conscience.",
-    img: "https://aka-online.co.il/wp-content/uploads/2026/04/Untitled-design-37.png",
-  },
-  {
-    name: "Story",
-    url: "https://storyonline.co.il/",
-    tagLabels: ["Multi-Brand", "Concept Store", "Sustainable"],
-    desc: "Founded in 2008 to rewrite the Israeli shopping experience — a multi-brand chain that hand-picks labels with a conscience. Right materials, fair production, animal welfare, and pieces built to last. Beauty matters, but so does the story behind it. Give a damn.",
-    img: "https://storyonline.co.il/cdn/shop/files/82P36CRM484_5.jpg?v=1757847550",
-  },
+ {
+ name: "Tonari",
+ url: "https://tonari.co.il/",
+ tagLabels: ["Multi-Brand", "Concept Store", "Home"],
+ desc: "Japanese-inspired Israeli concept shop, minimalist clothing, colourful accessories and home objects under one roof, with a spirit of wabi-sabi.",
+ img: "https://tonari.co.il/cdn/shop/files/tc_day_1_34744.jpg?v=1756382771&width=1800",
+ },
+ {
+ name: "Seestarz",
+ url: "https://seestarz.com/",
+ tagLabels: ["Multi-Brand", "Boutique"],
+ desc: "Born from a sisterhood and a wildly popular Instagram fashion blog, Alona and Daniela's curated edit covers swimwear, streetwear and more from a roster of brands they love.",
+ img: "https://seestarz.com/cdn/shop/files/017A1703_0b116fe1-b3c1-4e6d-b421-82923d2984f6.jpg?v=1774079930&width=1800",
+ },
+ {
+ name: "Zohi Sabina",
+ url: "https://www.zohisabina.co.il/",
+ tagLabels: ["Multi-Brand", "Womenswear"],
+ desc: "A curated multi-brand boutique stocking a refined edit of Israeli womenswear and accessories, quietly confident essentials and considered seasonal pieces in one place.",
+ img: "https://www.zohisabina.co.il/cdn/shop/files/573_41a8cae3-08f4-4634-a891-5ee37bdd4cbc.jpg?v=1777837389&width=1445",
+ },
+ {
+ name: "Shmua",
+ url: "https://shmua.co.il/",
+ tagLabels: ["Multi-Brand", "Concept Store"],
+ desc: "An Israeli concept shop bringing together a thoughtful mix of local labels, clothing, accessories and lifestyle pieces under one quietly opinionated roof.",
+ img: null,
+ },
+ {
+ name: "Tema",
+ url: "https://www.tema-shop.com/",
+ tagLabels: ["Multi-Brand", "Concept Store"],
+ desc: "A Tel Aviv concept store curating an edited selection of Israeli and international designers, clothing, objects and accessories chosen with a strong point of view.",
+ img: null,
+ },
+ {
+ name: "Haparlament",
+ url: "https://www.instagram.com/haparlament_atar/",
+ tagLabels: ["Multi-Brand", "Boutique"],
+ desc: "A multi-brand boutique stocking Israeli designers, followed and shopped through Instagram.",
+ img: "https://madambubu.com/wp-content/uploads/2025/10/MADAM_BUBU_1750-683x1024.jpg",
+ instagram: "haparlament_atar",
+ },
+ {
+ name: "DA Studio",
+ url: "https://www.instagram.com/da_studio.il/",
+ tagLabels: ["Multi-Brand", "Studio"],
+ desc: "An Israeli studio-shop curating local design, a small, considered roster of brands and pieces shared via Instagram.",
+ img: "https://tula-tula.com/cdn/shop/files/spring_26_cover_1280x.jpg?v=1774461209",
+ instagram: "da_studio.il",
+ },
+ {
+ name: "Razili",
+ url: "https://www.razili.co.il/",
+ tagLabels: ["Multi-Brand", "Boutique"],
+ desc: "Razili, also operating as a multi-brand store stocking a curated mix of Israeli labels alongside her own line.",
+ img: null,
+ },
+ {
+ name: "Rene and Danielle",
+ url: "https://www.rene-and-danielle.co.il/",
+ tagLabels: ["Concept Store", "Lifestyle", "Homeware"],
+ desc: "A Tel Aviv treasure-box of a concept store, opened 2019, renamed for the owner's grandmother Renée, a sharp-eyed, beauty-loving woman who arrived from Egypt in the 1950s. A carefully chosen collection of local handcraft, homeware, gifts, and lifestyle and beauty objects, united by natural materials and soft, harmonious palettes. Every visit is a small journey of discovery.",
+ img: "https://www.rene-and-danielle.co.il/wp-content/uploads/2026/03/%D7%A6%D7%99%D7%9C%D7%95%D7%9D-%D7%9E%D7%A1%D7%9A-2026-03-02-%D7%91-14.27.36.png",
+ },
+ {
+ name: "Belle and Sue",
+ url: "https://www.belleandsue.co.il/",
+ tagLabels: ["Multi-Brand", "Concept Store", "Sustainable"],
+ desc: "Israel's pioneering online fashion boutique since 2010, curating international labels, championing local designers, and launching their own FEZ brand of considered everyday essentials.",
+ img: "https://www.belleandsue.co.il/cdn/shop/files/1155UntitledCapture1459.jpg?v=1761640245",
+ },
+ {
+ name: "AKA My Culture",
+ url: "https://aka-online.co.il/",
+ tagLabels: ["Multi-Brand", "Sustainable"],
+ desc: "A curated selection of international eco-conscious labels, DR. DENIM, THINKING MU, BAGGU, alongside the in-house brand IN BLOOM, crafting casual Israeli fashion with an environmental conscience.",
+ img: "https://aka-online.co.il/wp-content/uploads/2026/04/Untitled-design-37.png",
+ },
+ {
+ name: "Story",
+ url: "https://storyonline.co.il/",
+ tagLabels: ["Multi-Brand", "Concept Store", "Sustainable"],
+ desc: "Founded in 2008 to rewrite the Israeli shopping experience, a multi-brand chain that hand-picks labels with a conscience. Right materials, fair production, animal welfare, and pieces built to last. Beauty matters, but so does the story behind it. Give a damn.",
+ img: "https://storyonline.co.il/cdn/shop/files/82P36CRM484_5.jpg?v=1757847550",
+ },
 ];
 
 const grid = document.getElementById('store-grid');
@@ -279,66 +293,66 @@ const countEl = document.getElementById('store-count');
 let FAVORITES = new Set(JSON.parse(localStorage.getItem('modeil-favs') || '[]'));
 
 function tagHtml(labels) {
-  return labels.map(l =>
-    `<span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">${l}</span>`
-  ).join('');
+ return labels.map(l =>
+ `<span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">${l}</span>`
+ ).join('');
 }
 
 function fallbackImg(name) {
-  return `<div class="placeholder-img w-full h-full">${name}</div>`;
+ return `<div class="placeholder-img w-full h-full">${name}</div>`;
 }
 
 function render() {
-  const sorted = [...STORES].sort((a, b) => a.name.localeCompare(b.name));
-  grid.innerHTML = '';
-  sorted.forEach((s) => {
-    const card = document.createElement('div');
-    card.className = 'store-card flex flex-col group';
-    card.innerHTML = `
-      <div class="relative overflow-hidden aspect-square bg-surface-container-low">
-        ${s.img
-          ? `<img class="store-img w-full h-full object-cover group-hover:scale-105" src="${s.img}" alt="${s.name}" loading="lazy"/>`
-          : fallbackImg(s.name)}
-        <div class="absolute inset-0 bg-primary/8 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-      </div>
-      <div class="mt-6 flex flex-col gap-3">
-        <h2 class="font-headline font-black text-2xl uppercase tracking-tighter leading-none">${s.name}</h2>
-        <div class="flex flex-wrap gap-2">${tagHtml(s.tagLabels)}</div>
-        <div class="flex items-center" style="gap:12px;margin-top:2px">
-          <button class="heart-btn${FAVORITES.has(s.name) ? ' saved' : ''}" data-name="${s.name}" aria-label="Save to favorites" onclick="toggleFav(this)">
-            <span class="material-symbols-outlined heart-icon" style="font-size:20px;${FAVORITES.has(s.name) ? 'font-variation-settings:\'FILL\' 1,\'wght\' 400,\'GRAD\' 0,\'opsz\' 24;color:#B8748A' : ''}">favorite</span>
-          </button>
-        </div>
-        <p class="font-body text-sm text-on-surface-variant leading-relaxed">${s.desc}</p>
-        <div class="flex flex-wrap gap-4 items-center">
-          <a class="font-label text-[10px] tracking-widest uppercase underline underline-offset-4 hover:opacity-40 transition-opacity w-fit"
-             href="${s.url}" target="_blank" rel="noopener">Visit Website →</a>
-        </div>
-      </div>
-    `;
-    grid.appendChild(card);
-  });
-  countEl.textContent = `${sorted.length} ${sorted.length === 1 ? 'Store' : 'Stores'}`;
+ const sorted = [...STORES].sort((a, b) => a.name.localeCompare(b.name));
+ grid.innerHTML = '';
+ sorted.forEach((s) => {
+ const card = document.createElement('div');
+ card.className = 'store-card flex flex-col group';
+ card.innerHTML = `
+ <div class="relative overflow-hidden aspect-square bg-surface-container-low">
+ ${s.img
+ ? `<img class="store-img w-full h-full object-cover group-hover:scale-105" src="${s.img}" alt="${s.name}" loading="lazy"/>`
+ : fallbackImg(s.name)}
+ <div class="absolute inset-0 bg-primary/8 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+ </div>
+ <div class="mt-6 flex flex-col gap-3">
+ <h2 class="font-headline font-black text-2xl uppercase tracking-tighter leading-none">${s.name}</h2>
+ <div class="flex flex-wrap gap-2">${tagHtml(s.tagLabels)}</div>
+ <div class="flex items-center" style="gap:12px;margin-top:2px">
+ <button class="heart-btn${FAVORITES.has(s.name) ? ' saved' : ''}" data-name="${s.name}" aria-label="Save to favorites" onclick="toggleFav(this)">
+ <span class="material-symbols-outlined heart-icon" style="font-size:20px;${FAVORITES.has(s.name) ? 'font-variation-settings:\'FILL\' 1,\'wght\' 400,\'GRAD\' 0,\'opsz\' 24;color:#B8748A' : ''}">favorite</span>
+ </button>
+ </div>
+ <p class="font-body text-sm text-on-surface-variant leading-relaxed">${s.desc}</p>
+ <div class="flex flex-wrap gap-4 items-center">
+ <a class="font-label text-[10px] tracking-widest uppercase underline underline-offset-4 hover:opacity-40 transition-opacity w-fit"
+ href="${s.url}" target="_blank" rel="noopener">Visit Website →</a>
+ </div>
+ </div>
+ `;
+ grid.appendChild(card);
+ });
+ countEl.textContent = `${sorted.length} ${sorted.length === 1 ? 'Store' : 'Stores'}`;
 }
 
 function toggleFav(btn) {
-  const name = btn.dataset.name;
-  const icon = btn.querySelector('.heart-icon');
-  btn.classList.remove('heart-pulse');
-  void btn.offsetWidth;
-  btn.classList.add('heart-pulse');
-  if (FAVORITES.has(name)) {
-    FAVORITES.delete(name);
-    btn.classList.remove('saved');
-    icon.style.fontVariationSettings = "'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24";
-    icon.style.color = '';
-  } else {
-    FAVORITES.add(name);
-    btn.classList.add('saved');
-    icon.style.fontVariationSettings = "'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24";
-    icon.style.color = '#B8748A';
-  }
-  localStorage.setItem('modeil-favs', JSON.stringify([...FAVORITES]));
+ const name = btn.dataset.name;
+ const icon = btn.querySelector('.heart-icon');
+ btn.classList.remove('heart-pulse');
+ void btn.offsetWidth;
+ btn.classList.add('heart-pulse');
+ if (FAVORITES.has(name)) {
+ FAVORITES.delete(name);
+ btn.classList.remove('saved');
+ icon.style.fontVariationSettings = "'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24";
+ icon.style.color = '';
+ } else {
+ FAVORITES.add(name);
+ btn.classList.add('saved');
+ icon.style.fontVariationSettings = "'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24";
+ icon.style.color = '#B8748A';
+ }
+ localStorage.setItem('modeil-favs', JSON.stringify([...FAVORITES]));
 }
 
 render();
