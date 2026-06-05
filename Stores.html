@@ -108,7 +108,7 @@
 </nav>
 
 <!-- Mobile Menu Overlay -->
-<div id="mobile-menu-stores" class="fixed inset-0 bg-[#F4F4F4] z-[999] flex-col px-8 py-6 md:hidden" style="display:none;transform:translateX(100%);transition:transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
+<div id="mobile-menu-stores" class="fixed inset-0 bg-[#F4F4F4] z-[999] flex-col px-8 py-6 md:hidden" style="background:#ffffff;display:none;transform:translateX(100%);transition:transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
  <div class="flex justify-between items-center mb-16">
  <a href="index.html" class="font-headline font-black text-2xl tracking-tighter text-black uppercase">ModeIL</a>
  <button onclick="toggleStoresMobileMenu()">
@@ -215,13 +215,6 @@ const STORES = [
  img: "https://itaybrands.co.il/cdn/shop/files/868b1d6cd000aa1901415efa6dab312b.jpg?crop=center&height=1018&v=1763904574&width=1410",
  },
  {
- name: "Tonari",
- url: "https://tonari.co.il/",
- tagLabels: ["Multi-Brand", "Concept Store", "Home"],
- desc: "Japanese-inspired Israeli concept shop, minimalist clothing, colourful accessories and home objects under one roof, with a spirit of wabi-sabi.",
- img: "https://tonari.co.il/cdn/shop/files/tc_day_1_34744.jpg?v=1756382771&width=1800",
- },
- {
  name: "Seestarz",
  url: "https://seestarz.com/",
  tagLabels: ["Multi-Brand", "Boutique"],
@@ -240,21 +233,21 @@ const STORES = [
  url: "https://shmua.co.il/",
  tagLabels: ["Multi-Brand", "Concept Store"],
  desc: "An Israeli concept shop bringing together a thoughtful mix of local labels, clothing, accessories and lifestyle pieces under one quietly opinionated roof.",
- img: null,
+ img: "https://shmua.co.il/wp-content/uploads/2025/10/ChatGPT-Image-Sep-9-2025-10_32_40-PM-1.webp",
  },
  {
  name: "Tema",
  url: "https://www.tema-shop.com/",
  tagLabels: ["Multi-Brand", "Concept Store"],
  desc: "A Tel Aviv concept store curating an edited selection of Israeli and international designers, clothing, objects and accessories chosen with a strong point of view.",
- img: null,
+ img: "https://www.tema-shop.com/wp-content/uploads/2024/05/4T0A0330-copy-613x919-1.jpg",
  },
  {
  name: "Haparlament",
  url: "https://www.instagram.com/haparlament_atar/",
  tagLabels: ["Multi-Brand", "Boutique"],
  desc: "A multi-brand boutique stocking Israeli designers, followed and shopped through Instagram.",
- img: "https://madambubu.com/wp-content/uploads/2025/10/MADAM_BUBU_1750-683x1024.jpg",
+ img: "https://madambubu.com/wp-content/uploads/2026/04/1872-2025-04-14-BU-BU-1862-scaled.jpg",
  instagram: "haparlament_atar",
  },
  {
@@ -270,7 +263,7 @@ const STORES = [
  url: "https://www.razili.co.il/",
  tagLabels: ["Multi-Brand", "Boutique"],
  desc: "Razili, also operating as a multi-brand store stocking a curated mix of Israeli labels alongside her own line.",
- img: null,
+ img: "https://www.razili.co.il/cdn/shop/products/forera-shirts-house-of-jaffa-x-razili-black-001-985218.jpg?v=1676843618&width=1800",
  },
  {
  name: "Rene and Danielle",
@@ -299,6 +292,20 @@ const STORES = [
  tagLabels: ["Multi-Brand", "Concept Store", "Sustainable"],
  desc: "Founded in 2008 to rewrite the Israeli shopping experience, a multi-brand chain that hand-picks labels with a conscience. Right materials, fair production, animal welfare, and pieces built to last. Beauty matters, but so does the story behind it. Give a damn.",
  img: "https://storyonline.co.il/cdn/shop/files/82P36CRM484_5.jpg?v=1757847550",
+ },
+ {
+ name: "Comme il Faut",
+ url: "https://www.comme-il-faut.com/",
+ tagLabels: ["Multi-Brand", "Concept Store", "Womenswear"],
+ desc: "The iconic Comme il Faut space at the Tel Aviv port, a feminist concept store and gallery that carries the house's own artistic womenswear alongside a curated selection of other Israeli labels.",
+ img: "https://comme-il-faut.com/cdn/shop/files/c_il_faut_457.jpg?v=1773851576&width=600",
+ },
+ {
+ name: "En Culture",
+ url: "https://en-culture.com/",
+ tagLabels: ["Multi-Brand", "Streetwear", "Concept Store"],
+ desc: "A concept space and creative lab founded in 2021 on Lilienblum St, redefining streetwear by bridging the Far East and the Middle East. A curated lineup of avant-garde Asian designers and progressive houses, Lu'u Dan, PAF, Kidill, Walter Van Beirendonck, Feng Chen Wang, and more.",
+ img: "https://en-culture.com/wp-content/uploads/2026/04/Amy-Flower-Tee-White-Model4-600x800.png",
  },
 ];
 

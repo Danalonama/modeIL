@@ -71,6 +71,7 @@
  .heart-pulse { animation: heartPulse 0.35s ease forwards; }
  .insta-btn { background: none; border: none; cursor: pointer; padding: 0; line-height: 1; opacity: 0.75; transition: opacity 0.2s; }
  .insta-btn:hover { opacity: 1; }
+ .access-line { display: flex; align-items: center; gap: 5px; font-family: 'Space Grotesk', sans-serif; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.5; margin-top: 1px; }
  .designer-img {
  filter: grayscale(10%);
  transition: filter 0.5s ease, transform 0.7s ease;
@@ -139,13 +140,16 @@
  <span class="material-symbols-outlined" style="font-size:18px;">search</span>
  </button>
  <input id="search-input" type="text" placeholder="Search by brand name" class="font-body text-sm outline-none px-2 bg-transparent" style="width:0;border:0;flex:1;min-width:0;"/>
+ <button id="search-clear" type="button" onclick="clearNavSearch()" aria-label="Clear search" class="flex items-center justify-center flex-shrink-0 text-black/45 hover:text-black transition-colors duration-200" style="display:none;width:30px;height:34px;background:none;border:0;cursor:pointer;">
+ <span class="material-symbols-outlined" style="font-size:18px;">cancel</span>
+ </button>
  </div>
  <button id="mobile-menu-btn" class="md:hidden flex items-center" onclick="toggleMobileMenu()">
  <span class="material-symbols-outlined text-black" id="mobile-menu-icon">menu</span>
  </button>
 
 <!-- Mobile Menu Overlay -->
-<div id="mobile-menu" class="fixed inset-0 bg-[#F4F4F4] z-[999] flex flex-col px-8 py-6 md:hidden" style="display:none!important;transform:translateX(100%);transition:transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
+<div id="mobile-menu" class="fixed inset-0 bg-[#F4F4F4] z-[999] flex flex-col px-8 py-6 md:hidden" style="background:#ffffff;display:none!important;transform:translateX(100%);transition:transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
  <div class="flex justify-between items-center mb-16">
  <a href="index.html" class="font-headline font-black text-2xl tracking-tighter text-black uppercase">ModeIL</a>
  <button onclick="toggleMobileMenu()">
@@ -167,24 +171,25 @@
 </nav>
 
 <!-- Main -->
-<main class="pt-40 pb-24 px-6 md:px-12 max-w-[1800px] mx-auto">
+<main class="pt-40 pb-24 px-6 md:px-12 max-w-[1800px] mx-auto" style="font-size: 27px">
 
  <!-- Hero & Filter -->
  <header class="mb-16 flex flex-col gap-12">
  <div class="max-w-3xl">
- <h1 class="font-headline font-black leading-[0.82] tracking-tighter mb-8 uppercase" style="font-size: 82px">Israeli<br>Fashion<br>Index</h1>
- <p class="font-body text-lg text-on-surface-variant max-w-lg leading-relaxed" style="font-size: 16px">I track Israeli fashion so you don't have to. Small boutiques to established brands and everything in between - classic to quirky, formal to fun, morning to evening, work to play.</p>
+ <h1 class="font-headline font-black leading-[0.82] tracking-tighter mb-8 uppercase" style="font-size: 60px; line-height: 1.05">Israeli<br>Fashion<br>Index</h1>
+ <p class="font-body text-lg text-on-surface-variant max-w-lg leading-relaxed" style="font-size: 15px; line-height: 1.5">I track Israeli fashion so you don't have to. Small boutiques to established brands and everything in between - classic to quirky, formal to fun, morning to evening, work to play.</p>
  </div>
  <div class="w-full">
  <div class="overflow-x-auto pb-2 relative" id="filter-scroll-container">
  <button id="filter-prev" class="hidden md:flex absolute left-0 top-0 bottom-2 items-center bg-gradient-to-r from-[#fcf9f5] to-transparent pr-4 z-10 opacity-50 hover:opacity-100 transition-opacity">
  <span class="material-symbols-outlined" style="font-size:18px">arrow_back</span>
  </button>
- <div id="filter-bar" class="flex gap-3 items-center min-w-max px-0 md:px-8">
+ <div id="filter-bar" class="flex gap-3 items-center min-w-max px-0 md:px-8" style="padding: 0px 32px 0px 1px; gap: 8px">
  <span class="font-label text-[9px] tracking-[0.25em] uppercase opacity-40 mr-2">Filter:</span>
  <button class="filter-btn active font-label text-[10px] tracking-widest uppercase px-5 py-3 border border-[#B8748A] bg-[#F4ECF0] text-[#B8748A] transition-all duration-200" data-filter="all">All</button>
  <button class="filter-btn font-label text-[10px] tracking-widest uppercase px-5 py-3 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200 flex items-center gap-1.5" data-filter="favorites"><span class="material-symbols-outlined" style="font-size:13px;line-height:1">favorite</span>Saved</button>
  <button class="filter-btn font-label text-[10px] tracking-widest uppercase px-5 py-3 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="activewear">Activewear</button>
+ <button class="filter-btn font-label text-[10px] tracking-widest uppercase px-5 py-3 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="heritage">Heritage</button>
  <button class="filter-btn font-label text-[10px] tracking-widest uppercase px-5 py-3 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="jewelry">Jewelry</button>
  <button class="filter-btn font-label text-[10px] tracking-widest uppercase px-5 py-3 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="lingerie">Lingerie</button>
  <button class="filter-btn font-label text-[10px] tracking-widest uppercase px-5 py-3 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="menswear">Menswear</button>
@@ -523,10 +528,10 @@ const DESIGNERS = [
  {
  name: "Comme il Faut",
  url: "https://www.comme-il-faut.com/",
- tags: ["artisan", "minimalist", "prints"],
- tagLabels: ["Artisan", "Minimalist", "Prints"],
+ tags: ["artisan", "minimalist", "prints", "heritage"],
+ tagLabels: ["Artisan", "Minimalist", "Prints", "Heritage"],
  desc: "Original, artistic Israeli womenswear, monochromatic palettes, unexpected textures, and asymmetric construction. Comme il Faut dresses the woman who refuses the obvious.",
- img: "https://comme-il-faut.com/cdn/shop/files/c_il_faut_1849_7016b057-877c-4c12-8259-b131e6480d1a.jpg?v=1773844239&width=600",
+ img: "https://comme-il-faut.com/cdn/shop/files/c_il_faut_457.jpg?v=1773851576&width=600",
  fav: true
  },
  {
@@ -607,14 +612,8 @@ const DESIGNERS = [
  {
  name: "Dorin Frankfurt",
  url: "https://www.dorinfrankfurt.com/he",
- tags: [
- "artisan",
- "minimalist"
- ],
- tagLabels: [
- "Artisan",
- "Minimalist"
- ],
+ tags: ["artisan", "minimalist", "heritage"],
+ tagLabels: ["Artisan", "Minimalist", "Heritage"],
  desc: "One of Israel's most recognised fashion names, Dorin Frankfurt's work blends European sophistication with a distinctly Israeli sensibility.",
  img: "https://www.dorinfrankfurt.com/media/wysiwyg/SEV-55.jpg",
  fav: false
@@ -625,7 +624,7 @@ const DESIGNERS = [
  tags: ["artisan"],
  tagLabels: ["Artisan"],
  desc: "Israeli womenswear with quiet originality, Dorit Sade designs for women who dress with intention and wear their clothes on their own terms.",
- img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1dJoT9yJ3g_pCnpMe1TO8udfM6LgLGPN6Dg&s",
+ img: "https://cdn.cashcow.co.il/images/82b1b6ca-b867-48d8-a9a7-5248d275a767.webp",
  fav: false
  },
  {
@@ -640,8 +639,8 @@ const DESIGNERS = [
  {
  name: "Dostix",
  url: "https://dostix.com/",
- tags: ["streetwear", "heritage"],
- tagLabels: ["Streetwear", "Heritage"],
+ tags: ["streetwear"],
+ tagLabels: ["Streetwear"],
  desc: "Blending modern urban life with practical, dynamic design. The Dostix brand has established international selling points across Europe, Japan, and the USA.",
  img: "https://dostix.com/cdn/shop/products/IMG_20161026_152044_2048x2048.jpg?v=1623568068",
  fav: false
@@ -709,7 +708,7 @@ const DESIGNERS = [
  tags: ["artisan", "minimalist"],
  tagLabels: ["Artisan", "Minimalist"],
  desc: "Israeli womenswear label with a refined, contemporary point of view, considered silhouettes and quietly confident essentials.",
- img: "https://static.wixstatic.com/media/4ff179_943fb2098cab4c02a9e3889daec6dfe0~mv2.jpg/v1/fill/w_441,h_665,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/4ff179_943fb2098cab4c02a9e3889daec6dfe0~mv2.jpg",
+ img: "https://static.wixstatic.com/media/6ade84_94f08e8928f94b41bf9502b721da4d97~mv2.jpg/v1/fill/w_972,h_1410,al_c,q_85,usm_0.66_1.00_0.01/6ade84_94f08e8928f94b41bf9502b721da4d97~mv2.jpg",
  fav: false
  },
  {
@@ -904,14 +903,14 @@ const DESIGNERS = [
  tagLabels: ["Sustainable", "Artisan", "Activewear"],
  desc: "Israel's first yoga muslin blanket, soft, natural, breathable.",
  descFull: "Israel's first yoga muslin blanket, soft, natural, breathable. Inhale Exhale creates yoga blankets, shawls, pareos, and T-shirts printed with original illustrations by Israeli women artists. Designed and made in Israel with ecological printing technology.",
- img: "https://static.wixstatic.com/media/2bd9a3_d0c79b8b3abe43dbb0661bb2a0d42769~mv2.jpg/v1/fill/w_640,h_360,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/2bd9a3_d0c79b8b3abe43dbb0661bb2a0d42769~mv2.jpg",
+ img: "https://static.wixstatic.com/media/2bd9a3_789b63c4635743e9ab80536d6a2f1029~mv2.jpg/v1/fill/w_705,h_705,al_c,q_85,usm_0.66_1.00_0.01/2bd9a3_789b63c4635743e9ab80536d6a2f1029~mv2.jpg",
  fav: false
  },
  {
  name: "Jessa Grey",
  url: "https://jessagrey.com/",
- tags: ["minimalist", "artisan"],
- tagLabels: ["Minimalist", "Artisan"],
+ tags: ["minimalist", "artisan", "size-inclusive"],
+ tagLabels: ["Minimalist", "Artisan", "Size Inclusive"],
  desc: "Size-inclusive Israeli basics, oversized, comfortable, and endlessly versatile.",
  descFull: "Size-inclusive Israeli basics, oversized, comfortable, and endlessly versatile. Jessa Grey designs for the wardrobe foundation: the pieces you reach for every day without thinking.",
  img: "https://jessagrey.com/cdn/shop/files/JESA_GREY_0020_2048x2048.jpg?v=1773505649",
@@ -995,10 +994,10 @@ const DESIGNERS = [
  {
  name: "Karen Shavit",
  url: "https://karen-shavit.com/",
- tags: ["prints", "artisan"],
- tagLabels: ["Prints", "Artisan"],
+ tags: ["prints", "artisan", "size-inclusive"],
+ tagLabels: ["Prints", "Artisan", "Size Inclusive"],
  desc: "Fun, colourful, and size-inclusive Israeli womenswear with a joyful, optimistic spirit. Karen Shavit designs for real women who want to be noticed, and to feel good doing it.",
- img: "https://karen-shavit.com/cdn/shop/files/1_fa3d181f-42b0-4a6d-927a-5b535668b8f6_1285x1799.jpg?v=1757927964",
+ img: "https://karen-shavit.com/cdn/shop/files/2_691d2e63-ae66-4bb4-bde9-6430414fc013_600x.jpg?v=1780243422",
  fav: false
  },
  {
@@ -1016,7 +1015,7 @@ const DESIGNERS = [
  tags: ["accessories", "artisan"],
  tagLabels: ["Accessories", "Artisan"],
  desc: "Keren Wolf, Israeli accessories label known for handcrafted bags and shoes with a sculptural, contemporary point of view.",
- img: "https://kerenwolf.co.il/cdn/shop/files/KW_1800_800_copy_5_3ba06fac-fc81-4cf8-9df3-29b7d539250e_2000x.jpg?v=1765453226",
+ img: "https://kerenwolf.co.il/cdn/shop/files/KerenWolf_01-02-24_0610_1800x1800.jpg?v=1771505844",
  fav: false
  },
  {
@@ -1031,8 +1030,8 @@ const DESIGNERS = [
  {
  name: "Kid A",
  url: "https://thisiskida.com/",
- tags: ["minimalist", "artisan", "prints"],
- tagLabels: ["Minimalist", "Artisan", "Prints"],
+ tags: ["minimalist", "artisan", "prints", "size-inclusive"],
+ tagLabels: ["Minimalist", "Artisan", "Prints", "Size Inclusive"],
  desc: "Size-inclusive basics and bold prints, Kid A is for the Israeli woman who believes in comfort as a political act.",
  img: "https://thisiskida.com/wp-content/uploads/2024/05/kid-a-4.6.24-1705.jpg",
  fav: false
@@ -1040,8 +1039,8 @@ const DESIGNERS = [
  {
  name: "Kimka Studio",
  url: "https://kimka-studio.com/",
- tags: ["artisan", "sustainable", "heritage"],
- tagLabels: ["Artisan", "Sustainable", "Heritage"],
+ tags: ["artisan", "sustainable"],
+ tagLabels: ["Artisan", "Sustainable"],
  desc: "Kim Dror's studio specialises in indigo-dyed clothing and textiles, informed by traditional Japanese mastery and global indigo cultures.",
  descFull: "Kim Dror's studio specialises in indigo-dyed clothing and textiles, informed by traditional Japanese mastery and global indigo cultures. Clothing, accessories, and home objects crafted in Haifa with radical care.",
  img: "https://kimka-studio.com/cdn/shop/products/Kimka_-572_1024x1024.jpg?v=1644521255",
@@ -1068,8 +1067,8 @@ const DESIGNERS = [
  {
  name: "Layou",
  url: "https://layoudesign.com/",
- tags: ["minimalist", "artisan"],
- tagLabels: ["Minimalist", "Artisan"],
+ tags: ["minimalist", "artisan", "size-inclusive"],
+ tagLabels: ["Minimalist", "Artisan", "Size Inclusive"],
  desc: "Size-inclusive Israeli womenswear built on oversize silhouettes, textured fabrics, and considered minimalism, designed for real wardrobes, real women, and the full spectrum of occasions.",
  img: "https://layoudesign.com/cdn/shop/files/LAYOU7313102.jpg?v=1757712998&width=700",
  fav: false
@@ -1119,7 +1118,7 @@ const DESIGNERS = [
  tagLabels: ["Minimalist", "Artisan"],
  desc: "Israeli womenswear since 2012, minimalist lines, flattering cuts, and luxurious fabrics.",
  descFull: "Israeli womenswear since 2012, minimalist lines, flattering cuts, and luxurious fabrics. Maayan Paz designs the effortlessly polished wardrobe: day-to-evening pieces made in Israel with uncompromising quality.",
- img: "https://maayanpaz.co.il/cdn/shop/files/new_arrivals.jpg?v=1776327710&width=3200",
+ img: "https://maayanpaz.co.il/cdn/shop/files/DSCF5210.jpg?v=1779995161&width=700",
  fav: false
  },
  {
@@ -1134,8 +1133,8 @@ const DESIGNERS = [
  {
  name: "Madam Bubu",
  url: "https://madambubu.com/",
- tags: ["artisan", "minimalist"],
- tagLabels: ["Artisan", "Minimalist"],
+ tags: ["artisan", "minimalist", "size-inclusive"],
+ tagLabels: ["Artisan", "Minimalist", "Size Inclusive"],
  desc: "Relaxed, achromatic, and body-celebrating - Madam Bubu designs clothes that feel like they already know you.",
  descFull: "Relaxed, achromatic, and body-celebrating - Madam Bubu designs clothes that feel like they already know you. Generous sizing (38–46), premium fabrics, and an aesthetic rooted in personal honesty.",
  img: "https://madambubu.com/wp-content/uploads/2025/10/MADAM_BUBU_1750-683x1024.jpg",
@@ -1183,8 +1182,8 @@ const DESIGNERS = [
  url: "https://www.mayabash.com/",
  tags: ["artisan", "minimalist"],
  tagLabels: ["Artisan", "Minimalist"],
- desc: "Established fashion designer with over 20 years of experience.",
- descFull: "Established fashion designer with over 20 years of experience. Maya Bash combines minimalist, gender-neutral aesthetics with precise tailoring, conceptual innovation, and socially conscious values - multidisciplinary, sustainable, and deeply collaborative.",
+ desc: "A minimalist, gender-neutral practice where precise tailoring meets conceptual innovation, designed in close dialogue with cultural and artistic contexts and rooted in sustainability and socially conscious values.",
+ descFull: "Maya Bash works in a minimalist, gender-neutral language where precise tailoring meets conceptual innovation and a deep engagement with cultural and artistic contexts. Her practice is rooted in multidisciplinary collaboration and critical design thinking, with sustainability and socially conscious values woven through every collection, garments as considered in their making as they are in their form.",
  img: "https://www.mayabash.com/f-users/user_106647/website_205343/images/img_1325.jpg",
  fav: false
  },
@@ -1202,8 +1201,9 @@ const DESIGNERS = [
  url: "https://mishi.style/",
  tags: ["artisan", "minimalist"],
  tagLabels: ["Artisan", "Minimalist"],
- desc: "Israeli label Mishi - easy, considered everyday pieces with a clean, modern silhouette.",
- img: "https://mishi.style/cdn/shop/files/WhatsAppImage2026-04-28at19.38.54_5_1800x1800.jpg?v=1777406798",
+ desc: "A curated boutique founded in spring 2016, devoted to a hand-picked team of Israeli women designers alongside select imports. Mishi is built on three principles: a high frequency of new arrivals, precise curation, and the feeling that someone's always there for you.",
+ descFull: "Mishi was founded in spring 2016 and grew into everything its founder imagined, and more. Drawn into the world of Israeli women designers, importing, customers, service, orders, and the rhythm of season after season, she built the brand around a hand-picked team of designers she deeply admires while always searching for something new. The encouragement of customers, the sense that each one comes to Mishi especially, kept it growing. When COVID arrived in March 2020 and forced everyone home, she used the time to build an online store alongside the physical one, shot in the garden with the sun at the right angle and herself as the model. Both stores share three guiding principles: frequent renewal with new pieces, precision in selecting them, and the feeling that Mishi is always there for any question.",
+ img: "https://mishi.style/cdn/shop/files/WhatsAppImage2026-05-18at21.33.28_1_1800x1800.jpg?v=1779129415",
  fav: false
  },
  {
@@ -1283,8 +1283,8 @@ const DESIGNERS = [
  {
  name: "NewG Lingerie",
  url: "https://newglingerie.com/",
- tags: ["lingerie", "activewear"],
- tagLabels: ["Lingerie", "Activewear"],
+ tags: ["lingerie", "activewear", "size-inclusive"],
+ tagLabels: ["Lingerie", "Activewear", "Size Inclusive"],
  desc: "Founded by Alex, NewG exists to solve the lingerie problem for larger cup sizes who want pretty, comfortable and supportive bras.",
  descFull: "Founded by Alex, NewG exists to solve the lingerie problem for larger cup sizes who want pretty, comfortable and supportive bras. Wire-free bras in every size and style, from everyday to nursing to sport, designed with real bodies in mind.",
  img: "https://newglingerie.com/cdn/shop/files/2-modells-withsupport-tank-top-large-breasts-built-in-bra-front-view-black-brown.webp?v=1773519588",
@@ -1355,7 +1355,7 @@ const DESIGNERS = [
  tagLabels: ["Artisan", "Minimalist", "Menswear"],
  desc: "Seasonal Israeli fashion from Kibbutz Ma'agan Michael, collections like ECLIPSE and PULSE that push a refined, considered aesthetic for women and a growing menswear line.",
  descFull: "Seasonal Israeli fashion from Kibbutz Ma'agan Michael, collections like ECLIPSE and PULSE that push a refined, considered aesthetic for women and a growing menswear line. Quietly one of Israel's most distinctive voices.",
- img: "https://www.onnanoko.co.il/cdn/shop/files/227308BOXITOP227486MERGEPANTS_16.jpg?v=1771416183&width=960",
+ img: "https://www.onnanoko.co.il/cdn/shop/files/227502LUMINATOP227522HORIZONPANTS_9.jpg?v=1774525711",
  fav: false
  },
  {
@@ -1492,8 +1492,8 @@ const DESIGNERS = [
  {
  name: "Rona Clogs",
  url: "https://ronaclogs.co.il/",
- tags: ["heritage", "accessories"],
- tagLabels: ["Heritage", "Accessories"],
+ tags: ["accessories"],
+ tagLabels: ["Accessories"],
  desc: "Swedish wooden clogs reimagined for Israel.",
  descFull: "Swedish wooden clogs reimagined for Israel. Founded in 2012 by Rona, the studio in Pardes Hanna turns out timeless, comfortable wooden-soled footwear in colours that range from quiet matte to glittering fantasy.",
  img: "https://ronaclogs.co.il/cdn/shop/files/screen-8490.jpg?v=1773403900&width=1024",
@@ -1705,7 +1705,7 @@ const DESIGNERS = [
  tagLabels: ["Prints", "Streetwear"],
  desc: "TODA - Hebrew for 'thank you' - plays the in-between. Punk and graffiti energy on one side, Biblical scenes and scripture on the other.",
  descFull: "TODA - Hebrew for 'thank you' - plays the in-between. Punk and graffiti energy on one side, Biblical scenes and scripture on the other. Oversized prints, words you can't ignore, Jewish symbols at scale. Clothes that wear the experience of being different out loud, instead of hiding it.",
- img: "https://todaxco.com/cdn/shop/files/IMG_8522.jpg?v=1774464087&width=1080",
+ img: "https://todaxco.com/cdn/shop/collections/CBA119C4-FD88-40D2-9E4D-7A3148B2F164.jpg?v=1774708514&width=1080",
  fav: false
  },
  {
@@ -1742,7 +1742,7 @@ const DESIGNERS = [
  tags: ["artisan", "minimalist"],
  tagLabels: ["Artisan", "Minimalist"],
  desc: "Israeli womenswear by two sisters - small-batch pieces with a clean, contemporary hand.",
- img: "https://2sis.co.il/cdn/shop/files/IMG_7739.heic?v=1768385260&width=533",
+ img: "https://2sis.co.il/cdn/shop/files/30880.jpg?v=1773847474&width=1946",
  fav: false
  },
  {
@@ -1796,8 +1796,8 @@ const DESIGNERS = [
  {
  name: "Vered Grebelsky",
  url: "https://www.veredgrebelsky.com/",
- tags: ["sustainable", "artisan"],
- tagLabels: ["Sustainable", "Artisan"],
+ tags: ["sustainable", "artisan", "size-inclusive"],
+ tagLabels: ["Sustainable", "Artisan", "Size Inclusive"],
  desc: "Slow-fashion womenswear made in Israel - functional pieces meant to live in a wardrobe for years.",
  descFull: "Slow-fashion womenswear made in Israel - functional pieces meant to live in a wardrobe for years. Fabric folds, hand embroidery, versatile cuts that wear multiple ways, and a generous size range.",
  img: "https://www.veredgrebelsky.com/cdn/shop/files/IMG_0214-Edit_1800x1800.jpg?v=1711366715",
@@ -1864,8 +1864,8 @@ const DESIGNERS = [
  {
  name: "Larus",
  url: "https://larus.co.il/",
- tags: ["accessories", "heritage"],
- tagLabels: ["Accessories", "Heritage"],
+ tags: ["accessories"],
+ tagLabels: ["Accessories"],
  desc: "A women's footwear label for those who rewrite the rules, named after the seagull and inspired by Jonathan Livingston Seagull, the bird that refused to stay in place.",
  descFull: "A women's footwear label for those who rewrite the rules, named after the seagull and inspired by Jonathan Livingston Seagull, the bird that refused to stay in place. Each style hand-picked for sharp design, premium materials, and uncompromising quality. Power and femininity, trend and timelessness, in one brand. Shoes as self-expression, a way to leave a mark with every step.",
  img: "https://larus.co.il/wp-content/uploads/2026/02/%D7%A2%D7%99%D7%A6%D7%95%D7%91-%D7%9C%D7%9C%D7%90-%D7%A9%D7%9D-2026-03-17T160045.663-888x1065.png",
@@ -1904,8 +1904,8 @@ const DESIGNERS = [
  {
  name: "Gershon Bram",
  url: "https://gershon-bram.com/",
- tags: ["artisan", "luxury", "heritage"],
- tagLabels: ["Artisan", "Luxury", "Heritage"],
+ tags: ["artisan", "luxury"],
+ tagLabels: ["Artisan", "Luxury"],
  desc: "Contemporary Israeli womenswear with modern tailoring and relaxed silhouettes, high-quality fabrics, minimalist cuts, subtle detailing.",
  descFull: "Contemporary Israeli womenswear with modern tailoring and relaxed silhouettes, high-quality fabrics, minimalist cuts, subtle detailing. A storied designer chosen to represent Israel in the 50-years-to-Israel showcase in Rome and the Vatican, with longstanding ties to Ruth Dayan and a celebrated runway collaboration with Bedouin embroiderers shown at Beit HaNasi.",
  img: "https://gershon-bram.com/wp-content/uploads/2026/02/Untitled-Album-404-of-512-scaled.jpeg",
@@ -1961,8 +1961,8 @@ const DESIGNERS = [
  {
  name: "Omi",
  url: "https://omi-brand.com/",
- tags: ["streetwear", "heritage"],
- tagLabels: ["Streetwear", "Heritage"],
+ tags: ["streetwear"],
+ tagLabels: ["Streetwear"],
  desc: "Founded by two wounded IDF veterans together with fellow soldiers, a label that turns personal stories of service, pain, and hope into garments.",
  descFull: "Founded by two wounded IDF veterans together with fellow soldiers, a label that turns personal stories of service, pain, and hope into garments. Every shirt and hoodie carries a real moment from the field. Not just clothes, a message of strength, belonging, and choosing to rise. Wear meaning. Wear a story.",
  img: "https://omi-brand.com/cdn/shop/files/870c6e32-48b2-4622-a118-9abbd0c00fe6.jpg?v=1743013983",
@@ -2114,7 +2114,7 @@ const DESIGNERS = [
  tagLabels: ["Minimalist", "Artisan"],
  desc: "Founder Tami made her first pieces for herself, out of a need for clothing that felt calm, effortless, and honest.",
  descFull: "Founder Tami made her first pieces for herself, out of a need for clothing that felt calm, effortless, and honest. What began as personal exploration grew into a philosophy: clothing that supports, softens, and strengthens, pairing clean silhouettes with quiet details. Comfort not as compromise but as a form of clarity, made to move with you, and to remind you of the steadiness of wearing something that feels right.",
- img: "https://tamupants.com/cdn/shop/files/Copy_of_2025.11.05_Tamu_Pants1646_834655b1-e9d1-46db-86dc-c519d4e690f1.jpg?v=1767191725&width=1206",
+ img: "https://tamupants.com/cdn/shop/files/TAMU_30_09_251430_c6b7a48f-dd1c-4697-a76b-6861dc9dfec8.jpg?v=1767294266&width=1206",
  fav: false
  },
  {
@@ -2190,7 +2190,7 @@ const DESIGNERS = [
     tags: ["streetwear", "prints"],
     tagLabels: ["Streetwear", "Prints"],
     desc: "An innovative, kicking brand that grew out of a drunken night among a group of friends from Zichron Yaakov. It flies the flag of the joy of making and the perfection of pleasure, developing bold, daring, eye-catching designs.",
-    img: "https://assets.bigcartel.com/product_images/402711093/DSCF1001.JPG?auto=format&fit=max&w=1400",
+    img: "https://assets.bigcartel.com/product_images/402709752/ido_cam-4.jpg?auto=format&fit=max&w=2000",
     fav: false
   },
   {
@@ -2228,6 +2228,7 @@ const DESIGNERS = [
     tags: ["streetwear", "conceptual"],
     tagLabels: ["Streetwear", "Conceptual"],
     desc: "Active since 2014, Pupik started from making clothes the designer wanted to wear himself. The brand merges street culture, surrealism, and philosophy, drawing from raw human emotions like fear, struggle, and mortality, without sticking to one fixed direction.",
+    img: "https://pupikstore.com/cdn/shop/files/bubu_racing_thoughts.jpg?v=1775937339&width=1680",
     fav: false
   },
   {
@@ -2297,8 +2298,8 @@ const DESIGNERS = [
   {
     name: "Haarchion",
     url: "https://haarchion.myshopify.com/",
-    tags: ["artisan","heritage"],
-    tagLabels: ["Artisan","Heritage"],
+    tags: ["artisan"],
+    tagLabels: ["Artisan"],
     desc: "Israeli fashion label.",
     img: "https://haarchion.myshopify.com/cdn/shop/files/DSC_0017_38616bbe-e018-4a96-a3e8-9369e87c2927.jpg?v=1779399116&width=2890",
     fav: false
@@ -2418,6 +2419,253 @@ const DESIGNERS = [
     img: "https://www.noyka.co.il/cdn/shop/files/SAP08515.jpg?v=1762946021&width=1240",
     fav: false
   },
+  {
+    name: "Berni",
+    url: "https://www.berni.co.il/",
+    tags: ["activewear", "minimalist"],
+    tagLabels: ["Activewear", "Minimalist"],
+    desc: "Wear less, feel more. Israeli athleisure for women and men in an earthy, pared-back palette, sport sets, seamless tops, and bear-motif tees built for quiet, everyday strength.",
+    img: "https://www.berni.co.il/cdn/shop/files/Berni_38.jpg?v=1754929715&width=2496",
+    fav: false
+  },
+  {
+    name: "Cocoral",
+    url: "https://cocoral.co.il/",
+    tags: ["minimalist", "prints"],
+    tagLabels: ["Minimalist", "Prints"],
+    desc: "Israeli everyday-casual label for the whole family, women, men, and kids, known for its family-style collection of matching parent-and-child outfits alongside accessories and jewelry-style pieces.",
+    img: "https://cdn.quick-shop.co.il/uploads/coco/68ab2d736203e.webp",
+    fav: false
+  },
+  {
+    name: "Hagara",
+    url: "https://www.hagara.co.il/",
+    tags: ["size-inclusive", "minimalist"],
+    tagLabels: ["Size Inclusive", "Minimalist"],
+    desc: "A contemporary Israeli fashion house dressing women in sizes 38–54, current, trend-driven, and distinctly its own, with clean, minimalist lines, quality fabrics, and small eclectic runs that make each piece exclusive. When you look good, you feel good.",
+    descFull: "The HAGARA fashion house offers women in Israel contemporary, up-to-date, unique, and trend-driven fashion that reflects the season's standout looks while staying tailored to the Israeli consumer. The Hagara woman is full of chic and highly aware of her appearance. Designs span sizes 38–54 and are built on clean, minimalist lines with quality fabrics and meticulous tailoring for all-day comfort, created by the in-house design team, who understand the Israeli woman's needs and adapt cuts and materials to the local climate. Hagara sees its edge over other chains in producing small, eclectic runs that flow into stores throughout the season, so every piece becomes exclusive. The brand lives by its slogan, 'When you look good, you feel good,' in recognition of a woman's power.",
+    img: "https://www.hagara.co.il/cdn/shop/files/IMG_8702.jpg?v=1780516333&width=5000",
+    fav: false
+  },
+  {
+    name: "Hane",
+    url: "https://www.haneofficial.com/",
+    tags: ["streetwear", "prints"],
+    tagLabels: ["Streetwear", "Prints"],
+    desc: "Not just a t-shirt. Born from a love of the sea, of making, and of freedom, Hane creates quality oversized tees in original artistic prints, released in limited editions, wear creativity, feel free.",
+    img: "https://static.wixstatic.com/media/8739ae_9153c9cd0ae8432e9d272e7b873070e4~mv2.jpg",
+    fav: false
+  },
+  {
+    name: "Historic",
+    url: "https://www.historiclub.com/",
+    tags: ["activewear", "streetwear"],
+    tagLabels: ["Activewear", "Streetwear"],
+    desc: "A unisex Israeli activewear brand built on an obsessive eye for quality, every piece designed down to the fabric, cut, and feel on the body. Precise, classic, and made for real daily use, moving naturally between the gym and everyday without changing style.",
+    descFull: "Historic is a unisex activewear fashion brand built on a deep commitment to quality. Every piece is designed down to the smallest detail, from the fabric through the cut to how it feels on the body, out of an internal demand for precision and a high standard that goes with you everywhere through the day. The design choices are precise and direct: carefully shaped cuts, comfortable and durable materials, and clothes meant for real everyday use, so the connection between activewear and daily life lets you move naturally between situations without switching styles. Historic's language is clear, speaking to women and men who train and want a fine look with no compromise on quality or materials, with colours kept to a clean, classic line that pairs easily with different styles. For now the brand focuses on oversized shirts, training tees, and baseball caps, the basics that define its place in activewear and lay the foundation for what's next. Historic is built as a clothing ecosystem that simply makes you feel and look your best.",
+    img: "https://res.cloudinary.com/do3thjnjs/image/upload/f_auto,q_auto:best,dpr_auto/v1778235635/products/shhfcw5mlwlti1eai7ut.jpg",
+    fav: false
+  },
+  {
+    name: "Hot Seasons",
+    url: "https://hotseasons.co/",
+    tags: ["streetwear"],
+    tagLabels: ["Streetwear"],
+    desc: "No labels, just legacy. An Israeli streetwear label built on drops, graphic tees, cargos, polos, and accessories released in collections like 'Rock, Paper, Seasons' with a confident skate-and-street attitude.",
+    img: "https://hotseasons.co/cdn/shop/files/hot_seasonesfirst6932.jpg?v=1758094289&width=1000",
+    fav: false
+  },
+  {
+    name: "Hot Tuna",
+    url: "https://www.hotuna.co.il/",
+    tags: ["minimalist", "swimwear"],
+    tagLabels: ["Minimalist", "Swimwear"],
+    desc: "Born from a longing for quiet moments, freedom, and sun on bare skin. An Israeli brand with an overseas soul, clean, precise, self-aware design across beachwear, swimwear, and sandals, made for people who recognise what truly matters.",
+    img: "https://static.wixstatic.com/media/9d5411_098b867cb65041749342c62092d40cd4~mv2.jpeg/v1/fill/w_942,h_1410,al_c,q_85,usm_0.66_1.00_0.01/9d5411_098b867cb65041749342c62092d40cd4~mv2.jpeg",
+    fav: false
+  },
+  {
+    name: "Naama Bezalel",
+    url: "https://naamabezalel.com/",
+    tags: ["prints", "artisan", "heritage"],
+    tagLabels: ["Prints", "Artisan", "Heritage"],
+    desc: "Take a jug of nostalgia, fold in romance, a little vintage, an intense love of colour and texture, and a passion for fashion, that cocktail is the world of Naama Bezalel. One of Israel's most recognised designers, reinterpreting trends from the 1920s to the 1970s into timeless, feminine, flattering pieces.",
+    descFull: "A Shenkar design graduate born in Jerusalem and raised in Herzliya, Naama Bezalel is one of Israel's leading fashion designers, having inherited her love of aesthetics from a mother skilled in sewing, embroidery, and knitting. She founded her eponymous fashion house in 1993, two years after Shenkar, and today runs a chain of seven stores and a spacious studio from which she sends out feminine, flattering day-and-evening collections. Her design signature is among the most recognised and esteemed in Israeli fashion: each season she brings a renewed, contemporary interpretation of trends from the 1920s through the 1970s, designing timeless pieces that outlast passing fashions while staying precise and current. Cuts run close to the body alongside more relaxed shapes, always with an emphasis on comfort and on the modern woman who needs a garment to serve her from morning to evening. She leans on childhood motifs, baby collars, bows, polka dots, and naive prints of flowers, houndstooth, fruit, and cherries, so her clothes radiate naivety alongside power, softness alongside strength. Her diverse styles speak to self-aware, independent, intelligent women, young and older, slim and full alike, across a wide size range of 36–46. 'In a world of infinite abundance, of passing trends, of noise and confusion, I invite you into my private bubble, one that carries the scent of the past into the present with a contemporary fit.'",
+    img: "https://naamabezalel.com/wp-content/uploads/2024/07/%D7%A9%D7%9E%D7%9C%D7%AA-%D7%94%D7%99%D7%99%D7%93%D7%99-%D7%9B%D7%AA%D7%95%D7%9D-%D7%A4%D7%A8%D7%97%D7%99%D7%9D-8.jpg",
+    fav: false
+  },
+  {
+    name: "Reverb Outfitters",
+    url: "https://reverboutfitters.com/",
+    tags: ["activewear", "minimalist"],
+    tagLabels: ["Activewear", "Minimalist"],
+    desc: "Everyday, everywhere. High-performance activewear built for comfort and durability, started by two childhood friends with a shared vision of what a fitness community should actually look like, more a movement than a label.",
+    descFull: "REVERB didn't start in a boardroom. It started with two childhood friends and a shared vision of what a fitness community should actually look like. Ahmad brings the discipline of the fitness world and a software engineer's obsession with building things the right way, from the ground up; Marwan has spent eight years empowering founders to launch their own initiatives and startups, bridging the gap between the academic world of entrepreneurship and the reality of building a brand that lasts. Together they make high-performance activewear, sculpt leggings, seamless tops, and compression staples, built for comfort, durability, and everyday wear.",
+    img: "https://reverboutfitters.com/cdn/shop/files/IMG_5362.jpg?v=1775498889&width=2000",
+    fav: false
+  },
+  {
+    name: "Ronen Chen",
+    url: "https://ronenchen.co.il/",
+    tags: ["minimalist", "artisan", "heritage"],
+    tagLabels: ["Minimalist", "Artisan", "Heritage"],
+    desc: "A cornerstone of Israeli fashion for over three decades. After a 1990 trip to Japan, Ronen Chen returned with a single minimalist line, quiet yet powerful, built on origami, geometry, and clean graphic shapes. Fluid, wearable, timeless pieces for the modern woman, across a chain of more than 20 stores.",
+    descFull: "In 1990 Ronen Chen flew to Japan, and the connection to its culture, aesthetics, and customs made him feel as if he'd been born there; he came home with his own clear voice, a single minimalist line, quiet yet powerful, connecting shapes, origami, and geometry into something timeless and precise. In 1994 he rented his first store on Shenkin Street, designing in the studio by morning and selling in the shop by afternoon, learning from the conversations with customers, and has since opened more than 20 stores across the country. A last-minute chance in 1995 to exhibit in London, with a set made from crumpled and reopened coloured silk papers, drew early interest and orders from stores worldwide. In 2014, after a successful Tel Aviv Fashion Week show, he launched LIMITED, a line of limited-edition pieces, followed by a run of acclaimed capsule collaborations: 13AM with Anya Martirosov (2015), dubbed 'sport couture'; MRR with stylists Mazal Hasson and Reuven Cohen (2017), where styling preceded design; an 'On the Tel Aviv–New York Line' capsule of black-and-white stripes and checks with Shenkar graduate Noa Raviv (2017); a Japan-inspired Denim Lab (2018); and the light, free 'Somewhere Only We Know' resort capsule with Meital Weinberg Adar (2019).",
+    img: "https://ronenchen.co.il/cdn/shop/files/14294_32065_4.jpg?v=1776068984&width=800",
+    fav: false
+  },
+  {
+    name: "Shiruetto",
+    url: "https://shiruetto.com/",
+    tags: ["minimalist", "prints"],
+    tagLabels: ["Minimalist", "Prints"],
+    desc: "Silhouette in Japanese. A minimalist womenswear brand based in Caesarea, launched in 2015 by artist and curator Shira Naftali. Clean lines and monochromatic tones meet feminine cuts and original hand-made textile prints, influenced by the art world, Japanese design, and street fashion, designed and made locally in small editions.",
+    img: "https://shiruetto.com/cdn/shop/files/1B2A3359_1024x1024.jpg?v=1779000970",
+    fav: false
+  },
+  {
+    name: "Tovale+",
+    url: "https://tovale.fashion/",
+    tags: ["luxury", "artisan", "heritage"],
+    tagLabels: ["Luxury", "Artisan", "Heritage"],
+    desc: "For more than three decades, Tovale+ has embodied the artistic spirit of Israel through high-end fashion by a mother-daughter team. Each piece is meticulously handcrafted in their Tel Aviv studio, wearable art that tells a story, and truly one of a kind.",
+    descFull: "Tovale+ is not merely a fashion house but an artistic sanctuary where fashion meets fine art. Tova Chasin launched her first designs under the name Tovale in the late 1980s with a small Tel Aviv shop, and within weeks clients were lining up for an original Tovale piece, building a loyal following over four decades. In 2012 her daughter Naama Chasin, a Fashion Institute of Technology graduate, joined her to form Tovale+, a mother-daughter partnership bridging generations of Israeli artistic expression. Every creation is meticulously handcrafted in rich fabrics, detailed with hand-sewn embroidery, gems, and intricate beadwork, so no two pieces are ever identical, with handmade accessories such as belts, bags, and shoes completing the collections.",
+    img: "https://tovale.fashion/wp-content/uploads/2025/11/IMG_4883-%D7%AA%D7%9E%D7%A8-%D7%A2%D7%A8%D7%95%D7%9A-%D7%A1%D7%95%D7%A4%D7%99%D7%AA%D7%99%D7%AA-NR-scaled.jpg",
+    fav: false
+  },
+  {
+    name: "Razili",
+    url: "https://www.razili.co.il/",
+    tags: ["minimalist", "artisan", "heritage"],
+    tagLabels: ["Minimalist", "Artisan", "Heritage"],
+    desc: "A curated fashion house and chain founded in 1990, gathering the most coveted designer pieces under one roof, online and across mall boutiques nationwide, alongside its own clean, classic house label, Razili Studio.",
+    descFull: "Razili, רזילי אוצרות אופנה, is a fashion-curation house and retail chain founded in 1990 that has built a devoted following of customers who value fashion and local creativity. Its online store and many mall boutiques across Israel bring together the hottest, most up-to-date designer pieces under one roof, from labels like Mother of All, M by Maskit, Juicy Couture, and more. Razili Studio, the chain's first house brand, distils years of understanding its customer into an exclusive line of clean, classic designs, sitting alongside collaborations such as Razili X Loren Alon.",
+    img: "https://www.razili.co.il/cdn/shop/files/R23271420023_2.jpg?v=1747573955&width=1800",
+    fav: false
+  },
+  {
+    name: "Lahover",
+    url: "https://lahoverjewelry.com/",
+    tags: ["jewelry", "artisan"],
+    tagLabels: ["Jewelry", "Artisan"],
+    desc: "Adi & Shay Lahover, Tel Aviv jewelers with over 40 years of experience, handcraft one-of-a-kind, personal pieces that mirror the processes of nature, drawing on artisanal heritage and the organic flow of natural materials.",
+    descFull: "Adi & Shay Lahover are dedicated jewelers based in Tel Aviv, with over 40 years of experience and a passion for creating one-of-a-kind, handcrafted, and personal pieces. Their work mirrors the processes of nature, drawing inspiration from artisanal heritage and the organic flow of natural materials, creating a harmonious balance between art and the earth's essence. Each piece is carefully made in their studio, using high-quality materials and time-honoured techniques, designed to be personal, meaningful, and cherished for years to come.",
+    img: "https://lahoverjewelry.com/cdn/shop/files/7.jpg?v=1739952474&width=800",
+    fav: false
+  },
+  {
+    name: "AKA Rock",
+    url: "https://facebook.com/AKAembroidery",
+    tags: ["artisan", "prints"],
+    tagLabels: ["Artisan", "Prints"],
+    desc: "Hand-embroidered wearable art by Avigail Kolker (AKA Rock), intricate thread drawings stitched one stitch at a time onto tees and vintage garments, where punk spirit meets needle and thread.",
+    img: "assets/aka-embroidery.png",
+    fav: false
+  },
+  {
+    name: "Mother of All",
+    url: "https://www.mother-ofall.co.il/",
+    tags: ["artisan", "luxury"],
+    tagLabels: ["Artisan", "Luxury"],
+    desc: "A womenswear label launched in 2018 by Noa Pasternak and Golan Taub, inspired by Eve, feminine, strong, and bold. Daring expression meets refined femininity, bold colour and 1980s nostalgia balanced by classic tailoring and clean, elegant silhouettes.",
+    descFull: "Mother of All is a womenswear label launched in 2018 by Noa Pasternak and Golan Taub, a graduate of the prestigious fashion program at Shenkar College of Engineering and Design. Eve, the first woman to roam the earth, is the main inspiration for the label's clientele: feminine, strong, sexy, and above all bold enough to taste from the forbidden fruit. Its aesthetic was born from the partnership between Taub's daring expressions and Pasternak's refined feminine style, bold colour choices, nostalgic nods to the 1980s, and playful designs combined with classic tailoring, clean lines, and elegant silhouettes. The mix between the two extremes is what makes Mother of All, designed with all the daughters of Eve in mind, blurring the lines between evening and casualwear while remaining timeless.",
+    img: "https://www.mother-ofall.co.il/cdn/shop/files/PAPPERWRAPTOPbrown1.png?v=1772016716&width=600",
+    fav: false
+  },
+  {
+    name: "Sabina Musayev",
+    url: "https://sabinamusayev.com/",
+    tags: ["luxury", "artisan"],
+    tagLabels: ["Luxury", "Artisan"],
+    desc: "High-quality, beautifully cut pieces made to be worn forever. Sabina Musayev's collections balance sophisticated, casual, and comfortable styles with glamorous evening looks for holidays and special events.",
+    img: "https://sabinamusayev.com/cdn/shop/files/SUMMER_26_-_DROP_3_Campaign_8.jpg?v=1777883766",
+    fav: false
+  },
+  {
+    name: "Vanzen",
+    url: "https://vanzen.co.il/",
+    tags: ["minimalist", "artisan"],
+    tagLabels: ["Minimalist", "Artisan"],
+    desc: "Where style meets serenity. 'VAN' for the sophisticated, innovative spirit of Holland; 'ZEN' for the calm and effortless harmony of Eastern philosophy. A fusion of modern European design with a timeless, restful feel, clothing made to bring both style and inner peace to everyday life.",
+    img: "https://cdn-dcaen.nitrocdn.com/HfsNYnKRLsqfLQlkujxtgmjkyrcuJuTQ/assets/images/optimized/rev-d9612c3/vanzen.co.il/wp-content/uploads/2026/02/Summer-Fashion.jpg",
+    fav: false
+  },
+  {
+    name: "Two Tone",
+    url: "https://www.twotone.co.il/",
+    tags: ["size-inclusive", "sustainable", "minimalist"],
+    tagLabels: ["Size Inclusive", "Sustainable", "Minimalist"],
+    desc: "Founded in 2014 by Zohar Kalev and Shimon Azkiel, womenswear on a mission, so a woman chooses a piece for her taste, never because it doesn't come in her size. Day-to-night, classic-meets-timeless cuts for every body, produced with real environmental responsibility.",
+    descFull: "The fashion brand Two Tone was founded in 2014 by partners Zohar Kalev, a fashion designer, and Shimon Azkiel, a product designer and EMBA. Their aspiration is to let a customer decide whether to buy purely on personal taste, never because a garment doesn't exist in her size, welcoming every body shape and weight and refusing to sideline women for crossing size 40. Two Tone is a state of mind more than anything: getting dressed in the morning and knowing you're exactly right until evening, in 'day to night' pieces that are never too much and never too little. The design language ranges from classic, timeless cuts to the trends that genuinely belong and are here to stay. While not branded as a sustainability label, Two Tone acknowledges the tension between an industry built on consumption and a growing sense of responsibility: roughly 80% of raw materials are produced in Italy to a measured, pre-planned schedule that reduces waste, all dyeing and washing is done with ecological, chemical-free colours, about 20% of materials come from factory production surplus, and every factory operates under fair-trade conditions with full oversight.",
+    img: "https://www.twotone.co.il/wp-content/uploads/2025/04/Gemini_Generated_Image_a540j3a540j3a540-scaled.png",
+    fav: false
+  },
+  {
+    name: "Noritamy",
+    url: "https://www.noritamy.com/",
+    tags: ["jewelry", "artisan"],
+    tagLabels: ["Jewelry", "Artisan"],
+    desc: "Fashion jewelry handmade in the studio, so no two pieces are exactly alike. Every piece is dipped in a heavy layer of 24K gold or silver tone and is nickel-free, with premium lines and custom-made pieces on request.",
+    img: "https://www.noritamy.com/cdn/shop/files/pivot-tie-necklace-21005.jpg?v=1773826251&width=1800",
+    fav: false
+  },
+  {
+    name: "AP by Amit Philip",
+    url: "https://apbyamitphilip.com/",
+    tags: ["minimalist", "artisan"],
+    tagLabels: ["Minimalist", "Artisan"],
+    desc: "Established in 2020 by Amit Philip, a blue-and-white local production designed and made by Amit, building the ultimate everyday wardrobe in a heartbeat, basics with a twist and a unique touch, the pieces everyone needs.",
+    img: "https://apbyamitphilip.com/wp-content/uploads/2026/05/3.jpg",
+    fav: false
+  },
+  {
+    name: "Danit Peleg",
+    url: "https://www.danitpeleg.com/",
+    tags: ["conceptual", "sustainable"],
+    tagLabels: ["Conceptual", "Sustainable"],
+    desc: "A pioneer in 3D-printed fashion, the first designer in the world to create an entire collection on desktop home printers. Coveted, globally exhibited pieces, including a dress for the Rio Paralympics opening ceremony, and a mission to make 3D-printed fashion accessible while cutting waste and pollution.",
+    descFull: "Danit Peleg is a fashion designer and a pioneer in 3D-printed fashion, who made international headlines as the first designer in the world to create an entire collection using desktop 3D home printers. Her collections drew global attention across both the fashion world and the tech community, and in the summer of 2016 she was invited to design a 3D-printed dress for the headliner dancer in one of the most moving segments of the Opening Ceremony of the Rio Paralympic Games. Danit believes advances in 3D-printing technology can revolutionise fashion design and manufacturing; her team works to make 3D-printed fashion accessible and to drastically cut waste and pollution, disrupting traditional supply chains to create a more sustainable, hopeful alternative for the future. Her 3D-printed pieces are highly coveted and have been presented worldwide.",
+    img: "https://framerusercontent.com/modules/78mlRgZGG1O5heCCgii7/3LCPgybyfsHliFcnGvi6/assets/4096/HNzcrt0yCBoLh6T1BBzVR92Xo.jpeg",
+    fav: false
+  },
+  {
+    name: "Masada Jeans",
+    url: "https://masadajeans.com/",
+    tags: ["sustainable", "artisan"],
+    tagLabels: ["Sustainable", "Artisan"],
+    desc: "Designer Laurent David Vannucci travels the Earth and the seven seas for rare vintage denim, selected for exceptional quality and history, then redesigned, modernised, and re-cut by hand in the Tel Aviv workshop for optimal style and comfort from the first fitting.",
+    img: "https://masadajeans.com/cdn/shop/files/5.jpg?v=1737395667&width=1600",
+    fav: false
+  },
+  {
+    name: "Idol Studios",
+    url: "https://www.idolstudios.co/",
+    tags: ["streetwear", "luxury"],
+    tagLabels: ["Streetwear", "Luxury"],
+    desc: "Israeli luxury streetwear inspired by Jewish heritage, history, and cultural symbols. Limited-edition collections that carry deep meaning and cultural narrative, redefining Jewish pride for those who wear their identity with sophistication and prestige.",
+    descFull: "IDOL STUDIOS is an Israeli luxury streetwear brand inspired by Jewish heritage, history, and cultural symbols. The brand redefines Jewish pride through exclusive, high-quality fashion, designed for those who dare to wear their identity with sophistication, relevance, and prestige. Founded in Israel, IDOL STUDIOS bridges tradition and modernity, offering limited-edition collections that carry deep meanings, cultural narratives, and a luxurious streetwear aesthetic.",
+    img: "https://www.idolstudios.co/cdn/shop/files/81E320E5-FD62-4E91-841C-B1DD828801D0.jpg?v=1779305888&width=1680",
+    fav: false
+  },
+  {
+    name: "Yifat Finkelstein",
+    url: "https://yifatfinkelshtein.com/",
+    tags: ["menswear", "minimalist"],
+    tagLabels: ["Menswear", "Minimalist"],
+    desc: "A menswear label rooted in ease, structure, and quiet precision. Soft tailoring, natural fabrics, and silhouettes that move with the body, living between streetwear and subtle elegance, shaped by the heat and friction between Tel Aviv and Jerusalem.",
+    descFull: "YIFAT FINKELSTEIN is a menswear label rooted in ease, structure, and quiet precision. Each piece balances the understated with the intentional, merging soft tailoring, natural fabrics, and silhouettes that move with the body; the collections live between streetwear and subtle elegance, between worn-in and refined. The brand is grounded in its surroundings, the heat, the haze, the friction between Tel Aviv and Jerusalem, between sky and earth, a tension that shapes a language of dressing that is effortless, present, and quietly defiant. Beneath the surface, above the ordinary.",
+    img: "https://cdn.shopify.com/s/files/1/0568/9504/5817/files/YF14052025__S_70.jpg?v=1777283132",
+    fav: false
+  },
+  {
+    name: "Latto Velara",
+    url: "https://lattovelara.com/",
+    tags: ["prints", "streetwear"],
+    tagLabels: ["Prints", "Streetwear"],
+    desc: "An illustrated wearable-art world by artist Ori Zlotnik, bold all-over prints across clothing, shoes, bags, and home, spanning playful, punky, and darkly whimsical themed collections from Black Cat Syndrome to Rock and Horror.",
+    img: "https://i0.wp.com/lattovelara.com/wp-content/uploads/2023/01/The-odd-one-hoodie-0001.jpg?fit=838%2C1100&ssl=1",
+    fav: false
+  },
 ];
 
 // Layout pattern sequence, cycles through for visual rhythm
@@ -2436,6 +2684,21 @@ const LAYOUTS = [
  // Single E: Offset center
  { span: 'col-span-1 md:col-span-8 md:col-start-3', pt: '', aspect: 'aspect-[16/9]' },
 ];
+
+// Brands that have at least one physical store location on the Map page.
+// Only these show a "View on Map" link. Keep in sync with Map.html's DESIGNERS list.
+const MAP_BRANDS = new Set(["Agas & Tamar","AKA My Culture","Alef Alef","Alembika","Anat Friedman","Anjaly","Artwear","Assaf Peleg","Atawear","Aviva Zilberman","Belle and Sue","Biliblond","Bracha Baron","Ciporkin by Dalit","Co.Co","Comme il Faut","Cotton","Dana Ashkenazy","Dostix","Flo by Ella Braitman","Frett","Galler","Gertrud","Gon Surfing","Hagit Tassa","Heroic","Hila Feinberg","Holyland Civilians","CALA","Kisim","Take a Nap","Maayan Paz","TRES TLV","Roni Bar","Chopshop Corp","Ronen Chen","Palms and Tigers","Tovale+","Mishi","Shiruetto","Gottex","Ainker","All At Once"]);
+
+// Studios that are by-appointment only (override 'Store'). Add names here as confirmed.
+const APPOINTMENT_ONLY = new Set(["Shiruetto","Tovale+","Ciporkin by Dalit","Hila Feinberg"]);
+// Returns the small access indicator: by-appointment studio, walk-in store, or online only.
+function accessHtml(d){
+ let icon, label;
+ if (APPOINTMENT_ONLY.has(d.name)) { icon = 'event_available'; label = 'By appointment'; }
+ else if (MAP_BRANDS.has(d.name)) { icon = 'storefront'; label = 'Store'; }
+ else { icon = 'language'; label = 'Online'; }
+ return `<div class="access-line"><span class="material-symbols-outlined" style="font-size:13px;line-height:1">${icon}</span>${label}</div>`;
+}
 
 const grid = document.getElementById('designer-grid');
 const countEl = document.getElementById('designer-count');
@@ -2536,6 +2799,7 @@ function renderCards(filtered) {
  </button>
  </div>
  <div class="flex flex-wrap gap-2">${tagHtml(d.tagLabels)}</div>
+ ${accessHtml(d)}
  ${d.instagram ? `<div class="flex items-center" style="gap:12px;margin-top:2px">
  <button class="insta-btn" aria-label="Instagram" onclick="window.open('https://instagram.com/${d.instagram}','_blank')">
  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
@@ -2545,8 +2809,8 @@ function renderCards(filtered) {
  <div class="flex flex-wrap gap-4 items-center">
  <a class="font-label text-[10px] tracking-widest uppercase underline underline-offset-4 hover:opacity-40 transition-opacity w-fit"
  href="${d.url}" target="_blank" rel="noopener">Visit Website →</a>
- <a class="font-label text-[10px] tracking-widest uppercase underline underline-offset-4 hover:opacity-40 transition-opacity w-fit"
- href="Map.html?brand=${encodeURIComponent(d.name)}">View on Map →</a>
+ ${MAP_BRANDS.has(d.name) ? `<a class="font-label text-[10px] tracking-widest uppercase underline underline-offset-4 hover:opacity-40 transition-opacity w-fit"
+ href="Map.html?brand=${encodeURIComponent(d.name)}">View on Map →</a>` : ''}
  ${d.instagram ? `<a class="font-label text-[10px] tracking-widest uppercase underline underline-offset-4 hover:opacity-40 transition-opacity w-fit" href="https://instagram.com/${d.instagram}" target="_blank" rel="noopener">@${d.instagram}</a>` : ''}
  </div>
  </div>
@@ -3044,10 +3308,25 @@ function closeNavSearch() {
  const input = document.getElementById('search-input');
  wrap.style.width = '34px';
  input.value = '';
+ const clearBtn = document.getElementById('search-clear');
+ if (clearBtn) clearBtn.style.display = 'none';
  if (currentSearch !== '') {
  currentSearch = '';
  applyFilters();
  }
+}
+// Clears the text but keeps the field open and focused
+function clearNavSearch() {
+ const input = document.getElementById('search-input');
+ if (!input) return;
+ input.value = '';
+ const clearBtn = document.getElementById('search-clear');
+ if (clearBtn) clearBtn.style.display = 'none';
+ if (currentSearch !== '') {
+ currentSearch = '';
+ applyFilters();
+ }
+ input.focus();
 }
 document.addEventListener('DOMContentLoaded', () => {
  const input = document.getElementById('search-input');
@@ -3057,6 +3336,8 @@ document.addEventListener('DOMContentLoaded', () => {
  // Only filter at >=2 chars; clear filter below that
  currentSearch = v.length >= 2 ? v : '';
  applyFilters();
+ const clearBtn = document.getElementById('search-clear');
+ if (clearBtn) clearBtn.style.display = e.target.value.length > 0 ? 'flex' : 'none';
  });
  input.addEventListener('keydown', e => {
  if (e.key === 'Escape') closeNavSearch();
