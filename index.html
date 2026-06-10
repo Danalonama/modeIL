@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=Hanken+Grotesk:wght@300;400;500;600;700;800;900&amp;family=Space+Grotesk:wght@300;400;700&amp;family=Noto+Sans+Hebrew:wght@300;400;600;700;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=Epilogue:wght@700;900&amp;family=Hanken+Grotesk:wght@300;400;500;600;700;800;900&amp;family=Space+Grotesk:wght@300;400;700&amp;family=Noto+Sans+Hebrew:wght@300;400;600;700;900&amp;display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script>
  tailwind.config = {
@@ -94,18 +94,11 @@
  }
  .count-flash { animation: countFlash 0.3s ease forwards; }
  .placeholder-img {
- background: repeating-linear-gradient(
- -45deg,
- #EDE9E1,
- #EDE9E1 4px,
- #F4F4F4 4px,
- #F4F4F4 12px
- );
  display: flex; align-items: center; justify-content: center;
  font-family: 'Space Grotesk', monospace; font-size: 10px;
- letter-spacing: 0.2em; text-transform: uppercase; color: #aaa;
+ letter-spacing: 0.2em; text-transform: uppercase; color: #555;
  text-align: center; padding: 2rem;
- width: 100%; aspect-ratio: 3 / 4;
+ width: 100%; aspect-ratio: 16 / 9;
  }
  [dir="rtl"] { font-family: 'Noto Sans Hebrew', 'Inter', sans-serif !important; }
  [dir="rtl"] .font-headline { font-family: 'Noto Sans Hebrew', 'Epilogue', sans-serif !important; font-weight: 900 !important; }
@@ -185,7 +178,8 @@
  <!-- Hero & Filter -->
  <header class="mb-16 flex flex-col gap-12">
  <div class="max-w-3xl">
- <h1 class="font-headline font-black leading-[0.82] tracking-tighter mb-8 uppercase" style="font-size: 60px; line-height: 1.05; font-weight: 900">Israeli<br>Fashion<br>Index</h1>
+ <h1 class="font-headline font-black leading-[0.82] tracking-tighter mb-8 uppercase" style="font-size: 82px; font-family: 'Epilogue', sans-serif; font-weight: 900">ISRAELI
+FASHION</h1>
  <p class="font-body text-lg text-on-surface-variant max-w-lg leading-relaxed" style="font-size: 15px; line-height: 1.5">I track Israeli fashion so you don't have to. From small boutiques to established brands and everything in between - classic to quirky, formal to fun, morning to evening, work to play.</p>
  </div>
  <div class="w-full">
@@ -288,7 +282,7 @@ const DESIGNERS = [
  tags: ["minimalist"],
  tagLabels: ["Minimalist"],
  desc: "Contemporary womenswear with a focus on quality, considered design, and the enduring appeal of the everyday.",
- img: "https://www.alefalef.co.il/wp-content/uploads/2026/03/8_wo_1400_1814.jpg",
+ img: "https://www.alefalef.co.il/wp-content/uploads/2024/07/5-6-510x661.jpg",
  fav: true
  },
  {
@@ -345,7 +339,7 @@ const DESIGNERS = [
  tags: ["activewear", "minimalist", "unisex"],
  tagLabels: ["Activewear", "Minimalist", "Unisex"],
  desc: "Effortless unisex loungewear and activewear for women and men, from yoga mat to street, comfort without compromise.",
- img: "https://anjaly.com/wp-content/uploads/2026/03/%D7%92%D7%95%D7%A4%D7%99%D7%94-1158-%D7%A7%D7%99%D7%93%D7%9E%D7%99-%D7%9C%D7%90-%D7%A0%D7%9B%D7%95%D7%9F-.jpeg",
+ img: "https://anjaly.com/__l5e/assets-v1/6cd90dfd-89b1-4688-9792-fa010d80fdc2/c2.jpg",
  fav: true
  },
  {
@@ -450,7 +444,7 @@ const DESIGNERS = [
  tagLabels: ["Artisan", "Edgy", "Minimalist", "Natural Fabrics"],
  desc: "A multidisciplinary label built around hand-screenprinted cotton, heavy-weight natural fabrics (200-400gsm), and small-batch local production.",
  descFull: "Bein Lebein by Nadav Dror, a multidisciplinary Israeli label built around hand-screenprinted cotton, heavy-weight natural fabrics (200-400gsm) and small-batch local production. Made to speak in 'our language,' rooting fashion in Israeli culture rather than borrowing from elsewhere.",
- img: "https://static.wixstatic.com/media/d9dc5f_b806dd6a174243d68501b08314b0fcca~mv2.jpg/v1/fill/w_564,h_705,al_c,q_85,usm_0.66_1.00_0.01/d9dc5f_b806dd6a174243d68501b08314b0fcca~mv2.jpg",
+ img: "https://static.wixstatic.com/media/d9dc5f_8158b674781d4d29b4e0623b67f91b7b~mv2.jpg/v1/fill/w_779,h_1059,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/BeinLeBein17_09_250660.jpg",
  fav: false
  },
  {
@@ -460,7 +454,7 @@ const DESIGNERS = [
  tagLabels: ["Activewear", "Minimalist"],
  desc: "A dancewear brand built around the idea that once you're a dancer, you're a dancer forever.",
  descFull: "A dancewear brand built around the idea that once you're a dancer, you're a dancer forever. Bewear designs for the studio and beyond, advanced performance fabrics and considered cuts engineered to enhance the dance experience while flattering your presence on stage and off.",
- img: "https://bewear.co.il/cdn/shop/files/bwear39054.jpg?v=1758026451&width=4096",
+ img: "https://bewear.co.il/cdn/shop/files/DSC07005.jpg?v=1770744956&width=2048",
  fav: false
  },
  {
@@ -469,7 +463,7 @@ const DESIGNERS = [
  tags: ["swimwear"],
  tagLabels: ["Swimwear"],
  desc: "Swimwear and beachwear with a playful spirit, designed for the Mediterranean lifestyle.",
- img: "https://biliblond.com/cdn/shop/files/biliblond_23-368796_besty.jpg?v=1777633798&width=2000",
+ img: "https://biliblond.com/cdn/shop/files/arava-one-piece-white-8893831.jpg?v=1780118595&width=700",
  fav: true
  },
  {
@@ -478,7 +472,7 @@ const DESIGNERS = [
  tags: ["minimalist"],
  tagLabels: ["Minimalist"],
  desc: "A fresh Tel Aviv label with a playful, considered approach to everyday womenswear, vibrant, wearable, and distinctly local.",
- img: "https://blueberrytlv.co.il/cdn/shop/files/WhatsAppImage2026-02-16at16.46.55.jpg?v=1771266050&width=700",
+ img: "https://blueberrytlv.co.il/cdn/shop/files/WhatsAppImage2026-06-03at17.56.56.jpg?v=1780550453&width=700",
  fav: false
  },
  {
@@ -487,7 +481,7 @@ const DESIGNERS = [
  tags: ["minimalist"],
  tagLabels: ["Minimalist"],
  desc: "A label working in considered, modern silhouettes, quiet pieces with a careful hand.",
- img: "https://bow-m.com/cdn/shop/files/bow.m-18.5.25-0656.jpg?v=1752833554&width=1100",
+ img: "https://bow-m.com/cdn/shop/files/Ruched_Dress_with_Bare_Shoulders_Cream_1.jpg?v=1726058245&width=1100",
  fav: false
  },
  {
@@ -628,7 +622,7 @@ const DESIGNERS = [
  tags: ["artisan"],
  tagLabels: ["Artisan"],
  desc: "Womenswear with quiet originality, Dorit Sade designs for women who dress with intention and wear their clothes on their own terms.",
- img: "https://cdn.cashcow.co.il/images/82b1b6ca-b867-48d8-a9a7-5248d275a767.webp",
+ img: "https://cdn.cashcow.co.il/images/a4a3b325-9293-4c51-a068-b69e42badd16.webp",
  fav: false
  },
  {
@@ -637,7 +631,7 @@ const DESIGNERS = [
  tags: ["luxury"],
  tagLabels: ["Luxury"],
  desc: "Designer Doron Ashkenazi's eponymous label, considered, refined womenswear with a sharp eye for proportion and finish.",
- img: "https://doronashkenazi.com/cdn/shop/files/6dfc27bdfd82f9cb8822adeb14b9a36a_960x_crop_center.jpg?v=1777290704",
+ img: "https://doronashkenazi.com/cdn/shop/files/d8ddabd79b901018d4cc5f4a7889ede7_960x_crop_center.jpg?v=1766591847",
  fav: false
  },
  {
@@ -758,7 +752,7 @@ const DESIGNERS = [
  tags: ["surf", "streetwear", "unisex"],
  tagLabels: ["Surf", "Streetwear", "Unisex"],
  desc: "Tel Aviv surf culture meets street fashion. Oversized silhouettes for women and men who live between the ocean and the city.",
- img: "https://houseofgon.com/cdn/shop/files/drill-bermuda-shorts-green-1160258.jpg?v=1774514232&width=800",
+ img: "https://houseofgon.com/cdn/shop/files/GONMAY16916.jpg?v=1779538505&width=800",
  fav: true
  },
  {
@@ -2771,7 +2765,7 @@ const DESIGNERS = [
     tagLabels: ["Prints", "Accessories"],
     desc: "A vibrant, art-driven label of boldly printed clothing, shoes, bags, and statement headbands, playful, colorful, and unmistakably its own. Self-pickup from Givatayim.",
     instagram: "kerenmualem",
-    img: "https://cdn.cashcow.co.il/images/31ae9c67-8c75-41e6-9e05-949f4d00b508.png",
+    img: "https://cdn.cashcow.co.il/images/c5b9dcb8-6853-4909-b5fd-887289df92f8_500.webp",
     fav: false
   },
   {
@@ -2792,7 +2786,7 @@ const DESIGNERS = [
     tagLabels: ["Contemporary", "Ready-to-Wear"],
     desc: "A trend-driven online fashion label for women, tops, tailored suits, dresses, jumpsuits, shoes, and accessories, the most must-have pieces refreshed constantly, with a kids line, Little Addict, alongside.",
     instagram: "addict_o.n",
-    img: "https://addictonline.co.il/cdn/shop/files/2G6A1503_d1ab7a69-74be-4013-bcda-ac80fe8f017e_1800x.jpg?v=1779777367",
+    img: "https://addictonline.co.il/cdn/shop/files/2G6A4398_d1b7d598-08a7-44a2-950a-c328da8cb1f2_700x.jpg?v=1779703884",
     fav: false
   },
   {
@@ -2895,8 +2889,12 @@ function imgHtml(d, aspect) {
  return fallbackImg(d.name);
 }
 
+const PLACEHOLDER_COLORS = ['#D3EAF3','#E6E3CE','#EEFCD2','#D8ECE7','#D4E1E0'];
 function fallbackImg(name) {
- return `<div class="placeholder-img w-full h-full">${name}</div>`;
+ let h = 0;
+ for (let i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) % 997;
+ const c = PLACEHOLDER_COLORS[h % PLACEHOLDER_COLORS.length];
+ return `<div class="placeholder-img w-full" style="background:${c}">${name}</div>`;
 }
 
 function getColCount() {
@@ -3133,7 +3131,7 @@ window.addEventListener('resize', () => {
 const TRANSLATIONS = {
  en: {
  tagline: "Tel Aviv · Jerusalem · New York · Paris · Global",
- heroTitle: "Israeli\nFashion\nIndex",
+ heroTitle: "Israeli Fashion",
  heroDesc: "I track Israeli fashion so you don't have to. From small boutiques to established brands and everything in between - classic to quirky, formal to fun, morning to evening, work to play.",
  filterLabel: "Filter:",
  filterAll: "All",

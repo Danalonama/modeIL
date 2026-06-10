@@ -70,18 +70,13 @@
  }
  .group:hover .store-img { filter: grayscale(0%); }
  .placeholder-img {
- background: repeating-linear-gradient(
- -45deg,
- #EDE9E1,
- #EDE9E1 4px,
- #F4F4F4 4px,
- #F4F4F4 12px
- );
  display: flex; align-items: center; justify-content: center;
  font-family: 'Space Grotesk', monospace; font-size: 10px;
- letter-spacing: 0.2em; text-transform: uppercase; color: #aaa;
+ letter-spacing: 0.2em; text-transform: uppercase; color: #555;
  text-align: center; padding: 2rem;
+ width: 100%; aspect-ratio: 16 / 9;
  }
+ .masonry-col { display: flex; flex-direction: column; gap: 64px; min-width: 0; }
  *:focus-visible { outline: 2px solid #B8748A; outline-offset: 2px; }
 </style>
 </head>
@@ -161,7 +156,7 @@ BOUTIQUES</h1>
  </header>
 
  <!-- Grid -->
- <section id="store-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-20 gap-x-8"></section>
+ <section id="store-grid" class="grid gap-x-8 items-start"></section>
 
  <!-- CTA -->
  <section class="mt-56 mb-12 border-t border-[#1A1A18]/12 pt-24">
@@ -238,7 +233,7 @@ const STORES = [
  region: "Tel Aviv",
  url: "https://www.tema-shop.com/",
  tagLabels: ["Multi-Brand", "Concept Store"],
- desc: "A Tel Aviv concept store curating an edited selection of Israeli and international designers, clothing, objects and accessories chosen with a strong point of view.",
+ desc: "A Tel Aviv concept store curating an edited selection of Israeli and international designers, clothing, objects and accessories chosen with a strong point of view. Kiryat Shaul 24, Tel Aviv · 03-6442356.",
  img: "https://www.tema-shop.com/wp-content/uploads/2024/05/4T0A0330-copy-613x919-1.jpg",
  },
  {
@@ -289,7 +284,7 @@ const STORES = [
  url: "https://aka-online.co.il/",
  tagLabels: ["Multi-Brand", "Sustainable"],
  desc: "A curated selection of international eco-conscious labels, DR. DENIM, THINKING MU, BAGGU, alongside the in-house brand IN BLOOM, crafting casual Israeli fashion with an environmental conscience.",
- img: "https://aka-online.co.il/wp-content/uploads/2026/04/Untitled-design-37.png",
+ img: "https://aka-online.co.il/wp-content/uploads/2026/05/aka-10413-copy.jpg",
  },
  {
  name: "Story",
@@ -314,12 +309,6 @@ const STORES = [
  tagLabels: ["Multi-Brand", "Streetwear", "Concept Store"],
  desc: "A concept space and creative lab founded in 2021 on Lilienblum St, redefining streetwear by bridging the Far East and the Middle East. A curated lineup of avant-garde Asian designers and progressive houses, Lu'u Dan, PAF, Kidill, Walter Van Beirendonck, Feng Chen Wang, and more.",
  img: "https://en-culture.com/wp-content/uploads/2026/04/Amy-Flower-Tee-White-Model4-600x800.png",
- },
- {
- name: "Tama",
- region: "Tel Aviv",
- tagLabels: ["Multi-Brand", "Boutique"],
- desc: "A multi-brand boutique of Israeli womenswear and design. Kiryat Shaul 24, Tel Aviv · 03-6442356.",
  },
  {
  name: "Shtayim",
@@ -398,9 +387,9 @@ REGIONS.forEach(r => {
 });
 function styleRegionBtn(btn){
  const on = btn.dataset.region === activeRegion;
- btn.style.borderColor = on ? '#B8748A' : 'transparent';
- btn.style.background = on ? '#F4ECF0' : '#E8E4DB';
- btn.style.color = on ? '#B8748A' : '';
+ btn.style.borderColor = on ? '#1A1A18' : 'transparent';
+ btn.style.background = on ? '#1A1A18' : '#E8E4DB';
+ btn.style.color = on ? '#ffffff' : '';
 }
 
 function tagHtml(labels) {
@@ -409,32 +398,52 @@ function tagHtml(labels) {
  ).join('');
 }
 
+const PLACEHOLDER_COLORS = ['#D3EAF3','#E6E3CE','#EEFCD2','#D8ECE7','#D4E1E0'];
 function fallbackImg(name) {
- return `<div class="placeholder-img w-full h-full">${name}</div>`;
+ let h = 0;
+ for (let i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) % 997;
+ const c = PLACEHOLDER_COLORS[h % PLACEHOLDER_COLORS.length];
+ return `<div class="placeholder-img w-full" style="background:${c}">${name}</div>`;
+}
+
+function getColCount() {
+ const w = window.innerWidth;
+ if (w >= 1024) return 3;
+ if (w >= 640) return 2;
+ return 1;
 }
 
 function render() {
  const filtered = STORES.filter(s => activeRegion === 'All' || s.region === activeRegion);
  const sorted = [...filtered].sort((a, b) => a.name.localeCompare(b.name));
  grid.innerHTML = '';
- sorted.forEach((s) => {
+ const cols = getColCount();
+ grid.style.gridTemplateColumns = `repeat(${cols}, minmax(0, 1fr))`;
+ const buckets = [];
+ for (let c = 0; c < cols; c++) {
+ const col = document.createElement('div');
+ col.className = 'masonry-col';
+ grid.appendChild(col);
+ buckets.push(col);
+ }
+ sorted.forEach((s, i) => {
  const card = document.createElement('div');
  card.className = 'store-card flex flex-col group';
  card.innerHTML = `
- <div class="relative overflow-hidden aspect-square bg-surface-container-low">
+ <div class="relative overflow-hidden bg-surface-container-low">
  ${s.img
- ? `<img class="store-img w-full h-full object-cover group-hover:scale-105" src="${s.img}" alt="${s.name}" loading="lazy"/>`
+ ? `<img class="store-img w-full h-auto block group-hover:scale-105" src="${s.img}" alt="${s.name}" loading="lazy"/>`
  : fallbackImg(s.name)}
- <div class="absolute inset-0 bg-primary/8 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+ <div class="absolute inset-0 bg-primary/8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
  </div>
  <div class="mt-6 flex flex-col gap-3">
+ <div class="flex items-start justify-between gap-3">
  <h2 class="font-headline font-black text-2xl uppercase tracking-tighter leading-none">${s.name}</h2>
- <div class="flex flex-wrap gap-2">${s.region ? `<span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">${s.region}</span>` : ''}</div>
- <div class="flex items-center" style="gap:12px;margin-top:2px">
- <button class="heart-btn${FAVORITES.has(s.name) ? ' saved' : ''}" data-name="${s.name}" aria-label="Save to favorites" onclick="toggleFav(this)">
+ <button class="heart-btn shrink-0${FAVORITES.has(s.name) ? ' saved' : ''}" data-name="${s.name}" aria-label="Save to favorites" onclick="toggleFav(this)" style="margin-top:-2px">
  <span class="material-symbols-outlined heart-icon" style="font-size:20px;${FAVORITES.has(s.name) ? 'font-variation-settings:\'FILL\' 1,\'wght\' 400,\'GRAD\' 0,\'opsz\' 24;color:#B8748A' : ''}">favorite</span>
  </button>
  </div>
+ <div class="flex flex-wrap gap-2">${s.region ? `<span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">${s.region}</span>` : ''}</div>
  <p class="font-body text-sm text-on-surface-variant leading-relaxed">${s.desc}</p>
  ${s.url ? `<div class="flex flex-wrap gap-4 items-center">
  <a class="font-label text-[10px] tracking-widest uppercase underline underline-offset-4 hover:opacity-40 transition-opacity w-fit"
@@ -444,8 +453,14 @@ function render() {
  `;
  grid.appendChild(card);
  });
+ // distribute into masonry columns
+ const cards = [...grid.querySelectorAll(':scope > .store-card')];
+ cards.forEach((c, i) => buckets[i % buckets.length].appendChild(c));
  countEl.textContent = `${sorted.length} ${sorted.length === 1 ? 'Boutique' : 'Boutiques'}`;
 }
+
+let _rsz;
+window.addEventListener('resize', () => { clearTimeout(_rsz); _rsz = setTimeout(render, 150); });
 
 function toggleFav(btn) {
  const name = btn.dataset.name;
