@@ -9,13 +9,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>ModeIL, Map</title>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700;900&family=Inter:wght@300;400;600&family=Space+Grotesk:wght@300;400;700&family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Epilogue:wght@400;700;900&family=Inter:wght@300;400;600&family=Space+Grotesk:wght@300;400;700&family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
 <style>
  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; border-radius: 0 !important; }
- html, body { height: 100%; overflow: hidden; font-family: 'Inter', sans-serif; background: #F4F4F4; color: #1A1A18; cursor: crosshair; }
+ html, body { height: 100%; overflow: hidden; font-family: 'Plus Jakarta Sans', sans-serif !important; background: #F4F4F4; color: #1A1A18; cursor: crosshair; }
 
  /* Nav */
  nav {
@@ -25,15 +25,15 @@
  display: flex; justify-content: space-between; align-items: center;
  padding: 1.5rem 3rem; height: 72px;
  }
- [dir="rtl"] { font-family: 'Assistant', 'Inter', sans-serif !important; }
- [dir="rtl"] .nav-logo, [dir="rtl"] .panel-name { font-family: 'Assistant', 'Epilogue', sans-serif !important; }
+ [dir="rtl"] { font-family: 'Assistant', 'Plus Jakarta Sans', sans-serif !important; }
+ [dir="rtl"] .nav-logo, [dir="rtl"] .panel-name { font-family: 'Assistant', 'Plus Jakarta Sans', sans-serif !important; }
  [dir="rtl"] .nav-links { direction: rtl; }
- #lang-toggle-map { cursor: pointer; font-family: 'Space Grotesk', sans-serif; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; background: none; border: 1px solid #000; padding: 5px 10px; color: #000; transition: all 0.2s; }
+ #lang-toggle-map { cursor: pointer; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; background: none; border: 1px solid #000; padding: 5px 10px; color: #000; transition: all 0.2s; }
  #lang-toggle-map:hover { background: #000; color: #fcf9f5; }
  @media (max-width: 600px) { #lang-toggle-map { display: none !important; } #map-mobile-btn { display: flex !important; } }
  *:focus-visible { outline: 2px solid #B8748A; outline-offset: 2px; }
- .nav-logo { font-family: 'Epilogue', sans-serif; font-weight: 900; font-size: 1.5rem; letter-spacing: -0.04em; text-transform: uppercase; text-decoration: none; color: #000; }
- .nav-links { display: flex; gap: 2.5rem; font-family: 'Space Grotesk', sans-serif; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; }
+ .nav-logo { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 900; font-size: 1.5rem; letter-spacing: -0.04em; text-transform: uppercase; text-decoration: none; color: #000; }
+ .nav-links { display: flex; gap: 2.5rem; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; }
  .nav-links a { color: rgba(0, 0, 0, 0.35); text-decoration: none; transition: color 0.2s; }
  .nav-links a:hover { color: #000; }
  .nav-links a.active { color: #000; border-bottom: 2px solid #000; padding-bottom: 2px; }
@@ -46,8 +46,8 @@
 
  /* Leaflet overrides */
  .leaflet-container { background: #F0ECE4; cursor: crosshair !important; }
- .leaflet-control-zoom a { border-radius: 0 !important; font-family: 'Space Grotesk', sans-serif; }
- .leaflet-control-attribution { font-family: 'Space Grotesk', sans-serif; font-size: 9px; letter-spacing: 0.05em; }
+ .leaflet-control-zoom a { border-radius: 0 !important; font-family: 'Plus Jakarta Sans', sans-serif; }
+ .leaflet-control-attribution { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 9px; letter-spacing: 0.05em; }
 
  /* Hide default zoom */
  .leaflet-control-zoom { display: none !important; }
@@ -66,7 +66,7 @@
  }
  #map-search-input {
  flex: 1; background: transparent; border: none; outline: none;
- font-family: 'Space Grotesk', sans-serif; font-size: 0.7rem;
+ font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.7rem;
  letter-spacing: 0.15em; text-transform: uppercase; color: #000;
  padding: 0.9rem 0; cursor: text;
  }
@@ -80,7 +80,7 @@
  max-height: 340px; overflow-y: auto; display: none;
  }
  .sri-section-header {
- padding: 6px 1rem 4px; font-family: 'Space Grotesk', sans-serif;
+ padding: 6px 1rem 4px; font-family: 'Plus Jakarta Sans', sans-serif;
  font-size: 8px; letter-spacing: 0.28em; text-transform: uppercase;
  opacity: 0.35; background: #F4F4F4; position: sticky; top: 0;
  }
@@ -92,10 +92,10 @@
  }
  .search-result-item:last-child { border-bottom: none; }
  .search-result-item:hover.search-result-item.focused { background: #F0ECE4; }
- .sri-name { font-family: 'Epilogue', sans-serif; font-weight: 900; font-size: 0.82rem; text-transform: uppercase; letter-spacing: -0.02em; }
- .sri-meta { font-family: 'Space Grotesk', sans-serif; font-size: 9px; letter-spacing: 0.13em; text-transform: uppercase; opacity: 0.45; }
- .sri-tag { display: inline-block; font-family: 'Space Grotesk', sans-serif; font-size: 9px; letter-spacing: 0.13em; text-transform: uppercase; border: 1px solid #c6c6c6; padding: 2px 7px; }
- .no-results { padding: 1rem; font-family: 'Space Grotesk', sans-serif; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.35; text-align: center; }
+ .sri-name { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 900; font-size: 0.82rem; text-transform: uppercase; letter-spacing: -0.02em; }
+ .sri-meta { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 9px; letter-spacing: 0.13em; text-transform: uppercase; opacity: 0.45; }
+ .sri-tag { display: inline-block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 9px; letter-spacing: 0.13em; text-transform: uppercase; border: 1px solid #c6c6c6; padding: 2px 7px; }
+ .no-results { padding: 1rem; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.35; text-align: center; }
 
  /* Zoom buttons */
  #zoom-controls {
@@ -112,7 +112,7 @@
  background: rgba(244, 244, 244, 0.97); border: 1.5px solid #000;
  display: flex; align-items: center; justify-content: center;
  cursor: pointer; font-size: 1.1rem; font-weight: 900;
- font-family: 'Space Grotesk', sans-serif;
+ font-family: 'Plus Jakarta Sans', sans-serif;
  transition: background 0.15s;
  user-select: none;
  }
@@ -128,7 +128,7 @@
  border: none !important;
  box-shadow: none !important;
  padding: 0 !important;
- font-family: 'Space Grotesk', sans-serif !important;
+ font-family: 'Plus Jakarta Sans', sans-serif !important;
  font-size: 10px !important;
  font-weight: 500 !important;
  letter-spacing: 0.12em !important;
@@ -146,7 +146,7 @@
  color: #fcf9f5 !important;
  border: none !important;
  border-radius: 0 !important;
- font-family: 'Space Grotesk', sans-serif !important;
+ font-family: 'Plus Jakarta Sans', sans-serif !important;
  font-size: 10px !important;
  letter-spacing: 0.12em !important;
  text-transform: uppercase !important;
@@ -191,40 +191,40 @@
  width: 100%; aspect-ratio: 1/1;
  background: repeating-linear-gradient(-45deg, #EDE9E1, #EDE9E1 4px, #F4F4F4 4px, #F4F4F4 12px);
  display: flex; align-items: center; justify-content: center;
- font-family: 'Space Grotesk', sans-serif; font-size: 10px;
+ font-family: 'Plus Jakarta Sans', sans-serif; font-size: 10px;
  letter-spacing: 0.2em; text-transform: uppercase; color: #aaa;
  }
  .panel-body { padding: 2rem; display: flex; flex-direction: column; gap: 1rem; }
- .panel-name { font-family: 'Epilogue', sans-serif; font-weight: 900; font-size: 2rem; text-transform: uppercase; letter-spacing: -0.03em; line-height: 1; }
- .panel-location { font-family: 'Space Grotesk', sans-serif; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.55; line-height: 1.6; }
+ .panel-name { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 900; font-size: 2rem; text-transform: uppercase; letter-spacing: -0.03em; line-height: 1; }
+ .panel-location { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.55; line-height: 1.6; }
  .panel-tags { display: flex; flex-wrap: wrap; gap: 6px; }
- .panel-tag { font-family: 'Space Grotesk', sans-serif; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; border: 1px solid rgba(26, 26, 24, 0.12); padding: 3px 8px; }
- .panel-desc { font-family: 'Inter', sans-serif; font-size: 0.8rem; line-height: 1.65; color: #474747; }
- .panel-extra-block { font-family: 'Space Grotesk', sans-serif; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.6; line-height: 1.8; }
+ .panel-tag { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; border: 1px solid rgba(26, 26, 24, 0.12); padding: 3px 8px; }
+ .panel-desc { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.8rem; line-height: 1.65; color: #474747; }
+ .panel-extra-block { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.6; line-height: 1.8; }
  .panel-extra-block a { color: inherit; text-decoration: none; }
  .panel-extra-block a:hover { opacity: 0.6; }
  .panel-section-label {
- font-family: 'Space Grotesk', sans-serif; font-size: 8px; letter-spacing: 0.25em;
+ font-family: 'Plus Jakarta Sans', sans-serif; font-size: 8px; letter-spacing: 0.25em;
  text-transform: uppercase; opacity: 0.4; margin-bottom: 4px;
  }
  .panel-section { padding-top: 1rem; border-top: 1px solid rgba(198, 198, 198, 0.25); }
- .panel-contact-row { font-family: 'Space Grotesk', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; line-height: 2; }
+ .panel-contact-row { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; line-height: 2; }
  .panel-contact-row a { color: inherit; text-decoration: none; }
  .panel-contact-row a:hover { opacity: 0.5; }
  .panel-location-item { padding: 8px 0; border-bottom: 1px solid rgba(198, 198, 198, 0.2); }
  .panel-location-item:last-child { border-bottom: none; }
- .panel-location-item .loc-addr { font-family: 'Space Grotesk', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; }
- .panel-location-item .loc-phone { font-family: 'Space Grotesk', sans-serif; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.5; margin-top: 2px; }
+ .panel-location-item .loc-addr { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; }
+ .panel-location-item .loc-phone { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.5; margin-top: 2px; }
  .panel-hours-list { list-style: none; padding: 0; margin: 0; }
- .panel-hours-list li { font-family: 'Space Grotesk', sans-serif; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; line-height: 2; opacity: 0.75; }
- .panel-heart-btn { background: none; border: none; cursor: pointer; padding: 0; display: flex; align-items: center; gap: 6px; font-family: 'Space Grotesk', sans-serif; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.6; transition: opacity 0.2s; }
+ .panel-hours-list li { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; line-height: 2; opacity: 0.75; }
+ .panel-heart-btn { background: none; border: none; cursor: pointer; padding: 0; display: flex; align-items: center; gap: 6px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.6; transition: opacity 0.2s; }
  .panel-heart-btn:hover { opacity: 1; }
  .panel-heart-btn.saved .ph-icon { font-variation-settings: 'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24; color: #B8748A; }
  .panel-heart-btn.saved { opacity: 1; color: #B8748A; }
  @keyframes panelHeartPulse { 0%{transform:scale(1)} 40%{transform:scale(1.4)} 70%{transform:scale(0.9)} 100%{transform:scale(1)} }
  .panel-heart-pulse { animation: panelHeartPulse 0.35s ease forwards; }
  .panel-link {
- font-family: 'Space Grotesk', sans-serif; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+ font-family: 'Plus Jakarta Sans', sans-serif; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
  text-decoration: underline; text-underline-offset: 4px; color: #000;
  display: flex; align-items: center; gap: 6px; width: fit-content;
  transition: opacity 0.2s;
@@ -243,7 +243,7 @@
  #map-count {
  position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%);
  background: rgba(244, 244, 244, 0.92); border: 1px solid rgba(198, 198, 198, 0.4);
- font-family: 'Space Grotesk', sans-serif; font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase;
+ font-family: 'Plus Jakarta Sans', sans-serif; font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase;
  padding: 8px 18px; z-index: 400; opacity: 0.7;
  pointer-events: none;
  }
@@ -266,7 +266,7 @@
  .panel-back-btn {
  display: inline-flex; align-items: center; gap: 6px;
  background: transparent; border: none; padding: 0 0 1.25rem;
- font-family: 'Space Grotesk', sans-serif;
+ font-family: 'Plus Jakarta Sans', sans-serif;
  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
  color: #555; cursor: pointer; align-self: flex-start;
  transition: color 0.15s ease;
@@ -275,14 +275,14 @@
  .panel-back-btn .material-symbols-outlined { font-size: 14px; }
 
  .loc-panel-header {
- font-family: 'Epilogue', sans-serif;
+ font-family: 'Plus Jakarta Sans', sans-serif;
  font-weight: 900; font-size: 1.5rem;
  text-transform: uppercase; letter-spacing: -0.02em;
  line-height: 1.1; color: #111;
  padding-bottom: 0.5rem;
  }
  .loc-panel-sub {
- font-family: 'Space Grotesk', sans-serif;
+ font-family: 'Plus Jakarta Sans', sans-serif;
  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
  color: #666;
  padding-bottom: 1.5rem;
@@ -314,7 +314,7 @@
  display: flex; flex-direction: column; gap: 6px;
  }
  .loc-brand-name {
- font-family: 'Epilogue', sans-serif;
+ font-family: 'Plus Jakarta Sans', sans-serif;
  font-weight: 800; font-size: 1rem;
  text-transform: uppercase; letter-spacing: -0.01em;
  line-height: 1.15;
@@ -325,7 +325,7 @@
  display: flex; flex-wrap: wrap; gap: 6px;
  }
  .loc-brand-tag {
- font-family: 'Space Grotesk', sans-serif;
+ font-family: 'Plus Jakarta Sans', sans-serif;
  font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase;
  color: #666;
  padding: 3px 7px;
@@ -361,17 +361,17 @@
 <!-- Mobile Menu -->
 <div id="map-mobile-menu" style="display:none;position:fixed;inset:0;background:#F4F4F4;z-index:999;flex-direction:column;padding:1.5rem 2rem;transform:translateX(100%);transition:transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)">
  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4rem">
- <a href="index.html" style="font-family:'Epilogue', sans-serif;font-weight:900;font-size:1.5rem;letter-spacing:-0.04em;text-transform:uppercase;color:#000;text-decoration:none">ModeIL</a>
+ <a href="index.html" style="font-family:'Plus Jakarta Sans', sans-serif;font-weight:900;font-size:1.5rem;letter-spacing:-0.04em;text-transform:uppercase;color:#000;text-decoration:none">ModeIL</a>
  <button onclick="toggleMapMobileMenu()">
  <span class="material-symbols-outlined" style="font-size:24px;color:#000">close</span>
  </button>
  </div>
  <nav style="display:flex;flex-direction:column;gap:2rem">
- <a href="index.html" style="font-family:'Epilogue', sans-serif;font-weight:900;font-size:3rem;text-transform:uppercase;letter-spacing:-0.03em;color:#000;text-decoration:none;border-bottom:1px solid #e5e2de;padding-bottom:1.5rem" id="mmenu-designers">Designers</a>
- <a href="Boutiques.html" style="font-family:'Epilogue', sans-serif;font-weight:900;font-size:3rem;text-transform:uppercase;letter-spacing:-0.03em;color:#000;text-decoration:none;border-bottom:1px solid #e5e2de;padding-bottom:1.5rem" id="mmenu-stores">Boutiques</a>
- <a href="Map.html" style="font-family:'Epilogue', sans-serif;font-weight:900;font-size:3rem;text-transform:uppercase;letter-spacing:-0.03em;color:#000;text-decoration:none;border-bottom:1px solid #e5e2de;padding-bottom:1.5rem" id="mmenu-map">Map</a>
- <a href="About.html" style="font-family:'Epilogue', sans-serif;font-weight:900;font-size:3rem;text-transform:uppercase;letter-spacing:-0.03em;color:#000;text-decoration:none;border-bottom:1px solid #e5e2de;padding-bottom:1.5rem" id="mmenu-about">About</a>
- <a href="Contact.html" style="font-family:'Epilogue', sans-serif;font-weight:900;font-size:3rem;text-transform:uppercase;letter-spacing:-0.03em;color:#000;text-decoration:none" id="mmenu-submit">Talk To Me</a>
+ <a href="index.html" style="font-family:'Plus Jakarta Sans', sans-serif;font-weight:900;font-size:3rem;text-transform:uppercase;letter-spacing:-0.03em;color:#000;text-decoration:none;border-bottom:1px solid #e5e2de;padding-bottom:1.5rem" id="mmenu-designers">Designers</a>
+ <a href="Boutiques.html" style="font-family:'Plus Jakarta Sans', sans-serif;font-weight:900;font-size:3rem;text-transform:uppercase;letter-spacing:-0.03em;color:#000;text-decoration:none;border-bottom:1px solid #e5e2de;padding-bottom:1.5rem" id="mmenu-stores">Boutiques</a>
+ <a href="Map.html" style="font-family:'Plus Jakarta Sans', sans-serif;font-weight:900;font-size:3rem;text-transform:uppercase;letter-spacing:-0.03em;color:#000;text-decoration:none;border-bottom:1px solid #e5e2de;padding-bottom:1.5rem" id="mmenu-map">Map</a>
+ <a href="About.html" style="font-family:'Plus Jakarta Sans', sans-serif;font-weight:900;font-size:3rem;text-transform:uppercase;letter-spacing:-0.03em;color:#000;text-decoration:none;border-bottom:1px solid #e5e2de;padding-bottom:1.5rem" id="mmenu-about">About</a>
+ <a href="Contact.html" style="font-family:'Plus Jakarta Sans', sans-serif;font-weight:900;font-size:3rem;text-transform:uppercase;letter-spacing:-0.03em;color:#000;text-decoration:none" id="mmenu-submit">Talk To Me</a>
  </nav>
 </div>
 
@@ -438,6 +438,7 @@ const DESIGNERS = [
  { name:"Alembika", url:"https://alembika.co.il/", tags:["Artisan","Minimalist"], desc:"Fluid silhouettes and considered Israeli design for women who move through the world with ease and intention.", img:"https://alembika.co.il/cdn/shop/files/TOP_RT357T_PANTS_RP351M_12.jpg?v=1773061538", city:"Tel Aviv", lat:32.0601, lng:34.7720, fav:false },
  { name:"Anat Friedman", url:"https://anatfriedman.com/", tags:["Artisan","Minimalist"], desc:"Precise, quietly elegant Israeli womenswear. Anat Friedman's designs speak in restraint, each piece a study in deliberate simplicity.", img:"https://anatfriedman.com/cdn/shop/files/anatf_2524538.jpg?v=1759238472", city:"Jerusalem", lat:31.777, lng:35.2152, fav:true, addresses:["6 Betzalel St, Jerusalem"], phone:"054-8939494", email:"info@anatfriedman.com" },
  { name:"Anjaly", url:"https://anjaly.com/", tags:["Activewear","Minimalist"], desc:"Effortless unisex loungewear and activewear for women and men, from yoga mat to street, comfort without compromise.", img:"https://anjaly.shop/cdn/shop/files/1184_1_be035c1c-985d-459e-83f8-44b2a92ff465.jpg?v=1700116722&width=4002", city:"Tel Aviv", lat:32.0607, lng:34.7783, fav:true, addresses:["10 Mikveh Israel St, Tel Aviv"], phone:"03-6868734", email:"j@anjaly.com", hours:["Sun–Thu 09:30–19:00","Fri 09:30–15:00","Sat Closed"] },
+ { name:"Mantra", url:"https://our-mantra.com/", tags:["Men","Streetwear"], desc:"Elegant streetwear for men, linen shirts, tailored chinos, polos, and event-ready sets. So what's your mantra?", img:"https://our-mantra.com/cdn/shop/files/Screenshot2026-06-04124024.png?v=1780566196&width=800", city:"Tel Aviv", lat:32.0738, lng:34.7745, fav:false, addresses:["42 Pinsker St, Tel Aviv","75 Sokolov St, Ramat Hasharon"], instagram:"our.mantra", hours:["Sun–Thu 10:00–21:00","Fri 09:00–15:00"] },
  { name:"Artwear", url:"https://artwear.co.il/", tags:["Prints","Artisan"], desc:"Wearable art through bold, original prints. Each Artwear piece turns the body into a canvas, vivid, unapologetic Israeli design.", img:"https://artwear.co.il/cdn/shop/files/9cff8e210719c9f029748e2ced34082b.png?v=1775505899&width=1200", city:"Herzliya", lat:32.164, lng:34.844, fav:true, addresses:["71 HaNadiv St, Herzliya"], phone:"050-4749018", email:"info@artwear.co.il" },
  { name:"Assaf Peleg", url:"https://www.assafpelleg.com/", tags:["Luxury","Artisan"], desc:"Designing for the elegant, multi-faceted woman, garments born from emotion and a deep belief in personal style.", img:"https://www.assafpelleg.com/wp-content/uploads/2026/03/Untitled-577-x-1024-px-722-x-1024-px-1000-x-1500-px-30.png", city:"Tel Aviv", lat:32.0553, lng:34.7680, fav:false },
  { name:"Atawear", url:"https://atawear.co.il/", tags:["Legacy","Streetwear"], desc:"A revival of Israel's iconic ATA textile brand, first founded in 1935. The original 'Made in Israel' spirit, workwear heritage reimagined for contemporary street culture.", img:"https://atawear.co.il/cdn/shop/files/C186113C-4B82-46C9-A115-27D1C508644F_dfcac7bd-aece-4a00-88ff-9a23ebe507dd.jpg?v=1774117526&width=5000", city:"Tel Aviv", lat:32.0625, lng:34.7728, fav:true, addresses:["93 Allenby St, Tel Aviv"], phone:"054-6810369", email:"support@atawear.com", hours:["Sun–Thu 10:00–20:00","Fri 10:00–16:00"] },
@@ -1183,5 +1184,9 @@ applyMapLang = function() {
 
 <!-- Skimlinks -->
 <script type="text/javascript" src="https://s.skimresources.com/js/304374X1792544.skimlinks.js"></script>
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script>window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };</script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
 </body>
 </html>

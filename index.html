@@ -43,7 +43,8 @@
  fontFamily: {
  "headline": ["Plus Jakarta Sans", "sans-serif"],
  "body": ["Plus Jakarta Sans", "sans-serif"],
- "label": ["Space Grotesk", "sans-serif"]
+ "label": ["Plus Jakarta Sans", "sans-serif"],
+ "sans": ["Plus Jakarta Sans", "ui-sans-serif", "system-ui", "sans-serif"]
  }
  }
  }
@@ -51,10 +52,10 @@
 </script>
 <style>
  html { -webkit-text-size-adjust: 100%; -moz-text-size-adjust: 100%; text-size-adjust: 100%; }
- html, body { font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+ html, body { font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
  [dir="ltr"], [dir="ltr"] .font-body { font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
  [dir="ltr"] .font-headline { font-family: 'Plus Jakarta Sans', sans-serif; }
- [dir="ltr"] .font-label { font-family: 'Space Grotesk', sans-serif; }
+ [dir="ltr"] .font-label { font-family: 'Plus Jakarta Sans', sans-serif; }
  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
  * { border-radius: 0px !important; }
  body { cursor: crosshair; }
@@ -73,13 +74,14 @@
  .heart-pulse { animation: heartPulse 0.35s ease forwards; }
  .insta-btn { background: none; border: none; cursor: pointer; padding: 0; line-height: 1; opacity: 0.75; transition: opacity 0.2s; }
  .insta-btn:hover { opacity: 1; }
- .access-line { display: flex; align-items: center; gap: 5px; font-family: 'Space Grotesk', sans-serif; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.5; margin-top: 1px; }
- .card-links { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin-top: 4px; font-family: 'Space Grotesk', sans-serif; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; }
+ .access-line { display: flex; align-items: center; gap: 5px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.5; margin-top: 1px; }
+ .card-links { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin-top: 4px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; }
  .card-link { text-decoration: underline; text-underline-offset: 4px; transition: opacity 0.2s; cursor: pointer; }
+ .tag-location { display: inline-flex; align-items: center; gap: 4px; background: var(--md-sys-color-primary, #1A1A18); color: var(--md-sys-color-on-primary, #fff); }
  .card-link:hover { opacity: 0.4; }
  .card-link-sep { opacity: 0.3; }
  .card-link-online { opacity: 0.45; cursor: default; }
- .card-status { font-family: 'Space Grotesk', sans-serif; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.4; margin-top: 4px; }
+ .card-status { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.4; margin-top: 4px; }
  .designer-img {
  filter: grayscale(10%);
  transition: filter 0.5s ease, transform 0.7s ease;
@@ -95,15 +97,15 @@
  .count-flash { animation: countFlash 0.3s ease forwards; }
  .placeholder-img {
  display: flex; align-items: center; justify-content: center;
- font-family: 'Space Grotesk', monospace; font-size: 10px;
+ font-family: 'Plus Jakarta Sans', monospace; font-size: 10px;
  letter-spacing: 0.2em; text-transform: uppercase; color: #555;
  text-align: center; padding: 2rem;
  width: 100%; aspect-ratio: 16 / 9;
  }
- [dir="rtl"] { font-family: 'Noto Sans Hebrew', 'Inter', sans-serif !important; }
- [dir="rtl"] .font-headline { font-family: 'Noto Sans Hebrew', 'Epilogue', sans-serif !important; font-weight: 900 !important; }
- [dir="rtl"] .font-body { font-family: 'Noto Sans Hebrew', 'Inter', sans-serif !important; }
- [dir="rtl"] .font-label { font-family: 'Noto Sans Hebrew', 'Space Grotesk', sans-serif !important; }
+ [dir="rtl"] { font-family: 'Noto Sans Hebrew', 'Plus Jakarta Sans', sans-serif !important; }
+ [dir="rtl"] .font-headline { font-family: 'Noto Sans Hebrew', 'Plus Jakarta Sans', sans-serif !important; font-weight: 900 !important; }
+ [dir="rtl"] .font-body { font-family: 'Noto Sans Hebrew', 'Plus Jakarta Sans', sans-serif !important; }
+ [dir="rtl"] .font-label { font-family: 'Noto Sans Hebrew', 'Plus Jakarta Sans', sans-serif !important; }
  [dir="rtl"] .tracking-tighter { letter-spacing: -0.01em !important; }
  [dir="rtl"] .tracking-widest { letter-spacing: 0.05em !important; }
  #lang-toggle { cursor: pointer; } *:focus-visible { outline: 2px solid #B8748A; outline-offset: 2px; }
@@ -126,7 +128,10 @@
 
 <!-- Nav -->
 <nav class="fixed top-0 w-full z-50 bg-[#F4F4F4]/95 backdrop-blur-sm border-b border-[#1A1A18]/10 flex justify-between items-center px-8 md:px-12 py-6">
- <a href="index.html" class="font-headline font-black text-2xl tracking-tighter text-black uppercase" style="font-family: Plus Jakarta Sans">MODE-IL</a>
+ <a href="index.html" class="flex items-baseline gap-2.5 group">
+ <span class="font-headline font-black text-2xl tracking-tighter text-black uppercase" style="font-family: Plus Jakarta Sans">MODE-IL</span>
+ <span class="font-label text-[9px] tracking-[0.2em] uppercase text-black/35 hidden sm:inline" style="font-size: 9px; color: rgba(0, 0, 0, 0.592); letter-spacing: 2px; line-height: 1.4; height: 16px; width: 148px">Israeli Fashion Index</span>
+ </a>
  <div class="hidden md:flex items-center gap-12">
  <div class="flex gap-8 font-label uppercase tracking-widest text-sm">
  <a class="text-black border-b-2 border-black pb-1" href="index.html">Designers</a>
@@ -172,48 +177,38 @@
  </div>
 </nav>
 
+<style>
+.fdrop { position: relative; display: inline-flex; }
+.fdrop-trigger { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; height: 36px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 8px; padding: 0 15px; border: 1px solid rgba(26,26,24,0.25); background: #fff; color: #1A1A18; cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
+.fdrop-trigger:hover { border-color: #1A1A18; }
+.fdrop-trigger.has-active { background: #1A1A18; color: #fff; border-color: #1A1A18; }
+.fdrop-caret { font-size: 8px; opacity: .55; transition: transform .2s; }
+.fdrop.open .fdrop-caret { transform: rotate(180deg); }
+.fdrop.open .fdrop-trigger { border-color: #1A1A18; }
+.fdrop-badge { background: #fff; color: #1A1A18; min-width: 15px; height: 15px; display: inline-flex; align-items: center; justify-content: center; font-size: 9px; padding: 0 3px; line-height: 1; }
+.fdrop-panel { position: absolute; top: calc(100% + 8px); left: 0; z-index: 60; display: none; flex-wrap: wrap; gap: 8px; background: #fff; border: 1px solid #1A1A18; padding: 14px; min-width: 230px; max-width: 360px; box-shadow: 0 12px 30px rgba(0,0,0,.10); }
+.fdrop.open .fdrop-panel { display: flex; }
+.active-chip { display: inline-flex; align-items: center; gap: 7px; background: #1A1A18; color: #fff; border: 0; cursor: pointer; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 8px 13px; transition: opacity .2s; }
+.active-chip:hover { opacity: .65; }
+.active-chip .chip-x { font-size: 9px; opacity: .7; }
+@media (max-width: 640px){ .fdrop-panel { max-width: 280px; left: 0; } }
+</style>
 <!-- Main -->
 <main class="pt-40 pb-24 px-6 md:px-12 max-w-[1800px] mx-auto" style="font-size: 27px">
 
  <!-- Hero & Filter -->
- <header class="mb-16 flex flex-col gap-12">
- <div class="max-w-3xl">
- <h1 class="font-headline font-black leading-[0.82] tracking-tighter mb-8 uppercase" style="font-size: 82px; font-family: 'Epilogue', sans-serif; font-weight: 900">ISRAELI
-FASHION</h1>
- <p class="font-body text-lg text-on-surface-variant max-w-lg leading-relaxed" style="font-size: 15px; line-height: 1.5">I track Israeli fashion so you don't have to. From small boutiques to established brands and everything in between - classic to quirky, formal to fun, morning to evening, work to play.</p>
+ <header class="mb-10 flex flex-col gap-6">
+ <div class="w-full flex flex-col gap-4">
+ <div class="flex flex-wrap items-center gap-2.5">
+ <div class="fdrop"><button type="button" class="fdrop-trigger" data-drop="style">Style<span class="fdrop-caret">▾</span></button><div class="fdrop-panel" id="style-panel"><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="edgy">Edgy</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="legacy">Legacy</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="minimalist">Minimalist</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="streetwear">Streetwear</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="sustainable">Sustainable</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="natural">Natural Fabrics</button></div></div>
+ <div class="fdrop"><button type="button" class="fdrop-trigger" data-drop="type">Type<span class="fdrop-caret">▾</span></button><div class="fdrop-panel" id="type-panel"><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="menswear">Men</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="unisex">Unisex</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="footwear">Footwear</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="jewelry">Jewelry</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="lingerie">Lingerie</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="swimwear">Swimwear</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="activewear">Activewear</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="denim">Denim</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="size-inclusive">Size Inclusive</button></div></div>
+ <div class="fdrop"><button type="button" class="fdrop-trigger" data-drop="location">Location<span class="fdrop-caret">▾</span></button><div class="fdrop-panel"><div id="area-bar" class="flex flex-wrap gap-2 items-center"></div></div></div>
+ <div class="fdrop"><button type="button" class="fdrop-trigger" data-drop="az">A–Z<span class="fdrop-caret">▾</span></button><div class="fdrop-panel"><div id="alpha-bar" class="flex flex-wrap gap-1"><button class="alpha-btn active font-label text-[10px] tracking-widest uppercase px-2.5 py-1.5 border border-black bg-white text-black" data-letter="all">All</button></div></div></div>
+ <button class="fdrop-trigger filter-btn" data-filter="favorites" style="gap:7px;height:36px;box-sizing:border-box;padding:0 15px;line-height:1"><span class="material-symbols-outlined" style="font-size:13px;line-height:1">favorite</span>Saved</button>
+ <button class="filter-btn active" data-filter="all" style="display:none">All</button>
+ <button type="button" id="clear-all" onclick="clearAllFilters()" class="font-label text-[9px] tracking-widest uppercase text-[#B8748A] hover:opacity-60 transition-opacity" style="display:none;background:none;border:0;cursor:pointer;">Clear all ✕</button>
  </div>
- <div class="w-full">
- <div class="overflow-x-auto pb-2 relative" id="filter-scroll-container">
- <button id="filter-prev" class="hidden md:flex absolute left-0 top-0 bottom-2 items-center bg-gradient-to-r from-[#fcf9f5] to-transparent pr-4 z-10 opacity-50 hover:opacity-100 transition-opacity">
- <span class="material-symbols-outlined" style="font-size:18px">arrow_back</span>
- </button>
- <div id="filter-bar" class="flex gap-3 items-center min-w-max px-0 md:px-8" style="padding: 0px 32px 0px 1px; gap: 8px">
- <span class="font-label text-[9px] tracking-[0.25em] uppercase opacity-40 mr-2">Filter:</span>
- <button class="filter-btn active font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-[#B8748A] bg-[#F4ECF0] text-[#B8748A] transition-all duration-200" data-filter="all">All</button>
- <button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200 flex items-center gap-1.5" data-filter="favorites"><span class="material-symbols-outlined" style="font-size:12px;line-height:1">favorite</span>Saved</button>
- <button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="activewear">Activewear</button>
- <button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="denim">Denim</button>
- <button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="edgy">Edgy</button>
- <button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="footwear">Footwear</button>
- <button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="jewelry">Jewelry</button>
- <button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="legacy">Legacy</button>
- <button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="lingerie">Lingerie</button>
- <button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="menswear">Menswear</button>
- <button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="minimalist">Minimalist</button>
- <button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="natural">Natural Fabrics</button>
- <button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="size-inclusive">Size Inclusive</button>
- <button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="streetwear">Streetwear</button>
- <button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="sustainable">Sustainable</button>
- <button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="swimwear">Swimwear</button>
- <button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="unisex">Unisex</button>
- </div>
- <button id="filter-next" class="hidden md:flex absolute right-0 top-0 bottom-2 items-center bg-gradient-to-l from-[#fcf9f5] to-transparent pl-4 z-10 opacity-50 hover:opacity-100 transition-opacity">
- <span class="material-symbols-outlined" style="font-size:18px">arrow_forward</span>
- </button>
- </div>
- <div id="alpha-bar" class="flex flex-wrap gap-1 mt-4">
- <button class="alpha-btn active font-label text-[10px] tracking-widest uppercase px-2.5 py-1.5 border border-black bg-white text-black" data-letter="all">All</button>
- </div>
+ <div id="active-chips" class="flex flex-wrap items-center gap-2"></div>
  <div class="flex items-center gap-3 mt-4">
  <div class="w-2 h-2 bg-primary"></div>
  <span id="designer-count" class="font-label text-[9px] tracking-[0.25em] uppercase opacity-40 count-flash">154 Designers</span>
@@ -507,7 +502,7 @@ const DESIGNERS = [
  name: "Chopshop Corp",
  url: "https://www.chopshop.co.il/",
  tags: ["streetwear", "edgy", "prints", "menswear"],
- tagLabels: ["Streetwear", "Edgy", "Prints", "Menswear"],
+ tagLabels: ["Streetwear", "Edgy", "Prints", "Men"],
  desc: "Unorganized. Unruly. Unmissable.",
  descFull: "Unorganized. Unruly. Unmissable. Tel Aviv's cult street clothing brand with stores on Dizengoff, Bograshov, Sheinkin and Simtat Hashuk, graphic tees, wide-leg pants, merch, and a fanzine that keeps the culture alive.",
  img: "https://static.wixstatic.com/media/64d6e6_c662db727e5f4e939ea9e97c608864bd~mv2.jpg/v1/fill/w_1410,h_1410,al_c,q_85,usm_0.66_1.00_0.01/64d6e6_c662db727e5f4e939ea9e97c608864bd~mv2.jpg",
@@ -772,7 +767,7 @@ const DESIGNERS = [
  tagLabels: ["Lingerie", "Swimwear"],
  desc: "Thoughtful breathing lingerie brand based in Pardes Hanna.",
  descFull: "Thoughtful breathing lingerie brand based in Pardes Hanna. Hadas Mor designs bras, bralettes, swimwear, and underwear with a focus on comfort, femininity, and the kind of beauty that breathes.",
- img: "https://hadasmor.com/cdn/shop/files/DSC07717.jpg?v=1769592226&width=5000",
+ img: "https://hadasmor.com/cdn/shop/products/HQ2A5708_72dpi.jpg?v=1780303131&width=5000",
  fav: false
  },
  {
@@ -950,7 +945,7 @@ const DESIGNERS = [
  tagLabels: ["Streetwear", "Edgy"],
  desc: "Every garment is a canvas, every design a message.",
  descFull: "Every garment is a canvas, every design a message. Tel Aviv-based statement fashion with a collaborative spirit, from studio appointments on Remez Street to drops with Blundstone and beyond. Wear the story.",
- img: "https://jor-d.com/wp-content/uploads/2026/01/MICHALl-911-1.jpg",
+ img: "images/jor-d.png",
  fav: false
  },
  {
@@ -1104,7 +1099,7 @@ const DESIGNERS = [
  name: "Luka Chari",
  url: "https://lukachari.co.il/",
  tags: ["menswear", "minimalist"],
- tagLabels: ["Menswear", "Minimalist"],
+ tagLabels: ["Men", "Minimalist"],
  desc: "Men's basics, born from a search for clothes that feel truly right.",
  descFull: "Men's basics, born from a search for clothes that feel truly right. Founded by a former special-forces officer turned businessman, Luka Chari makes comfortable, precise everyday pieces you don't have to think about, built for morning, evening, and Israeli life in between.",
  img: "https://lukachari.co.il/cdn/shop/files/3-black-7.jpg?v=1775543564&width=2000",
@@ -1314,7 +1309,7 @@ const DESIGNERS = [
  name: "Ofir Ivgi",
  url: "https://ofirivgi.com/",
  tags: ["artisan", "prints", "menswear"],
- tagLabels: ["Artisan", "Prints", "Menswear"],
+ tagLabels: ["Artisan", "Prints", "Men"],
  desc: "Tel Aviv-based womenswear and menswear with a graphic, expressive hand, printed dresses, embroidered caps, silk ties.",
  descFull: "Tel Aviv-based womenswear and menswear with a graphic, expressive hand, printed dresses, embroidered caps, silk ties. The studio on Hashuk Street is where fashion, art, and movement meet.",
  img: "https://ofirivgi.com/cdn/shop/files/20263_1440x.jpg?v=1773960663",
@@ -1353,7 +1348,7 @@ const DESIGNERS = [
  name: "On'nanoko",
  url: "https://www.onnanoko.co.il/",
  tags: ["minimalist", "unisex", "natural", "menswear"],
- tagLabels: ["Minimalist", "Unisex", "Natural Fabrics", "Menswear"],
+ tagLabels: ["Minimalist", "Unisex", "Natural Fabrics", "Men"],
  desc: "ONNANOKO ('girls' in Japanese), from Kibbutz Ma'agan Michael, makes comfortable, soft, natural clothing for women and men. A deep affinity for Japanese aesthetics and a language that moves between the extremes, new and timeless, urban and kibbutz, oversize and fitted.",
  descFull: "ONNANOKO ('girls' in Japanese) was founded in 2014 by Ayala Asael and Noa Sadeh Horowitz, and is today led by Ayala, a member of Kibbutz Ma'agan Michael. More than a fashion label, it's a language and a home, one that invites you to find your own place free of frames and definitions, moving between the extremes: new and timeless, city and kibbutz, feminine and masculine, polished and undone, oversize and fitted. With a deep affinity for Japanese aesthetics, ONNANOKO creates comfortable, soft, natural clothes made to move freely in, from morning to evening. Its home sits at Ma'agan Michael, surrounded by open nature, blue sea, and migrating birds, drawing inspiration from the outside in and seeking a balance between nature and culture, beauty and creation.",
  img: "https://www.onnanoko.co.il/cdn/shop/files/227502LUMINATOP227522HORIZONPANTS_9.jpg?v=1774525711",
@@ -1499,7 +1494,7 @@ const DESIGNERS = [
  tagLabels: ["Accessories", "Footwear"],
  desc: "Swedish wooden clogs reimagined for Israel.",
  descFull: "Swedish wooden clogs reimagined for Israel. Founded in 2012 by Rona, the studio in Pardes Hanna turns out timeless, comfortable wooden-soled footwear in colours that range from quiet matte to glittering fantasy.",
- img: "https://ronaclogs.co.il/cdn/shop/files/screen-8490.jpg?v=1773403900&width=1024",
+ img: "https://ronaclogs.co.il/cdn/shop/files/D7_90_D7_95_D7_9C_D7_99_D7_91_D7_99_D7_94-_D7_A4_D7_A8_D7_97_D7_95_D7_A0_D7_99-3_4ed4681e-3af6-4714-8593-8a97612c3d46.jpg?v=1774725643&width=700",
  fav: false
  },
  {
@@ -1888,7 +1883,7 @@ const DESIGNERS = [
  name: "Rams",
  url: "https://www.ramstreetwear.com/",
  tags: ["menswear", "minimalist", "sustainable"],
- tagLabels: ["Menswear", "Minimalist", "Sustainable"],
+ tagLabels: ["Men", "Minimalist", "Sustainable"],
  desc: "A menswear label built around clean cuts, precise pieces, and an everyday presence.",
  descFull: "A menswear label built around clean cuts, precise pieces, and an everyday presence. Launched with a tight capsule of carefully selected items, every piece produced locally, in support of Israeli manufacturing and small business.",
  img: "https://www.ramstreetwear.com/cdn/shop/files/1_5ba9429b-037c-4bf9-bacd-523b1167289f.png?v=1772616310&width=3840",
@@ -2254,7 +2249,7 @@ const DESIGNERS = [
     name: "Campy Street",
     url: "https://campystreet.com/",
     tags: ["streetwear", "menswear"],
-    tagLabels: ["Streetwear", "Menswear"],
+    tagLabels: ["Streetwear", "Men"],
     desc: "A casual streetwear label and Jerusalem store, logo tees, shorts, tailored sets, denim, and swimwear with an easy, on-trend everyday attitude.",
     instagram: "campy.il",
     img: "https://campystreet.com/cdn/shop/files/FullSizeRender_056494a2-04c8-4044-a619-4855579bbd53.jpg?v=1780301662&width=1946",
@@ -2274,7 +2269,7 @@ const DESIGNERS = [
     name: "Edit",
     url: "https://editstyle.co.il/",
     tags: ["streetwear","menswear"],
-    tagLabels: ["Streetwear","Menswear"],
+    tagLabels: ["Streetwear","Men"],
     desc: "A streetwear label built around the oversized fit, EDIT CLUB graphic tees, relaxed cargo, knit, and corduroy trousers, and caps, easy, current, everyday pieces.",
     instagram: "edit.official.style",
     img: "https://editstyle.co.il/cdn/shop/files/0C45C966-6C82-480A-8836-95E8D49531CB.jpg?v=1779432473&width=3840",
@@ -2284,7 +2279,7 @@ const DESIGNERS = [
     name: "Partizano",
     url: "https://www.partizano.co.il/",
     tags: ["menswear","streetwear"],
-    tagLabels: ["Menswear","Streetwear"],
+    tagLabels: ["Men","Streetwear"],
     desc: "A men's fashion label and store of relaxed, on-trend essentials, tees, shorts, jeans, hoodies, tailored sets, and sneakers, with an easy streetwear sensibility.",
     img: "https://www.partizano.co.il/cdn/shop/files/A139523B-7695-404B-A446-5A41DCEBC779.jpg?v=1777415731&width=3840",
     fav: false
@@ -2320,7 +2315,7 @@ const DESIGNERS = [
     name: "Ben Ben Studio",
     url: "https://benben-studio.com/",
     tags: ["menswear", "minimalist", "sustainable"],
-    tagLabels: ["Menswear", "Minimalist", "Sustainable"],
+    tagLabels: ["Men", "Minimalist", "Sustainable"],
     desc: "Timeless menswear drawing on nature - the ocean, desert-meets-Viking style with subtle ethnic touches, made in small capsule runs in a fair-wage local workshop.",
     descFull: "BenBen Studio was born for the man of the road, the one who lives between the sand and the sea, the city and the desert. Its designs and cuts draw inspiration from nature and the ocean, blending a desert-Viking style with delicate ethnic touches, shaped by journeys along the coasts of Central America, Greece, and Portugal. The belief is that real fashion starts with a feeling, how a garment sits on your body, how it moves with you, how it makes you feel even more yourself. Pieces are built to be timeless: simple, comfortable, and right for any season, from day to evening, beach to city. Fabrics are chosen with care, soft and high-quality, and every collection is produced in small, limited capsule runs to protect both uniqueness and the planet, sewn in a small home workshop that employs workers in fair conditions, with precision and genuine love for the craft.",
     img: "https://benben-studio.com/cdn/shop/files/ben_ben_studio_scarf_FW2600011.jpg?v=1776943208&width=1500",
@@ -2330,7 +2325,7 @@ const DESIGNERS = [
     name: "Mirza",
     url: "https://mirza-il.co.il/",
     tags: ["menswear","luxury"],
-    tagLabels: ["Menswear","Luxury"],
+    tagLabels: ["Men","Luxury"],
     desc: "Men's fashion by Naor Aharon, founded 2016, one of the only men's studios in Israel that designs and produces all its own pieces in-house. Tailored suits, shirts, knitwear, and groom suiting with a modern edge, worn by hundreds of local celebrities and shown at Tel Aviv Fashion Week.",
     instagram: "mirza_by_naor",
     img: "https://mirza-il.co.il/wp-content/uploads/2026/04/mirza-042369-scaled.jpg",
@@ -2339,8 +2334,8 @@ const DESIGNERS = [
   {
     name: "Tomer Landau",
     url: "https://tomer-landau.com/",
-    tags: ["artisan","minimalist", "natural"],
-    tagLabels: ["Artisan","Minimalist", "Natural Fabrics"],
+    tags: ["menswear","artisan","minimalist", "natural"],
+    tagLabels: ["Men","Artisan","Minimalist", "Natural Fabrics"],
     desc: "Where fashion meets passion and art. A labour of love: flawless designed clothing, hand-sewn piece by piece straight from the studio in only the finest materials like linen and cotton.",
     descFull: "Welcome to Tomer Landau, where fashion meets passion and art. The shop is a labour of love, with a dream of providing flawless designed clothing, handmade straight from the studio. The passion is to create comfortable clothes that make people feel proud, brought to life through meticulous sketches, hand-sewing every piece, and using only the finest materials such as linen and cotton for unmatched quality. The exceptional craftsmanship and personal touch set it apart, creating not just clothes but an experience, where every item tells a unique story.",
     img: "https://tomer-landau.com/cdn/shop/files/f2680c9c7b6683e1c1244c5647628121.jpg?v=1777805076&width=5000",
@@ -2666,7 +2661,7 @@ const DESIGNERS = [
     name: "Yifat Finkelstein",
     url: "https://yifatfinkelshtein.com/",
     tags: ["menswear", "minimalist", "natural"],
-    tagLabels: ["Menswear", "Minimalist", "Natural Fabrics"],
+    tagLabels: ["Men", "Minimalist", "Natural Fabrics"],
     desc: "A menswear label rooted in ease, structure, and quiet precision. Soft tailoring, natural fabrics, and silhouettes that move with the body, living between streetwear and subtle elegance, shaped by the heat and friction between Tel Aviv and Jerusalem.",
     descFull: "YIFAT FINKELSTEIN is a menswear label rooted in ease, structure, and quiet precision. Each piece balances the understated with the intentional, merging soft tailoring, natural fabrics, and silhouettes that move with the body; the collections live between streetwear and subtle elegance, between worn-in and refined. The brand is grounded in its surroundings, the heat, the haze, the friction between Tel Aviv and Jerusalem, between sky and earth, a tension that shapes a language of dressing that is effortless, present, and quietly defiant. Beneath the surface, above the ordinary.",
     img: "https://cdn.shopify.com/s/files/1/0568/9504/5817/files/YF14052025__S_70.jpg?v=1777283132",
@@ -2793,7 +2788,7 @@ const DESIGNERS = [
     name: "Itay Brands",
     url: "https://itaybrands.co.il/",
     tags: ["minimalist", "unisex", "menswear"],
-    tagLabels: ["Minimalist", "Unisex", "Menswear"],
+    tagLabels: ["Minimalist", "Unisex", "Men"],
     desc: "It's all about the basics. Sharp, affordable everyday wear for women and men, clean cuts, great fits, and the kind of wardrobe staples you reach for every day.",
     img: "https://itaybrands.co.il/cdn/shop/files/868b1d6cd000aa1901415efa6dab312b.jpg?crop=center&height=1018&v=1763904574&width=1410",
     fav: false
@@ -2812,7 +2807,7 @@ const DESIGNERS = [
     name: "YN",
     url: "https://yn10565.com/",
     tags: ["streetwear", "menswear"],
-    tagLabels: ["Streetwear", "Menswear"],
+    tagLabels: ["Streetwear", "Men"],
     desc: "Advanced streetwear with presence, precise designs and unique pieces drawing on Israeli and Jewish identity, from the Samson the Hero collection to David's-harp graphics. Tees, cargos, suits, and sneakers where streetwear meets timeless design.",
     instagram: "yn10.56.5",
     img: "https://yn10565.com/wp-content/uploads/2025/09/yn-3346-1-scaled.webp",
@@ -2848,6 +2843,66 @@ const DESIGNERS = [
     img: "https://volt-il.com/cdn/shop/files/ALG9674.jpg?v=1770892779&width=1800",
     fav: false
   },
+  {
+    name: "Studio Ivria",
+    url: "https://www.instagram.com/studio_ivria/",
+    tags: ["jewelry", "artisan"],
+    tagLabels: ["Jewelry", "Artisan"],
+    desc: "By Miriam. Handmade jewelry, made one by one, inspired by the Hebrew women of the desert, delicate, earthy pieces with an ancient soul.",
+    instagram: "studio_ivria",
+    img: "images/studio-ivria.png",
+    fav: false
+  },
+  {
+    name: "Mantra",
+    url: "https://our-mantra.com/",
+    tags: ["menswear", "streetwear", "minimalist"],
+    tagLabels: ["Men", "Streetwear", "Minimalist"],
+    desc: "Elegant streetwear for men, focused on creating special, high-quality pieces. Linen shirts, tailored chinos, polos, and event-ready sets, with stores in Tel Aviv and Ramat Hasharon. So what's your mantra?",
+    instagram: "our.mantra",
+    img: "https://our-mantra.com/cdn/shop/files/Screenshot2026-06-04124024.png?v=1780566196&width=800",
+    fav: false
+  },
+  {
+    name: "Sages & Souls",
+    url: "https://sagesandsouls.com/",
+    tags: ["jewelry", "artisan", "luxury"],
+    tagLabels: ["Jewelry", "Artisan", "Luxury"],
+    desc: "Luxury 14k gold Judaica and Kabbalah jewelry, handcrafted in a Tel Aviv atelier. Hamsas, Stars of David, Hebrew letters, and Psalms pieces, each made with intention as a vessel of light, meaning, and heritage.",
+    instagram: "sagesandsouls",
+    img: "https://sagesandsouls.com/cdn/shop/files/model-holds-gold-pendant-necklace.jpg?v=1748520908&width=1500",
+    fav: false
+  },
+  {
+    name: "Ben Ami",
+    url: "https://www.benamijewelry.com/",
+    tags: ["jewelry", "luxury", "artisan"],
+    tagLabels: ["Jewelry", "Luxury", "Artisan"],
+    desc: "Luxury 14k and 18k gold jewelry set with diamonds and natural gemstones, handcrafted by designer Michal Ben Ami. Rings, necklaces, earrings, and bespoke personal designs, classic, timeless, and made to be passed down. Showroom by appointment.",
+    instagram: "benamifinejewelry",
+    img: "https://cdn.shortpixel.ai/spai/q_glossy+ret_img+to_webp/www.benamijewelry.com/wp-content/uploads/2025/07/MG_2505.jpg",
+    fav: false
+  },
+  {
+    name: "Ara Studio",
+    url: "https://www.arajewelrystudio.com/",
+    tags: ["jewelry", "artisan", "luxury"],
+    tagLabels: ["Jewelry", "Artisan", "Luxury"],
+    desc: "Designed and handcrafted jewelry inspired by the beauty of natural materials, for wild and sweet ladies. Gold rings, necklaces, and earrings set with diamonds and gemstones, plus a custom service making modern heirlooms.",
+    instagram: "ara_jewelry_studio",
+    img: "https://static.wixstatic.com/media/cbeb09_aecad4c6e1194fd6a73ee85b0076151f~mv2.jpg/v1/fit/w_960,h_721,q_90,enc_avif,quality_auto/cbeb09_aecad4c6e1194fd6a73ee85b0076151f~mv2.jpg",
+    fav: false
+  },
+  {
+    name: "ANwear by Avigail",
+    url: "https://anwearbyavigail.com/",
+    tags: ["menswear", "minimalist"],
+    tagLabels: ["Men", "Minimalist"],
+    desc: "I believe it matters what we wear. By Avigail, a lifelong seamstress, ANwear is built around one precise thing, the flattering, comfortable, timeless men's trouser, in comfort and corduroy fits, made in Israel, alongside custom tailoring.",
+    instagram: "avigail_br",
+    img: "https://anwearbyavigail.com/cdn/shop/files/blue6_720x.jpg?v=1769111799",
+    fav: false
+  },
 ];
 
 // Layout pattern sequence, cycles through for visual rhythm
@@ -2869,18 +2924,18 @@ const LAYOUTS = [
 
 // Brands that have at least one physical store location on the Map page.
 // Only these show a "View on Map" link. Keep in sync with Map.html's DESIGNERS list.
-const MAP_BRANDS = new Set(["Agas & Tamar","AKA My Culture","Alef Alef","Alembika","Anat Friedman","Anjaly","Artwear","Assaf Peleg","Atawear","Aviva Zilberman","Belle and Sue","Biliblond","Bracha Baron","Ciporkin by Dalit","Co.Co","Comme il Faut","Cotton","Dana Ashkenazy","Dostix","Flo by Ella Braitman","Frett","Galler","Gertrud","Gon Surfing","Hagit Tassa","Heroic","Hila Feinberg","Holyland Civilians","CALA","Kisim","Take a Nap","Maayan Paz","TRES TLV","Roni Bar","Chopshop Corp","Ronen Chen","Palms and Tigers","Tovale+","Mishi","Shiruetto","Gottex","Ainker","All At Once","The Fluff","Tali Dadon","BIV Street","Hoko","Addict","On'nanoko","Maskit","Dorin Frankfurt","Naama Bezalel"]);
+const MAP_BRANDS = new Set(["Agas & Tamar","AKA My Culture","Alef Alef","Alembika","Anat Friedman","Anjaly","Mantra","Artwear","Assaf Peleg","Atawear","Aviva Zilberman","Belle and Sue","Biliblond","Bracha Baron","Ciporkin by Dalit","Co.Co","Comme il Faut","Cotton","Dana Ashkenazy","Dostix","Flo by Ella Braitman","Frett","Galler","Gertrud","Gon Surfing","Hagit Tassa","Heroic","Hila Feinberg","Holyland Civilians","CALA","Kisim","Take a Nap","Maayan Paz","TRES TLV","Roni Bar","Chopshop Corp","Ronen Chen","Palms and Tigers","Tovale+","Mishi","Shiruetto","Gottex","Ainker","All At Once","The Fluff","Tali Dadon","BIV Street","Hoko","Addict","On'nanoko","Maskit","Dorin Frankfurt","Naama Bezalel"]);
 
 // Studios that are by-appointment only (override 'Store'). Add names here as confirmed.
-const APPOINTMENT_ONLY = new Set(["Shiruetto","Tovale+","Ciporkin by Dalit","Hila Feinberg","Tali Dadon","Hoko","Foof","Keren Mualem"]);
-const STORE_ADDRESSES = {"Maskit":"Maskit House, 14 HaTsorfim St, Old Jaffa (+3 more)","Dorin Frankfurt":"164 Dizengoff St, Tel Aviv (+16 more)","Naama Bezalel":"Studio Store, 6B Tfutsot Israel St, Givatayim","Addict":"9 HaMa'avak St, Ramat HaSharon","On'nanoko":"Kibbutz Ma'agan Michael (flagship)","Agas & Tamar":"43 Shabazi St, Tel Aviv","AKA My Culture":"43 Rambam St, Giv'atayim","Alef Alef":"9 Ashtori HaFarhi St, Tel Aviv","Anat Friedman":"6 Betzalel St, Jerusalem","Anjaly":"10 Mikveh Israel St, Tel Aviv","Artwear":"71 HaNadiv St, Herzliya","Atawear":"93 Allenby St, Tel Aviv (+1 more)","Aviva Zilberman":"23 Melchett St, Tel Aviv","Belle and Sue":"41 Shenkin St, Tel Aviv","Biliblond":"1 Yordei HaSira St, Tel Aviv Port","Bracha Baron":"255 Dizengoff St, Tel Aviv","Ciporkin by Dalit":"By appointment, Tel Aviv","Co.Co":"7 Kehilat Venezia St, Tel Aviv","Comme il Faut":"28 Levontin St, Tel Aviv (+3 more)","Cotton":"218 Dizengoff St, Tel Aviv (+11 more)","Dostix":"25 Tchernihovsky St, Tel Aviv","Flo by Ella Braitman":"16 Yehuda Margoza St, Jaffa","Frett":"77 Frishman St, Tel Aviv","Galler":"5 Alkalai St (Bazel Complex), Tel Aviv","Gon Surfing":"4 Sheinkin St, Tel Aviv","Heroic":"14 Mikveh Israel St, Tel Aviv","Hila Feinberg":"Givat Haim Ihud (studio, by appointment)","Holyland Civilians":"30 Sheinkin St, Tel Aviv (+1 more)","CALA":"18 Shenkin St, Tel Aviv (+1 more)","Kisim":"11 Barzilai St, Tel Aviv","Take a Nap":"96 Hashmona'im St, Tel Aviv (TLV Mall) (+5 more)","Maayan Paz":"30 Yehuda Margoza St, Jaffa (+1 more)","TRES TLV":"65 Pinhas Rosen St, Tel Aviv (+1 more)","Roni Bar":"84 Ben Zvi Rd, Tel Aviv","Chopshop Corp":"81 Dizengoff St, Tel Aviv (+3 more)","Ronen Chen":"155 Dizengoff St, Tel Aviv (+1 more)","Assaf Peleg":"119 Dizengoff St, Tel Aviv (+1 more)","Alembika":"87 Ibn Gvirol St, Tel Aviv (+4 more)","Dana Ashkenazy":"Ramat Aviv Mall, Tel Aviv (+1 more)","Gertrud":"77 Frishman St, Tel Aviv (+2 more)","Hagit Tassa":"214 Dizengoff St, Tel Aviv (+6 more)","Palms and Tigers":"55 Hahalutzim St, Tel Aviv","Tovale+":"103 Rothschild Blvd, Tel Aviv","Mishi":"50 HaTzabar St, Tel Mond","Shiruetto":"1 Hazait St, Caesarea","Gottex":"62 Anilevich St, Yad Eliyahu, Tel Aviv (+3 more)","Ainker":"5 Yordei HaSira St, Tel Aviv (+1 more)","All At Once":"At En Culture, 19 Lilienblum St, Tel Aviv-Yafo","The Fluff":"8 HaHashmal St, Tel Aviv","Tali Dadon":"Near Ayalon Mall, Ramat Gan (studio, by appointment)","BIV Street":"74 Nahalat Binyamin, Tel Aviv","Hoko":"7 Nitzana St, Tel Aviv-Jaffa"};
+const APPOINTMENT_ONLY = new Set(["Shiruetto","Tovale+","Ciporkin by Dalit","Hila Feinberg","Tali Dadon","Hoko","Foof","Keren Mualem","Ben Ami"]);
+const STORE_ADDRESSES = {"Mantra":"42 Pinsker St, Tel Aviv (+1 more)","Maskit":"Maskit House, 14 HaTsorfim St, Old Jaffa (+3 more)","Dorin Frankfurt":"164 Dizengoff St, Tel Aviv (+16 more)","Naama Bezalel":"Studio Store, 6B Tfutsot Israel St, Givatayim","Addict":"9 HaMa'avak St, Ramat HaSharon","On'nanoko":"Kibbutz Ma'agan Michael (flagship)","Agas & Tamar":"43 Shabazi St, Tel Aviv","AKA My Culture":"43 Rambam St, Giv'atayim","Alef Alef":"9 Ashtori HaFarhi St, Tel Aviv","Anat Friedman":"6 Betzalel St, Jerusalem","Anjaly":"10 Mikveh Israel St, Tel Aviv","Artwear":"71 HaNadiv St, Herzliya","Atawear":"93 Allenby St, Tel Aviv (+1 more)","Aviva Zilberman":"23 Melchett St, Tel Aviv","Belle and Sue":"41 Shenkin St, Tel Aviv","Biliblond":"1 Yordei HaSira St, Tel Aviv Port","Bracha Baron":"255 Dizengoff St, Tel Aviv","Ciporkin by Dalit":"By appointment, Tel Aviv","Co.Co":"7 Kehilat Venezia St, Tel Aviv","Comme il Faut":"28 Levontin St, Tel Aviv (+3 more)","Cotton":"218 Dizengoff St, Tel Aviv (+11 more)","Dostix":"25 Tchernihovsky St, Tel Aviv","Flo by Ella Braitman":"16 Yehuda Margoza St, Jaffa","Frett":"77 Frishman St, Tel Aviv","Galler":"5 Alkalai St (Bazel Complex), Tel Aviv","Gon Surfing":"4 Sheinkin St, Tel Aviv","Heroic":"14 Mikveh Israel St, Tel Aviv","Hila Feinberg":"Givat Haim Ihud (studio, by appointment)","Holyland Civilians":"30 Sheinkin St, Tel Aviv (+1 more)","CALA":"18 Shenkin St, Tel Aviv (+1 more)","Kisim":"11 Barzilai St, Tel Aviv","Take a Nap":"96 Hashmona'im St, Tel Aviv (TLV Mall) (+5 more)","Maayan Paz":"30 Yehuda Margoza St, Jaffa (+1 more)","TRES TLV":"65 Pinhas Rosen St, Tel Aviv (+1 more)","Roni Bar":"84 Ben Zvi Rd, Tel Aviv","Chopshop Corp":"81 Dizengoff St, Tel Aviv (+3 more)","Ronen Chen":"155 Dizengoff St, Tel Aviv (+1 more)","Assaf Peleg":"119 Dizengoff St, Tel Aviv (+1 more)","Alembika":"87 Ibn Gvirol St, Tel Aviv (+4 more)","Dana Ashkenazy":"Ramat Aviv Mall, Tel Aviv (+1 more)","Gertrud":"77 Frishman St, Tel Aviv (+2 more)","Hagit Tassa":"214 Dizengoff St, Tel Aviv (+6 more)","Palms and Tigers":"55 Hahalutzim St, Tel Aviv","Tovale+":"103 Rothschild Blvd, Tel Aviv","Mishi":"50 HaTzabar St, Tel Mond","Shiruetto":"1 Hazait St, Caesarea","Gottex":"62 Anilevich St, Yad Eliyahu, Tel Aviv (+3 more)","Ainker":"5 Yordei HaSira St, Tel Aviv (+1 more)","All At Once":"At En Culture, 19 Lilienblum St, Tel Aviv-Yafo","The Fluff":"8 HaHashmal St, Tel Aviv","Tali Dadon":"Near Ayalon Mall, Ramat Gan (studio, by appointment)","BIV Street":"74 Nahalat Binyamin, Tel Aviv","Hoko":"7 Nitzana St, Tel Aviv-Jaffa"};
 function accessLinks(d){
   const isStore = MAP_BRANDS.has(d.name);
   const addr = STORE_ADDRESSES[d.name] || '';
   let out = '<a class="card-link" href="' + d.url + '" target="_blank" rel="noopener">Website</a>';
   if (d.instagram) out += '<a class="card-link" href="https://instagram.com/' + d.instagram + '" target="_blank" rel="noopener">Instagram</a>';
-  if (isStore) out += '<a class="card-link" href="Map.html?brand=' + encodeURIComponent(d.name) + '"' + (addr ? ' title="' + addr.replace(/"/g,"&quot;") + '"' : '') + '>In Person</a>';
-  const status = isStore ? '' : '<div class="card-status">Online only</div>';
+  if (isStore) out += '<a class="card-link" href="Map.html?brand=' + encodeURIComponent(d.name) + '"' + (addr ? ' title="' + addr.replace(/"/g,"&quot;") + '"' : '') + '>View on Map</a>';
+  const status = isStore ? '<div class="card-status">In person</div>' : '<div class="card-status">Online only</div>';
   return status + '<div class="card-links">' + out + '</div>';
 }
 // Returns the small access indicator: by-appointment studio, walk-in store, or online only.
@@ -2898,7 +2953,27 @@ const noResults = document.getElementById('no-results');
 const total = DESIGNERS.length;
 let activeFilters = new Set();
 let currentSearch = '';
-let currentLetter = 'all';
+let currentLetters = new Set();
+let activeRegions = new Set();
+
+// Area / region filter bar
+const AREA_REGIONS = ['All','Tel Aviv','HaSharon','Center','Jerusalem','North','Pardes Hanna','Nationwide','Online'];
+const areaBar = document.getElementById('area-bar');
+function styleAreaBtn(btn){
+ const on = btn.dataset.region === 'All' ? activeRegions.size === 0 : activeRegions.has(btn.dataset.region);
+ btn.style.borderColor = on ? '#1A1A18' : 'transparent';
+ btn.style.background = on ? '#1A1A18' : '#E8E4DB';
+ btn.style.color = on ? '#fff' : '#1A1A18';
+}
+AREA_REGIONS.forEach(r => {
+ const btn = document.createElement('button');
+ btn.className = 'area-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border transition-all duration-200';
+ btn.textContent = r;
+ btn.dataset.region = r;
+ styleAreaBtn(btn);
+ btn.onclick = () => { if(r === 'All'){ activeRegions.clear(); } else if(activeRegions.has(r)){ activeRegions.delete(r); } else { activeRegions.add(r); } document.querySelectorAll('.area-btn').forEach(styleAreaBtn); applyFilters(); };
+ areaBar.appendChild(btn);
+});
 
 // Sort key: brands starting with a number sort by the spelled-out name (e.g. "101" → "one hundred one")
 const NUM_WORDS = { '0':'zero','1':'one','2':'two','3':'three','4':'four','5':'five','6':'six','7':'seven','8':'eight','9':'nine','10':'ten','11':'eleven','12':'twelve','101':'one hundred one' };
@@ -2911,20 +2986,49 @@ function sortKey(name) {
 }
 
 function applyFilters() {
- const isFavOnly = activeFilters.has('favorites');
+ const tagFilters = [...activeFilters].filter(t => t !== 'favorites');
  const filtered = DESIGNERS.filter(d => {
- const matchesFilter = activeFilters.size === 0 ||
- (isFavOnly && FAVORITES.has(d.name)) ||
- (!isFavOnly && [...activeFilters].every(t => d.tags.includes(t)));
+ const matchesFav = !activeFilters.has('favorites') || FAVORITES.has(d.name);
+ const matchesTags = tagFilters.length === 0 || tagFilters.every(t => d.tags.includes(t));
+ const matchesFilter = matchesFav && matchesTags;
  const matchesSearch = currentSearch === '' ||
  (d.name || '').toLowerCase().includes(currentSearch);
- const matchesLetter = currentLetter === 'all' ||
- sortKey(d.name).charAt(0).toLowerCase() === currentLetter;
- return matchesFilter && matchesSearch && matchesLetter;
+ const matchesLetter = currentLetters.size === 0 ||
+ currentLetters.has(sortKey(d.name).charAt(0).toLowerCase());
+ const matchesRegion = activeRegions.size === 0 || activeRegions.has(regionOf(d.name));
+ return matchesFilter && matchesSearch && matchesLetter && matchesRegion;
  }).sort((a, b) => sortKey(a.name).localeCompare(sortKey(b.name)));
  renderCards(filtered);
+ if (typeof updateTriggers === 'function') updateTriggers();
 }
 
+const CITY_TO_REGION = {
+  "Tel Aviv":"Tel Aviv","Tel Aviv Port":"Tel Aviv","Tel Aviv-Jaffa":"Tel Aviv","Tel Aviv-Yafo":"Tel Aviv","Jaffa":"Tel Aviv","Old Jaffa":"Tel Aviv",
+  "Jerusalem":"Jerusalem",
+  "Givatayim":"Center","Giv'atayim":"Center","Ramat Gan":"Center",
+  "Ramat HaSharon":"HaSharon","Herzliya":"HaSharon","Tel Mond":"HaSharon","Givat Haim Ihud":"HaSharon",
+  "Caesarea":"Pardes Hanna","Kibbutz Ma'agan Michael":"Pardes Hanna"
+};
+function regionOf(name){
+  const addr = STORE_ADDRESSES[name];
+  if(!addr) return 'Online';
+  if(/\(\+\d+\s+more\)/.test(addr)) return 'Nationwide';
+  let a = addr.replace(/\s*\([^)]*\)\s*/g,'').trim();
+  const parts = a.split(',').map(s=>s.trim()).filter(Boolean);
+  const city = parts[parts.length-1] || a;
+  return CITY_TO_REGION[city] || city;
+}
+function locationLabel(name){
+  const r = regionOf(name);
+  return r === 'Online' ? '' : r;
+}
+function locationTagHtml(name){
+  const label = locationLabel(name);
+  if(!label) return '';
+  return '<span class="tag-location font-label text-[9px] tracking-widest uppercase px-2 py-1">'
+    + '<svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>'
+    + label + '</span>';
+}
 function tagHtml(labels) {
  return labels.map(l =>
  `<span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">${l}</span>`
@@ -2994,7 +3098,7 @@ function renderCards(filtered) {
  <svg class="heart-svg" width="22" height="22" viewBox="0 0 24 24" fill="${FAVORITES.has(d.name) ? '#e53e3e' : 'none'}" stroke="${FAVORITES.has(d.name) ? '#e53e3e' : '#111'}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78L12 21.23l8.8-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
  </button>
  </div>
- <div class="flex flex-wrap gap-2">${tagHtml(d.tagLabels)}</div>
+ <div class="flex flex-wrap gap-2">${tagHtml(d.tagLabels)}${locationTagHtml(d.name)}</div>
  <p class="font-body text-sm text-on-surface-variant leading-relaxed desc-text" data-desc-en="${(d.desc || '').replace(/"/g, '&quot;')}">${d.desc}</p>
  ${accessLinks(d)}
  </div>
@@ -3043,48 +3147,131 @@ function toggleFav(btn) {
  localStorage.setItem('modeil-favs', JSON.stringify([...FAVORITES]));
 }
 
-// Filter scroll arrows
-const filterContainer = document.getElementById('filter-scroll-container');
-const filterBar = document.getElementById('filter-bar');
-const filterPrev = document.getElementById('filter-prev');
-const filterNext = document.getElementById('filter-next');
-
-function updateArrows() {
- const scrollLeft = filterContainer.scrollLeft;
- const maxScroll = filterContainer.scrollWidth - filterContainer.clientWidth;
- filterPrev.style.display = scrollLeft > 4 ? 'flex' : 'none';
- filterNext.style.display = scrollLeft < maxScroll - 4 ? 'flex' : 'none';
+// Filter dropdowns
+const STYLE_TAGS = ['edgy','legacy','minimalist','streetwear','sustainable','natural'];
+const TYPE_TAGS = ['menswear','unisex','footwear','jewelry','lingerie','swimwear','activewear','denim','size-inclusive'];
+document.querySelectorAll('.fdrop-trigger').forEach(tr => {
+ tr.addEventListener('click', (e) => {
+ e.stopPropagation();
+ const parent = tr.closest('.fdrop');
+ if (!parent) return;
+ const wasOpen = parent.classList.contains('open');
+ document.querySelectorAll('.fdrop').forEach(d => d.classList.remove('open'));
+ if (!wasOpen) parent.classList.add('open');
+ });
+});
+document.addEventListener('click', (e) => { if (!e.target.closest('.fdrop')) document.querySelectorAll('.fdrop').forEach(d => d.classList.remove('open')); });
+function setTrigger(name, active, badgeCount){
+ const t = document.querySelector('.fdrop-trigger[data-drop="'+name+'"]');
+ if(!t) return;
+ t.classList.toggle('has-active', !!active);
+ let badge = t.querySelector('.fdrop-badge');
+ if(badgeCount && badgeCount > 0){
+ if(!badge){ badge = document.createElement('span'); badge.className = 'fdrop-badge'; t.appendChild(badge); }
+ badge.textContent = badgeCount;
+ } else if(badge){ badge.remove(); }
 }
-
-filterPrev.addEventListener('click', () => {
- filterContainer.scrollBy({ left: -200, behavior: 'smooth' });
-});
-filterNext.addEventListener('click', () => {
- filterContainer.scrollBy({ left: 200, behavior: 'smooth' });
-});
-filterContainer.addEventListener('scroll', updateArrows);
-setTimeout(updateArrows, 100);
+function updateTriggers(){
+ const sc = STYLE_TAGS.filter(t => activeFilters.has(t)).length;
+ const tc = TYPE_TAGS.filter(t => activeFilters.has(t)).length;
+ setTrigger('style', sc, sc);
+ setTrigger('type', tc, tc);
+ setTrigger('location', activeRegions.size > 0, activeRegions.size);
+ setTrigger('az', currentLetters.size > 0, currentLetters.size);
+ const any = sc || tc || activeFilters.has('favorites') || activeRegions.size > 0 || currentLetters.size > 0 || (currentSearch && currentSearch !== '');
+ const favBtn = document.querySelector('.filter-btn[data-filter="favorites"]');
+ if(favBtn) favBtn.classList.toggle('has-active', activeFilters.has('favorites'));
+ const ca = document.getElementById('clear-all');
+ if(ca) ca.style.display = any ? 'inline-flex' : 'none';
+ renderChips();
+}
+window.updateTriggers = updateTriggers;
+function chipLabel(tag){
+ const b = document.querySelector('.filter-btn[data-filter="'+tag+'"]');
+ return b ? b.textContent.trim() : tag;
+}
+function makeChip(label, onRemove){
+ const c = document.createElement('button');
+ c.type = 'button';
+ c.className = 'active-chip';
+ c.innerHTML = '<span>'+label+'</span><span class="chip-x">\u2715</span>';
+ c.addEventListener('click', onRemove);
+ return c;
+}
+function renderChips(){
+ const bar = document.getElementById('active-chips');
+ if(!bar) return;
+ bar.innerHTML = '';
+ // style + type tag chips
+ [...STYLE_TAGS, ...TYPE_TAGS].forEach(tag => {
+ if(activeFilters.has(tag)){
+ bar.appendChild(makeChip(chipLabel(tag), () => {
+ const b = document.querySelector('.filter-btn[data-filter="'+tag+'"]');
+ if(b) b.click();
+ }));
+ }
+ });
+ // favorites
+ if(activeFilters.has('favorites')){
+ bar.appendChild(makeChip('Saved', () => {
+ const b = document.querySelector('.filter-btn[data-filter="favorites"]');
+ if(b) b.click();
+ }));
+ }
+ // region(s)
+ activeRegions.forEach(rg => {
+ bar.appendChild(makeChip(rg, () => {
+ activeRegions.delete(rg);
+ if(typeof styleAreaBtn === 'function') document.querySelectorAll('.area-btn').forEach(styleAreaBtn);
+ applyFilters();
+ }));
+ });
+ // letter(s)
+ [...currentLetters].sort().forEach(lt => {
+ bar.appendChild(makeChip(lt.toUpperCase(), () => {
+ currentLetters.delete(lt);
+ if(typeof styleAlphaBtns === 'function') styleAlphaBtns();
+ applyFilters();
+ }));
+ });
+ // search
+ if(currentSearch && currentSearch !== ''){
+ bar.appendChild(makeChip('\u201C'+currentSearch+'\u201D', () => {
+ currentSearch = '';
+ const si = document.getElementById('search-input'); if(si) si.value = '';
+ const scl = document.getElementById('search-clear'); if(scl) scl.style.display = 'none';
+ applyFilters();
+ }));
+ }
+ // move the Clear all link into the chip bar (after chips) when visible
+ const ca = document.getElementById('clear-all');
+ if(ca && ca.style.display !== 'none'){ bar.appendChild(ca); }
+}
+function clearAllFilters(){
+ activeFilters.clear();
+ document.querySelectorAll('.filter-btn').forEach(b => {
+ b.classList.remove('active','bg-[#F4ECF0]','text-[#B8748A]','border-[#B8748A]','bg-primary','text-on-primary','border-black');
+ b.classList.add('bg-surface-container-highest','text-primary','border-transparent');
+ });
+ activeRegions.clear();
+ if(typeof styleAreaBtn === 'function') document.querySelectorAll('.area-btn').forEach(styleAreaBtn);
+ currentLetters.clear();
+ if(typeof styleAlphaBtns === 'function') styleAlphaBtns();
+ currentSearch = '';
+ const si = document.getElementById('search-input'); if(si) si.value = '';
+ const scl = document.getElementById('search-clear'); if(scl) scl.style.display = 'none';
+ document.querySelectorAll('.fdrop').forEach(d => d.classList.remove('open'));
+ applyFilters();
+}
+window.clearAllFilters = clearAllFilters;
 
 // Filter buttons, multi-select
 document.querySelectorAll('.filter-btn').forEach(btn => {
  btn.addEventListener('click', () => {
  const filter = btn.dataset.filter;
  if (filter === 'favorites') {
- // Favorites is exclusive
- document.querySelectorAll('.filter-btn').forEach(b => {
- b.classList.remove('active', 'bg-[#F4ECF0]', 'text-[#B8748A]', 'border-[#B8748A]');
- b.classList.add('bg-surface-container-highest', 'text-primary', 'border-transparent');
- });
- if (activeFilters.has('favorites')) {
- activeFilters.clear();
- document.querySelector('.filter-btn[data-filter="all"]').classList.add('active', 'bg-primary', 'text-on-primary', 'border-black');
- document.querySelector('.filter-btn[data-filter="all"]').classList.remove('bg-surface-container-highest', 'text-primary', 'border-transparent');
- } else {
- activeFilters.clear();
- activeFilters.add('favorites');
- btn.classList.add('active', 'bg-[#F4ECF0]', 'text-[#B8748A]', 'border-[#B8748A]');
- btn.classList.remove('bg-surface-container-highest', 'text-primary', 'border-transparent');
- }
+ if (activeFilters.has('favorites')) { activeFilters.delete('favorites'); }
+ else { activeFilters.add('favorites'); }
  applyFilters();
  return;
  }
@@ -3142,19 +3329,29 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
  btn.textContent = l.toUpperCase();
  bar.appendChild(btn);
  });
+ window.styleAlphaBtns = function(){
+ bar.querySelectorAll('.alpha-btn').forEach(b => {
+ const on = b.dataset.letter === 'all' ? currentLetters.size === 0 : currentLetters.has(b.dataset.letter);
+ b.classList.toggle('active', on);
+ b.classList.toggle('bg-white', on);
+ b.classList.toggle('text-black', on);
+ b.classList.toggle('border-black', on);
+ b.classList.toggle('bg-surface-container-highest', !on);
+ b.classList.toggle('text-primary', !on);
+ b.classList.toggle('border-transparent', !on);
+ });
+ };
  bar.querySelectorAll('.alpha-btn').forEach(btn => {
  btn.addEventListener('click', () => {
  const letter = btn.dataset.letter;
- currentLetter = letter;
- bar.querySelectorAll('.alpha-btn').forEach(b => {
- b.classList.remove('active', 'bg-white', 'text-black', 'border-black');
- b.classList.add('bg-surface-container-highest', 'text-primary', 'border-transparent');
- });
- btn.classList.add('active', 'bg-white', 'text-black', 'border-black');
- btn.classList.remove('bg-surface-container-highest', 'text-primary', 'border-transparent');
+ if(letter === 'all'){ currentLetters.clear(); }
+ else if(currentLetters.has(letter)){ currentLetters.delete(letter); }
+ else { currentLetters.add(letter); }
+ styleAlphaBtns();
  applyFilters();
  });
  });
+ styleAlphaBtns();
 })();
 
 // Init
@@ -3191,7 +3388,7 @@ const TRANSLATIONS = {
  filterDenim: "Denim", filterFootwear: "Footwear", filterNatural: "Natural Fabrics", filterUnisex: "Unisex",
  filterSustainable: "Sustainable", filterActivewear: "Activewear", filterArtisan: "Artisan",
  filterHeritage: "Legacy", filterSurf: "Surf", filterLuxury: "Luxury",
- filterLingerie: "Lingerie", filterMenswear: "Menswear", filterAccessories: "Accessories", filterSizeInclusive: "Size Inclusive",
+ filterLingerie: "Lingerie", filterMen: "Men", filterAccessories: "Accessories", filterSizeInclusive: "Size Inclusive",
  searchPlaceholder: "Search by brand name",
  visitWebsite: "Visit Website",
  designersCount: (n, t) => n === t ? `${t} Designers` : `${n} of ${t} Designers`,
@@ -3216,7 +3413,7 @@ const TRANSLATIONS = {
  filterDenim: "דנים", filterFootwear: "נעליים", filterNatural: "בדים טבעיים", filterUnisex: "יוניסקס",
  filterSustainable: "בר-קיימא", filterActivewear: "ספורטסוור", filterArtisan: "בוטיק",
  filterHeritage: "מורשת", filterSurf: "גלישה", filterLuxury: "יוקרה",
- filterLingerie: "לינג'רי", filterMenswear: "גברים", filterAccessories: "אקסססוריז", filterSizeInclusive: "מגוון מידות",
+ filterLingerie: "לינג'רי", filterMen: "גברים", filterAccessories: "אקסססוריז", filterSizeInclusive: "מגוון מידות",
  searchPlaceholder: "חיפוש לפי שם מותג",
  visitWebsite: "לאתר",
  designersCount: (n, t) => n === t ? `${t} מעצבים` : `${n} מתוך ${t} מעצבים`,
@@ -3232,7 +3429,7 @@ const TRANSLATIONS = {
 };
 
 const TAG_LABELS = {
- en: { jewelry:"Jewelry", swimwear:"Swimwear", knitwear:"Knitwear", streetwear:"Streetwear", prints:"Prints", minimalist:"Minimalist", sustainable:"Sustainable", activewear:"Activewear", artisan:"Artisan", legacy:"Legacy", surf:"Surf", luxury:"Luxury", lingerie:"Lingerie", menswear:"Menswear", accessories:"Accessories", contemporary:"Contemporary" },
+ en: { jewelry:"Jewelry", swimwear:"Swimwear", knitwear:"Knitwear", streetwear:"Streetwear", prints:"Prints", minimalist:"Minimalist", sustainable:"Sustainable", activewear:"Activewear", artisan:"Artisan", legacy:"Legacy", surf:"Surf", luxury:"Luxury", lingerie:"Lingerie", menswear:"Men", accessories:"Accessories", contemporary:"Contemporary" },
  he: { jewelry:"תכשיטים", swimwear:"בגדי ים", knitwear:"סריגה", streetwear:"סטריטוור", prints:"הדפסים", minimalist:"מינימליסטי", sustainable:"בר-קיימא", activewear:"ספורטסוור", artisan:"בוטיק", legacy:"מורשת", surf:"גלישה", luxury:"יוקרה", lingerie:"לינג'רי", menswear:"גברים", accessories:"אקסססוריז", contemporary:"עכשווי" }
 };
 
@@ -3267,7 +3464,7 @@ function applyLang() {
  if (filterLabelEl) filterLabelEl.textContent = t.filterLabel;
 
  // Filter buttons
- const filterMap = { all:t.filterAll, jewelry:t.filterJewelry, swimwear:t.filterSwimwear, knitwear:t.filterKnitwear, streetwear:t.filterStreetwear, prints:t.filterPrints, minimalist:t.filterMinimalist, sustainable:t.filterSustainable, activewear:t.filterActivewear, artisan:t.filterArtisan, legacy:t.filterHeritage, surf:t.filterSurf, luxury:t.filterLuxury, lingerie:t.filterLingerie, menswear:t.filterMenswear, accessories:t.filterAccessories, "size-inclusive":t.filterSizeInclusive, edgy:t.filterEdgy, denim:t.filterDenim, footwear:t.filterFootwear, natural:t.filterNatural, unisex:t.filterUnisex };
+ const filterMap = { all:t.filterAll, jewelry:t.filterJewelry, swimwear:t.filterSwimwear, knitwear:t.filterKnitwear, streetwear:t.filterStreetwear, prints:t.filterPrints, minimalist:t.filterMinimalist, sustainable:t.filterSustainable, activewear:t.filterActivewear, artisan:t.filterArtisan, legacy:t.filterHeritage, surf:t.filterSurf, luxury:t.filterLuxury, lingerie:t.filterLingerie, menswear:t.filterMen, accessories:t.filterAccessories, "size-inclusive":t.filterSizeInclusive, edgy:t.filterEdgy, denim:t.filterDenim, footwear:t.filterFootwear, natural:t.filterNatural, unisex:t.filterUnisex };
  document.querySelectorAll('.filter-btn').forEach(btn => {
  const f = btn.dataset.filter;
  if (filterMap[f]) btn.textContent = filterMap[f];
@@ -3545,4 +3742,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <!-- Skimlinks -->
 <script type="text/javascript" src="https://s.skimresources.com/js/304374X1792544.skimlinks.js"></script>
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script>window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };</script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
 </body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>

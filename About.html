@@ -9,7 +9,7 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>ModeIL — About</title>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700;900&amp;family=Inter:wght@300;400;600&amp;family=Space+Grotesk:wght@300;400;700&amp;family=Assistant:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Epilogue:wght@400;700;900&amp;family=Inter:wght@300;400;600&amp;family=Space+Grotesk:wght@300;400;700&amp;family=Assistant:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script>
   tailwind.config = {
@@ -21,9 +21,10 @@
       },
       borderRadius: { "DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "9999px" },
       fontFamily: {
-        "headline": ["Epilogue", "sans-serif"],
-        "body": ["Inter", "sans-serif"],
-        "label": ["Space Grotesk", "sans-serif"]
+        "headline": ["Plus Jakarta Sans", "sans-serif"],
+        "body": ["Plus Jakarta Sans", "sans-serif"],
+        "label": ["Plus Jakarta Sans", "sans-serif"],
+ "sans": ["Plus Jakarta Sans", "ui-sans-serif", "system-ui", "sans-serif"]
       }
     }}
   }
@@ -37,7 +38,8 @@
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     background-repeat: repeat; background-size: 200px;
   }
-  main, nav, footer { position: relative; z-index: 1; }
+   html, body { font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif !important; }
+ main, nav, footer { position: relative; z-index: 1; }
   #lang-toggle { cursor: pointer; }
   *:focus-visible { outline: 2px solid #B8748A; outline-offset: 2px; }
   .pulse-dot { display: inline-block; width: 8px; height: 8px; background: #000; margin-right: 10px; animation: pulseAnim 1.6s ease-in-out infinite; vertical-align: middle; }
@@ -82,10 +84,15 @@
   </nav>
 </div>
 
-<main class="min-h-screen flex flex-col items-center justify-center text-center px-6 pt-24">
+<main class="min-h-screen flex flex-col items-start justify-center text-left px-6 md:px-12 pt-24 max-w-3xl" style="font-size: 14px">
   <div class="font-label text-[10px] tracking-[0.3em] uppercase text-black/40 mb-8"><span class="pulse-dot"></span>About</div>
-  <h1 class="font-headline font-black uppercase tracking-tighter text-black leading-[0.85]" style="font-size: 82px">Coming<br/>Soon</h1>
-  <p class="font-body font-light text-black/60 max-w-md mt-10 leading-relaxed">basically it's just me (Dana) checking out what's new in Israeli fashion...</p>
+  <div class="font-body font-light text-black/60 max-w-md mt-10 leading-relaxed space-y-4" style="text-align: left">
+    <p>I am finally coming out of the closet. I love clothes.</p>
+    <p>I can stare at fashion websites for hours, I recognize where someone got their shirt, and love walking around stores trying on things.</p>
+    <p>I like many different styles – minimalist, asymmetrical, edgy &amp; cool, monochromatic, colorful &amp; bold, anything that is interesting or basic with a creative twist. Mostly, I wear things that are comfortable and soft – clothes I can wear working from home as a product designer and dancing.</p>
+    <p>There are so many amazing Israeli designers I wish people knew about, so I created this site. If you like fashion and local designers, this site is for you.</p>
+    <p>Enjoy,<br/>Dana</p>
+  </div>
 </main>
 
 <script>
@@ -104,5 +111,9 @@
 
 <!-- Skimlinks -->
 <script type="text/javascript" src="https://s.skimresources.com/js/304374X1792544.skimlinks.js"></script>
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script>window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };</script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
 </body>
 </html>
