@@ -179,8 +179,8 @@
 
 <style>
 .fdrop { position: relative; display: inline-flex; }
-.fdrop-trigger { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; height: 36px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 8px; padding: 0 15px; border: 1px solid rgba(26,26,24,0.25); background: #fff; color: #1A1A18; cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
-.fdrop-trigger:hover { border-color: #1A1A18; }
+.fdrop-trigger { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; height: 36px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 8px; padding: 0 15px; border: 1px solid rgba(26,26,24,0.25); background: #fff; color: #474747; cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
+.fdrop-trigger:hover { border-color: #1A1A18; color: #1A1A18; }
 .fdrop-trigger.has-active { background: #1A1A18; color: #fff; border-color: #1A1A18; }
 .fdrop-caret { font-size: 8px; opacity: .55; transition: transform .2s; }
 .fdrop.open .fdrop-caret { transform: rotate(180deg); }
@@ -194,10 +194,17 @@
 @media (max-width: 640px){ .fdrop-panel { max-width: 280px; left: 0; } }
 </style>
 <!-- Main -->
-<main class="pt-40 pb-24 px-6 md:px-12 max-w-[1800px] mx-auto" style="font-size: 27px">
+<main class="pt-40 pb-24 px-6 md:px-12 max-w-[1800px] mx-auto" style="font-size: 27px; line-height: 1.1">
 
  <!-- Hero & Filter -->
  <header class="mb-10 flex flex-col gap-6">
+ <div class="max-w-3xl">
+ <h1 class="font-headline font-black leading-[0.82] tracking-tighter mb-8 uppercase" style="font-size: 82px; line-height: 0.8">FASHION DESIGNERS</h1>
+ <div class="font-body text-lg text-on-surface-variant max-w-xl leading-relaxed flex flex-col gap-3">
+ <p>I track Israeli fashion, so you don't have to.</p>
+ <p>From young designers to established brands, and everything in between. All styles &ndash; classic to quirky, formal to fun, morning to evening, and work to play.</p>
+ </div>
+ </div>
  <div class="w-full flex flex-col gap-4">
  <div class="flex flex-wrap items-center gap-2.5">
  <div class="fdrop"><button type="button" class="fdrop-trigger" data-drop="style">Style<span class="fdrop-caret">▾</span></button><div class="fdrop-panel" id="style-panel"><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="edgy">Edgy</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="legacy">Legacy</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="minimalist">Minimalist</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="streetwear">Streetwear</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="sustainable">Sustainable</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="natural">Natural Fabrics</button></div></div>
