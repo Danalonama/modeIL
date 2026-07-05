@@ -32,7 +32,9 @@
  #lang-toggle-map:hover { background: #000; color: #fcf9f5; }
  @media (max-width: 600px) { #lang-toggle-map { display: none !important; } #map-mobile-btn { display: flex !important; } }
  *:focus-visible { outline: 2px solid #B8748A; outline-offset: 2px; }
- .nav-logo { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 900; font-size: 1.5rem; letter-spacing: -0.04em; text-transform: uppercase; text-decoration: none; color: #000; }
+ .nav-logo { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 900; font-size: 1.5rem; letter-spacing: -0.04em; text-transform: uppercase; text-decoration: none; color: #000; display: inline-flex; align-items: baseline; gap: 10px; }
+ .nav-logo .logo-tagline { font-weight: 400; font-size: 9px; letter-spacing: 2px; line-height: 1.4; color: rgba(0,0,0,0.55); }
+ @media (max-width: 600px){ .nav-logo .logo-tagline { display: none; } }
  .nav-links { display: flex; gap: 2.5rem; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; }
  .nav-links a { color: rgba(0, 0, 0, 0.35); text-decoration: none; transition: color 0.2s; }
  .nav-links a:hover { color: #000; }
@@ -343,7 +345,7 @@
 
 <!-- Nav -->
 <nav>
- <a href="index.html" class="nav-logo">ModeIL</a>
+ <a href="index.html" class="nav-logo"><span>MODE-IL</span><span class="logo-tagline">Israeli Fashion Index</span></a>
  <div class="nav-links" id="map-nav-links">
  <a href="index.html" id="nav-designers">Designers</a>
  <a href="Boutiques.html" id="nav-stores">Boutiques</a>
@@ -361,7 +363,7 @@
 <!-- Mobile Menu -->
 <div id="map-mobile-menu" style="display:none;position:fixed;inset:0;background:#F4F4F4;z-index:999;flex-direction:column;padding:1.5rem 2rem;transform:translateX(100%);transition:transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)">
  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4rem">
- <a href="index.html" style="font-family:'Plus Jakarta Sans', sans-serif;font-weight:900;font-size:1.5rem;letter-spacing:-0.04em;text-transform:uppercase;color:#000;text-decoration:none">ModeIL</a>
+ <a href="index.html" style="font-family:'Plus Jakarta Sans', sans-serif;font-weight:900;font-size:1.5rem;letter-spacing:-0.04em;text-transform:uppercase;color:#000;text-decoration:none">MODE-IL</a>
  <button onclick="toggleMapMobileMenu()">
  <span class="material-symbols-outlined" style="font-size:24px;color:#000">close</span>
  </button>
@@ -431,10 +433,21 @@
 </div>
 
 <script>
+// ===== UTM tagging for outbound links — edit campaign tags here in ONE place =====
+const UTM = { utm_source: 'modeil', utm_medium: 'referral', utm_campaign: 'directory' };
+function withUtm(url){
+  if(!url || !/^https?:\/\//i.test(url)) return url;
+  try {
+    const u = new URL(url);
+    for(const k in UTM){ if(UTM[k]) u.searchParams.set(k, UTM[k]); }
+    return u.toString();
+  } catch(e){ return url; }
+}
+
 const DESIGNERS = [
  { name:"Agas & Tamar", url:"https://agasandtamar.com/", tags:["Jewelry","Artisan","Luxury"], desc:"Since 1998, a Tel Aviv jewelry institution. Pieces featured in Vogue, Cosmopolitan, and People, with collaborations spanning Sex and the City and a dedicated Donna Karan collection in New York.", img:"https://agasandtamar.com/wp-content/uploads/2023/06/9527-2.jpg", city:"Tel Aviv", lat:32.0572, lng:34.7565, fav:true, addresses:["43 Shabazi St, Tel Aviv"], phone:"03-5168421", email:"shop@agasandtamar.com", hours:["Sun–Thu 11:00–19:00","Fri 10:00–15:00"] },
  { name:"AKA My Culture", url:"https://aka-online.co.il/", tags:["Sustainable","Streetwear"], desc:"A curated selection of international eco-conscious labels alongside the in-house brand IN BLOOM, crafting casual Israeli fashion with an environmental conscience.", img:"https://aka-online.co.il/wp-content/uploads/2026/04/Untitled-design-37.png", city:"Giv'atayim", lat:32.0696, lng:34.8124, fav:true, addresses:["43 Rambam St, Giv'atayim"], phone:"03-730-0331", hours:["Sun–Thu 10:00–19:00","Fri 10:00–14:00"] },
- { name:"Alef Alef", url:"https://www.alefalef.co.il/", tags:["Artisan","Minimalist"], desc:"Contemporary Israeli womenswear with a focus on quality, considered design, and the enduring appeal of the everyday.", img:"https://www.alefalef.co.il/wp-content/uploads/2026/03/8_wo_1400_1814.jpg", city:"Tel Aviv", lat:32.082, lng:34.7853, fav:true, addresses:["9 Ashtori HaFarhi St, Tel Aviv"], phone:"03-6046095", hours:["Sun–Thu 07:30–19:30","Fri 09:00–13:00"] },
+ { name:"Alef Alef", url:"https://www.alefalef.co.il/", tags:["Artisan","Minimalist"], desc:"Contemporary Israeli womenswear with a focus on quality, considered design, and the enduring appeal of the everyday.", img:"https://www.alefalef.co.il/wp-content/uploads/2026/03/8_wo_1400_1814.jpg", city:"Tel Aviv", lat:32.082, lng:34.7853, fav:true, addresses:["9 Ashtori HaFarhi St, Basel Complex, Tel Aviv"], phone:"03-6125767", hours:["Sun–Thu 10:00–19:00","Fri 10:00–15:00"] },
  { name:"Alembika", url:"https://alembika.co.il/", tags:["Artisan","Minimalist"], desc:"Fluid silhouettes and considered Israeli design for women who move through the world with ease and intention.", img:"https://alembika.co.il/cdn/shop/files/TOP_RT357T_PANTS_RP351M_12.jpg?v=1773061538", city:"Tel Aviv", lat:32.0601, lng:34.7720, fav:false },
  { name:"Anat Friedman", url:"https://anatfriedman.com/", tags:["Artisan","Minimalist"], desc:"Precise, quietly elegant Israeli womenswear. Anat Friedman's designs speak in restraint, each piece a study in deliberate simplicity.", img:"https://anatfriedman.com/cdn/shop/files/anatf_2524538.jpg?v=1759238472", city:"Jerusalem", lat:31.777, lng:35.2152, fav:true, addresses:["6 Betzalel St, Jerusalem"], phone:"054-8939494", email:"info@anatfriedman.com" },
  { name:"Anjaly", url:"https://anjaly.com/", tags:["Activewear","Minimalist"], desc:"Effortless unisex loungewear and activewear for women and men, from yoga mat to street, comfort without compromise.", img:"https://anjaly.shop/cdn/shop/files/1184_1_be035c1c-985d-459e-83f8-44b2a92ff465.jpg?v=1700116722&width=4002", city:"Tel Aviv", lat:32.0607, lng:34.7783, fav:true, addresses:["10 Mikveh Israel St, Tel Aviv"], phone:"03-6868734", email:"j@anjaly.com", hours:["Sun–Thu 09:30–19:00","Fri 09:30–15:00","Sat Closed"] },
@@ -494,6 +507,7 @@ const DESIGNERS = [
  { name:"Comme il Faut", url:"https://www.comme-il-faut.com/", tags:["Artisan","Minimalist","Prints"], desc:"Comme il Faut, Studio & Outlet, Kibbutz Galuyot 29.", img:"https://comme-il-faut.com/cdn/shop/files/c_il_faut_1849_7016b057-877c-4c12-8259-b131e6480d1a.jpg?v=1773844239&width=600", city:"Tel Aviv", lat:32.0476, lng:34.7665, fav:false, addresses:["29 Kibbutz Galuyot St, Tel Aviv"], phone:"03-602-0521", hours:["Sun–Thu 10:00–20:00","Fri 10:00–16:00"] },
  { name:"Comme il Faut", url:"https://www.comme-il-faut.com/", tags:["Artisan","Minimalist","Prints"], desc:"Comme il Faut, Ramat HaSharon.", img:"https://comme-il-faut.com/cdn/shop/files/c_il_faut_1849_7016b057-877c-4c12-8259-b131e6480d1a.jpg?v=1773844239&width=600", city:"Ramat HaSharon", lat:32.1462, lng:34.8401, fav:false, addresses:["44 Ussishkin St, Ramat HaSharon"], phone:"03-5400010", hours:["Sun 10:00–19:00","Mon–Thu 10:00–19:00","Fri 10:00–14:00"] },
  { name:"Comme il Faut", url:"https://www.comme-il-faut.com/", tags:["Artisan","Minimalist","Prints"], desc:"Comme il Faut, Kikar Rabin.", img:"https://comme-il-faut.com/cdn/shop/files/c_il_faut_1849_7016b057-877c-4c12-8259-b131e6480d1a.jpg?v=1773844239&width=600", city:"Tel Aviv", lat:32.0817, lng:34.7810, fav:false, addresses:["9 Malkhei Yisrael St, Tel Aviv"], phone:"03-5290719", hours:["Sun–Thu 10:00–19:00","Fri 10:00–14:00"] },
+ { name:"Comme il Faut", url:"https://www.comme-il-faut.com/", tags:["Artisan","Minimalist","Prints"], desc:"Comme il Faut, Rehovot.", img:"https://comme-il-faut.com/cdn/shop/files/c_il_faut_1849_7016b057-877c-4c12-8259-b131e6480d1a.jpg?v=1773844239&width=600", city:"Rehovot", lat:31.8928, lng:34.8113, fav:false, addresses:["1 Chaim Weizmann St, Rehovot"], phone:"08-931-5591", hours:["Sun–Thu 10:00–19:00","Fri 10:00–14:00"] },
  // Alembika main TLV - 87 Ibn Gvirol
  { name:"Alembika", url:"https://alembika.co.il/", tags:["Artisan","Minimalist"], desc:"Alembika flagship store, 87 Ibn Gvirol, Tel Aviv.", img:"https://alembika.co.il/cdn/shop/files/TOP_RT357T_PANTS_RP351M_12.jpg?v=1773061538", city:"Tel Aviv", lat:32.0823, lng:34.7813, fav:false, addresses:["87 Ibn Gvirol St, Tel Aviv"], phone:"03-5220091", hours:["Sun–Thu 09:30–19:00","Fri 10:00–14:00"] },
  { name:"Alembika", url:"https://alembika.co.il/", tags:["Artisan","Minimalist"], desc:"Alembika Outlet, 5 Tel Giborim, Tel Aviv.", img:"https://alembika.co.il/cdn/shop/files/TOP_RT357T_PANTS_RP351M_12.jpg?v=1773061538", city:"Tel Aviv", lat:32.0522, lng:34.7624, fav:false, addresses:["5 Tel Giborim St, Tel Aviv (Outlet)"], phone:"03-6837157", hours:["Sun–Thu 10:00–17:00","Fri 10:00–14:00"] },
@@ -621,7 +635,7 @@ function openPanel(d) {
  }
  panelTags.innerHTML = d.tags.map(t => `<span class="panel-tag">${t}</span>`).join('');
  panelDesc.textContent = d.desc;
- panelLink.href = d.url;
+ panelLink.href = withUtm(d.url);
 
  // Image
  if (d.img) {
@@ -1184,9 +1198,16 @@ applyMapLang = function() {
 
 <!-- Skimlinks -->
 <script type="text/javascript" src="https://s.skimresources.com/js/304374X1792544.skimlinks.js"></script>
-<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
-<script defer src="/_vercel/insights/script.js"></script>
-<script>window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };</script>
-<script defer src="/_vercel/speed-insights/script.js"></script>
+<script>
+(function(){
+  var h = location.hostname;
+  var live = /(^|\.)mode-il\.com$/.test(h) || /\.vercel\.app$/.test(h);
+  if(!live) return; // skip analytics in local/preview so no 404s
+  window.va = window.va || function(){ (window.vaq = window.vaq || []).push(arguments); };
+  var a = document.createElement('script'); a.defer = true; a.src = '/_vercel/insights/script.js'; document.head.appendChild(a);
+  window.si = window.si || function(){ (window.siq = window.siq || []).push(arguments); };
+  var s = document.createElement('script'); s.defer = true; s.src = '/_vercel/speed-insights/script.js'; document.head.appendChild(s);
+})();
+</script>
 </body>
 </html>

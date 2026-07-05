@@ -86,7 +86,10 @@
 
 <!-- Nav -->
 <nav class="fixed top-0 w-full z-50 bg-[#F4F4F4]/95 backdrop-blur-sm border-b border-[#1A1A18]/10 flex justify-between items-center px-8 md:px-12 py-6">
- <a href="index.html" class="font-headline font-black text-2xl tracking-tighter text-black uppercase">ModeIL</a>
+ <a href="index.html" class="flex items-baseline gap-2.5 group">
+ <span class="font-headline font-black text-2xl tracking-tighter text-black uppercase" style="font-family: Plus Jakarta Sans">MODE-IL</span>
+ <span class="font-label tracking-[0.2em] uppercase hidden sm:inline" style="font-size:9px;color:rgba(0,0,0,0.55);letter-spacing:2px;line-height:1.4">Israeli Fashion Index</span>
+ </a>
  <div class="hidden md:flex items-center gap-12">
  <div class="flex gap-8 font-label uppercase tracking-widest text-sm">
  <a class="text-black/40 hover:text-black transition-colors duration-300" href="index.html">Designers</a>
@@ -107,7 +110,7 @@
 <!-- Mobile Menu Overlay -->
 <div id="mobile-menu-stores" class="fixed inset-0 bg-[#F4F4F4] z-[999] flex-col px-8 py-6 md:hidden" style="background:#ffffff;top:0;left:0;right:0;bottom:0;width:100%;height:100dvh;display:none;transform:translateX(100%);transition:transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
  <div class="flex justify-between items-center mb-16">
- <a href="index.html" class="font-headline font-black text-2xl tracking-tighter text-black uppercase">ModeIL</a>
+ <a href="index.html" class="font-headline font-black text-2xl tracking-tighter text-black uppercase">MODE-IL</a>
  <button onclick="toggleStoresMobileMenu()">
  <span class="material-symbols-outlined text-black">close</span>
  </button>
@@ -142,7 +145,7 @@ function toggleStoresMobileMenu(){
  <div class="max-w-3xl">
  <p class="font-label text-[10px] tracking-[0.3em] uppercase text-on-surface-variant mb-6 opacity-60">
 </p>
- <h1 class="font-headline font-black leading-[0.82] tracking-tighter mb-8 uppercase" style="font-size: 82px">MULTI-BRAND
+ <h1 class="font-headline font-black leading-[0.82] tracking-tighter mb-8 uppercase" style="font-size: clamp(34px, 11vw, 82px)">MULTI-BRAND
 BOUTIQUES</h1>
  <p class="font-body text-lg text-on-surface-variant max-w-lg leading-relaxed">
  Where Israeli design lives together. Concept stores, boutiques and curated edits stocking multiple Israeli brands - the easiest place to discover, try on, and shop the local scene in one stop.
@@ -188,7 +191,7 @@ BOUTIQUES</h1>
 <!-- Footer -->
 <footer class="bg-[#EDE9E1] text-black flex flex-col md:flex-row justify-between items-center w-full px-8 md:px-12 py-14">
  <div class="mb-8 md:mb-0">
- <div class="font-headline font-black text-xl tracking-tighter uppercase text-black">ModeIL</div>
+ <div class="font-headline font-black text-xl tracking-tighter uppercase text-black">MODE-IL</div>
  <div class="font-label text-[9px] tracking-[0.25em] uppercase opacity-50 mt-2">Israeli Fashion Index · © 2026 · All Rights Reserved</div>
  </div>
  <div class="flex gap-10 font-label text-[9px] tracking-[0.25em] uppercase">
@@ -315,8 +318,10 @@ const STORES = [
  {
  name: "Shtayim",
  region: "Tel Aviv",
+ url: "https://shtaim.store/",
  tagLabels: ["Multi-Brand", "Boutique"],
  desc: "A multi-brand boutique of Israeli womenswear and design. King George 86, Tel Aviv · 050-3340018.",
+ img: "images/shtaim.webp",
  },
  {
  name: "Pink",
@@ -328,8 +333,10 @@ const STORES = [
  {
  name: "Bashin VeAyin",
  region: "North",
+ url: "https://www.instagram.com/bshin_veain/",
  tagLabels: ["Multi-Brand", "Boutique"],
  desc: "A multi-brand boutique of Israeli womenswear and design. HaTzaftzefa 1, Ramat Yishai · 04-983-0821.",
+ img: "images/bashin-veayin.png",
  },
  {
  name: "Ronita",
@@ -338,16 +345,12 @@ const STORES = [
  desc: "A multi-brand boutique of Israeli womenswear and design. Derech HaOren 1, Kibbutz Merhavia · 04-6898222.",
  },
  {
- name: "Hagar Boutique",
- region: "North",
- tagLabels: ["Multi-Brand", "Second-Hand"],
- desc: "A second-hand boutique of Israeli fashion and vintage finds. Boacha Yodfat complex · 04-8225866.",
- },
- {
  name: "Lola",
  region: "Pardes Hanna",
+ url: "https://www.facebook.com/LOLA.STYLISH/",
  tagLabels: ["Multi-Brand", "Boutique"],
  desc: "A multi-brand boutique of Israeli womenswear and design. HaMeyasdim 25, Karkur · 04-6247192 / 058-6606123.",
+ img: "images/lola-boutique.jpg",
  },
  {
  name: "Moment",
@@ -355,6 +358,14 @@ const STORES = [
  tagLabels: ["Multi-Brand", "Boutique"],
  desc: "A multi-brand boutique of Israeli womenswear and design. Rehavat Adi 1, Shoham · 054-4972133.",
  img: "https://scontent.ftlv5-1.fna.fbcdn.net/v/t39.30808-6/571327848_1425271422931908_4352043748022182065_n.jpg?stp=dst-jpg_tt6&cstp=mx1037x1379&ctp=s1037x1379&_nc_cat=107&ccb=1-7&_nc_sid=833d8c&_nc_ohc=kUYq1cb_sgwQ7kNvwF3Nt4J&_nc_oc=AdqMUmWo0CF3yFGsng-E_x0KtXU2LfJ-W-R-Gwyqy8BNSm8WuWuGZmOL-nERzd7ZBbMxvnxaWOIk4I7YaHLC2ieU&_nc_zt=23&_nc_ht=scontent.ftlv5-1.fna&_nc_gid=x6uJLT-8oLEkRveAHS2I_A&_nc_ss=7b2a8&oh=00_Af-jtm70GRk3UU7rtqq1oXLqrSmukMGfhnT_BwZYjrzpFg&oe=6A2C1F8C",
+ },
+ {
+ name: "MYKI",
+ region: "Tel Aviv",
+ url: "https://mykiboutique.com/",
+ tagLabels: ["Multi-Brand", "Sustainable"],
+ desc: "An artisanal, tightly curated boutique operating since 2004 in Tel Aviv's White City. Alongside the house Maya Zukerman brand, a hand-picked, ecological-conscious edit of long-lasting, unisex design from small-scale makers in Italy, France, Denmark, Belgium, Japan, Australia, the US, and beyond, slow fashion, made to last. 85 Yehuda Halevi St, Tel Aviv · +972-3-5273992.",
+ img: "https://mykiboutique.com/cdn/shop/files/DSC08896_1.jpg?v=1771234650&width=550",
  },
  {
  name: "Michli",
@@ -387,6 +398,16 @@ REGIONS.forEach(r => {
  btn.onclick = () => { activeRegion = r; document.querySelectorAll('.region-btn').forEach(styleRegionBtn); render(); };
  regionBar.appendChild(btn);
 });
+// ===== UTM tagging for outbound links — edit campaign tags here in ONE place =====
+const UTM = { utm_source: 'modeil', utm_medium: 'referral', utm_campaign: 'directory' };
+function withUtm(url){
+  if(!url || !/^https?:\/\//i.test(url)) return url;
+  try {
+    const u = new URL(url);
+    for(const k in UTM){ if(UTM[k]) u.searchParams.set(k, UTM[k]); }
+    return u.toString();
+  } catch(e){ return url; }
+}
 function styleRegionBtn(btn){
  const on = btn.dataset.region === activeRegion;
  btn.style.borderColor = on ? '#1A1A18' : 'transparent';
@@ -449,7 +470,7 @@ function render() {
  <p class="font-body text-sm text-on-surface-variant leading-relaxed">${s.desc}</p>
  ${s.url ? `<div class="flex flex-wrap gap-4 items-center">
  <a class="font-label text-[10px] tracking-widest uppercase underline underline-offset-4 hover:opacity-40 transition-opacity w-fit"
- href="${s.url}" target="_blank" rel="noopener">Website →</a>
+ href="${withUtm(s.url)}" target="_blank" rel="noopener">Website →</a>
  </div>` : ''}
  </div>
  `;
@@ -489,9 +510,16 @@ render();
 
 <!-- Skimlinks -->
 <script type="text/javascript" src="https://s.skimresources.com/js/304374X1792544.skimlinks.js"></script>
-<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
-<script defer src="/_vercel/insights/script.js"></script>
-<script>window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };</script>
-<script defer src="/_vercel/speed-insights/script.js"></script>
+<script>
+(function(){
+  var h = location.hostname;
+  var live = /(^|\.)mode-il\.com$/.test(h) || /\.vercel\.app$/.test(h);
+  if(!live) return; // skip analytics in local/preview so no 404s
+  window.va = window.va || function(){ (window.vaq = window.vaq || []).push(arguments); };
+  var a = document.createElement('script'); a.defer = true; a.src = '/_vercel/insights/script.js'; document.head.appendChild(a);
+  window.si = window.si || function(){ (window.siq = window.siq || []).push(arguments); };
+  var s = document.createElement('script'); s.defer = true; s.src = '/_vercel/speed-insights/script.js'; document.head.appendChild(s);
+})();
+</script>
 </body>
 </html>
