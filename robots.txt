@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mode-il.com/sitemap.xml

@@ -7,7 +7,19 @@
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="manifest" href="site.webmanifest">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>ModeIL, Boutiques</title>
+<title>ModeIL — Multi-Brand Boutiques</title>
+<meta name="description" content="A guide to Israel’s independent multi-brand boutiques and concept stores, from Tel Aviv to the Galilee, curating local designers under one roof.">
+<link rel="canonical" href="https://mode-il.com/Boutiques.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ModeIL">
+<meta property="og:title" content="ModeIL — Multi-Brand Boutiques">
+<meta property="og:description" content="A guide to Israel’s independent multi-brand boutiques and concept stores, from Tel Aviv to the Galilee, curating local designers under one roof.">
+<meta property="og:url" content="https://mode-il.com/Boutiques.html">
+<meta property="og:image" content="https://mode-il.com/apple-touch-icon.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ModeIL — Multi-Brand Boutiques">
+<meta name="twitter:description" content="A guide to Israel’s independent multi-brand boutiques and concept stores, from Tel Aviv to the Galilee, curating local designers under one roof.">
+<meta name="twitter:image" content="https://mode-il.com/apple-touch-icon.png">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Epilogue:wght@400;700;900&amp;family=Inter:wght@300;400;600&amp;family=Space+Grotesk:wght@300;400;700&amp;display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -76,9 +88,10 @@
  font-family: 'Plus Jakarta Sans', monospace; font-size: 10px;
  letter-spacing: 0.2em; text-transform: uppercase; color: #555;
  text-align: center; padding: 2rem;
- width: 100%; aspect-ratio: 16 / 9;
+ width: 100%; aspect-ratio: 4 / 3;
  }
- .masonry-col { display: flex; flex-direction: column; gap: 64px; min-width: 0; }
+ .store-img-wrap { aspect-ratio: 4 / 3; }
+ .store-row + .store-row { border-top: 1px solid rgba(26,26,24,0.12); }
  *:focus-visible { outline: 2px solid #B8748A; outline-offset: 2px; }
 </style>
 </head>
@@ -148,7 +161,7 @@ function toggleStoresMobileMenu(){
  <h1 class="font-headline font-black leading-[0.82] tracking-tighter mb-8 uppercase" style="font-size: clamp(34px, 11vw, 82px)">MULTI-BRAND
 BOUTIQUES</h1>
  <p class="font-body text-lg text-on-surface-variant max-w-lg leading-relaxed">
- Where Israeli design lives together. Concept stores, boutiques and curated edits stocking multiple Israeli brands - the easiest place to discover, try on, and shop the local scene in one stop.
+ Concept stores, boutiques and curated edits stocking multiple Israeli brands - the easiest place to discover, try on, and shop the local scene in one stop.
  </p>
  </div>
  <div class="flex items-center gap-3 mt-2">
@@ -160,15 +173,15 @@ BOUTIQUES</h1>
  </div>
  </header>
 
- <!-- Grid -->
- <section id="store-grid" class="grid gap-x-8 items-start"></section>
+ <!-- List -->
+ <section id="store-grid" class="flex flex-col gap-16"></section>
 
  <!-- CTA -->
  <section class="mt-56 mb-12 border-t border-[#1A1A18]/12 pt-24">
  <div class="flex flex-col md:flex-row items-start md:items-end justify-between gap-12">
  <div>
  <h2 class="font-headline font-black text-[clamp(3rem, 8vw, 6.5rem)] uppercase tracking-tighter leading-[0.85] mb-8">
- Know a<br>Store?
+ Know a Store?
  </h2>
  <p class="font-body text-lg text-on-surface-variant max-w-md leading-relaxed">
  Boutiques, concept stores, pop-ups stocking Israeli brands, if we're missing one, tell us.
@@ -211,26 +224,26 @@ const STORES = [
  },
  {
  name: "Seestarz",
- region: "Online",
+ region: "Center",
  url: "https://seestarz.com/",
  tagLabels: ["Multi-Brand", "Boutique"],
- desc: "Born from a sisterhood and a wildly popular Instagram fashion blog, Alona and Daniela's curated edit covers swimwear, streetwear and more from a roster of brands they love.",
- img: "https://seestarz.com/cdn/shop/files/017A1703_0b116fe1-b3c1-4e6d-b421-82923d2984f6.jpg?v=1774079930&width=1800",
+ desc: "Born from a sisterhood and a wildly popular Instagram fashion blog, Alona and Daniela's curated edit covers swimwear, streetwear and more from a roster of brands they love. One flagship store, Big Fashion Glilot mall, 2nd floor. Mall hours: Sun\u2013Thu 9:30\u201322:00, Fri 9:00\u201317:00, also open Saturdays.",
+ img: "https://d1tm14lrsghf7q.cloudfront.net/public/media/204774/conversions/1-(24)-cover.jpg",
  },
  {
  name: "Zohi Sabina",
- region: "Online",
+ region: "Tel Aviv",
  url: "https://www.zohisabina.co.il/",
  tagLabels: ["Multi-Brand", "Womenswear"],
- desc: "A curated multi-brand boutique stocking a refined edit of Israeli womenswear and accessories, quietly confident essentials and considered seasonal pieces in one place.",
+ desc: "A curated multi-brand boutique stocking a refined edit of Israeli womenswear and accessories, quietly confident essentials and considered seasonal pieces in one place. 15 Brodetsky St, Ramat Aviv \u00b7 pickup by appointment \u00b7 03-6416322.",
  img: "https://www.zohisabina.co.il/cdn/shop/files/573_41a8cae3-08f4-4634-a891-5ee37bdd4cbc.jpg?v=1777837389&width=1445",
  },
  {
  name: "Shmua",
- region: "Online",
+ region: "HaSharon",
  url: "https://shmua.co.il/",
- tagLabels: ["Multi-Brand", "Concept Store"],
- desc: "An Israeli concept shop bringing together a thoughtful mix of local labels, clothing, accessories and lifestyle pieces under one quietly opinionated roof.",
+ tagLabels: ["Multi-Brand", "Pop-Up"],
+ desc: "A fashion shop open just one week a month in Beit Yitzhak, a rotating, always-fresh edit of Israeli designer clothing, jewelry, shoes and accessories with personal service. Check the site for this month's open week before visiting \u2014 Horadim 30, Beit Yitzhak-Sha'ar Hefer.",
  img: "https://shmua.co.il/wp-content/uploads/2025/10/ChatGPT-Image-Sep-9-2025-10_32_40-PM-1.webp",
  },
  {
@@ -243,10 +256,10 @@ const STORES = [
  },
  {
  name: "Haparlament",
- region: "Pardes Hanna",
+ region: "HaSharon",
  url: "https://www.instagram.com/haparlament_atar/",
  tagLabels: ["Multi-Brand", "Boutique"],
- desc: "A multi-brand boutique stocking Israeli designers, followed and shopped through Instagram.",
+ desc: "A multi-brand boutique stocking Israeli designers, at the train station complex in Beit Yehoshua.",
  img: "https://madambubu.com/wp-content/uploads/2026/04/1872-2025-04-14-BU-BU-1862-scaled.jpg",
  instagram: "haparlament_atar",
  },
@@ -265,7 +278,7 @@ const STORES = [
  url: "https://www.razili.co.il/",
  tagLabels: ["Multi-Brand", "Boutique"],
  desc: "Razili, also operating as a multi-brand store stocking a curated mix of Israeli labels alongside her own line.",
- img: "https://www.razili.co.il/cdn/shop/products/forera-shirts-house-of-jaffa-x-razili-black-001-985218.jpg?v=1676843618&width=1800",
+ img: "images/razili-storefront.png",
  },
  {
  name: "Rene and Danielle",
@@ -285,10 +298,10 @@ const STORES = [
  },
  {
  name: "AKA My Culture",
- region: "Online",
+ region: "Center",
  url: "https://aka-online.co.il/",
  tagLabels: ["Multi-Brand", "Sustainable"],
- desc: "A curated selection of international eco-conscious labels, DR. DENIM, THINKING MU, BAGGU, alongside the in-house brand IN BLOOM, crafting casual Israeli fashion with an environmental conscience.",
+ desc: "A curated selection of international eco-conscious labels, DR. DENIM, THINKING MU, BAGGU, alongside the in-house brand IN BLOOM, crafting casual Israeli fashion with an environmental conscience. Rambam 43, Givatayim.",
  img: "https://aka-online.co.il/wp-content/uploads/2026/05/aka-10413-copy.jpg",
  },
  {
@@ -297,15 +310,15 @@ const STORES = [
  url: "https://storyonline.co.il/",
  tagLabels: ["Multi-Brand", "Concept Store", "Sustainable"],
  desc: "Founded in 2008 to rewrite the Israeli shopping experience, a multi-brand chain that hand-picks labels with a conscience. Right materials, fair production, animal welfare, and pieces built to last. Beauty matters, but so does the story behind it. Give a damn.",
- img: "https://storyonline.co.il/cdn/shop/files/82P36CRM484_5.jpg?v=1757847550",
+ img: "https://storyonline.co.il/cdn/shop/files/e06c10ca7d7bb486e24662d5abce0a7b.jpg?v=1672234325&width=1500",
  },
  {
  name: "Comme il Faut",
- region: "Tel Aviv",
+ region: "Nationwide",
  url: "https://www.comme-il-faut.com/",
  tagLabels: ["Multi-Brand", "Concept Store", "Womenswear"],
- desc: "The iconic Comme il Faut space at the Tel Aviv port, a feminist concept store and gallery that carries the house's own artistic womenswear alongside a curated selection of other Israeli labels.",
- img: "https://comme-il-faut.com/cdn/shop/files/c_il_faut_457.jpg?v=1773851576&width=600",
+ desc: "A feminist concept store and gallery carrying the house's own artistic womenswear alongside a curated selection of other Israeli labels. New flagship at 28 Levontin St, Tel Aviv (03-5336405), plus a studio outlet/vintage shop, Ramat HaSharon, Rehovot, and Kikar Rabin branches.",
+ img: "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlK0sMvEVO50tW2vlo09UdqHvDoKPDZOBXOmQt57c_Xole6SHsl1P1del2hwBKnMq3JWSA65s8_KjJYaeB1vGTj-NQnTx3xvT479-hVrqi2eb7zRm87ZyD6hMIoMktdoicxD9JrjA=s1360-w1360-h1020-rw",
  },
  {
  name: "En Culture",
@@ -357,7 +370,7 @@ const STORES = [
  region: "Center",
  tagLabels: ["Multi-Brand", "Boutique"],
  desc: "A multi-brand boutique of Israeli womenswear and design. Rehavat Adi 1, Shoham · 054-4972133.",
- img: "https://scontent.ftlv5-1.fna.fbcdn.net/v/t39.30808-6/571327848_1425271422931908_4352043748022182065_n.jpg?stp=dst-jpg_tt6&cstp=mx1037x1379&ctp=s1037x1379&_nc_cat=107&ccb=1-7&_nc_sid=833d8c&_nc_ohc=kUYq1cb_sgwQ7kNvwF3Nt4J&_nc_oc=AdqMUmWo0CF3yFGsng-E_x0KtXU2LfJ-W-R-Gwyqy8BNSm8WuWuGZmOL-nERzd7ZBbMxvnxaWOIk4I7YaHLC2ieU&_nc_zt=23&_nc_ht=scontent.ftlv5-1.fna&_nc_gid=x6uJLT-8oLEkRveAHS2I_A&_nc_ss=7b2a8&oh=00_Af-jtm70GRk3UU7rtqq1oXLqrSmukMGfhnT_BwZYjrzpFg&oe=6A2C1F8C",
+ img: "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWkC943IG9JR7JhEqkjk1BowHBF8ElnwYeObElNNCHyhYi31a5ZIXvofVRQlQPs6lqZ3cK1RQghmTclbM-JuSSuJKIafwREn1MVWaarh4pEMW01-R4iox_7TUUfQVOaf2Kbhshw7=s1360-w1360-h1020-rw",
  },
  {
  name: "MYKI",
@@ -368,10 +381,11 @@ const STORES = [
  img: "https://mykiboutique.com/cdn/shop/files/DSC08896_1.jpg?v=1771234650&width=550",
  },
  {
- name: "Michli",
+ name: "Michali",
  region: "Jerusalem",
  tagLabels: ["Multi-Brand", "Boutique"],
  desc: "A multi-brand boutique of Israeli womenswear and design. Betzalel 6, Jerusalem · 02-6254303.",
+ img: "https://lh3.googleusercontent.com/place-photos/AJRVUZOOgT2FV4ctzYMmb9o9yS550fAg0W-jeDYz1raF4FkDRvVDqqZ5-IgqJMmR5Fdv9EFTvOW4uGM3i61doXI7BzAn1cPjkJILbdvKu9Be0MS_lhCXI0oeLOZ0k_zmQexdBX6rVWF4sFxhJuYysg=s1600-w1280-h1280",
  },
  {
  name: "Reuta",
@@ -381,6 +395,8 @@ const STORES = [
  },
 ];
 
+// Boutiques with a pinned physical location on the Map page.
+const MAP_STORES = new Set(["Tema","DA Studio","En Culture","Shtayim","Pink","Bashin VeAyin","Ronita","Lola","Moment","MYKI","Michali","Reuta","AKA My Culture","CALA","Comme il Faut","Razili","Story","Belle and Sue"]);
 const grid = document.getElementById('store-grid');
 const countEl = document.getElementById('store-count');
 let FAVORITES = new Set(JSON.parse(localStorage.getItem('modeil-favs') || '[]'));
@@ -428,58 +444,87 @@ function fallbackImg(name) {
  const c = PLACEHOLDER_COLORS[h % PLACEHOLDER_COLORS.length];
  return `<div class="placeholder-img w-full" style="background:${c}">${name}</div>`;
 }
+// Swap a broken image for its colored placeholder (keeps the surrounding wrapper/link)
+function storeImgFallback(img){
+ const p = img.parentElement;
+ if(p) p.innerHTML = fallbackImg(img.dataset.name || img.alt || '');
+}
+window.storeImgFallback = storeImgFallback;
 
 function getColCount() {
- const w = window.innerWidth;
- if (w >= 1024) return 3;
- if (w >= 640) return 2;
- return 1;
+ return 1; // list layout — one row per boutique, no column math needed
 }
 
-function render() {
- const filtered = STORES.filter(s => activeRegion === 'All' || s.region === activeRegion);
- const sorted = [...filtered].sort((a, b) => a.name.localeCompare(b.name));
- grid.innerHTML = '';
- const cols = getColCount();
- grid.style.gridTemplateColumns = `repeat(${cols}, minmax(0, 1fr))`;
- const buckets = [];
- for (let c = 0; c < cols; c++) {
- const col = document.createElement('div');
- col.className = 'masonry-col';
- grid.appendChild(col);
- buckets.push(col);
- }
- sorted.forEach((s, i) => {
- const card = document.createElement('div');
- card.className = 'store-card flex flex-col group';
- card.innerHTML = `
- <div class="relative overflow-hidden bg-surface-container-low">
+// Grouped area sections shown when no single region filter is active.
+const AREA_GROUPS = [
+ { label: 'Tel Aviv & Center', regions: ['Tel Aviv', 'Center'] },
+ { label: 'HaSharon', regions: ['HaSharon'] },
+ { label: 'Jerusalem', regions: ['Jerusalem'] },
+ { label: 'North', regions: ['North'] },
+ { label: 'Pardes Hanna', regions: ['Pardes Hanna'] },
+ { label: 'Nationwide', regions: ['Nationwide'] },
+ { label: 'Online', regions: ['Online'] },
+];
+
+function cardHtml(s) {
+ return `
+ <div class="store-img-wrap relative overflow-hidden bg-surface-container-low shrink-0">
  ${s.img
- ? `<img class="store-img w-full h-auto block group-hover:scale-105" src="${s.img}" alt="${s.name}" loading="lazy"/>`
+ ? `<img class="store-img w-full h-full object-cover block" src="${s.img}" alt="${s.name}" data-name="${(s.name || '').replace(/"/g, '&quot;')}" loading="lazy" onerror="storeImgFallback(this)"/>`
  : fallbackImg(s.name)}
  <div class="absolute inset-0 bg-primary/8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
  </div>
- <div class="mt-6 flex flex-col gap-3">
+ <div class="flex flex-col gap-3 justify-center min-w-0">
  <div class="flex items-start justify-between gap-3">
- <h2 class="font-headline font-black text-2xl uppercase tracking-tighter leading-none">${s.name}</h2>
+ <h2 class="font-headline font-black text-2xl md:text-3xl uppercase tracking-tighter leading-none">${s.name}</h2>
  <button class="heart-btn shrink-0${FAVORITES.has(s.name) ? ' saved' : ''}" data-name="${s.name}" aria-label="Save to favorites" onclick="toggleFav(this)" style="margin-top:-2px">
  <span class="material-symbols-outlined heart-icon" style="font-size:20px;${FAVORITES.has(s.name) ? 'font-variation-settings:\'FILL\' 1,\'wght\' 400,\'GRAD\' 0,\'opsz\' 24;color:#B8748A' : ''}">favorite</span>
  </button>
  </div>
  <div class="flex flex-wrap gap-2">${s.region ? `<span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">${s.region}</span>` : ''}</div>
- <p class="font-body text-sm text-on-surface-variant leading-relaxed">${s.desc}</p>
- ${s.url ? `<div class="flex flex-wrap gap-4 items-center">
- <a class="font-label text-[10px] tracking-widest uppercase underline underline-offset-4 hover:opacity-40 transition-opacity w-fit"
- href="${withUtm(s.url)}" target="_blank" rel="noopener">Website →</a>
- </div>` : ''}
+ <p class="font-body text-sm text-on-surface-variant leading-relaxed max-w-xl">${s.desc}</p>
+ <div class="flex flex-wrap gap-4 items-center">
+ ${s.url ? `<a class="font-label text-[10px] tracking-widest uppercase underline underline-offset-4 hover:opacity-40 transition-opacity w-fit" href="${withUtm(s.url)}" target="_blank" rel="noopener">Website →</a>` : ''}
+ ${MAP_STORES.has(s.name) ? `<a class="font-label text-[10px] tracking-widest uppercase underline underline-offset-4 hover:opacity-40 transition-opacity w-fit" href="Map.html?brand=${encodeURIComponent(s.name)}">View on Map →</a>` : ''}
+ </div>
  </div>
  `;
- grid.appendChild(card);
+}
+
+function buildList(items) {
+ const wrap = document.createElement('div');
+ wrap.className = 'flex flex-col';
+ items.forEach(s => {
+ const row = document.createElement('div');
+ row.className = 'store-row store-card group grid grid-cols-[160px_1fr] sm:grid-cols-[220px_1fr] md:grid-cols-[280px_1fr] gap-6 md:gap-10 py-8 first:pt-0';
+ row.innerHTML = cardHtml(s);
+ wrap.appendChild(row);
  });
- // distribute into masonry columns
- const cards = [...grid.querySelectorAll(':scope > .store-card')];
- cards.forEach((c, i) => buckets[i % buckets.length].appendChild(c));
- countEl.textContent = `${sorted.length} ${sorted.length === 1 ? 'Boutique' : 'Boutiques'}`;
+ return wrap;
+}
+
+function render() {
+ grid.innerHTML = '';
+ let total = 0;
+
+ if (activeRegion === 'All') {
+ AREA_GROUPS.forEach(group => {
+ const items = STORES.filter(s => group.regions.includes(s.region)).sort((a, b) => a.name.localeCompare(b.name));
+ if (!items.length) return;
+ total += items.length;
+ const section = document.createElement('div');
+ section.className = 'flex flex-col gap-6';
+ section.innerHTML = `<h3 class="font-headline font-black uppercase tracking-tighter border-b border-[#1A1A18]/15 pb-4" style="font-size: clamp(22px, 3.4vw, 34px)">${group.label}</h3>`;
+ section.appendChild(buildList(items));
+ grid.appendChild(section);
+ });
+ } else {
+ const items = STORES.filter(s => s.region === activeRegion).sort((a, b) => a.name.localeCompare(b.name));
+ total = items.length;
+ if (items.length) grid.appendChild(buildList(items));
+ }
+
+ countEl.textContent = `${total} ${total === 1 ? 'Boutique' : 'Boutiques'}`;
 }
 
 let _rsz;
