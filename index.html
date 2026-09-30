@@ -4335,87 +4335,28 @@ window.tagHtml = function(labels) {
  return _origTagHtml(labels);
 };
 
-// Description translation cache (English -> Hebrew)
+// Pre-authored English -> Hebrew description translations, baked into
+// the site. Populated over time; falls back to English for any missing
+// key. No runtime API calls — the previous implementation used
+// window.claude.complete, which only exists inside the design tool and
+// silently failed on the deployed site.
+const DESC_HE = {
+};
+
+// Any translations previously cached in the browser (from when the design
+// tool was still producing them at runtime) still take precedence, so
+// returning visitors don't lose their existing Hebrew view.
 const descCache = (() => {
- try { return JSON.parse(localStorage.getItem('descHeCache') || '{}'); }
- catch { return {}; }
+ let stored = {};
+ try { stored = JSON.parse(localStorage.getItem('descHeCache') || '{}'); } catch {}
+ return { ...DESC_HE, ...stored };
 })();
-let translationInFlight = false;
 
-async function translateBatch(batch) {
- // Build numbered prompt; expect JSON array back
- const list = batch.map((b, i) => `[${i + 1}] ${b.en}`).join('\n\n');
- const prompt = `Translate these English fashion brand descriptions into natural, fluent Hebrew. Rules:
-- Keep brand names (e.g. "Tel Aviv", "Comme il Faut", "Donna Karan") in their original form.
-- Keep punctuation, em-dashes, and tone faithful to the original.
-- Do NOT add a preamble, notes, or numbering text. Return ONLY a JSON array of strings, one per input, in the same order.
-
-Inputs:
-${list}`;
- let raw;
- try {
- raw = await window.claude.complete({ messages: [{ role: 'user', content: prompt }] });
- } catch (e) {
- console.error('translate failed', e);
- return null;
- }
- // Extract first JSON array
- const m = raw.match(/\[[\s\S]*\]/);
- if (!m) return null;
- try {
- const arr = JSON.parse(m[0]);
- if (!Array.isArray(arr) || arr.length !== batch.length) return null;
- return arr;
- } catch { return null; }
-}
-
-async function translateDescriptions() {
+function translateDescriptions() {
  if (currentLang !== 'he') return;
- const elements = document.querySelectorAll('.desc-text');
- const toTranslate = [];
- elements.forEach(el => {
- const en = el.dataset.descEn;
- if (!en) return;
- const enClean = en.replace(/&quot;/g, '"');
- if (descCache[enClean]) {
- // Always apply cached, even on re-renders during in-flight fetches
- el.textContent = descCache[enClean];
- el.style.opacity = '';
- } else {
- toTranslate.push({ el, en: enClean });
- }
- });
- // Only the fetch loop is guarded so we don't issue duplicate batches
- if (toTranslate.length === 0 || translationInFlight) return;
- translationInFlight = true;
- toTranslate.forEach(({ el }) => { el.style.opacity = '0.5'; });
- const batchSize = 5;
- for (let i = 0; i < toTranslate.length; i += batchSize) {
- const batch = toTranslate.slice(i, i + batchSize);
- const translations = await translateBatch(batch);
- if (translations) {
- batch.forEach((b, idx) => {
- const he = translations[idx];
- if (he) {
- descCache[b.en] = he;
- if (currentLang === 'he') {
- // Re-query current DOM element (card may have been re-rendered)
- const live = document.querySelector(`.desc-text[data-desc-en="${CSS.escape(b.en).replace(/\\\"/g,'\\"')}"]`) || b.el;
- live.textContent = he;
- live.style.opacity = '';
- }
- }
- });
- try { localStorage.setItem('descHeCache', JSON.stringify(descCache)); } catch {}
- } else {
- batch.forEach(b => { b.el.style.opacity = ''; });
- }
- }
- translationInFlight = false;
- // After batch completes, re-apply cache to any cards that re-rendered during the wait
  document.querySelectorAll('.desc-text').forEach(el => {
  const en = (el.dataset.descEn || '').replace(/&quot;/g, '"');
- if (descCache[en] && currentLang === 'he') {
+ if (descCache[en]) {
  el.textContent = descCache[en];
  el.style.opacity = '';
  }
@@ -4434,7 +4375,7 @@ window.renderCards = function(filtered) {
  // Update count
  const n = document.querySelectorAll('.designer-card:not(.hidden-card)').length;
  countEl.textContent = TRANSLATIONS.he.designersCount(n, total);
- // Translate descriptions (async, uses cache)
+ // Apply pre-authored Hebrew descriptions where available
  translateDescriptions();
  }
 };
