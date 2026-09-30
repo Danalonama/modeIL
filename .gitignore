@@ -1,0 +1,33 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Node (if you ever add tooling)
+node_modules/
+npm-debug.log*
+
+# Vercel
+.vercel
+vercel-*-recovery-codes.txt
+
+# Local Claude Code session state
+.claude/
+
+# Local-only backup/archive folders (not part of the deployed site)
+_archive/
+_old-root-backup/
+
+# Working/export artifacts — not part of the deployed site
+screenshots/
+uploads/
+index-squares.html
+"ModeIL - Israeli Fashion Index.html"
+ModeIL-boutiques.csv
+ModeIL-brands-latest.csv
+ModeIL-brands-with-images.csv
+ModeIL-brands.csv
+brands.csv
+brands.tsv
