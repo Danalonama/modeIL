@@ -1,0 +1,34 @@
+/* Accessibility helpers shared by every page. */
+
+/* Text for screen readers only */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+
+/* Skip link: off-screen until it receives keyboard focus */
+.skip-link {
+  position: fixed; top: 10px; left: 10px; z-index: 2000;
+  background: #1A1A18; color: #fff; padding: 14px 20px;
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 11px; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none;
+  transform: translateY(-300%);
+}
+.skip-link:focus { transform: none; }
+[dir="rtl"] .skip-link { left: auto; right: 10px; }
+
+/* One visible keyboard focus ring everywhere. #9C5570 is the accent rose darkened
+   to reach 3:1 against both the light grounds and the black buttons. */
+:focus-visible { outline: 2px solid #9C5570 !important; outline-offset: 2px; }
+/* The skip target and the Thanks heading take focus from scripts, not from Tab */
+main:focus, [tabindex="-1"]:focus { outline: none !important; }
+/* Text fields: replace the Tailwind forms plugin's blue ring with the ring above */
+input:focus, textarea:focus { box-shadow: none !important; }
+
+/* Honour the OS "reduce motion" setting */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important; animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important; scroll-behavior: auto !important;
+  }
+}
