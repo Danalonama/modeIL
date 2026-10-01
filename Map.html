@@ -29,6 +29,10 @@
  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; border-radius: 0 !important; }
  html, body { height: 100%; overflow: hidden; font-family: 'Plus Jakarta Sans', sans-serif !important; background: #F4F4F4; color: #1A1A18; cursor: crosshair; }
 
+ /* Desaturate OSM basemap tiles to match the stark, editorial palette.
+    Applied only to tiles via the className option so markers/popups stay full colour. */
+ .map-tiles-muted { filter: grayscale(1) brightness(1.05) contrast(0.92); }
+
  /* Nav */
  nav {
  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
@@ -611,9 +615,10 @@ const map = L.map('map', {
 });
 L.control.zoom({ position: 'bottomright' }).addTo(map);
 
-L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
- attribution: 'Tiles © <a href="https://www.esri.com/">Esri</a> — Esri, HERE, Garmin, © OpenStreetMap contributors',
- maxZoom: 19
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+ attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+ maxZoom: 19,
+ className: 'map-tiles-muted'
 }).addTo(map);
 
 // Panel refs
