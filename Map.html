@@ -47,12 +47,11 @@
  #lang-toggle-map { cursor: pointer; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; background: none; border: 1px solid #000; padding: 5px 10px; color: #000; transition: all 0.2s; }
  #lang-toggle-map:hover { background: #000; color: #fcf9f5; }
  @media (max-width: 600px) { #lang-toggle-map { display: none !important; } #map-mobile-btn { display: flex !important; } }
- *:focus-visible { outline: 2px solid #B8748A; outline-offset: 2px; }
  .nav-logo { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 900; font-size: 1.5rem; letter-spacing: -0.04em; text-transform: uppercase; text-decoration: none; color: #000; display: inline-flex; align-items: baseline; gap: 10px; }
  .nav-logo .logo-tagline { font-weight: 400; font-size: 9px; letter-spacing: 2px; line-height: 1.4; color: rgba(0,0,0,0.55); }
  @media (max-width: 600px){ .nav-logo .logo-tagline { display: none; } }
  .nav-links { display: flex; gap: 2.5rem; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; }
- .nav-links a { color: rgba(0, 0, 0, 0.35); text-decoration: none; transition: color 0.2s; }
+ .nav-links a { color: rgba(0, 0, 0, 0.6); text-decoration: none; transition: color 0.2s; }
  .nav-links a:hover { color: #000; }
  .nav-links a.active { color: #000; border-bottom: 2px solid #000; padding-bottom: 2px; }
 
@@ -88,8 +87,8 @@
  letter-spacing: 0.15em; text-transform: uppercase; color: #000;
  padding: 0.9rem 0; cursor: text;
  }
- #map-search-input::placeholder { color: rgba(0, 0, 0, 0.3); }
- #map-search-clear { background: none; border: none; cursor: pointer; opacity: 0.4; display: none; padding: 0; }
+ #map-search-input::placeholder { color: rgba(0, 0, 0, 0.6); }
+ #map-search-clear { background: none; border: none; cursor: pointer; opacity: 0.6; display: none; padding: 0; }
  #map-search-clear:hover { opacity: 1; }
 
  /* Search results dropdown */
@@ -100,7 +99,7 @@
  .sri-section-header {
  padding: 6px 1rem 4px; font-family: 'Plus Jakarta Sans', sans-serif;
  font-size: 8px; letter-spacing: 0.28em; text-transform: uppercase;
- opacity: 0.35; background: #F4F4F4; position: sticky; top: 0;
+ opacity: 0.7; background: #F4F4F4; position: sticky; top: 0;
  }
  .search-result-item {
  padding: 0.65rem 1rem; cursor: pointer;
@@ -109,11 +108,11 @@
  transition: background 0.12s;
  }
  .search-result-item:last-child { border-bottom: none; }
- .search-result-item:hover.search-result-item.focused { background: #F0ECE4; }
+ .search-result-item:hover, .search-result-item.focused { background: #F0ECE4; }
  .sri-name { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 900; font-size: 0.82rem; text-transform: uppercase; letter-spacing: -0.02em; }
- .sri-meta { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 9px; letter-spacing: 0.13em; text-transform: uppercase; opacity: 0.45; }
+ .sri-meta { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 9px; letter-spacing: 0.13em; text-transform: uppercase; opacity: 0.7; }
  .sri-tag { display: inline-block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 9px; letter-spacing: 0.13em; text-transform: uppercase; border: 1px solid #c6c6c6; padding: 2px 7px; }
- .no-results { padding: 1rem; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.35; text-align: center; }
+ .no-results { padding: 1rem; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.7; text-align: center; }
 
  /* Zoom buttons */
  #zoom-controls {
@@ -183,7 +182,10 @@
  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
  transition: transform 0.15s;
  cursor: pointer !important;
+ position: relative;
  }
+ /* Invisible padding so the 10px pin has a comfortable click/tap target */
+ .map-pin::after { content: ''; position: absolute; inset: -9px; }
  .map-pin:hover { transform: scale(1.5); }
  .map-pin.active { transform: scale(1.5); }
  .map-pin.featured { background: #1A1A18; border: 2px solid #fff; }
@@ -195,10 +197,12 @@
  border-left: 1px solid rgba(198, 198, 198, 0.3);
  z-index: 500; overflow-y: auto;
  transform: translateX(100%);
- transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+ /* visibility:hidden takes the closed, off-screen panel out of the tab order */
+ visibility: hidden;
+ transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s 0.35s;
  display: flex; flex-direction: column;
  }
- #panel.open { transform: translateX(0); }
+ #panel.open { transform: translateX(0); visibility: visible; transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s; }
 
  .panel-img {
  width: 100%; aspect-ratio: 1/1;
@@ -210,20 +214,20 @@
  background: repeating-linear-gradient(-45deg, #EDE9E1, #EDE9E1 4px, #F4F4F4 4px, #F4F4F4 12px);
  display: flex; align-items: center; justify-content: center;
  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 10px;
- letter-spacing: 0.2em; text-transform: uppercase; color: #aaa;
+ letter-spacing: 0.2em; text-transform: uppercase; color: #666;
  }
  .panel-body { padding: 2rem; display: flex; flex-direction: column; gap: 1rem; }
  .panel-name { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 900; font-size: 2rem; text-transform: uppercase; letter-spacing: -0.03em; line-height: 1; }
- .panel-location { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.55; line-height: 1.6; }
+ .panel-location { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.7; line-height: 1.6; }
  .panel-tags { display: flex; flex-wrap: wrap; gap: 6px; }
  .panel-tag { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; border: 1px solid rgba(26, 26, 24, 0.12); padding: 3px 8px; }
  .panel-desc { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.8rem; line-height: 1.65; color: #474747; }
- .panel-extra-block { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.6; line-height: 1.8; }
+ .panel-extra-block { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.7; line-height: 1.8; }
  .panel-extra-block a { color: inherit; text-decoration: none; }
  .panel-extra-block a:hover { opacity: 0.6; }
  .panel-section-label {
  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 8px; letter-spacing: 0.25em;
- text-transform: uppercase; opacity: 0.4; margin-bottom: 4px;
+ text-transform: uppercase; opacity: 0.7; margin-bottom: 4px;
  }
  .panel-section { padding-top: 1rem; border-top: 1px solid rgba(198, 198, 198, 0.25); }
  .panel-contact-row { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; line-height: 2; }
@@ -232,13 +236,13 @@
  .panel-location-item { padding: 8px 0; border-bottom: 1px solid rgba(198, 198, 198, 0.2); }
  .panel-location-item:last-child { border-bottom: none; }
  .panel-location-item .loc-addr { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; }
- .panel-location-item .loc-phone { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.5; margin-top: 2px; }
+ .panel-location-item .loc-phone { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.7; margin-top: 2px; }
  .panel-hours-list { list-style: none; padding: 0; margin: 0; }
  .panel-hours-list li { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; line-height: 2; opacity: 0.75; }
- .panel-heart-btn { background: none; border: none; cursor: pointer; padding: 0; display: flex; align-items: center; gap: 6px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.6; transition: opacity 0.2s; }
+ .panel-heart-btn { background: none; border: none; cursor: pointer; padding: 0; display: flex; align-items: center; gap: 6px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.7; transition: opacity 0.2s; }
  .panel-heart-btn:hover { opacity: 1; }
- .panel-heart-btn.saved .ph-icon { font-variation-settings: 'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24; color: #B8748A; }
- .panel-heart-btn.saved { opacity: 1; color: #B8748A; }
+ .panel-heart-btn.saved .ph-icon { font-variation-settings: 'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24; color: #9C5570; }
+ .panel-heart-btn.saved { opacity: 1; color: #9C5570; }
  @keyframes panelHeartPulse { 0%{transform:scale(1)} 40%{transform:scale(1.4)} 70%{transform:scale(0.9)} 100%{transform:scale(1)} }
  .panel-heart-pulse { animation: panelHeartPulse 0.35s ease forwards; }
  .panel-link {
@@ -247,7 +251,7 @@
  display: flex; align-items: center; gap: 6px; width: fit-content;
  transition: opacity 0.2s;
  }
- .panel-link:hover { opacity: 1; color: #B8748A; }
+ .panel-link:hover { opacity: 1; color: #9C5570; }
  .panel-close {
  position: absolute; top: 1.25rem; right: 1.25rem;
  background: rgba(244, 244, 244, 0.9); border: 1px solid #c6c6c6;
@@ -356,57 +360,73 @@
  [dir="rtl"] .loc-brand-row:hover { transform: translateX(-2px); }
  [dir="rtl"] .panel-back-btn .material-symbols-outlined { transform: scaleX(-1); }
 </style>
+<link rel="stylesheet" href="a11y.css">
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <!-- Nav -->
-<nav>
+<nav aria-label="Main">
  <a href="index.html" class="nav-logo"><span>MODE-IL</span><span class="logo-tagline">Israeli Fashion Index</span></a>
  <div class="nav-links" id="map-nav-links">
  <a href="index.html" id="nav-designers">Designers</a>
  <a href="Boutiques.html" id="nav-stores">Boutiques</a>
- <a href="Map.html" class="active" id="nav-map">Map</a>
+ <a href="Map.html" class="active" aria-current="page" id="nav-map">Map</a>
  <a href="About.html" id="nav-about">About</a>
  <a href="Contact.html" id="nav-submit">Talk To Me</a>
  </div>
  <div class="flex items-center gap-3">
- <button id="map-mobile-btn" onclick="toggleMapMobileMenu()" style="display:none">
- <span class="material-symbols-outlined" style="font-size:24px;color:#000">menu</span>
+ <button id="map-mobile-btn" type="button" onclick="toggleMobileMenu()" style="display:none" aria-label="Open menu" aria-expanded="false" aria-controls="map-mobile-menu" data-mobile-menu-open>
+ <span aria-hidden="true" class="material-symbols-outlined" style="font-size:24px;color:#000">menu</span>
  </button>
  </div>
 </nav>
 
 <!-- Mobile Menu -->
-<div id="map-mobile-menu" style="display:none;position:fixed;inset:0;background:#F4F4F4;z-index:999;flex-direction:column;padding:1.5rem 2rem;transform:translateX(100%);transition:transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)">
+<div id="map-mobile-menu" role="dialog" aria-modal="true" aria-label="Menu" data-mobile-menu style="display:none;position:fixed;inset:0;background:#F4F4F4;z-index:999;flex-direction:column;padding:1.5rem 2rem;transform:translateX(100%);transition:transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)">
  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4rem">
  <a href="index.html" style="font-family:'Plus Jakarta Sans', sans-serif;font-weight:900;font-size:1.5rem;letter-spacing:-0.04em;text-transform:uppercase;color:#000;text-decoration:none">MODE-IL</a>
- <button onclick="toggleMapMobileMenu()">
- <span class="material-symbols-outlined" style="font-size:24px;color:#000">close</span>
+ <button type="button" onclick="toggleMobileMenu()" aria-label="Close menu" data-mobile-menu-close>
+ <span aria-hidden="true" class="material-symbols-outlined" style="font-size:24px;color:#000">close</span>
  </button>
  </div>
- <nav style="display:flex;flex-direction:column;gap:2rem">
+ <nav aria-label="Mobile" style="display:flex;flex-direction:column;gap:2rem">
  <a href="index.html" style="font-family:'Plus Jakarta Sans', sans-serif;font-weight:900;font-size:3rem;text-transform:uppercase;letter-spacing:-0.03em;color:#000;text-decoration:none;border-bottom:1px solid #e5e2de;padding-bottom:1.5rem" id="mmenu-designers">Designers</a>
  <a href="Boutiques.html" style="font-family:'Plus Jakarta Sans', sans-serif;font-weight:900;font-size:3rem;text-transform:uppercase;letter-spacing:-0.03em;color:#000;text-decoration:none;border-bottom:1px solid #e5e2de;padding-bottom:1.5rem" id="mmenu-stores">Boutiques</a>
- <a href="Map.html" style="font-family:'Plus Jakarta Sans', sans-serif;font-weight:900;font-size:3rem;text-transform:uppercase;letter-spacing:-0.03em;color:#000;text-decoration:none;border-bottom:1px solid #e5e2de;padding-bottom:1.5rem" id="mmenu-map">Map</a>
+ <a href="Map.html" style="font-family:'Plus Jakarta Sans', sans-serif;font-weight:900;font-size:3rem;text-transform:uppercase;letter-spacing:-0.03em;color:#000;text-decoration:none;border-bottom:1px solid #e5e2de;padding-bottom:1.5rem" id="mmenu-map" aria-current="page">Map</a>
  <a href="About.html" style="font-family:'Plus Jakarta Sans', sans-serif;font-weight:900;font-size:3rem;text-transform:uppercase;letter-spacing:-0.03em;color:#000;text-decoration:none;border-bottom:1px solid #e5e2de;padding-bottom:1.5rem" id="mmenu-about">About</a>
  <a href="Contact.html" style="font-family:'Plus Jakarta Sans', sans-serif;font-weight:900;font-size:3rem;text-transform:uppercase;letter-spacing:-0.03em;color:#000;text-decoration:none" id="mmenu-submit">Talk To Me</a>
  </nav>
 </div>
 
+<main id="main" tabindex="-1">
+<h1 class="sr-only">Map of Israeli designer stores and boutiques</h1>
+
+<!-- Map search. First in the DOM so keyboard and screen-reader users reach it before the map pins. -->
+<div id="map-search-wrap" role="search">
+ <div id="map-search-bar">
+ <span aria-hidden="true" class="material-symbols-outlined" style="font-size:16px;opacity:0.35">search</span>
+ <input id="map-search-input" type="text" placeholder="Brand, city, or style…" autocomplete="off" role="combobox" aria-label="Search the map by brand, city or style" aria-autocomplete="list" aria-expanded="false" aria-controls="map-search-results"/>
+ <button id="map-search-clear" type="button" aria-label="Clear search"><span aria-hidden="true" class="material-symbols-outlined" style="font-size:16px">close</span></button>
+ </div>
+ <div id="map-search-results" role="listbox" aria-label="Search results"></div>
+ <div id="map-search-status" class="sr-only" role="status"></div>
+</div>
+
 <!-- Map -->
-<div id="map"></div>
+<div id="map" role="region" aria-label="Map of store locations. Use the search field to find a brand, or Tab through the pins."></div>
 
 <!-- Count -->
 <div id="map-count">74 Locations</div>
 
 <!-- Side Panel -->
-<div id="panel">
- <button class="panel-close" id="panel-close">
- <span class="material-symbols-outlined" style="font-size:18px">close</span>
+<aside id="panel" aria-label="Location details">
+ <button class="panel-close" id="panel-close" type="button" aria-label="Close details">
+ <span aria-hidden="true" class="material-symbols-outlined" style="font-size:18px">close</span>
  </button>
  <div id="panel-img-wrap"></div>
  <div class="panel-body">
- <div class="panel-name" id="panel-name"></div>
+ <h2 class="panel-name" id="panel-name"></h2>
  <div class="panel-location" id="panel-location"></div>
  <div class="panel-tags" id="panel-tags"></div>
  <div class="panel-desc" id="panel-desc"></div>
@@ -423,30 +443,21 @@
  <div id="location-panel" style="display:none; flex-direction:column; height:100%;">
  <div id="loc-panel-img-wrap"></div>
  <div class="panel-body" id="loc-panel-body">
- <button class="panel-back-btn" id="loc-back-btn" style="display:none" onclick="showLocationPanel(currentLocation)">
- <span class="material-symbols-outlined" style="font-size:14px">arrow_back</span>
+ <button class="panel-back-btn" id="loc-back-btn" type="button" style="display:none" onclick="showLocationPanel(currentLocation)">
+ <span aria-hidden="true" class="material-symbols-outlined" style="font-size:14px">arrow_back</span>
  <span>All locations</span>
  </button>
  <div id="loc-panel-content"></div>
  </div>
  </div>
-</div>
-
-<!-- Map search -->
-<div id="map-search-wrap">
- <div id="map-search-bar">
- <span class="material-symbols-outlined" style="font-size:16px;opacity:0.35">search</span>
- <input id="map-search-input" type="text" placeholder="Brand, city, or style…" autocomplete="off"/>
- <button id="map-search-clear"><span class="material-symbols-outlined" style="font-size:16px">close</span></button>
- </div>
- <div id="map-search-results"></div>
-</div>
+</aside>
 
 <!-- Zoom buttons -->
 <div id="zoom-controls">
- <button class="zoom-btn" id="zoom-in">+</button>
- <button class="zoom-btn" id="zoom-out">−</button>
+ <button class="zoom-btn" id="zoom-in" type="button" aria-label="Zoom in">+</button>
+ <button class="zoom-btn" id="zoom-out" type="button" aria-label="Zoom out">−</button>
 </div>
+</main>
 
 <script>
 // ===== UTM tagging for outbound links — edit campaign tags here in ONE place =====
@@ -607,12 +618,23 @@ const DESIGNERS = [
  { name:"Mikusha-Mela", url:"https://www.mikusha-mela.co.il/", tags:["Luxury","Artisan"], desc:"A designer boutique in the heart of Tel Aviv with over 40 years in Israeli fashion, a family fashion house making elegant daywear, evening gowns, suits, and jackets in quality fabrics with meticulous tailoring.", img:"https://www.mikusha-mela.co.il/wp-content/uploads/2023/09/logo-new.png", city:"Tel Aviv", lat:32.0505, lng:34.7767, fav:false, addresses:["Tel Giborim 5, 4th floor, Beit Tefer, Tel Aviv","Kanyon Ra'anana, Ra'anana"], phone:"03-5102802" },
 ];
 
+function attrEsc(v){ return String(v || '').replace(/&/g,'&amp;').replace(/"/g,'&quot;'); }
+// Respect the OS "reduce motion" setting: jump instead of animating the map
+const REDUCE_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 // Init Leaflet map
 const map = L.map('map', {
  center: [32.0800, 34.7820],
  zoom: 13,
  zoomControl: false,
+ zoomAnimation: !REDUCE_MOTION,
+ fadeAnimation: !REDUCE_MOTION,
+ markerZoomAnimation: !REDUCE_MOTION,
 });
+function flyOrJump(latlng, zoom, opts) {
+ if (REDUCE_MOTION) map.setView(latlng, zoom, { animate: false });
+ else map.flyTo(latlng, zoom, opts);
+}
 L.control.zoom({ position: 'bottomright' }).addTo(map);
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -633,6 +655,14 @@ const panelImgWrap = document.getElementById('panel-img-wrap');
 
 let activeMarker = null;
 
+// Keyboard focus follows the panel: into it when it opens, back to where it came from on close
+let focusBeforePanel = null;
+function focusPanel() {
+ if (!panel.classList.contains('open')) focusBeforePanel = document.activeElement;
+ panel.classList.add('open');
+ panelClose.focus();
+}
+
 // Map panel favorites
 let MAP_FAVORITES = new Set(JSON.parse(localStorage.getItem('modeil-favs') || '[]'));
 
@@ -651,9 +681,10 @@ function togglePanelFav(btn, name) {
  MAP_FAVORITES.add(name);
  btn.classList.add('saved');
  icon.style.fontVariationSettings = "'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24";
- icon.style.color = '#B8748A';
+ icon.style.color = '#9C5570';
  btn.querySelector('span:last-child').textContent = 'Saved';
  }
+ btn.setAttribute('aria-pressed', String(MAP_FAVORITES.has(name)));
  localStorage.setItem('modeil-favs', JSON.stringify([...MAP_FAVORITES]));
 }
 
@@ -670,11 +701,12 @@ function openPanel(d) {
  panelTags.innerHTML = d.tags.map(t => `<span class="panel-tag">${t}</span>`).join('');
  panelDesc.textContent = d.desc;
  panelLink.href = withUtm(d.url);
+ panelLink.setAttribute('aria-label', 'Visit website: ' + d.name + ' (opens in a new tab)');
  panelLink.style.display = d.url ? '' : 'none';
 
  // Image
  if (d.img) {
- panelImgWrap.innerHTML = `<img class="panel-img" src="${d.img}" alt="${d.name}" onerror="this.parentElement.innerHTML='<div class=\'panel-img-placeholder\'>${d.name}</div>'"/>`;
+ panelImgWrap.innerHTML = `<img class="panel-img" src="${d.img}" alt="" onerror="this.parentElement.innerHTML='<div class=\'panel-img-placeholder\'>${d.name}</div>'"/>`;
  } else {
  panelImgWrap.innerHTML = `<div class="panel-img-placeholder">${d.name}</div>`;
  }
@@ -684,8 +716,8 @@ function openPanel(d) {
  const favEl = document.getElementById('panel-fav');
  if (favEl) {
  const safeName = d.name.replace(/'/g, "\\'");
- favEl.innerHTML = `<button class="panel-heart-btn${isSaved ? ' saved' : ''}" onclick="togglePanelFav(this, '${safeName}')">
- <span class="material-symbols-outlined ph-icon" style="font-size:18px;${isSaved ? "font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24;color:#e53e3e" : ''}">favorite</span>
+ favEl.innerHTML = `<button type="button" class="panel-heart-btn${isSaved ? ' saved' : ''}" aria-pressed="${isSaved}" aria-label="Save ${attrEsc(d.name)} to favorites" onclick="togglePanelFav(this, '${attrEsc(safeName)}')">
+ <span aria-hidden="true" class="material-symbols-outlined ph-icon" style="font-size:18px;${isSaved ? "font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24;color:#e53e3e" : ''}">favorite</span>
  <span>${isSaved ? 'Saved' : 'Save'}</span>
  </button>`;
  }
@@ -729,12 +761,14 @@ function openPanel(d) {
  } else { hoursEl.style.display = 'none'; }
  }
 
- panel.classList.add('open');
+ focusPanel();
  document.getElementById('zoom-controls').style.right = (window.innerWidth < 600 ? '16px' : '416px');
 }
 
 panelClose.addEventListener('click', function() {
  panel.classList.remove('open');
+ if (focusBeforePanel && document.contains(focusBeforePanel)) focusBeforePanel.focus();
+ focusBeforePanel = null;
  document.getElementById('zoom-controls').style.right = '16px';
  document.getElementById('location-panel').style.display = 'none';
  document.getElementById('panel-img-wrap').style.display = '';
@@ -746,6 +780,11 @@ panelClose.addEventListener('click', function() {
  activeMarker._icon?.querySelector('.map-pin')?.classList.remove('active');
  activeMarker = null;
  }
+});
+
+// Escape closes the panel (inside the search field, Escape clears the search instead)
+document.addEventListener('keydown', function(e) {
+ if (e.key === 'Escape' && panel.classList.contains('open') && e.target !== searchInput) panelClose.click();
 });
 
 // Custom icon factory
@@ -782,11 +821,28 @@ const ALL_TAGS = ["Jewelry","Artisan","Luxury","Sustainable","Streetwear","Minim
 let geocodeTimer = null;
 let focusedIdx = -1;
 
+const searchStatus = document.getElementById('map-search-status');
+function setResultsOpen(open) {
+ searchResults.style.display = open ? 'block' : 'none';
+ searchInput.setAttribute('aria-expanded', String(open));
+ if (!open) searchInput.removeAttribute('aria-activedescendant');
+}
+// Mirror the arrow-key highlight to screen readers
+function setFocusedResult(items) {
+ items.forEach((el, i) => {
+ el.classList.toggle('focused', i === focusedIdx);
+ el.setAttribute('aria-selected', String(i === focusedIdx));
+ });
+ const cur = items[focusedIdx];
+ if (cur) { searchInput.setAttribute('aria-activedescendant', cur.id); cur.scrollIntoView({ block: 'nearest' }); }
+ else searchInput.removeAttribute('aria-activedescendant');
+}
+
 function resetMap() {
  markers.forEach(({pin}) => { if(pin) pin.classList.remove('dimmed','active'); });
  searchInput.value = '';
  searchClear.style.display = 'none';
- searchResults.style.display = 'none';
+ setResultsOpen(false);
  focusedIdx = -1;
 }
 
@@ -800,21 +856,25 @@ function dimAllExcept(names) {
 function showDropdown(sections) {
  if (!sections.length) {
  searchResults.innerHTML = '<div class="no-results">No results found</div>';
- searchResults.style.display = 'block';
+ searchStatus.textContent = 'No results found';
+ setResultsOpen(true);
  return;
  }
  let out = '';
+ let total = 0;
  sections.forEach(function(sec) {
- out += '<div class="sri-section-header">' + sec.header + '</div>';
+ out += '<div class="sri-section-header" role="presentation">' + sec.header + '</div>';
  sec.items.forEach(function(item) {
- out += '<div class="search-result-item" data-action-idx="' + item.actionIdx + '">';
+ total++;
+ out += '<div class="search-result-item" role="option" aria-selected="false" id="sri-' + item.actionIdx + '" data-action-idx="' + item.actionIdx + '">';
  out += '<div class="sri-name">' + item.label + '</div>';
  if (item.meta) out += '<div class="sri-meta">' + item.meta + '</div>';
  out += '</div>';
  });
  });
  searchResults.innerHTML = out;
- searchResults.style.display = 'block';
+ searchStatus.textContent = total + (total === 1 ? ' result' : ' results') + '. Use the up and down arrow keys to choose one.';
+ setResultsOpen(true);
 }
 
 // Build action list for keyboard nav
@@ -826,7 +886,7 @@ function runSearch(q) {
  focusedIdx = -1;
 
  if (!query) {
- searchResults.style.display = 'none';
+ setResultsOpen(false);
  markers.forEach(({pin}) => { if(pin) pin.classList.remove('dimmed'); });
  currentActions = [];
  return;
@@ -849,15 +909,15 @@ function runSearch(q) {
  const actionIdx = currentActions.length;
  currentActions.push(() => {
  searchInput.value = d.name;
- searchResults.style.display = 'none';
+ setResultsOpen(false);
  dimAllExcept(locs.map(l => l.name));
  if (locs.length === 1) {
  const m = markers.find(x => x.d.name === d.name);
- if (m) { map.setView([d.lat, d.lng], 15, {animate:true}); setTimeout(() => m.marker.fire('click'), 500); }
+ if (m) { map.setView([d.lat, d.lng], 15, { animate: !REDUCE_MOTION }); setTimeout(() => m.marker.fire('click'), 500); }
  } else {
  // Fit all locations in view
  const bounds = L.latLngBounds(locs.map(l => [l.lat, l.lng]));
- map.fitBounds(bounds.pad(0.3), {animate:true});
+ map.fitBounds(bounds.pad(0.3), { animate: !REDUCE_MOTION });
  }
  markers.forEach(({pin}) => { if(pin) pin.classList.remove('dimmed'); });
  });
@@ -874,13 +934,13 @@ function runSearch(q) {
  const actionIdx = currentActions.length;
  currentActions.push(() => {
  searchInput.value = tag;
- searchResults.style.display = 'none';
+ setResultsOpen(false);
  const matching = DESIGNERS.filter(d => d.tags.includes(tag)).map(d => d.name);
  dimAllExcept(matching);
  const bounds = L.latLngBounds(
  DESIGNERS.filter(d => d.tags.includes(tag)).map(d => [d.lat, d.lng])
  );
- map.fitBounds(bounds.pad(0.2), {animate:true});
+ map.fitBounds(bounds.pad(0.2), { animate: !REDUCE_MOTION });
  });
  return { label: tag, meta: tagCount + ' brands', actionIdx };
  });
@@ -916,8 +976,8 @@ function runSearch(q) {
  const actionIdx = currentActions.length;
  currentActions.push(() => {
  searchInput.value = area.name;
- searchResults.style.display = 'none';
- map.flyTo([area.lat, area.lng], area.zoom, {animate:true, duration:1.2});
+ setResultsOpen(false);
+ flyOrJump([area.lat, area.lng], area.zoom, { animate: true, duration: 1.2 });
  if (nearby.length > 0) {
  dimAllExcept(nearby.map(d => d.name));
  setTimeout(() => {
@@ -935,20 +995,21 @@ function runSearch(q) {
  const actionIdx = currentActions.length;
  currentActions.push(async () => {
  searchResults.innerHTML = '<div class="no-results">Searching…</div>';
- searchResults.style.display = 'block';
+ searchStatus.textContent = 'Searching…';
+ setResultsOpen(true);
  try {
  const res = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(q + ', Israel')}&format=json&limit=1&countrycodes=il`, { headers: {'Accept-Language':'en'} });
  const data = await res.json();
- if (!data.length) { searchResults.innerHTML = '<div class="no-results">No location found</div>'; return; }
+ if (!data.length) { searchResults.innerHTML = '<div class="no-results">No location found</div>'; searchStatus.textContent = 'No location found'; return; }
  const {lat, lon, display_name} = data[0];
  const placeLat = +lat, placeLng = +lon;
  const RADIUS = 10;
  const nearby = DESIGNERS.filter(d => distKm(placeLat, placeLng, d.lat, d.lng) <= RADIUS);
- map.flyTo([placeLat, placeLng], 14, {animate:true, duration:1.2});
+ flyOrJump([placeLat, placeLng], 14, { animate: true, duration: 1.2 });
  dimAllExcept(nearby.map(d => d.name));
  searchInput.value = display_name.split(',')[0];
- searchResults.style.display = 'none';
- } catch(e) { searchResults.innerHTML = '<div class="no-results">Could not find location</div>'; }
+ setResultsOpen(false);
+ } catch(e) { searchResults.innerHTML = '<div class="no-results">Could not find location</div>'; searchStatus.textContent = 'Could not find location'; }
  });
  sections.push({ header: 'Location', items: [{ label: 'Search "' + q + '" on map', meta: 'Geocode search', actionIdx }] });
  }
@@ -971,7 +1032,7 @@ searchClear.addEventListener('click', () => {
  searchInput.focus();
 });
 document.addEventListener('click', e => {
- if (!e.target.closest('#map-search-wrap')) searchResults.style.display = 'none';
+ if (!e.target.closest('#map-search-wrap')) setResultsOpen(false);
 });
 
 // Escape to clear
@@ -981,11 +1042,11 @@ searchInput.addEventListener('keydown', e => {
  else if (e.key === 'ArrowDown') {
  e.preventDefault();
  focusedIdx = Math.min(focusedIdx + 1, items.length - 1);
- items.forEach((el, i) => el.classList.toggle('focused', i === focusedIdx));
+ setFocusedResult(items);
  } else if (e.key === 'ArrowUp') {
  e.preventDefault();
  focusedIdx = Math.max(focusedIdx - 1, 0);
- items.forEach((el, i) => el.classList.toggle('focused', i === focusedIdx));
+ setFocusedResult(items);
  } else if (e.key === 'Enter' && focusedIdx >= 0) {
  e.preventDefault();
  items[focusedIdx]?.click();
@@ -1021,20 +1082,23 @@ function showLocationPanel(loc) {
  document.getElementById('loc-back-btn').style.display = 'none';
  document.getElementById('loc-panel-img-wrap').innerHTML = '';
  const content = document.getElementById('loc-panel-content');
- let out = '<div class="loc-panel-header">' + loc.address + '</div>';
+ let out = '<h2 class="loc-panel-header">' + loc.address + '</h2>';
  out += '<div class="loc-panel-sub">' + loc.brands.length + ' brands at this address</div>';
  out += '<div style="margin-top:1.5rem">';
  loc.brands.forEach(function(d, i) {
- const thumb = d.img ? '<img class="loc-brand-thumb" src="' + d.img + '" alt="' + d.name + '"/>' : '<div class="loc-brand-thumb-placeholder"></div>';
+ const thumb = d.img ? '<img class="loc-brand-thumb" src="' + d.img + '" alt=""/>' : '<div class="loc-brand-thumb-placeholder"></div>';
  const tags = d.tags.slice(0, 2).map(function(t){ return '<span class="loc-brand-tag">' + t + '</span>'; }).join('');
- out += '<div class="loc-brand-row" data-bidx="' + i + '">' + thumb + '<div><div class="loc-brand-name">' + d.name + '</div><div class="loc-brand-tags">' + tags + '</div></div></div>';
+ out += '<div class="loc-brand-row" role="button" tabindex="0" data-bidx="' + i + '">' + thumb + '<div><div class="loc-brand-name">' + d.name + '</div><div class="loc-brand-tags">' + tags + '</div></div></div>';
  });
  out += '</div>';
  content.innerHTML = out;
  content.querySelectorAll('.loc-brand-row').forEach(function(row) {
  row.addEventListener('click', function() { showBrandFromLocation(loc.brands[+row.dataset.bidx]); });
+ row.addEventListener('keydown', function(e) {
+ if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); row.click(); }
  });
- panel.classList.add('open');
+ });
+ focusPanel();
  document.getElementById('zoom-controls').style.right = (window.innerWidth < 600 ? '16px' : '416px');
 }
 
@@ -1059,6 +1123,8 @@ locations.forEach(function(loc) {
  });
  const marker = L.marker([loc.lat, loc.lng], { icon }).addTo(map);
  loc.marker = marker;
+ const pinEl = marker.getElement();
+ if (pinEl) pinEl.setAttribute('aria-label', (isSingle ? loc.brands[0].name : loc.brands.length + ' brands') + ', ' + loc.address);
  // push first brand for search compat
  markers.push({ d: loc.brands[0], marker, get pin() { return marker._icon?.querySelector('.map-pin'); } });
 
@@ -1081,7 +1147,13 @@ locations.forEach(function(loc) {
  }
  const px = map.latLngToContainerPoint([loc.lat, loc.lng]);
  const offset = window.innerWidth < 600 ? 0 : 200;
- map.panTo(map.containerPointToLatLng(L.point(px.x - offset, px.y)), { animate: true });
+ map.panTo(map.containerPointToLatLng(L.point(px.x - offset, px.y)), { animate: !REDUCE_MOTION });
+ });
+
+ // Leaflet makes pins focusable but doesn't activate them from the keyboard: do it here
+ marker.on('keypress', function(e) {
+ const k = e.originalEvent && e.originalEvent.key;
+ if (k === 'Enter' || k === ' ') { e.originalEvent.preventDefault(); marker.fire('click'); }
  });
 
  // Label
@@ -1091,7 +1163,7 @@ locations.forEach(function(loc) {
  html: '<span class="map-label">' + labelText + '</span>',
  iconSize: null, iconAnchor: [-10, 7],
  });
- L.marker([loc.lat, loc.lng], { icon: labelIcon, interactive: false, zIndexOffset: -1 }).addTo(map);
+ L.marker([loc.lat, loc.lng], { icon: labelIcon, interactive: false, keyboard: false, zIndexOffset: -1 }).addTo(map);
 
  // Hover tooltip
  const tipName = loc.brands.length === 1 ? loc.brands[0].name : loc.brands.length + ' brands';
@@ -1128,7 +1200,7 @@ if (brandParam) {
  const match = markers.find(m => m.d.name.toLowerCase() === decoded);
  if (match) {
  setTimeout(() => {
- map.setView([match.d.lat, match.d.lng], 15, { animate: true });
+ map.setView([match.d.lat, match.d.lng], 15, { animate: !REDUCE_MOTION });
  setTimeout(() => match.marker.fire('click'), 600);
  }, 300);
  }
@@ -1197,22 +1269,6 @@ if (mapLang === 'he') {
  document.getElementById('lang-toggle-map').textContent = 'עב | EN';
  applyMapLang();
 }
-let mapMobileOpen = false;
-const mapMobileMenu = document.getElementById('map-mobile-menu');
-
-function toggleMapMobileMenu() {
- mapMobileOpen = !mapMobileOpen;
- if (mapMobileOpen) {
- mapMobileMenu.style.display = 'flex';
- requestAnimationFrame(() => { mapMobileMenu.style.transform = 'translateX(0)'; });
- document.body.style.overflow = 'hidden';
- } else {
- mapMobileMenu.style.transform = 'translateX(100%)';
- document.body.style.overflow = '';
- setTimeout(() => { mapMobileMenu.style.display = 'none'; }, 350);
- }
-}
-
 // Update map mobile menu lang
 const _origApplyMapLang = applyMapLang;
 applyMapLang = function() {
@@ -1231,6 +1287,7 @@ applyMapLang = function() {
 
 </script>
 
+<script src="a11y.js"></script>
 <!-- Skimlinks -->
 <script type="text/javascript" src="https://s.skimresources.com/js/304374X1792544.skimlinks.js"></script>
 <script>

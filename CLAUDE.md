@@ -20,6 +20,7 @@ The founding user: someone abroad who wants to buy from Israeli designers but ha
 - `About.html`, `Contact.html` and `Affiliate.html` are static pages. Affiliate is the disclosure page.
 - `images/` holds a few locally hosted brand images. Where a brand's own image was unusable, the entry points here (e.g. `images/vil-unfold.png`).
 - `sitemap.xml`, `robots.txt`, `site.webmanifest` and the favicons are SEO/PWA files. The favicon is a plain black square, on purpose.
+- `a11y.css` and `a11y.js` are the shared accessibility helpers loaded by every page (see Accessibility below).
 - `vercel.json` sets long-cache headers for image and font files only.
 - `process-writeup.md` holds marketing and case-study copy. It isn't code.
 - `docs/PROJECT-NOTES.md` is the longer project history: design decisions, editorial rules and open threads.
@@ -60,13 +61,25 @@ There are two taxonomy axes, used together in filtering:
 
 ## Features and behavior
 
-- **Masonry grid** that still reads **alphabetically left-to-right**. Cards are dealt into JS-computed columns in row order; CSS columns aren't used because they read top-to-bottom. Columns are recalculated on resize.
+- **Masonry grid** that still reads **alphabetically left-to-right**. Cards are appended to the grid in alphabetical order and positioned absolutely by `layoutMasonry()` (card *i* goes to column *i % cols*), so the DOM order — and with it keyboard focus and screen-reader order — matches the visual reading order. CSS columns and per-column wrapper divs aren't used because they read top-to-bottom. A `ResizeObserver` re-flows the grid as lazy images load and on resize.
 - **Image fallback:** if an image fails to load, the card shows the brand name set on a colored thumbnail.
 - **Layered filters:** Style panel, Type panel, Area bar and A–Z bar, all combinable. Active filters show as removable chips with a Clear All button. There's a live result count and an explicit empty state.
 - **Search:** tokenized over name, description and tags, plus `smartConceptMatch`, which maps concepts like "bridal", "swim" and "gold" onto brands that don't contain the literal word. It sits behind a nav toggle on desktop and inside the mobile menu.
 - **Favorites:** a heart on each card, stored in `localStorage` under `modeil-favs`. There are no accounts, on purpose.
 - **EN/HE toggle:** switches to RTL and Noto Sans Hebrew. Translations are cached in `localStorage` under `descHeCache` (see debt #2).
 - **Affiliate:** Skimlinks script (`s.skimresources.com/…304374X1792544`) plus `withUtm()` on outbound links. The rule: affiliate status **never** affects who gets listed or how they're described. Revenue only covers hosting.
+
+## Accessibility
+
+The site targets WCAG 2.1 AA. Keep it that way when editing:
+
+- `a11y.css` and `a11y.js` are loaded by every page. The CSS holds `.sr-only`, the skip link, the focus ring and the reduced-motion rule; the JS is the one mobile-menu implementation (focus trap, Escape, `aria-expanded`), wired by `data-mobile-menu`, `data-mobile-menu-open` and `data-mobile-menu-close` attributes.
+- Every page starts with a skip link to `<main id="main">`, has one `<h1>`, and marks the current nav link with `aria-current="page"`.
+- Toggle buttons (filters, areas, letters, hearts) carry `aria-pressed`; dropdown triggers carry `aria-expanded`. Update them wherever the visual state is updated.
+- Card links and hearts get an `aria-label` that names the brand ("Maskit website (opens in a new tab)"), because "Website" 343 times is useless out of context. The card image link is `aria-hidden` and out of the tab order since it duplicates the Website link; its `alt` is empty for the same reason.
+- Icon-font spans (`material-symbols-outlined`) and decorative glyphs (▾ ✕ →) are always `aria-hidden="true"`.
+- Text must reach 4.5:1. In practice: no text below ~65% opacity on the light grounds, and the accent rose is `#9C5570` (the older `#B8748A` only reached 3.2:1).
+- Map: the search field is a combobox and comes before the map in the DOM; pins are focusable, named, and open with Enter/Space; the side panel takes focus when it opens and returns it on close (Escape works).
 
 ## Design system
 

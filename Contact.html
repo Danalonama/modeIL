@@ -52,8 +52,7 @@
   }
    html, body { font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif !important; }
  main, nav, footer { position: relative; z-index: 1; }
-  *:focus-visible { outline: 2px solid #B8748A; outline-offset: 2px; }
-  .pulse-dot { display: inline-block; width: 8px; height: 8px; background: #000; margin-right: 10px; animation: pulseAnim 1.6s ease-in-out infinite; vertical-align: middle; }
+  .pulse-dot { display: inline-block; width: 8px; height: 8px; background: #000; margin-right: 10px; animation: pulseAnim 1.6s ease-in-out 3; vertical-align: middle; }
   @keyframes pulseAnim { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
   .field input, .field textarea {
     font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 400; font-size: 1rem; color: #000;
@@ -61,54 +60,56 @@
     padding: 0.65rem 0; outline: none; transition: border-color 0.25s; width: 100%; resize: none;
   }
   .field input:focus, .field textarea:focus { border-bottom-color: #000; }
-  .field input::placeholder, .field textarea::placeholder { color: rgba(0,0,0,0.25); font-weight: 300; }
+  .field input::placeholder, .field textarea::placeholder { color: rgba(0,0,0,0.6); font-weight: 300; }
   .field textarea { min-height: 110px; line-height: 1.5; }
 </style>
+<link rel="stylesheet" href="a11y.css">
 </head>
 <body class="bg-background text-primary font-body">
+<a class="skip-link" href="#main">Skip to content</a>
 
 <!-- Nav -->
-<nav class="fixed top-0 w-full z-50 bg-[#F4F4F4]/95 backdrop-blur-sm border-b border-[#1A1A18]/10 flex justify-between items-center px-8 md:px-12 py-6">
+<nav aria-label="Main" class="fixed top-0 w-full z-50 bg-[#F4F4F4]/95 backdrop-blur-sm border-b border-[#1A1A18]/10 flex justify-between items-center px-8 md:px-12 py-6">
   <a href="index.html" class="flex items-baseline gap-2.5 group">
  <span class="font-headline font-black text-2xl tracking-tighter text-black uppercase" style="font-family: Plus Jakarta Sans">MODE-IL</span>
  <span class="font-label tracking-[0.2em] uppercase hidden sm:inline" style="font-size:9px;color:rgba(0,0,0,0.55);letter-spacing:2px;line-height:1.4">Israeli Fashion Index</span>
  </a>
   <div class="hidden md:flex items-center gap-12">
     <div class="flex gap-8 font-label uppercase tracking-widest text-sm">
-      <a class="text-black/40 hover:text-black transition-colors duration-300" href="index.html">Designers</a>
-      <a class="text-black/40 hover:text-black transition-colors duration-300" href="Boutiques.html">Boutiques</a>
-      <a class="text-black/40 hover:text-black transition-colors duration-300" href="Map.html">Map</a>
-      <a class="text-black/40 hover:text-black transition-colors duration-300" href="About.html">About</a>
-      <a class="text-black border-b-2 border-black pb-1" href="Contact.html">Talk To Me</a>
+      <a class="text-black/60 hover:text-black transition-colors duration-300" href="index.html">Designers</a>
+      <a class="text-black/60 hover:text-black transition-colors duration-300" href="Boutiques.html">Boutiques</a>
+      <a class="text-black/60 hover:text-black transition-colors duration-300" href="Map.html">Map</a>
+      <a class="text-black/60 hover:text-black transition-colors duration-300" href="About.html">About</a>
+      <a aria-current="page" class="text-black border-b-2 border-black pb-1" href="Contact.html">Talk To Me</a>
     </div>
   </div>
   <div class="flex items-center gap-4">
-    <button id="mobile-menu-btn" class="md:hidden flex items-center" onclick="toggleMobileMenu()">
-      <span class="material-symbols-outlined text-black">menu</span>
+    <button id="mobile-menu-btn" type="button" class="md:hidden flex items-center" onclick="toggleMobileMenu()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" data-mobile-menu-open>
+      <span aria-hidden="true" class="material-symbols-outlined text-black">menu</span>
     </button>
   </div>
 </nav>
 
 <!-- Mobile Menu Overlay -->
-<div id="mobile-menu" class="fixed inset-0 bg-[#F4F4F4] z-[999] flex flex-col px-8 py-6 md:hidden" style="background:#ffffff;top:0;left:0;right:0;bottom:0;width:100%;height:100dvh;display:none!important;transform:translateX(100%);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1);">
+<div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu" data-mobile-menu class="fixed inset-0 bg-[#F4F4F4] z-[999] flex flex-col px-8 py-6 md:hidden" style="background:#ffffff;top:0;left:0;right:0;bottom:0;width:100%;height:100dvh;display:none!important;transform:translateX(100%);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1);">
   <div class="flex justify-between items-center mb-16">
     <a href="index.html" class="font-headline font-black text-2xl tracking-tighter text-black uppercase">MODE-IL</a>
-    <button onclick="toggleMobileMenu()">
-      <span class="material-symbols-outlined text-black">close</span>
+    <button type="button" onclick="toggleMobileMenu()" aria-label="Close menu" data-mobile-menu-close>
+      <span aria-hidden="true" class="material-symbols-outlined text-black">close</span>
     </button>
   </div>
-  <nav class="flex flex-col gap-8">
-    <a href="index.html" class="font-headline font-black text-5xl uppercase tracking-tighter text-black hover:opacity-40 transition-opacity border-b border-[#1A1A18]/10 pb-6">Designers</a>
-    <a href="Boutiques.html" class="font-headline font-black text-5xl uppercase tracking-tighter text-black hover:opacity-40 transition-opacity border-b border-[#1A1A18]/10 pb-6">Boutiques</a>
-    <a href="Map.html" class="font-headline font-black text-5xl uppercase tracking-tighter text-black hover:opacity-40 transition-opacity border-b border-[#1A1A18]/10 pb-6">Map</a>
-    <a href="About.html" class="font-headline font-black text-5xl uppercase tracking-tighter text-black hover:opacity-40 transition-opacity border-b border-[#1A1A18]/10 pb-6">About</a>
-    <a href="Contact.html" class="font-headline font-black text-5xl uppercase tracking-tighter text-black hover:opacity-40 transition-opacity pb-6">Talk To Me</a>
+  <nav aria-label="Mobile" class="flex flex-col gap-8">
+    <a href="index.html" class="font-headline font-black text-5xl uppercase tracking-tighter text-black hover:opacity-60 transition-opacity border-b border-[#1A1A18]/10 pb-6">Designers</a>
+    <a href="Boutiques.html" class="font-headline font-black text-5xl uppercase tracking-tighter text-black hover:opacity-60 transition-opacity border-b border-[#1A1A18]/10 pb-6">Boutiques</a>
+    <a href="Map.html" class="font-headline font-black text-5xl uppercase tracking-tighter text-black hover:opacity-60 transition-opacity border-b border-[#1A1A18]/10 pb-6">Map</a>
+    <a href="About.html" class="font-headline font-black text-5xl uppercase tracking-tighter text-black hover:opacity-60 transition-opacity border-b border-[#1A1A18]/10 pb-6">About</a>
+    <a href="Contact.html" aria-current="page" class="font-headline font-black text-5xl uppercase tracking-tighter text-black hover:opacity-60 transition-opacity pb-6">Talk To Me</a>
   </nav>
 </div>
 
-<main class="min-h-screen pt-24 grid grid-cols-1 md:grid-cols-2">
+<main id="main" tabindex="-1" class="min-h-screen pt-24 grid grid-cols-1 md:grid-cols-2">
   <section class="px-8 md:px-16 py-12 md:py-24 flex flex-col justify-center md:border-r border-b md:border-b-0 border-black/10">
-    <div class="font-label text-[10px] tracking-[0.3em] uppercase text-black/40 mb-8"><span class="pulse-dot"></span>Happy to hear from you</div>
+    <div class="font-label text-[10px] tracking-[0.3em] uppercase text-black/60 mb-8"><span class="pulse-dot"></span>Happy to hear from you</div>
     <h1 class="font-headline font-black uppercase tracking-tighter text-black leading-[0.88]" style="font-size: clamp(40px, 13vw, 82px)">TALK
 TO ME.</h1>
     <p class="font-body font-light text-black/60 max-w-md mt-10 leading-relaxed" style='font: 400 15px / 1.6 "Plus Jakarta Sans"'>- Send me your favorite Israel designers.
@@ -120,25 +121,25 @@ TO ME.</h1>
     <form id="contact-form" class="flex flex-col gap-8 max-w-md w-full" autocomplete="on">
       <div class="field flex flex-col gap-2">
         <label class="font-label text-[10px] tracking-[0.28em] uppercase text-black/55" for="f-name">Full name</label>
-        <input type="text" id="f-name" name="name" required placeholder="Jane Cohen"/>
+        <input type="text" id="f-name" name="name" autocomplete="name" required placeholder="Jane Cohen"/>
       </div>
       <div class="field flex flex-col gap-2">
         <label class="font-label text-[10px] tracking-[0.28em] uppercase text-black/55" for="f-email">Email</label>
-        <input type="email" id="f-email" name="email" required placeholder="you@example.com"/>
+        <input type="email" id="f-email" name="email" autocomplete="email" required placeholder="you@example.com"/>
       </div>
       <div class="field flex flex-col gap-2">
         <label class="font-label text-[10px] tracking-[0.28em] uppercase text-black/55" for="f-comment">Comment</label>
         <textarea id="f-comment" name="comment" required placeholder="Tell me anything…"></textarea>
       </div>
-      <div id="form-err" class="hidden font-label text-[11px] tracking-widest uppercase" style="color:#B8748A">Something went wrong. Try again, or email danalonama@gmail.com directly.</div>
+      <div id="form-err" role="alert" class="hidden font-label text-[11px] tracking-widest uppercase" style="color:#9C5570">Something went wrong. Try again, or email danalonama@gmail.com directly.</div>
       <button type="submit" id="submit-btn" class="self-start bg-black text-[#F4F4F4] font-label text-xs tracking-[0.22em] uppercase px-10 py-4 hover:opacity-85 transition-opacity disabled:opacity-40 disabled:cursor-wait">Send →</button>
     </form>
 
     <div id="thanks" class="hidden flex-col gap-6 max-w-md">
-      <div class="font-label text-[10px] tracking-[0.3em] uppercase text-black/40"><span class="pulse-dot"></span>Got it</div>
-      <h2 class="font-headline font-black uppercase tracking-tighter text-black leading-[0.9]" style="font-size:clamp(2.5rem,5vw,4rem)">Thanks.</h2>
+      <div class="font-label text-[10px] tracking-[0.3em] uppercase text-black/60"><span class="pulse-dot"></span>Got it</div>
+      <h2 id="thanks-title" tabindex="-1" class="font-headline font-black uppercase tracking-tighter text-black leading-[0.9]" style="font-size:clamp(2.5rem,5vw,4rem)">Thanks.</h2>
       <p class="font-body font-light text-black/60 leading-relaxed">Your message is on its way. I'll get back to you soon.</p>
-      <a href="index.html" class="self-start font-label text-[11px] tracking-[0.22em] uppercase text-black border-b border-black pb-1 hover:opacity-50">← Back to the index</a>
+      <a href="index.html" class="self-start font-label text-[11px] tracking-[0.22em] uppercase text-black border-b border-black pb-1 hover:opacity-60">← Back to the index</a>
     </div>
   </section>
 </main>
@@ -169,6 +170,8 @@ TO ME.</h1>
         form.style.display = 'none';
         thanks.classList.remove('hidden');
         thanks.classList.add('flex');
+        // the form (and the focused Send button) just disappeared: move focus to the confirmation
+        document.getElementById('thanks-title').focus();
       } else { throw new Error('bad response'); }
     } catch (err) {
       errBox.classList.remove('hidden');
@@ -176,20 +179,9 @@ TO ME.</h1>
       btn.textContent = 'Send →';
     }
   });
-
-  function toggleMobileMenu() {
-    const m = document.getElementById('mobile-menu');
-    const isOpen = m.style.transform === 'translateX(0%)';
-    if (isOpen) {
-      m.style.transform = 'translateX(100%)';
-      setTimeout(() => m.style.setProperty('display', 'none', 'important'), 350);
-    } else {
-      m.style.setProperty('display', 'flex', 'important');
-      requestAnimationFrame(() => { m.style.transform = 'translateX(0%)'; });
-    }
-  }
 </script>
 
+<script src="a11y.js"></script>
 <!-- Skimlinks -->
 <script type="text/javascript" src="https://s.skimresources.com/js/304374X1792544.skimlinks.js"></script>
 <script>
