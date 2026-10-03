@@ -14,8 +14,8 @@ The founding user: someone abroad who wants to buy from Israeli designers but ha
 
 ## Files
 
-- `index.html` is the main product (~4,500 lines): the designer grid, filters, search, A–Z bar, favorites, the EN/HE toggle, and **all brand data inline** (~343 entries).
-- `Map.html` is a Leaflet map of physical stores with an Esri basemap. It has **its own copy of store data** (~138 entries with lat/lng, addresses, phone and hours).
+- `index.html` is the main product (~4,500 lines): the designer grid, filters, search, A–Z bar, favorites, the EN/HE toggle, and **all brand data inline** (345 entries as of 3 Oct 2026).
+- `Map.html` is a Leaflet map of physical stores with an Esri basemap. It has **its own copy of store data** (about 180 pins with lat/lng, addresses, phone and hours).
 - `Boutiques.html` lists multi-brand stores (~26). These are deliberately kept separate from designers.
 - `About.html`, `Contact.html`, `Affiliate.html` and `Accessibility.html` are static pages. Affiliate is the disclosure page; Accessibility is the accessibility statement (English and Hebrew). Update its "Last updated" date and known limitations when accessibility changes.
 - `images/` holds a few locally hosted brand images. Where a brand's own image was unusable, the entry points here (e.g. `images/vil-unfold.png`).
@@ -26,6 +26,11 @@ The founding user: someone abroad who wants to buy from Israeli designers but ha
 - `docs/PROJECT-NOTES.md` is the longer project history: design decisions, editorial rules and open threads.
 - `docs/data/` has older CSV/TSV exports of the brand list. They're snapshots and may be stale; the array in `index.html` is the source of truth.
 - `docs/archive/index-squares.html` is an abandoned uniform-square grid layout, kept only for reference. Don't deploy it.
+- `scripts/` holds small Node scripts with no dependencies (Node 18+). They read the data straight out of the HTML files, so there is still no build step and nothing to install:
+  - `node scripts/build-seo.mjs` regenerates the brand-list JSON-LD in `index.html` from the `DESIGNERS` array. Run it after every add, remove, image swap or description edit. `--check` only reports whether it is out of date.
+  - `node scripts/check-links.mjs` checks every brand image and site and writes `docs/reports/link-check.md`.
+  - `node scripts/detect-sales.mjs` reads Shopify product feeds and writes `docs/reports/sales-scan.md`. It is a report only; nothing on the site reads it.
+- `docs/reports/` is where those scripts write their output.
 
 ## Brand data model (`index.html`)
 
@@ -38,13 +43,18 @@ The founding user: someone abroad who wants to buy from Israeli designers but ha
   desc: "Short card text, in the brand's own voice.",
   descFull: "Longer bio, optional.",
   instagram: "handle",                      // optional, no @
-  address: "Street, City",                  // optional; presence = physical store
+  address: "Street, City",                  // optional, used by only two entries; see the note below
+  sale: { text: "Up to 30% off", until: "2026-10-31" },  // optional; see Sales under Features
   img: "https://brand-cdn/…",               // hotlinked from the brand's own site
   fav: false
 }
 ```
 
-New brands are appended just before the closing `];` of the array.
+New brands are appended just before the closing `];` of the array. Each new brand also needs its Hebrew description added to `DESC_HE`, and `node scripts/build-seo.mjs` run afterwards.
+
+Whether a brand counts as having a physical store is **not** decided by `address`. It comes from two lists further down in `index.html`: `MAP_BRANDS` (shows "In person" and the View on Map link) and `STORE_ADDRESSES` (drives the location tag and the Location filter). A brand with a store needs an entry in both, plus its pins in `Map.html`. By-appointment studios also go in `APPOINTMENT_ONLY`.
+
+Filter keys must match the filter buttons exactly: `menswear` (label "Men") and `natural` (labels "Natural Fabrics" / "Natural Stones"). A key with no button, such as `men`, still displays its label but the brand won't show up under the filter.
 
 There are two taxonomy axes, used together in filtering:
 - **Style:** Minimalist, Edgy, Conceptual, Contemporary, Legacy, Luxury, Artisan, Casual, Streetwear, Festival, Modest…
@@ -53,10 +63,10 @@ There are two taxonomy axes, used together in filtering:
 
 ## ⚠️ Known technical debt (fix these first)
 
-1. **Data is duplicated in three places.** Each brand appears in the JS array, in a JSON-LD `@type: Brand` block in `index.html` (for SEO), and in `Map.html` if it has a store. These have drifted: there are 338 cards but only ~292 JSON-LD entries, and image changes had to be applied to all three by hand. **Suggested fix:** move everything into one `brands.json`, then have `index.html` render from it, `Map.html` filter it by `address`/`lat`, and a small build script generate the JSON-LD and `sitemap.xml`.
-2. **Hebrew description content is not yet populated.** The runtime was previously calling `window.claude.complete`, which only existed inside the design tool this was built in, so on the live site descriptions silently failed and fell back to English (with a broken 50% opacity loading state that never resolved). That fetch has been removed. `index.html` now reads translations from an inline `DESC_HE` map (English → Hebrew) keyed by the exact English `desc` string; missing keys fall back to English silently. The map is currently empty — populate it over time (or via a batch translation) to make the HE mode meaningful for descriptions. UI chrome, filters and RTL layout already work.
+1. **Data is duplicated in three places.** Each brand appears in the JS array, in a JSON-LD `@type: Brand` block in `index.html` (for SEO), and in `Map.html` if it has a store. The JSON-LD copy is now generated (`node scripts/build-seo.mjs`), so only the array and `Map.html` are kept in sync by hand. Map pins often use a different image from the card, some on purpose (a storefront photo), so check before syncing them. **Suggested full fix, not done yet:** move everything into one `brands.json`, then have `index.html` render from it, `Map.html` filter it by `address`/`lat`, and a small build script generate the JSON-LD and `sitemap.xml`.
+2. **Hebrew mode has content but no button.** `DESC_HE` in `index.html` maps each English `desc` string to its Hebrew translation and covers every brand; a missing key falls back to English silently. It is keyed by the exact English text, so editing a `desc` means updating its key too. The EN/HE toggle button itself is no longer in the markup of any page, so visitors can't reach Hebrew mode. `applyLang()` also has stale spots to fix before bringing it back: it maps four nav links where there are now five, and the English strings it restores don't match the current hero title.
 3. **Tailwind loads from the play CDN** (`cdn.tailwindcss.com`), which isn't meant for production. Compile it to a static CSS file.
-4. **Hotlinked images rot.** When a brand redesigns its site, its image URL dies. The card then falls back to the brand name on a colored block, so it never shows as broken, but a periodic link checker would help. Known upcoming rot: **Two Tone's** image is hosted on `razili.co.il`, which closes on 1 Oct 2026.
+4. **Hotlinked images rot.** When a brand redesigns its site, its image URL dies. The card then falls back to the brand name on a colored block, so it never shows as broken, so run `node scripts/check-links.mjs` every few weeks and work through `docs/reports/link-check.md`. Images hotlinked from Facebook or Google Maps (a few boutiques) carry expiring signatures and will die; prefer a local copy in `images/` for those.
 5. Before this handoff, a separate `git-export/` copy was maintained by hand alongside the working files. In a real repo this folder **is** the source, so drop that habit.
 
 ## Features and behavior
@@ -66,7 +76,8 @@ There are two taxonomy axes, used together in filtering:
 - **Layered filters:** Style panel, Type panel, Area bar and A–Z bar, all combinable. Active filters show as removable chips with a Clear All button. There's a live result count and an explicit empty state.
 - **Search:** tokenized over name, description and tags, plus `smartConceptMatch`, which maps concepts like "bridal", "swim" and "gold" onto brands that don't contain the literal word. It sits behind a nav toggle on desktop and inside the mobile menu.
 - **Favorites:** a heart on each card, stored in `localStorage` under `modeil-favs`. There are no accounts, on purpose.
-- **EN/HE toggle:** switches to RTL and Noto Sans Hebrew. Translations are cached in `localStorage` under `descHeCache` (see debt #2).
+- **EN/HE:** the code switches to RTL and Noto Sans Hebrew and reads descriptions from `DESC_HE`, but the toggle button is currently missing (see debt #2).
+- **Sales (manual):** add `sale: { text: "Up to 30% off", until: "2026-10-31" }` to a brand. `until` is the last day of the sale and is required, so nothing stale can linger; `text` is optional and `textHe` is an optional Hebrew version. While the sale runs the card gets a small SALE flag on the image and a line under the tags, and an On Sale filter button appears next to Saved. The day after `until` all of it disappears with no edit. With no running sales the button is hidden and the page looks exactly as before.
 - **Affiliate:** Skimlinks script (`s.skimresources.com/…304374X1792544`) plus `withUtm()` on outbound links. The rule: affiliate status **never** affects who gets listed or how they're described. Revenue only covers hosting.
 
 ## Accessibility
@@ -100,17 +111,15 @@ The site targets WCAG 2.1 AA. Keep it that way when editing:
 
 ## Routine tasks (most common first)
 
-1. **Swap a brand image:** replace the old URL everywhere it appears (card, JSON-LD, Map).
-2. **Add a brand:** research the site, append the entry, add JSON-LD, and add a map pin if there's a store.
-3. **Remove a brand:** delete it from the array, JSON-LD, Map and any name lists.
+1. **Swap a brand image:** replace the old URL in the card entry and in `Map.html` if the pin uses the same image, then run `node scripts/build-seo.mjs`.
+2. **Add a brand:** research the site, append the entry, add its `DESC_HE` line, add a map pin plus `MAP_BRANDS` / `STORE_ADDRESSES` entries if there's a store, then run `node scripts/build-seo.mjs`.
+3. **Remove a brand:** delete it from the array, `DESC_HE`, `MAP_BRANDS`, `STORE_ADDRESSES` and `Map.html`, then run `node scripts/build-seo.mjs`.
 
 ## Open / planned
 
-- **Sales feature, scoped but not built.**
-  - Phase 1: add a `sale: { text, until }` field, a SALE badge on the card, an "On Sale" filter, and auto-hiding after `until`.
+- **Sales feature.** Phase 1 (manual `sale` field, flag, filter, auto-expiry) is built; see Features.
   - Phase 2: a dedicated Sales page sorted by soonest end date.
-  - Phase 3: auto-detection via a daily Vercel Cron or GitHub Action reading Shopify `/products.json` (`price` vs `compare_at_price`), which covers roughly 60–70% of brands, plus the WooCommerce equivalent. Results go to `sales.json`. Manual entries always override automatic ones, and a failed check must never blank the page.
-- **Suzi Porat** (`suziporat.com`) was requested but not added yet.
+  - Phase 3: auto-detection via a daily Vercel Cron or GitHub Action reading Shopify `/products.json` (`price` vs `compare_at_price`), plus the WooCommerce equivalent. Results go to `sales.json`. Manual entries always override automatic ones, and a failed check must never blank the page. A first scan (`scripts/detect-sales.mjs`, 1 Oct 2026) could read 210 of 343 brands and found 136 of them with marked-down products, because many stores keep permanent outlet prices. A plain "has markdowns" rule is therefore far too loose; detection needs a strict threshold (most of the catalogue marked down) or a human check before anything shows on the site.
 - **Growth ideas:** tell listed designers they're on ModeIL, an embeddable "As listed on ModeIL" badge (also earns backlinks), an Instagram account posting one designer a day, Product Hunt, Israeli design markets, and diaspora/Jewish-interest media.
 
 ## Principles
