@@ -426,6 +426,10 @@
  </button>
  <div id="panel-img-wrap"></div>
  <div class="panel-body">
+ <button class="panel-back-btn" id="loc-back-btn" type="button" style="display:none" onclick="backToLocation()">
+ <span aria-hidden="true" class="material-symbols-outlined" style="font-size:14px">arrow_back</span>
+ <span>All locations</span>
+ </button>
  <h2 class="panel-name" id="panel-name"></h2>
  <div class="panel-location" id="panel-location"></div>
  <div class="panel-tags" id="panel-tags"></div>
@@ -443,10 +447,6 @@
  <div id="location-panel" style="display:none; flex-direction:column; height:100%;">
  <div id="loc-panel-img-wrap"></div>
  <div class="panel-body" id="loc-panel-body">
- <button class="panel-back-btn" id="loc-back-btn" type="button" style="display:none" onclick="showLocationPanel(currentLocation)">
- <span aria-hidden="true" class="material-symbols-outlined" style="font-size:14px">arrow_back</span>
- <span>All locations</span>
- </button>
  <div id="loc-panel-content"></div>
  </div>
  </div>
@@ -1161,7 +1161,18 @@ function showLocationPanel(loc) {
  document.getElementById('zoom-controls').style.right = (window.innerWidth < 600 ? '16px' : '416px');
 }
 
+let brandFromLocation = null;
+// Back from a brand to the list of brands at that address, with focus on the brand you left
+function backToLocation() {
+ if (!currentLocation) return;
+ showLocationPanel(currentLocation);
+ const i = currentLocation.brands.indexOf(brandFromLocation);
+ const row = document.querySelector('.loc-brand-row[data-bidx="' + i + '"]');
+ if (row) row.focus();
+}
+
 function showBrandFromLocation(d) {
+ brandFromLocation = d;
  document.getElementById('location-panel').style.display = 'none';
  document.getElementById('panel-img-wrap').style.display = '';
  const brandBody = document.getElementById('panel').querySelector('.panel-body:not(#loc-panel-body)');
