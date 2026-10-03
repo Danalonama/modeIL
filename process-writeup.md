@@ -69,7 +69,7 @@ The interesting problems were rarely visual. They were judgment calls: *Is this 
 
 **Where it is now**
 
-A living index of ~270 designers and boutiques, filterable by style, type, and area, with a store map and a clear distinction between online-only and in-person labels. It grows weekly. I'm now carefully exploring affiliate links to cover hosting — structured so it can never influence who's featured or how they're described. Editorial independence is the whole point.
+A living index of 350+ designers and boutiques, filterable by style, type, and area, with a store map and a clear distinction between online-only and in-person labels. It grows weekly. I'm now carefully exploring affiliate links to cover hosting — structured so it can never influence who's featured or how they're described. Editorial independence is the whole point.
 
 **What I'd carry forward**
 
@@ -95,7 +95,7 @@ The more I added, the more obvious the real problem became. It wasn't *my* memor
 
 That gap is the whole reason ModeIL exists.
 
-I built it brand by brand, by hand. Every single entry — and there are around 270 now — I added one at a time: a photo I chose, a description in the designer's own voice, the right tags, the neighborhood, whether you can visit in person or only shop online. It's slow, and that's the point. A directory that treats everyone as interchangeable rows isn't worth making. The care is the product.
+I built it brand by brand, by hand. Every single entry — and there are more than 350 now — I added one at a time: a photo I chose, a description in the designer's own voice, the right tags, the neighborhood, whether you can visit in person or only shop online. It's slow, and that's the point. A directory that treats everyone as interchangeable rows isn't worth making. The care is the product.
 
 A lot of the work was invisible — and it was the most important part. Deciding who belongs. Pulling the big heritage names when they didn't fit the spirit of the thing. Quietly removing a brand when I realized it wasn't actually Israeli. Drawing the line between a *designer* and a *boutique that carries designers*. Keeping the tags honest so that when you filter for "minimalist" or "edgy" or "swimwear," you actually get what you asked for. None of that shows on the surface. All of it is why the surface works.
 
@@ -111,7 +111,7 @@ If you like fashion and you like local designers, this is for you. And if you *a
 
 I kept discovering incredible Israeli designers… and then forgetting their names. So I built the place I wished existed.
 
-**ModeIL** — a hand-built index of ~270 Israeli fashion designers and boutiques. Browse by style, type, or neighborhood. Find your next favorite label.
+**ModeIL** — a hand-built index of 350+ Israeli fashion designers and boutiques. Browse by style, type, or neighborhood. Find your next favorite label.
 
 Every brand added by hand. Always free. Made with love (and a slightly unhealthy amount of time in fitting rooms).
 
@@ -122,7 +122,7 @@ Designers — if you're not on here yet, talk to me. 🤍
 ### Optional shorter variants
 
 **One-liner (bio / tagline):**
-A hand-built index of Israeli fashion — browse ~270 designers and boutiques by style, type, and neighborhood.
+A hand-built index of Israeli fashion — browse 350+ designers and boutiques by style, type, and neighborhood.
 
 **Two-sentence version:**
 ModeIL is a labour of love: a hand-built directory of Israeli fashion designers and the boutiques that carry them. I made it because this country is full of extraordinary local talent that almost nobody can find — and I wanted one beautiful place to discover it.
