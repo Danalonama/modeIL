@@ -103,7 +103,7 @@ The site targets WCAG 2.1 AA. Keep it that way when editing:
 
 - **Designer vs. boutique is a hard line.** A brand selling its own label goes in `index.html`; a store carrying other labels goes in `Boutiques.html`.
 - **Must be Israeli** (founded or based in Israel). Israeli designers based abroad (Nili Lotan, Yigal Azrouël, Elie Tahari) are an open question and are currently excluded.
-- **Must be active.** Password-gated, dormant or closed stores are removed. For example, Belov was removed because its store sat behind a password page.
+- **Must be active.** Password-gated, dormant or closed stores are removed. For example, Belov was removed because its store sat behind a password page. Exception: a password page that is a "next drop" countdown or early-access signup (Edit, Nesh) counts as active. If only the website is dead and the brand's Instagram is alive, link the card to Instagram (Salon Berlin, Tami Chomsky). Brands to recheck are listed under Open threads in `docs/PROJECT-NOTES.md`.
 - **Curation beats completeness.** Brands have been removed as editorial calls (Vanzen, Mikusha-Mela, Berni). Gideon Oberson was removed as a duplicate because his brand is Gottex, which is already listed.
 - **Descriptions use the brand's own voice** from its about page, not a house template. Verify tags, Instagram handle and live status against the brand's own site.
 - **Image rules:** show what's typical of the brand, not generic; prefer local shoots; pick the interesting look over the conventional one; nothing over-sexualized; no cropped faces; prefer real photos over AI-generated ones. Two current images appear to be AI-generated and are flagged for replacement: OZ Capsule and Holy Land Civilians.
