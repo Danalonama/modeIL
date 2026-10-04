@@ -27,7 +27,6 @@ The origin persona is real, not hypothetical: a friend abroad who wanted to spen
 | `Map.html` | Leaflet map of physical stores. |
 | `About.html` | Project story. |
 | `Contact.html` | Submissions and corrections. |
-| `Affiliate.html` | Affiliate disclosure. Exists so the monetization is stated plainly before anyone asks. |
 | `index-squares.html` | Abandoned alternate grid (uniform squares). Kept as a reference, not linked. |
 | `git-export/` | Deploy copy. **Every data edit must be applied to both `index.html` and `git-export/index.html`.** |
 | `process-writeup.md` | Narrative/marketing copy in four formats (on-site blurb, case study, blog post, social). Separate from this file. |
