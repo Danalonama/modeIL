@@ -17,7 +17,7 @@ The founding user: someone abroad who wants to buy from Israeli designers but ha
 - `index.html` is the main product (~4,500 lines): the designer grid, filters, search, A–Z bar, favorites, the EN/HE toggle, and **all brand data inline** (345 entries as of 3 Oct 2026).
 - `Map.html` is a Leaflet map of physical stores with an Esri basemap. It has **its own copy of store data** (about 180 pins with lat/lng, addresses, phone and hours).
 - `Boutiques.html` lists multi-brand stores (~26). These are deliberately kept separate from designers.
-- `About.html`, `Contact.html`, `Affiliate.html` and `Accessibility.html` are static pages. Affiliate is the disclosure page; Accessibility is the accessibility statement (English and Hebrew). Update its "Last updated" date and known limitations when accessibility changes.
+- `About.html`, `Contact.html` and `Accessibility.html` are static pages. Accessibility is the accessibility statement (English and Hebrew). Update its "Last updated" date and known limitations when accessibility changes.
 - `images/` holds a few locally hosted brand images. Where a brand's own image was unusable, the entry points here (e.g. `images/vil-unfold.png`).
 - `sitemap.xml`, `robots.txt`, `site.webmanifest` and the favicons are SEO/PWA files. The favicon is a plain black square, on purpose.
 - `a11y.css` and `a11y.js` are the shared accessibility helpers loaded by every page (see Accessibility below).
@@ -78,7 +78,7 @@ There are two taxonomy axes, used together in filtering:
 - **Favorites:** a heart on each card, stored in `localStorage` under `modeil-favs`. There are no accounts, on purpose.
 - **EN/HE:** the code switches to RTL and Noto Sans Hebrew and reads descriptions from `DESC_HE`, but the toggle button is currently missing (see debt #2).
 - **Sales (manual):** add `sale: { text: "Up to 30% off", until: "2026-10-31" }` to a brand. `until` is the last day of the sale and is required, so nothing stale can linger; `text` is optional and `textHe` is an optional Hebrew version. While the sale runs the card gets a small SALE flag on the image and a line under the tags, and an On Sale filter button appears next to Saved. The day after `until` all of it disappears with no edit. With no running sales the button is hidden and the page looks exactly as before.
-- **Affiliate:** Skimlinks script (`s.skimresources.com/…304374X1792544`) plus `withUtm()` on outbound links. The rule: affiliate status **never** affects who gets listed or how they're described. Revenue only covers hosting.
+- **No affiliate links.** Skimlinks was removed in October 2026: it recognised none of the listed brands as merchants. Outbound links only get `withUtm()` referral tags (`utm_source=modeil`), which earn nothing. With nothing to disclose, the old `Affiliate.html` disclosure page was deleted (Vercel redirects it to the home page). If affiliate links, paid placements or gifted products ever come in, add a disclosure page first. Editorial rule regardless: commercial relationships **never** affect who gets listed or how they're described.
 
 ## Accessibility
 

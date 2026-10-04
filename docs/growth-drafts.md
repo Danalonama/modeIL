@@ -24,7 +24,7 @@ For Instagram DM or email. Short on purpose: it asks for nothing, and the correc
 
 Notes
 
-- Affiliate links: if a designer asks, the honest answer is on `Affiliate.html`. Some outbound links earn a small commission through Skimlinks, it covers hosting, and it never affects who is listed.
+- Affiliate links: if a designer asks, the honest answer is that there are none. ModeIL earns nothing from outbound links, and no one pays to be listed.
 - Start with the designers whose images or descriptions you're least sure about. Their corrections improve the index, and a designer who has corrected their own entry is the most likely to share it.
 
 ## 2. "Listed on ModeIL" link for designers' sites
