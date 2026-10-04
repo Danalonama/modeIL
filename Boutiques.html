@@ -100,9 +100,9 @@
 
 <!-- Nav -->
 <nav aria-label="Main" class="fixed top-0 w-full z-50 bg-[#F4F4F4]/95 backdrop-blur-sm border-b border-[#1A1A18]/10 flex justify-between items-center px-8 md:px-12 py-6">
- <a href="index.html" class="flex items-baseline gap-2.5 group">
- <span class="font-headline font-black text-2xl tracking-tighter text-black uppercase" style="font-family: Plus Jakarta Sans">MODE-IL</span>
- <span class="font-label tracking-[0.2em] uppercase hidden sm:inline" style="font-size:9px;color:rgba(0,0,0,0.55);letter-spacing:2px;line-height:1.4">Israeli Fashion Index</span>
+ <a href="index.html" class="flex flex-col items-start gap-1 group">
+ <span class="font-headline font-black text-2xl tracking-tighter text-black uppercase leading-none" style="font-family: Plus Jakarta Sans">MODE-IL</span>
+ <span class="font-label tracking-[0.2em] uppercase hidden sm:block" style="font-size:9px;color:rgba(0,0,0,0.55);letter-spacing:2px;line-height:1.4">Israeli Fashion Index</span>
  </a>
  <div class="hidden md:flex items-center gap-12">
  <div class="flex gap-8 font-label uppercase tracking-widest text-sm">
@@ -189,15 +189,17 @@ BOUTIQUES</h1>
 </main>
 
 <!-- Footer -->
-<footer class="bg-[#EDE9E1] text-black flex flex-col md:flex-row justify-between items-center w-full px-8 md:px-12 py-14">
- <div class="mb-8 md:mb-0">
+<footer class="bg-[#F4F4F4] text-black border-t border-[#1A1A18]/10 w-full px-8 md:px-12 py-14">
  <div class="font-headline font-black text-xl tracking-tighter uppercase text-black">MODE-IL</div>
  <div class="font-label text-[9px] tracking-[0.25em] uppercase opacity-70 mt-2">Israeli Fashion Index · © 2026 · All Rights Reserved</div>
- </div>
- <div class="flex gap-10 font-label text-[9px] tracking-[0.25em] uppercase">
- <a class="opacity-70 hover:opacity-100 transition-opacity" href="Contact.html">Talk To Me</a>
- <a class="opacity-70 hover:opacity-100 transition-opacity" href="Accessibility.html">Accessibility</a>
- </div>
+ <nav aria-label="Footer" class="flex flex-wrap gap-x-10 gap-y-3 mt-6 font-label text-[9px] tracking-[0.25em] uppercase">
+ <a class="opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" href="index.html">Designers</a>
+ <a aria-current="page" class="opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" href="Boutiques.html">Boutiques</a>
+ <a class="opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" href="Map.html">Map</a>
+ <a class="opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" href="About.html">About</a>
+ <a class="opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" href="Contact.html">Talk To Me</a>
+ <a class="opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" href="Accessibility.html">Accessibility</a>
+ </nav>
 </footer>
 
 <script>
