@@ -106,7 +106,18 @@ The site targets WCAG 2.1 AA. Keep it that way when editing:
 - **Must be active.** Password-gated, dormant or closed stores are removed. For example, Belov was removed because its store sat behind a password page. Exception: a password page that is a "next drop" countdown or early-access signup (Edit, Nesh) counts as active. If only the website is dead and the brand's Instagram is alive, link the card to Instagram (Salon Berlin, Tami Chomsky). Brands to recheck are listed under Open threads in `docs/PROJECT-NOTES.md`.
 - **Curation beats completeness.** Brands have been removed as editorial calls (Vanzen, Mikusha-Mela, Berni). Gideon Oberson was removed as a duplicate because his brand is Gottex, which is already listed.
 - **Descriptions use the brand's own voice** from its about page, not a house template. Verify tags, Instagram handle and live status against the brand's own site.
-- **Image rules:** show what's typical of the brand, not generic; prefer local shoots; pick the interesting look over the conventional one; nothing over-sexualized; no cropped faces; prefer real photos over AI-generated ones. Two current images appear to be AI-generated and are flagged for replacement: OZ Capsule and Holy Land Civilians.
+- **Image rules** (the card image does most of the editorial work on the grid). In order of priority:
+  1. A person wearing the product. Flat-lay, hanger or white-background shots only if the brand has no on-body photos.
+  2. Shot in Israel is better when choices are close (a Tel Aviv street, a beach, a local studio).
+  3. Interesting over conventional: diverse or non-classic casting, the striking look over the default model shot.
+  4. Typical of the brand, not generic.
+  5. Never a cropped face or headless body. If a body is visible, the face must be too. A full back view only if it's the brand's only on-body photo.
+  6. No text laid over the photo: no banners, headlines, collection captions, signatures or added logos. Text printed on the clothes is fine.
+  7. Nothing over-sexualized or likely to upset.
+  8. Real photos over AI-generated ones (filenames like `ChatGPT_Image_*` or `Gemini_Generated_*` are out).
+  9. Tie-breakers: pieces genuinely loved; when unsure, the brand's best-sellers.
+
+  Look at each candidate image itself, uncropped, before choosing; text and cropped faces don't show in filenames. Two current images appear to be AI-generated and are flagged for replacement: OZ Capsule and Holy Land Civilians.
 - Bridal, footwear, jewelry and swimwear are in scope.
 
 ## Routine tasks (most common first)
