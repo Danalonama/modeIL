@@ -18,7 +18,7 @@ The founding user: someone abroad who wants to buy from Israeli designers but ha
 - `Map.html` is a Leaflet map of physical stores with an Esri basemap. It has **its own copy of store data** (about 180 pins with lat/lng, addresses, phone and hours).
 - `Boutiques.html` lists multi-brand stores (~26). These are deliberately kept separate from designers.
 - `About.html`, `Contact.html` and `Accessibility.html` are static pages. Accessibility is the accessibility statement (English and Hebrew). Update its "Last updated" date and known limitations when accessibility changes.
-- `images/` holds a few locally hosted brand images. Where a brand's own image was unusable, the entry points here (e.g. `images/vil-unfold.png`).
+- `images/` holds a few locally hosted brand images. Where a brand's own image was unusable, the entry points here (e.g. `images/vil-unfold.jpg`).
 - `sitemap.xml`, `robots.txt`, `site.webmanifest` and the favicons are SEO/PWA files. The favicon is a plain black square, on purpose.
 - `a11y.css` and `a11y.js` are the shared accessibility helpers loaded by every page (see Accessibility below).
 - `vercel.json` sets long-cache headers for image and font files only.
