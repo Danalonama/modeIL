@@ -54,6 +54,18 @@
  }
  .store-img-wrap { aspect-ratio: 4 / 3; }
  .store-row + .store-row { border-top: 1px solid rgba(26,26,24,0.12); }
+/* Filter dropdowns: same as the Designers page */
+.fdrop { position: relative; display: inline-flex; }
+.fdrop-trigger { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; height: 36px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 8px; padding: 0 15px; border: 1px solid rgba(26,26,24,0.25); background: #fff; color: #474747; cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
+.fdrop-trigger:hover { border-color: #1A1A18; color: #1A1A18; }
+.fdrop-trigger.has-active { background: #1A1A18; color: #fff; border-color: #1A1A18; }
+.fdrop-caret { font-size: 8px; opacity: .55; transition: transform .2s; }
+.fdrop.open .fdrop-caret { transform: rotate(180deg); }
+.fdrop.open .fdrop-trigger { border-color: #1A1A18; }
+.fdrop-badge { background: #fff; color: #1A1A18; min-width: 15px; height: 15px; display: inline-flex; align-items: center; justify-content: center; font-size: 9px; padding: 0 3px; line-height: 1; }
+.fdrop-panel { position: absolute; top: calc(100% + 8px); left: 0; z-index: 60; display: none; flex-wrap: wrap; gap: 8px; background: #fff; border: 1px solid #1A1A18; padding: 14px; min-width: 230px; max-width: 360px; box-shadow: 0 12px 30px rgba(0,0,0,.10); }
+.fdrop.open .fdrop-panel { display: flex; }
+@media (max-width: 640px){ .fdrop-panel { max-width: 280px; left: 0; } }
 </style>
 <link rel="stylesheet" href="a11y.css">
 <link rel="stylesheet" href="assets/tailwind.css">
@@ -63,9 +75,9 @@
 
 <!-- Nav -->
 <nav aria-label="Main" class="fixed top-0 w-full z-50 bg-[#F4F4F4]/95 backdrop-blur-sm border-b border-[#1A1A18]/10 flex justify-between items-center px-8 md:px-12 py-6">
- <a href="index.html" class="flex items-baseline gap-2.5 group">
- <span class="font-headline font-black text-2xl tracking-tighter text-black uppercase" style="font-family: Plus Jakarta Sans">MODE-IL</span>
- <span class="font-label tracking-[0.2em] uppercase hidden sm:inline" style="font-size:9px;color:rgba(0,0,0,0.55);letter-spacing:2px;line-height:1.4">Israeli Fashion Index</span>
+ <a href="index.html" class="flex flex-col items-start gap-1 group">
+ <span class="font-headline font-black text-2xl tracking-tighter text-black uppercase leading-none" style="font-family: Plus Jakarta Sans">MODE-IL</span>
+ <span class="font-label tracking-[0.2em] uppercase hidden sm:block" style="font-size:9px;color:rgba(0,0,0,0.55);letter-spacing:2px;line-height:1.4">Israeli Fashion Index</span>
  </a>
  <div class="hidden md:flex items-center gap-12">
  <div class="flex gap-8 font-label uppercase tracking-widest text-sm">
@@ -104,7 +116,7 @@
 <main id="main" tabindex="-1" class="pt-40 pb-24 px-6 md:px-12 max-w-[1800px] mx-auto">
 
  <!-- Hero -->
- <header class="mb-20 flex flex-col gap-8">
+ <header class="mb-20 flex flex-col gap-6">
  <div class="max-w-3xl">
  <p class="font-label text-[10px] tracking-[0.3em] uppercase text-on-surface-variant mb-6 opacity-60">
 </p>
@@ -114,12 +126,15 @@ BOUTIQUES</h1>
  Concept stores, boutiques with multi brands - try on, and shop the local scene in one stop.
  </p>
  </div>
- <div class="flex items-center gap-3 mt-2">
+ <div class="w-full flex flex-col gap-4">
+ <div class="flex flex-wrap items-center gap-2.5">
+ <div class="fdrop"><button type="button" class="fdrop-trigger" data-drop="location" aria-expanded="false" aria-controls="location-panel">Location<span class="fdrop-caret" aria-hidden="true">▾</span></button><div class="fdrop-panel" id="location-panel" role="group" aria-label="Location filters"><div id="region-bar" class="flex flex-wrap gap-2 items-center"></div></div></div>
+ <button type="button" id="saved-filter" class="fdrop-trigger" aria-pressed="false" style="gap:7px;height:36px;box-sizing:border-box;padding:0 15px;line-height:1"><span aria-hidden="true" class="material-symbols-outlined" style="font-size:13px;line-height:1">favorite</span>Saved</button>
+ </div>
+ <div class="flex items-center gap-3 mt-4">
  <div class="w-2 h-2 bg-primary"></div>
  <span id="store-count" role="status" class="font-label text-[9px] tracking-[0.25em] uppercase opacity-70"></span>
  </div>
- <div id="region-bar" role="group" aria-label="Filter by area" class="flex flex-wrap gap-3 items-center">
- <span class="font-label text-[9px] tracking-[0.25em] uppercase opacity-70 mr-2">Area:</span>
  </div>
  </header>
 
@@ -152,15 +167,18 @@ BOUTIQUES</h1>
 </main>
 
 <!-- Footer -->
-<footer class="bg-[#EDE9E1] text-black flex flex-col md:flex-row justify-between items-center w-full px-8 md:px-12 py-14">
- <div class="mb-8 md:mb-0">
+<footer class="bg-[#F4F4F4] text-black border-t border-[#1A1A18]/10 w-full px-8 md:px-12 py-14">
  <div class="font-headline font-black text-xl tracking-tighter uppercase text-black">MODE-IL</div>
- <div class="font-label text-[9px] tracking-[0.25em] uppercase opacity-70 mt-2">Israeli Fashion Index · © 2026 · All Rights Reserved</div>
- </div>
- <div class="flex gap-10 font-label text-[9px] tracking-[0.25em] uppercase">
- <a class="opacity-70 hover:opacity-100 transition-opacity" href="Contact.html">Talk To Me</a>
- <a class="opacity-70 hover:opacity-100 transition-opacity" href="Accessibility.html">Accessibility</a>
- </div>
+ <div class="font-label text-[9px] tracking-[0.25em] uppercase opacity-70 mt-2">ISRAELI FASHION INDEX -MADE WITH ❤️ BY DANA SHIMONI · © 2026 · ALL RIGHTS RESERVED</div>
+ <nav aria-label="Footer" class="flex flex-wrap gap-x-10 gap-y-3 mt-6 font-label text-[9px] tracking-[0.25em] uppercase">
+ <a class="opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" href="index.html">Designers</a>
+ <a aria-current="page" class="opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" href="Boutiques.html">Boutiques</a>
+ <a class="opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" href="Map.html">Map</a>
+ <a class="opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" href="About.html">About</a>
+ <a class="opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" href="Contact.html">Talk To Me</a>
+ <a class="opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" href="Accessibility.html">Accessibility</a>
+ <a class="opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" href="https://buymeacoffee.com/modeil" target="_blank" rel="noopener" aria-label="Buy Me a Coffee (opens in a new tab)">Buy Me a Coffee</a>
+ </nav>
 </footer>
 
 <script>
@@ -379,6 +397,7 @@ let FAVORITES = new Set(JSON.parse(localStorage.getItem('modeil-favs') || '[]'))
 // Region filter
 const REGIONS = ['All','Tel Aviv','HaSharon','Center','Jerusalem','North','Pardes Hanna','Nationwide','Online'];
 let activeRegion = 'All';
+let showSaved = false;
 const regionBar = document.getElementById('region-bar');
 REGIONS.forEach(r => {
  const btn = document.createElement('button');
@@ -387,7 +406,7 @@ REGIONS.forEach(r => {
  btn.textContent = r;
  btn.dataset.region = r;
  styleRegionBtn(btn);
- btn.onclick = () => { activeRegion = r; document.querySelectorAll('.region-btn').forEach(styleRegionBtn); render(); };
+ btn.onclick = () => { activeRegion = r; document.querySelectorAll('.region-btn').forEach(styleRegionBtn); updateTriggers(); render(); };
  regionBar.appendChild(btn);
 });
 // ===== UTM tagging for outbound links — edit campaign tags here in ONE place =====
@@ -483,13 +502,37 @@ function buildList(items) {
  return wrap;
 }
 
+// Location dropdown + Saved toggle, wired like the Designers page
+const locDrop = document.querySelector('.fdrop');
+const locTrigger = locDrop.querySelector('.fdrop-trigger');
+const savedBtn = document.getElementById('saved-filter');
+function setDropOpen(open) {
+ locDrop.classList.toggle('open', open);
+ locTrigger.setAttribute('aria-expanded', String(open));
+}
+locTrigger.addEventListener('click', (e) => { e.stopPropagation(); setDropOpen(!locDrop.classList.contains('open')); });
+document.addEventListener('click', (e) => { if (!e.target.closest('.fdrop')) setDropOpen(false); });
+locDrop.addEventListener('keydown', (e) => { if (e.key === 'Escape' && locDrop.classList.contains('open')) { setDropOpen(false); locTrigger.focus(); } });
+locDrop.addEventListener('focusout', (e) => { if (e.relatedTarget && !locDrop.contains(e.relatedTarget)) setDropOpen(false); });
+savedBtn.addEventListener('click', () => { showSaved = !showSaved; updateTriggers(); render(); });
+function updateTriggers() {
+ const regionOn = activeRegion !== 'All';
+ locTrigger.classList.toggle('has-active', regionOn);
+ let badge = locTrigger.querySelector('.fdrop-badge');
+ if (regionOn && !badge) { badge = document.createElement('span'); badge.className = 'fdrop-badge'; badge.innerHTML = '1<span class="sr-only"> selected</span>'; locTrigger.appendChild(badge); }
+ if (!regionOn && badge) badge.remove();
+ savedBtn.classList.toggle('has-active', showSaved);
+ savedBtn.setAttribute('aria-pressed', String(showSaved));
+}
+const visible = (s) => !showSaved || FAVORITES.has(s.name);
+
 function render() {
  grid.innerHTML = '';
  let total = 0;
 
  if (activeRegion === 'All') {
  AREA_GROUPS.forEach(group => {
- const items = STORES.filter(s => group.regions.includes(s.region)).sort((a, b) => a.name.localeCompare(b.name));
+ const items = STORES.filter(s => group.regions.includes(s.region) && visible(s)).sort((a, b) => a.name.localeCompare(b.name));
  if (!items.length) return;
  total += items.length;
  const section = document.createElement('div');
@@ -499,11 +542,12 @@ function render() {
  grid.appendChild(section);
  });
  } else {
- const items = STORES.filter(s => s.region === activeRegion).sort((a, b) => a.name.localeCompare(b.name));
+ const items = STORES.filter(s => s.region === activeRegion && visible(s)).sort((a, b) => a.name.localeCompare(b.name));
  total = items.length;
  if (items.length) grid.appendChild(buildList(items));
  }
 
+ if (total === 0) grid.innerHTML = `<p class="py-24 text-center font-label text-xs tracking-widest uppercase opacity-70">${showSaved ? 'No saved boutiques yet, heart the ones you love.' : 'No boutiques in this area'}</p>`;
  countEl.textContent = `${total} ${total === 1 ? 'Boutique' : 'Boutiques'}`;
 }
 
@@ -532,8 +576,6 @@ render();
 </script>
 
 <script src="a11y.js"></script>
-<!-- Skimlinks -->
-<script type="text/javascript" src="https://s.skimresources.com/js/304374X1792544.skimlinks.js"></script>
 <script>
 (function(){
   var h = location.hostname;

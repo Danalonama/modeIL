@@ -6,8 +6,18 @@
     {
       "source": "/(.*)\\.(png|jpg|jpeg|gif|webp|svg|ico|woff2?)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/Affiliate.html",
+      "destination": "/",
+      "permanent": true
     }
   ]
 }

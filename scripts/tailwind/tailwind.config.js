@@ -7,7 +7,7 @@ const path = require('path');
 module.exports = {
   // Pages that load assets/tailwind.css. Map.html has its own stylesheet and is left out
   // on purpose. Add a new page here if it uses Tailwind classes.
-  content: ['index', 'Boutiques', 'About', 'Contact', 'Affiliate', 'Accessibility'].map(p => path.join(__dirname, '../..', p + '.html')),
+  content: ['index', 'Boutiques', 'About', 'Contact', 'Accessibility'].map(p => path.join(__dirname, '../..', p + '.html')),
   darkMode: 'class',
   theme: {
     extend: {

@@ -27,7 +27,6 @@ The origin persona is real, not hypothetical: a friend abroad who wanted to spen
 | `Map.html` | Leaflet map of physical stores. |
 | `About.html` | Project story. |
 | `Contact.html` | Submissions and corrections. |
-| `Affiliate.html` | Affiliate disclosure. Exists so the monetization is stated plainly before anyone asks. |
 | `index-squares.html` | Abandoned alternate grid (uniform squares). Kept as a reference, not linked. |
 | `git-export/` | Deploy copy. **Every data edit must be applied to both `index.html` and `git-export/index.html`.** |
 | `process-writeup.md` | Narrative/marketing copy in four formats (on-site blurb, case study, blog post, social). Separate from this file. |
@@ -117,6 +116,7 @@ This curation is most of why the grid feels human rather than like a stock catal
 - **Curation over completeness.** Some famous heritage houses were deliberately pulled for not fitting the index's spirit. The value is in listing the right things well.
 - **Sourcing is on-the-ground**, not from search results: younger-designer events, fairs, pop-ups, and noticing labels on people in the street. That's why the list skews toward discovery over household names.
 - **Bridal is in scope** (added deliberately — Lihi Hod, Berta, Alon Livné, Michal Medina and others). So are footwear, jewelry, and swimwear as Type tags.
+- **Password page ≠ inactive when it's a drop.** A shop locked behind a "next drop" / early-access page (Edit, Nesh) counts as active. A plain password page or an open-ended "opening soon" with nothing to buy (Gelada, Masada Jeans) comes off. If only the website is dead but the brand's Instagram is alive, the card links to Instagram instead (Salon Berlin, Tami Chomsky). Decided October 2026.
 - **Israeli-born designers based abroad** (Nili Lotan, Yigal Azrouël, Elie Tahari) are an open question — currently out.
 
 ---
@@ -141,6 +141,8 @@ This curation is most of why the grid feels human rather than like a stock catal
 The agreed path: build manual first, then layer automatic Shopify detection behind it, with manual entries always overriding automatic ones.
 
 **Portability.** No build step, no framework, no dependencies beyond CDN scripts — the whole project moves as a folder or a Git repo anywhere.
+
+**Recheck in early November 2026.** Sages & Souls (`sagesandsouls.com`) put up a Shopify password page on 4 Oct 2026 saying it is "taking a short pause… We hope to be back soon". Kept for now; if it is still paused, remove it until it returns. Masada Jeans was removed on 3 Oct 2026 for an "opening soon" page; re-add once `masadajeans.com` relaunches.
 
 **Other open items:** whether to split the data out of `index.html` as it grows; whether to add remaining suggested designers (Gideon Oberson, Michal Negrin, Shani Bar, Vivi Bellaish, Yaron Minkowski were listed and only partly added); whether diaspora Israeli designers belong.
 

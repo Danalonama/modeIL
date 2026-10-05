@@ -31,3 +31,6 @@ ModeIL-brands-with-images.csv
 ModeIL-brands.csv
 brands.csv
 brands.tsv
+
+# Raw script output; the .md reports next to them are the readable versions
+docs/reports/*.json
