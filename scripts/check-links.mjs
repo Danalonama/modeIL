@@ -29,6 +29,9 @@ async function probe(url, kind) {
           'User-Agent': UA,
           'Accept': kind === 'img' ? 'image/avif,image/webp,image/*,*/*;q=0.8' : 'text/html,*/*;q=0.8',
           'Accept-Language': 'en-US,en;q=0.9,he;q=0.8',
+          // Images are requested the way a visitor's browser asks for them from the live site,
+          // so hosts that block other sites from showing their images (hotlink protection) show up.
+          ...(kind === 'img' ? { 'Referer': 'https://mode-il.com/' } : {}),
         },
       });
       const type = res.headers.get('content-type') || '';
