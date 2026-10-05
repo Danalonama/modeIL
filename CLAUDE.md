@@ -25,7 +25,7 @@ The founding user: someone abroad who wants to buy from Israeli designers but ha
 
 ## Files
 
-- `index.html` is the main product (~4,500 lines): the designer grid, filters, search, A–Z bar, favorites, the EN/HE toggle, and **all brand data inline** (345 entries as of 3 Oct 2026).
+- `index.html` is the main product (~4,500 lines): the designer grid, filters, search, A–Z bar, favorites, the EN/HE toggle, and **all brand data inline** (371 entries as of 6 Oct 2026). The same page is also the **Bridal page**: at `/bridal` (a Vercel rewrite in `vercel.json`; locally `index.html?view=bridal`) it shows only bridal-tagged designers, with its own heading and title.
 - `Map.html` is a Leaflet map of physical stores with an Esri basemap. It has **its own copy of store data** (about 180 pins with lat/lng, addresses, phone and hours).
 - `Boutiques.html` lists multi-brand stores (~26). These are deliberately kept separate from designers.
 - `About.html`, `Contact.html` and `Accessibility.html` are static pages. Accessibility is the accessibility statement (English and Hebrew). Update its "Last updated" date and known limitations when accessibility changes.
@@ -56,6 +56,7 @@ The founding user: someone abroad who wants to buy from Israeli designers but ha
   instagram: "handle",                      // optional, no @
   address: "Street, City",                  // optional, used by only two entries; see the note below
   sale: { text: "Up to 30% off", until: "2026-10-31" },  // optional; see Sales under Features
+  bridalOnly: true,                         // optional; bridal houses: shown on /bridal only, not in the main grid
   img: "https://brand-cdn/…",               // hotlinked from the brand's own site
   fav: false
 }
@@ -129,7 +130,7 @@ The site targets WCAG 2.1 AA. Keep it that way when editing:
   9. Tie-breakers: pieces genuinely loved; when unsure, the brand's best-sellers.
 
   Look at each candidate image itself, uncropped, before choosing; text and cropped faces don't show in filenames. Some brands' own sites are full of AI-generated photos (OZ Capsule, Holyland Civilians): pick their real camera files (names like `3B9A1234.jpg` or `IMG_1234.jpg`), not the generated ones.
-- Bridal, footwear, jewelry and swimwear are in scope.
+- Bridal, footwear, jewelry and swimwear are in scope. Bridal has its own page (`/bridal`, Oct 2026). Pure bridal and evening couture houses carry `bridalOnly: true` and appear only there. Brands that also make everyday clothes keep the `bridal` tag without the flag and appear on both pages.
 
 ## Routine tasks (most common first)
 
