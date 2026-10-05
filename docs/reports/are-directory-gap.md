@@ -14,7 +14,15 @@ Compared on 5 Oct 2026. [ARE directory](https://www.are-mag.com/are-directory/) 
 - **Skipped:** Marei 1998 (based abroad).
 - **Boutique candidate:** We Must Shop.
 
-Still to review: jewelry, bridal, menswear, footwear, swimwear, bags and activewear.
+Swimwear, bags, footwear, menswear and activewear were reviewed on 5–6 Oct 2026:
+- **Added (10):** Alma Ola, Palette Swimwear, Shani Shemer, TES, AMRIA, LAX, A by Anabelle, Hilal Studio, Kim Perets, JUV Activewear.
+- **Recheck later:** Archie & Dennis, Highlight Studio, DEA.
+- **Skipped:** Norman & Bella (closing), Bootleg, Matnas (based abroad).
+- **Boutique candidate:** SUMR (Greek Sandals).
+
+Bridal is waiting on the new Bridal page. Approved so far: Dror Kontento, Dana Harel, Gali Karten, Luminary. Still to decide: Shani Zimmerman, Yanky & Nataf.
+
+Still to review: jewelry.
 
 ## Womenswear (13 live)
 
