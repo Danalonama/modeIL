@@ -6,6 +6,17 @@ Live at `mode-il.com`, deployed on Vercel from this folder. The site is plain st
 
 ---
 
+## Before you start any task: check the task board
+
+Several Claude sessions work on ModeIL at the same time. To stop them repeating each other's work, the shared task board is **https://claude.ai/artifact/T7NF4xGwEbYHRsSQeyQA35** (read and write it with the `ArtifactData` tool, collection `tasks`).
+
+1. Before starting, read the board and run `gh pr list`. If the task is already `doing` under another session, or already in an open or merged PR, leave it and tell Dana.
+2. When you start, set the task's `status` to `doing` and `session` to your session's title. If it isn't on the board, add it.
+3. When you open a PR, set `pr`. When it merges, set `status` to `done`.
+4. New open items or questions for Dana go on the board, not only in chat.
+
+Work in your own git worktree under `.claude/worktrees/`, never in the main folder: the checkout and the git stash are shared.
+
 ## What it is
 
 A hand-curated, free, independent directory of Israeli fashion designers, plus the boutiques that stock them and a map of physical stores. It's a discovery tool, not a store.
@@ -117,7 +128,7 @@ The site targets WCAG 2.1 AA. Keep it that way when editing:
   8. Real photos over AI-generated ones (filenames like `ChatGPT_Image_*` or `Gemini_Generated_*` are out).
   9. Tie-breakers: pieces genuinely loved; when unsure, the brand's best-sellers.
 
-  Look at each candidate image itself, uncropped, before choosing; text and cropped faces don't show in filenames. Two current images appear to be AI-generated and are flagged for replacement: OZ Capsule and Holy Land Civilians.
+  Look at each candidate image itself, uncropped, before choosing; text and cropped faces don't show in filenames. Some brands' own sites are full of AI-generated photos (OZ Capsule, Holyland Civilians): pick their real camera files (names like `3B9A1234.jpg` or `IMG_1234.jpg`), not the generated ones.
 - Bridal, footwear, jewelry and swimwear are in scope.
 
 ## Routine tasks (most common first)
