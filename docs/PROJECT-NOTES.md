@@ -146,6 +146,14 @@ The agreed path: build manual first, then layer automatic Shopify detection behi
 
 **ARE directory follow-ups (5 Oct 2026).** The womenswear brands from ARE Magazine's directory that weren't added yet (full list in `docs/reports/are-directory-gap.md`). Parlez de Vous: the homepage is still an "Available Spring 2026" placeholder; add it once the site relaunches. Ella Levy: no new products since May 2025; add her if a new collection appears. Yael Shaulsky: almost all clothing sold out, and her "War Fetish" line is editorially sensitive; revisit if a new clothing collection launches. We Must Shop (Montefiore 30 and Dizengoff 138, Tel Aviv) is a multi-brand boutique, so it's a `Boutiques.html` candidate, not a designer.
 
+**To do: review every brand's tags (added 5 Oct 2026).** Tags drive the filters, so a wrong or missing tag hides a brand. Example: Ayoola is lingerie but is tagged only Minimalist, so it never shows under the Lingerie filter. A quick count on 5 Oct found:
+- 179 of 356 designers have no Type tag at all, so they're invisible to every Type filter.
+- 83 designers have only one tag.
+- Four tag keys (`casual`, `handmade`, `made-in-israel`, `local-production`) aren't in `STYLE_TAGS` or `TYPE_TAGS`, so they show on cards but can't be filtered.
+- Some descriptions mention bridal, footwear or lingerie without the matching tag. The candidates found so far are Ayala Vitkon, Neta Efrati, Seestarz, IDIOM, IDA Studio, Yaron Minkowski, HKN, Partizano, Tovale+, Latto Velara, Galia Lahav, Kahiko and Sunshine. These are only hints and each needs checking.
+
+Plan: go through brands category by category against their own sites. Give each one its Type tag (what it makes) and 1–2 Style tags that genuinely fit (not a default Minimalist). Then decide whether the four stray keys become real filters or get folded into existing ones.
+
 **Other open items:** whether to split the data out of `index.html` as it grows; whether to add remaining suggested designers (Gideon Oberson, Michal Negrin, Shani Bar, Vivi Bellaish, Yaron Minkowski were listed and only partly added); whether diaspora Israeli designers belong.
 
 ---
