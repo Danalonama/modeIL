@@ -117,7 +117,7 @@ This curation is most of why the grid feels human rather than like a stock catal
 - **Sourcing is on-the-ground**, not from search results: younger-designer events, fairs, pop-ups, and noticing labels on people in the street. That's why the list skews toward discovery over household names.
 - **Bridal is in scope** (added deliberately — Lihi Hod, Berta, Alon Livné, Michal Medina and others). So are footwear, jewelry, and swimwear as Type tags.
 - **Password page ≠ inactive when it's a drop.** A shop locked behind a "next drop" / early-access page (Edit, Nesh) counts as active. A plain password page or an open-ended "opening soon" with nothing to buy (Gelada, Masada Jeans) comes off. If only the website is dead but the brand's Instagram is alive, the card links to Instagram instead (Salon Berlin, Tami Chomsky). Decided October 2026.
-- **Israeli-born designers based abroad** (Nili Lotan, Yigal Azrouël, Elie Tahari) are an open question — currently out.
+- **Israeli-born designers based abroad** (Nili Lotan, Yigal Azrouël, Elie Tahari) are an open question — currently out Marei 1998 (founder Maya Reik) joined this group in October 2026: its site is USD-only with Manhattan fittings and no Israeli address.
 
 ---
 
@@ -143,6 +143,8 @@ The agreed path: build manual first, then layer automatic Shopify detection behi
 **Portability.** No build step, no framework, no dependencies beyond CDN scripts — the whole project moves as a folder or a Git repo anywhere.
 
 **Recheck in early November 2026.** Sages & Souls (`sagesandsouls.com`) put up a Shopify password page on 4 Oct 2026 saying it is "taking a short pause… We hope to be back soon". Kept for now; if it is still paused, remove it until it returns. Masada Jeans was removed on 3 Oct 2026 for an "opening soon" page; re-add once `masadajeans.com` relaunches.
+
+**ARE directory follow-ups (5 Oct 2026).** The womenswear brands from ARE Magazine's directory that weren't added yet (full list in `docs/reports/are-directory-gap.md`). Parlez de Vous: the homepage is still an "Available Spring 2026" placeholder; add it once the site relaunches. Ella Levy: no new products since May 2025; add her if a new collection appears. Yael Shaulsky: almost all clothing sold out, and her "War Fetish" line is editorially sensitive; revisit if a new clothing collection launches. We Must Shop (Montefiore 30 and Dizengoff 138, Tel Aviv) is a multi-brand boutique, so it's a `Boutiques.html` candidate, not a designer.
 
 **Other open items:** whether to split the data out of `index.html` as it grows; whether to add remaining suggested designers (Gideon Oberson, Michal Negrin, Shani Bar, Vivi Bellaish, Yaron Minkowski were listed and only partly added); whether diaspora Israeli designers belong.
 
