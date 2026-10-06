@@ -216,14 +216,6 @@ const STORES = [
  img: "https://shmua.co.il/wp-content/uploads/2025/10/ChatGPT-Image-Sep-9-2025-10_32_40-PM-1.webp",
  },
  {
- name: "Tema",
- region: "Tel Aviv",
- url: "https://www.tema-shop.com/",
- tagLabels: ["Multi-Brand", "Concept Store"],
- desc: "A Tel Aviv concept store curating an edited selection of Israeli and international designers, clothing, objects and accessories chosen with a strong point of view. Kiryat Shaul 24, Tel Aviv · 03-6442356.",
- img: "https://www.tema-shop.com/wp-content/uploads/2024/05/4T0A0330-copy-613x919-1.jpg",
- },
- {
  name: "Haparlament",
  region: "HaSharon",
  url: "https://www.instagram.com/haparlament_atar/",
@@ -389,7 +381,7 @@ const STORES = [
 ];
 
 // Boutiques with a pinned physical location on the Map page.
-const MAP_STORES = new Set(["Tema","DA Studio","En Culture","Shtayim","Pink","Bashin VeAyin","Ronita","Lola","Moment","MYKI","Michali","Reuta","AKA My Culture","CALA","Comme il Faut","Razili","Story","Belle and Sue"]);
+const MAP_STORES = new Set(["DA Studio","En Culture","Shtayim","Pink","Bashin VeAyin","Ronita","Lola","Moment","MYKI","Michali","Reuta","AKA My Culture","CALA","Comme il Faut","Razili","Story","Belle and Sue"]);
 const grid = document.getElementById('store-grid');
 const countEl = document.getElementById('store-count');
 let FAVORITES = new Set(JSON.parse(localStorage.getItem('modeil-favs') || '[]'));
