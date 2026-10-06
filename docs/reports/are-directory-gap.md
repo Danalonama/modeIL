@@ -20,7 +20,7 @@ Swimwear, bags, footwear, menswear and activewear were reviewed on 5–6 Oct 202
 - **Skipped:** Norman & Bella (closing), Bootleg, Matnas (based abroad).
 - **Boutique candidate:** SUMR (Greek Sandals).
 
-Bridal is waiting on the new Bridal page. Approved so far: Dror Kontento, Dana Harel, Gali Karten, Luminary. Still to decide: Shani Zimmerman, Yanky & Nataf.
+Bridal (6 Oct 2026, on the new Bridal page): added Dror Kontento, Dana Harel, Gali Karten, Luminary and Shani Zimmerman (Shani's card links to Instagram). Yanky & Nataf goes on the recheck list.
 
 Still to review: jewelry.
 
