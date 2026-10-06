@@ -3964,7 +3964,7 @@ let currentLetters = new Set();
 let activeRegions = new Set();
 
 // Area / region filter bar
-const AREA_REGIONS = ['All','Tel Aviv','HaSharon','Center','Jerusalem','North','Pardes Hanna','Nationwide','Online'];
+const AREA_REGIONS = ['All','Tel Aviv','HaSharon','Center','Jerusalem','North','South','Pardes Hanna','Nationwide','Online'];
 const areaBar = document.getElementById('area-bar');
 function styleAreaBtn(btn){
  const on = btn.dataset.region === 'All' ? activeRegions.size === 0 : activeRegions.has(btn.dataset.region);
@@ -4095,7 +4095,7 @@ const CITY_TO_REGION = {
   "Givatayim":"Center","Giv'atayim":"Center","Ramat Gan":"Center",
   "Ramat HaSharon":"HaSharon","Beit Herut":"HaSharon","Herzliya":"HaSharon","Tel Mond":"HaSharon","Givat Haim Ihud":"HaSharon",
   "Caesarea":"Pardes Hanna","Kibbutz Ma'agan Michael":"Pardes Hanna",
-  "Rishon LeZion":"Center","Netanya":"HaSharon","Kfar Saba":"HaSharon","Hod HaSharon":"HaSharon","Ra'anana":"HaSharon","Beit Yehoshua":"HaSharon","Rishpon":"HaSharon","Pardes Hanna-Karkur":"Pardes Hanna","Showroom near Pardes Hanna-Karkur":"Pardes Hanna","Binyamina":"Pardes Hanna","Or Akiva":"Pardes Hanna","Holon":"Center","Yavne":"Center","Kiryat Motzkin":"North","Kibbutz Eilon":"North","Yodfat":"North","Nofei Prat":"Jerusalem","Kiryat Ono":"Center","Yehud":"Center","Haifa":"North","Herzliya Pituach":"HaSharon","Pardes Hanna":"Pardes Hanna","Emek Hefer Industrial Park":"HaSharon","Moshav Mishmeret":"HaSharon","Kibbutz Amir":"North"
+  "Rishon LeZion":"Center","Netanya":"HaSharon","Kfar Saba":"HaSharon","Hod HaSharon":"HaSharon","Ra'anana":"HaSharon","Beit Yehoshua":"HaSharon","Rishpon":"HaSharon","Pardes Hanna-Karkur":"Pardes Hanna","Showroom near Pardes Hanna-Karkur":"Pardes Hanna","Binyamina":"Pardes Hanna","Or Akiva":"Pardes Hanna","Holon":"Center","Yavne":"Center","Kiryat Motzkin":"North","Kibbutz Eilon":"North","Yodfat":"North","Nofei Prat":"Jerusalem","Ashdod":"South","Ofakim":"South","Arava":"South","Kibbutz Paran":"South","Eilat":"South","Be'er Sheva":"South","Beersheba":"South","Ashkelon":"South","Kiryat Gat":"South","Dimona":"South","Mitzpe Ramon":"South","Sderot":"South","Yeruham":"South","Arad":"South","Kiryat Ono":"Center","Yehud":"Center","Haifa":"North","Herzliya Pituach":"HaSharon","Pardes Hanna":"Pardes Hanna","Emek Hefer Industrial Park":"HaSharon","Moshav Mishmeret":"HaSharon","Kibbutz Amir":"North"
 };
 function regionOf(name){
   const addr = STORE_ADDRESSES[name];
