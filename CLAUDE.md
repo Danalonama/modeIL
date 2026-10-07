@@ -57,6 +57,7 @@ The founding user: someone abroad who wants to buy from Israeli designers but ha
   address: "Street, City",                  // optional, used by only two entries; see the note below
   sale: { text: "Up to 30% off", until: "2026-10-31" },  // optional; see Sales under Features
   bridalOnly: true,                         // optional; bridal houses: shown on /bridal only, not in the main grid
+  imgBridal: "https://…",                   // optional; bridal photo shown instead of img on /bridal (brands on both pages)
   img: "https://brand-cdn/…",               // hotlinked from the brand's own site
   fav: false
 }
