@@ -1,4 +1,6 @@
-// Journal posts. Each one is a short intro in Dana's voice followed by the
+// Journal posts. `title` is the short heading on the page; `seoTitle` is the
+// fuller phrase used for the browser tab, search results and shares.
+// Each one is a short intro in Dana's voice followed by the
 // designers that match `select`, so the list grows on its own as brands are
 // added or retagged. Edit the words here, then run: node scripts/build-journal.mjs
 //
@@ -9,7 +11,8 @@
 export const POSTS = [
   {
     slug: 'minimalist-jewelry',
-    title: 'Minimalist jewelry from Israeli designers',
+    title: 'Minimalist jewelry',
+    seoTitle: 'Minimalist jewelry from Israeli designers',
     kicker: 'Jewelry',
     description: 'Where to find minimalist jewelry by independent Israeli designers: clean gold and silver pieces, small studios, online and in Tel Aviv.',
     published: '2026-10-07',
@@ -24,7 +27,8 @@ export const POSTS = [
   },
   {
     slug: 'mens-natural-fabrics',
-    title: "Men's clothing in natural fabrics from Israeli designers",
+    title: "Men's natural fabrics",
+    seoTitle: "Men's clothing in natural fabrics from Israeli designers",
     kicker: 'Menswear',
     description: "Israeli designers making men's and unisex clothing in linen, cotton, wool and other natural fibers, with where to buy online or in a store.",
     published: '2026-10-07',
