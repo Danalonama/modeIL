@@ -39,6 +39,7 @@ The founding user: someone abroad who wants to buy from Israeli designers but ha
 - `docs/archive/index-squares.html` is an abandoned uniform-square grid layout, kept only for reference. Don't deploy it.
 - `scripts/` holds small Node scripts with no dependencies (Node 18+). They read the data straight out of the HTML files, so there is still no build step and nothing to install:
   - `node scripts/build-seo.mjs` regenerates the brand-list JSON-LD in `index.html` from the `DESIGNERS` array. Run it after every add, remove, image swap or description edit. `--check` only reports whether it is out of date.
+  - `node scripts/build-journal.mjs` builds the Journal: `Journal.html` (list of guides) and `journal/<slug>.html` (one page per guide), plus `sitemap.xml` and `llms.txt`. Posts are defined in `scripts/journal-posts.mjs`: an intro in Dana's voice and a tag rule (`select`) that picks the designers, so each list updates itself. Run it after any brand add, remove, retag, image or description change, and after editing a post. Don't edit the generated files, the sitemap or `llms.txt` by hand.
   - `node scripts/check-links.mjs` checks every brand image and site and writes `docs/reports/link-check.md`.
   - `node scripts/detect-sales.mjs` reads Shopify product feeds and writes `docs/reports/sales-scan.md`. It is a report only; nothing on the site reads it.
 - `docs/reports/` is where those scripts write their output.
@@ -92,6 +93,8 @@ There are two taxonomy axes, used together in filtering:
 - **Sales (manual):** add `sale: { text: "Up to 30% off", until: "2026-10-31" }` to a brand. `until` is the last day of the sale and is required, so nothing stale can linger; `text` is optional and `textHe` is an optional Hebrew version. While the sale runs the card gets a small SALE flag on the image and a line under the tags, and an On Sale filter button appears next to Saved. The day after `until` all of it disappears with no edit. With no running sales the button is hidden and the page looks exactly as before.
 - **No affiliate links.** Skimlinks was removed in October 2026: it recognised none of the listed brands as merchants. Outbound links only get `withUtm()` referral tags (`utm_source=modeil`), which earn nothing. With nothing to disclose, the old `Affiliate.html` disclosure page was deleted (Vercel redirects it to the home page). If affiliate links, paid placements or gifted products ever come in, add a disclosure page first. Editorial rule regardless: commercial relationships **never** affect who gets listed or how they're described.
 
+- **Shareable filters:** the address bar mirrors the active filters (`?tags=minimalist,jewelry&area=Tel%20Aviv&letters=a&q=gold`) via `history.replaceState`, and a link with those params opens with them applied. Saved hearts are left out on purpose. Other params such as `view=bridal` and `utm_*` are kept.
+
 ## Accessibility
 
 The site targets WCAG 2.1 AA. Keep it that way when editing:
@@ -134,9 +137,9 @@ The site targets WCAG 2.1 AA. Keep it that way when editing:
 
 ## Routine tasks (most common first)
 
-1. **Swap a brand image:** replace the old URL in the card entry and in `Map.html` if the pin uses the same image, then run `node scripts/build-seo.mjs`.
-2. **Add a brand:** research the site, append the entry, add its `DESC_HE` line, add a map pin plus `MAP_BRANDS` / `STORE_ADDRESSES` entries if there's a store, then run `node scripts/build-seo.mjs`.
-3. **Remove a brand:** delete it from the array, `DESC_HE`, `MAP_BRANDS`, `STORE_ADDRESSES` and `Map.html`, then run `node scripts/build-seo.mjs`.
+1. **Swap a brand image:** replace the old URL in the card entry and in `Map.html` if the pin uses the same image, then run `node scripts/build-seo.mjs` and `node scripts/build-journal.mjs`.
+2. **Add a brand:** research the site, append the entry, add its `DESC_HE` line, add a map pin plus `MAP_BRANDS` / `STORE_ADDRESSES` entries if there's a store, then run `node scripts/build-seo.mjs` and `node scripts/build-journal.mjs`.
+3. **Remove a brand:** delete it from the array, `DESC_HE`, `MAP_BRANDS`, `STORE_ADDRESSES` and `Map.html`, then run `node scripts/build-seo.mjs` and `node scripts/build-journal.mjs`.
 
 ## Open / planned
 
