@@ -890,11 +890,22 @@ function openPanel(d) {
  document.getElementById('panel-link-text').textContent = T('Visit Website →', 'לאתר ←');
  panelLink.style.display = d.url ? '' : 'none';
 
- // Image
+ // Image, falling back to the brand name if there's none or it fails to load
+ const showPlaceholder = () => {
+ const ph = document.createElement('div');
+ ph.className = 'panel-img-placeholder';
+ ph.textContent = d.name;
+ panelImgWrap.replaceChildren(ph);
+ };
  if (d.img) {
- panelImgWrap.innerHTML = `<img class="panel-img" src="${d.img}" alt="" onerror="this.parentElement.innerHTML='<div class=\'panel-img-placeholder\'>${d.name}</div>'"/>`;
+ const img = document.createElement('img');
+ img.className = 'panel-img';
+ img.alt = '';
+ img.onerror = showPlaceholder;
+ img.src = d.img;
+ panelImgWrap.replaceChildren(img);
  } else {
- panelImgWrap.innerHTML = `<div class="panel-img-placeholder">${d.name}</div>`;
+ showPlaceholder();
  }
 
  // Heart/Save
