@@ -12,13 +12,13 @@ Compared on 5 Oct 2026. [ARE directory](https://www.are-mag.com/are-directory/) 
 - **Added (8):** Or Paz, Otot, Alex Andra Pinto, Chen Keidar, De Base, Desert Queen, MC by Meital Carmeli, Souvenir Studio.
 - **Recheck later:** Parlez de Vous, Ella Levy, Yael Shaulsky.
 - **Skipped:** Marei 1998 (based abroad).
-- **Boutique candidate:** We Must Shop.
+- **Skipped:** We Must Shop (a multi-brand shop that carries only international labels).
 
 Swimwear, bags, footwear, menswear and activewear were reviewed on 5–6 Oct 2026:
 - **Added (10):** Alma Ola, Palette Swimwear, Shani Shemer, TES, AMRIA, LAX, A by Anabelle, Hilal Studio, Kim Perets, JUV Activewear.
 - **Recheck later:** Archie & Dennis, Highlight Studio, DEA.
 - **Skipped:** Norman & Bella (closing), Bootleg, Matnas (based abroad).
-- **Boutique candidate:** SUMR (Greek Sandals).
+- **Skipped:** SUMR / Greek Sandals (a multi-brand shop that carries mostly foreign makers).
 
 Bridal (6 Oct 2026, on the new Bridal page): added Dror Kontento, Dana Harel, Gali Karten, Luminary and Shani Zimmerman (Shani's card links to Instagram). Yanky & Nataf goes on the recheck list.
 
