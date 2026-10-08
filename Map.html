@@ -1034,8 +1034,8 @@ function resetMap() {
 
 function dimAllExcept(names) {
  const nameSet = new Set(names);
- markers.forEach(({d, pin}) => {
- if(pin) pin.classList.toggle('dimmed', !nameSet.has(d.name));
+ markers.forEach(({loc, pin}) => {
+ if(pin) pin.classList.toggle('dimmed', !loc.brands.some(d => nameSet.has(d.name)));
  });
 }
 
@@ -1098,8 +1098,7 @@ function runSearch(q) {
  setResultsOpen(false);
  dimAllExcept(locs.map(l => l.name));
  if (locs.length === 1) {
- const m = markers.find(x => x.d.name === d.name);
- if (m) { map.setView([d.lat, d.lng], 15, { animate: !REDUCE_MOTION }); setTimeout(() => m.marker.fire('click'), 500); }
+ openBrandOnMap(d, 500);
  } else {
  // Fit all locations in view
  const bounds = L.latLngBounds(locs.map(l => [l.lat, l.lng]));
@@ -1322,8 +1321,8 @@ locations.forEach(function(loc) {
  loc.marker = marker;
  const pinEl = marker.getElement();
  if (pinEl) pinEl.setAttribute('aria-label', (isSingle ? loc.brands[0].name : loc.brands.length + ' brands') + ', ' + loc.address);
- // push first brand for search compat
- markers.push({ d: loc.brands[0], marker, get pin() { return marker._icon?.querySelector('.map-pin'); } });
+ // d is the first brand, kept for older callers; loc holds every brand at this address
+ markers.push({ d: loc.brands[0], loc, marker, get pin() { return marker._icon?.querySelector('.map-pin'); } });
 
  // Click handler
  marker.on('click', function() {
@@ -1370,6 +1369,18 @@ locations.forEach(function(loc) {
  );
 });
 
+// Centre on a brand's pin and open its panel. Brands that share an address sit on one
+// grouped marker, so find the location holding this brand rather than a marker's first brand.
+function openBrandOnMap(d, delay) {
+ const loc = locations.find(l => l.brands.includes(d));
+ if (!loc) return;
+ map.setView([loc.lat, loc.lng], 15, { animate: !REDUCE_MOTION });
+ setTimeout(() => {
+ loc.marker.fire('click');
+ if (loc.brands.length > 1) showBrandFromLocation(d);
+ }, delay);
+}
+
 // Total pinned addresses (each location may host multiple brands)
 const TOTAL_PINNED = locations.reduce((sum, l) => sum + l.brands.length, 0);
 function updateMapCount() { document.getElementById('map-count').textContent = T(TOTAL_PINNED + ' Locations', TOTAL_PINNED + ' מיקומים'); }
@@ -1394,14 +1405,10 @@ setTimeout(updateLabels, 500);
 const urlParams = new URLSearchParams(window.location.search);
 const brandParam = urlParams.get('brand');
 if (brandParam) {
- const decoded = decodeURIComponent(brandParam).toLowerCase();
- const match = markers.find(m => m.d.name.toLowerCase() === decoded);
- if (match) {
- setTimeout(() => {
- map.setView([match.d.lat, match.d.lng], 15, { animate: !REDUCE_MOTION });
- setTimeout(() => match.marker.fire('click'), 600);
- }, 300);
- }
+ // URLSearchParams has already decoded the value
+ const wanted = brandParam.trim().toLowerCase();
+ const match = DESIGNERS.find(d => d.name.toLowerCase() === wanted && d.addresses && d.addresses.length);
+ if (match) setTimeout(() => openBrandOnMap(match, 600), 300);
 }
 
 // Language switch (lang.js): re-render the script-drawn text
