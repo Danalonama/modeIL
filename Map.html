@@ -44,9 +44,7 @@
  [dir="rtl"] { font-family: 'Assistant', 'Plus Jakarta Sans', sans-serif !important; }
  [dir="rtl"] .nav-logo, [dir="rtl"] .panel-name { font-family: 'Assistant', 'Plus Jakarta Sans', sans-serif !important; }
  [dir="rtl"] .nav-links { direction: rtl; }
- #lang-toggle-map { cursor: pointer; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; background: none; border: 1px solid #000; padding: 5px 10px; color: #000; transition: all 0.2s; }
- #lang-toggle-map:hover { background: #000; color: #fcf9f5; }
- @media (max-width: 600px) { #lang-toggle-map { display: none !important; } #map-mobile-btn { display: flex !important; } #map-nav-links { display: none; } }
+ @media (max-width: 600px) { .map-lang-toggle { display: none !important; } #map-mobile-btn { display: flex !important; } #map-nav-links { display: none; } }
  .nav-logo { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 900; font-size: 1.5rem; letter-spacing: -0.04em; text-transform: uppercase; text-decoration: none; color: #000; display: inline-flex; flex-direction: column; align-items: flex-start; line-height: 1; gap: 4px; }
  .nav-logo .logo-tagline { font-weight: 400; font-size: 9px; letter-spacing: 2px; line-height: 1.4; color: rgba(0,0,0,0.55); }
  @media (max-width: 600px){ .nav-logo .logo-tagline { display: none; } }
@@ -373,6 +371,8 @@
  [dir="rtl"] .panel-back-btn .material-symbols-outlined { transform: scaleX(-1); }
 </style>
 <link rel="stylesheet" href="a11y.css">
+<link rel="stylesheet" href="lang.css">
+<script src="lang.js"></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -388,6 +388,7 @@
  <a href="About.html" id="nav-about">About</a>
  <a href="Contact.html" id="nav-submit">Talk To Me</a>
  </div>
+ <button type="button" data-lang-toggle class="map-lang-toggle"></button>
  <div class="flex items-center gap-3">
  <button id="map-mobile-btn" type="button" onclick="toggleMobileMenu()" style="display:none" aria-label="Open menu" aria-expanded="false" aria-controls="map-mobile-menu" data-mobile-menu-open>
  <span aria-hidden="true" class="material-symbols-outlined" style="font-size:24px;color:#000">menu</span>
@@ -411,20 +412,21 @@
  <a href="About.html" style="font-family:'Plus Jakarta Sans', sans-serif;font-weight:900;font-size:3rem;text-transform:uppercase;letter-spacing:-0.03em;color:#000;text-decoration:none;border-bottom:1px solid #e5e2de;padding-bottom:1.5rem" id="mmenu-about">About</a>
  <a href="Contact.html" style="font-family:'Plus Jakarta Sans', sans-serif;font-weight:900;font-size:3rem;text-transform:uppercase;letter-spacing:-0.03em;color:#000;text-decoration:none" id="mmenu-submit">Talk To Me</a>
  <a hidden href="https://buymeacoffee.com/modeil" target="_blank" rel="noopener" aria-label="Buy Me a Coffee (opens in a new tab)" style="font-family:'Plus Jakarta Sans', sans-serif;font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:#1A1A18;opacity:0.7;text-decoration:none;margin-top:1rem">Buy Me a Coffee</a>
+   <button type="button" data-lang-toggle style="align-self:flex-start;margin-top:0.5rem"></button>
  </nav>
 </div>
 
 <main id="main" tabindex="-1">
-<h1 class="sr-only">Map of Israeli designer stores and boutiques</h1>
+<h1 class="sr-only" data-he="מפת החנויות של מעצבים ישראלים ובוטיקים">Map of Israeli designer stores and boutiques</h1>
 
 <!-- Map search. First in the DOM so keyboard and screen-reader users reach it before the map pins. -->
 <div id="map-search-wrap" role="search">
  <div id="map-search-bar">
  <span aria-hidden="true" class="material-symbols-outlined" style="font-size:16px;opacity:0.35">search</span>
- <input id="map-search-input" type="text" placeholder="Brand, city, or style…" autocomplete="off" role="combobox" aria-label="Search the map by brand, city or style" aria-autocomplete="list" aria-expanded="false" aria-controls="map-search-results"/>
- <button id="map-search-clear" type="button" aria-label="Clear search"><span aria-hidden="true" class="material-symbols-outlined" style="font-size:16px">close</span></button>
+ <input id="map-search-input" type="text" placeholder="Brand, city, or style…" data-he-placeholder="מותג, עיר או סגנון…" autocomplete="off" role="combobox" aria-label="Search the map by brand, city or style" data-he-aria-label="חיפוש במפה לפי מותג, עיר או סגנון" aria-autocomplete="list" aria-expanded="false" aria-controls="map-search-results"/>
+ <button id="map-search-clear" type="button" aria-label="Clear search" data-he-aria-label="ניקוי החיפוש"><span aria-hidden="true" class="material-symbols-outlined" style="font-size:16px">close</span></button>
  </div>
- <div id="map-search-results" role="listbox" aria-label="Search results"></div>
+ <div id="map-search-results" role="listbox" aria-label="Search results" data-he-aria-label="תוצאות חיפוש"></div>
  <div id="map-search-status" class="sr-only" role="status"></div>
 </div>
 
@@ -436,15 +438,15 @@
 <div id="map-count">180 Locations</div>
 
 <!-- Side Panel -->
-<aside id="panel" aria-label="Location details">
- <button class="panel-close" id="panel-close" type="button" aria-label="Close details">
+<aside id="panel" aria-label="Location details" data-he-aria-label="פרטי המיקום">
+ <button class="panel-close" id="panel-close" type="button" aria-label="Close details" data-he-aria-label="סגירת הפרטים">
  <span aria-hidden="true" class="material-symbols-outlined" style="font-size:18px">close</span>
  </button>
  <div id="panel-img-wrap"></div>
  <div class="panel-body">
  <button class="panel-back-btn" id="loc-back-btn" type="button" style="display:none" onclick="backToLocation()">
- <span aria-hidden="true" class="material-symbols-outlined" style="font-size:14px">arrow_back</span>
- <span>All locations</span>
+ <span aria-hidden="true" class="material-symbols-outlined flip-rtl" style="font-size:14px">arrow_back</span>
+ <span data-he="כל המיקומים">All locations</span>
  </button>
  <h2 class="panel-name" id="panel-name"></h2>
  <div class="panel-location" id="panel-location"></div>
@@ -455,7 +457,7 @@
  <div id="panel-extra-locations" style="display:none"></div>
  <div id="panel-hours" style="display:none"></div>
  <a class="panel-link" id="panel-link" href="#" target="_blank" rel="noopener">
- Visit Website →
+ <span id="panel-link-text">Visit Website →</span>
  </a>
  </div>
 
@@ -470,8 +472,8 @@
 
 <!-- Zoom buttons -->
 <div id="zoom-controls">
- <button class="zoom-btn" id="zoom-in" type="button" aria-label="Zoom in">+</button>
- <button class="zoom-btn" id="zoom-out" type="button" aria-label="Zoom out">−</button>
+ <button class="zoom-btn" id="zoom-in" type="button" aria-label="Zoom in" data-he-aria-label="התקרבות">+</button>
+ <button class="zoom-btn" id="zoom-out" type="button" aria-label="Zoom out" data-he-aria-label="התרחקות">−</button>
 </div>
 </main>
 
@@ -856,19 +858,22 @@ function togglePanelFav(btn, name) {
  btn.classList.remove('saved');
  icon.style.fontVariationSettings = "'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24";
  icon.style.color = '';
- btn.querySelector('span:last-child').textContent = 'Save';
+ btn.querySelector('span:last-child').textContent = T('Save', 'שמירה');
  } else {
  MAP_FAVORITES.add(name);
  btn.classList.add('saved');
  icon.style.fontVariationSettings = "'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24";
  icon.style.color = '#9C5570';
- btn.querySelector('span:last-child').textContent = 'Saved';
+ btn.querySelector('span:last-child').textContent = T('Saved', 'נשמר');
  }
  btn.setAttribute('aria-pressed', String(MAP_FAVORITES.has(name)));
  localStorage.setItem('modeil-favs', JSON.stringify([...MAP_FAVORITES]));
 }
 
+const T = (en, he) => window.ModeLang ? ModeLang.t(en, he) : en;
+const tagLabel = (t) => window.ModeLang ? ModeLang.tag(t) : t;
 function openPanel(d) {
+ window.__lastPanelBrand = d;
  panelName.textContent = d.name;
  // Primary address
  if (d.addresses && d.addresses.length) {
@@ -878,10 +883,11 @@ function openPanel(d) {
  } else {
  panelLocation.textContent = d.city + ', Israel';
  }
- panelTags.innerHTML = d.tags.map(t => `<span class="panel-tag">${t}</span>`).join('');
+ panelTags.innerHTML = d.tags.map(t => `<span class="panel-tag">${tagLabel(t)}</span>`).join('');
  panelDesc.textContent = d.desc;
  panelLink.href = withUtm(d.url);
- panelLink.setAttribute('aria-label', 'Visit website: ' + d.name + ' (opens in a new tab)');
+ panelLink.setAttribute('aria-label', T('Visit website: ' + d.name + ' (opens in a new tab)', 'לאתר של ' + d.name + ' (נפתח בלשונית חדשה)'));
+ document.getElementById('panel-link-text').textContent = T('Visit Website →', 'לאתר ←');
  panelLink.style.display = d.url ? '' : 'none';
 
  // Image
@@ -896,9 +902,9 @@ function openPanel(d) {
  const favEl = document.getElementById('panel-fav');
  if (favEl) {
  const safeName = d.name.replace(/'/g, "\\'");
- favEl.innerHTML = `<button type="button" class="panel-heart-btn${isSaved ? ' saved' : ''}" aria-pressed="${isSaved}" aria-label="Save ${attrEsc(d.name)} to favorites" onclick="togglePanelFav(this, '${attrEsc(safeName)}')">
+ favEl.innerHTML = `<button type="button" class="panel-heart-btn${isSaved ? ' saved' : ''}" aria-pressed="${isSaved}" aria-label="${T('Save ' + attrEsc(d.name) + ' to favorites', 'שמירת ' + attrEsc(d.name) + ' במועדפים')}" onclick="togglePanelFav(this, '${attrEsc(safeName)}')">
  <span aria-hidden="true" class="material-symbols-outlined ph-icon" style="font-size:18px;${isSaved ? "font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24;color:#e53e3e" : ''}">favorite</span>
- <span>${isSaved ? 'Saved' : 'Save'}</span>
+ <span>${isSaved ? T('Saved', 'נשמר') : T('Save', 'שמירה')}</span>
  </button>`;
  }
 
@@ -906,7 +912,7 @@ function openPanel(d) {
  const contactEl = document.getElementById('panel-contact');
  if (contactEl) {
  if (d.phone || d.email) {
- let cHtml = '<div class="panel-section"><div class="panel-section-label">Contact</div>';
+ let cHtml = '<div class="panel-section"><div class="panel-section-label">' + T('Contact', 'יצירת קשר') + '</div>';
  if (d.phone) cHtml += `<div class="panel-contact-row"><a href="tel:${d.phone}">${d.phone}</a></div>`;
  if (d.email) cHtml += `<div class="panel-contact-row"><a href="mailto:${d.email}">${d.email}</a></div>`;
  cHtml += '</div>';
@@ -919,7 +925,7 @@ function openPanel(d) {
  const locEl = document.getElementById('panel-extra-locations');
  if (locEl) {
  if (d.addresses && d.addresses.length > 1) {
- let lHtml = '<div class="panel-section"><div class="panel-section-label">All Locations</div>';
+ let lHtml = '<div class="panel-section"><div class="panel-section-label">' + T('All Locations', 'כל המיקומים') + '</div>';
  d.addresses.forEach(addr => {
  lHtml += `<div class="panel-location-item"><div class="loc-addr">${addr}</div></div>`;
  });
@@ -933,7 +939,7 @@ function openPanel(d) {
  const hoursEl = document.getElementById('panel-hours');
  if (hoursEl) {
  if (d.hours && d.hours.length) {
- let hHtml = '<div class="panel-section"><div class="panel-section-label">Opening Hours</div><ul class="panel-hours-list">';
+ let hHtml = '<div class="panel-section"><div class="panel-section-label">' + T('Opening Hours', 'שעות פתיחה') + '</div><ul class="panel-hours-list">';
  d.hours.forEach(h => { hHtml += `<li>${h}</li>`; });
  hHtml += '</ul></div>';
  hoursEl.innerHTML = hHtml;
@@ -1035,8 +1041,8 @@ function dimAllExcept(names) {
 
 function showDropdown(sections) {
  if (!sections.length) {
- searchResults.innerHTML = '<div class="no-results">No results found</div>';
- searchStatus.textContent = 'No results found';
+ searchResults.innerHTML = '<div class="no-results">' + T('No results found', 'לא נמצאו תוצאות') + '</div>';
+ searchStatus.textContent = T('No results found', 'לא נמצאו תוצאות');
  setResultsOpen(true);
  return;
  }
@@ -1053,7 +1059,7 @@ function showDropdown(sections) {
  });
  });
  searchResults.innerHTML = out;
- searchStatus.textContent = total + (total === 1 ? ' result' : ' results') + '. Use the up and down arrow keys to choose one.';
+ searchStatus.textContent = T(total + (total === 1 ? ' result' : ' results') + '. Use the up and down arrow keys to choose one.', (total === 1 ? 'תוצאה אחת' : total + ' תוצאות') + '. אפשר לבחור בעזרת החצים למעלה ולמטה.');
  setResultsOpen(true);
 }
 
@@ -1084,8 +1090,8 @@ function runSearch(q) {
  const items = uniqueBrands.slice(0, 6).map(d => {
  const locs = DESIGNERS.filter(x => x.name === d.name);
  const meta = locs.length > 1
- ? (locs.length + ' locations · ' + locs.map(function(l){ return l.addresses && l.addresses[0] ? l.addresses[0] : l.city; }).join(' & '))
- : (d.addresses && d.addresses[0] ? d.addresses[0] : d.city + ', Israel');
+ ? (T(locs.length + ' locations · ', locs.length + ' מיקומים · ') + locs.map(function(l){ return l.addresses && l.addresses[0] ? l.addresses[0] : l.city; }).join(' & '))
+ : (d.addresses && d.addresses[0] ? d.addresses[0] : d.city + T(', Israel', ', ישראל'));
  const actionIdx = currentActions.length;
  currentActions.push(() => {
  searchInput.value = d.name;
@@ -1103,11 +1109,11 @@ function runSearch(q) {
  });
  return { label: d.name, meta, actionIdx };
  });
- sections.push({ header: 'Brands · ' + uniqueBrands.length + ' found', items });
+ sections.push({ header: T('Brands · ' + uniqueBrands.length + ' found', 'מותגים · ' + uniqueBrands.length), items });
  }
 
  // 2. Tag/style matches
- const tagMatches = ALL_TAGS.filter(t => t.toLowerCase().includes(query));
+ const tagMatches = ALL_TAGS.filter(t => t.toLowerCase().includes(query) || tagLabel(t).toLowerCase().includes(query));
  if (tagMatches.length > 0) {
  const items = tagMatches.map(tag => {
  const tagCount = DESIGNERS.filter(d => d.tags.includes(tag)).length;
@@ -1122,9 +1128,9 @@ function runSearch(q) {
  );
  map.fitBounds(bounds.pad(0.2), { animate: !REDUCE_MOTION });
  });
- return { label: tag, meta: tagCount + ' brands', actionIdx };
+ return { label: tagLabel(tag), meta: T(tagCount + ' brands', tagCount + ' מותגים'), actionIdx };
  });
- sections.push({ header: 'Styles', items });
+ sections.push({ header: T('Styles', 'סגנונות'), items });
  }
 
  // 3. Location suggestions (show immediately, geocode on select)
@@ -1165,22 +1171,22 @@ function runSearch(q) {
  }, 8000);
  }
  });
- return { label: area.name, meta: nearby.length > 0 ? (nearby.length + ' brands nearby') : 'Area', actionIdx };
+ return { label: area.name, meta: nearby.length > 0 ? T(nearby.length + ' brands nearby', nearby.length + ' מותגים בסביבה') : T('Area', 'אזור'), actionIdx };
  });
- sections.push({ header: 'Areas', items });
+ sections.push({ header: T('Areas', 'אזורים'), items });
  }
 
  if (needsGeocode) {
  // Show "Search for location" option
  const actionIdx = currentActions.length;
  currentActions.push(async () => {
- searchResults.innerHTML = '<div class="no-results">Searching…</div>';
- searchStatus.textContent = 'Searching…';
+ searchResults.innerHTML = '<div class="no-results">' + T('Searching…', 'מחפש…') + '</div>';
+ searchStatus.textContent = T('Searching…', 'מחפש…');
  setResultsOpen(true);
  try {
  const res = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(q + ', Israel')}&format=json&limit=1&countrycodes=il`, { headers: {'Accept-Language':'en'} });
  const data = await res.json();
- if (!data.length) { searchResults.innerHTML = '<div class="no-results">No location found</div>'; searchStatus.textContent = 'No location found'; return; }
+ if (!data.length) { searchResults.innerHTML = '<div class="no-results">' + T('No location found', 'לא נמצא מיקום') + '</div>'; searchStatus.textContent = T('No location found', 'לא נמצא מיקום'); return; }
  const {lat, lon, display_name} = data[0];
  const placeLat = +lat, placeLng = +lon;
  const RADIUS = 10;
@@ -1189,9 +1195,9 @@ function runSearch(q) {
  dimAllExcept(nearby.map(d => d.name));
  searchInput.value = display_name.split(',')[0];
  setResultsOpen(false);
- } catch(e) { searchResults.innerHTML = '<div class="no-results">Could not find location</div>'; searchStatus.textContent = 'Could not find location'; }
+ } catch(e) { searchResults.innerHTML = '<div class="no-results">' + T('Could not find location', 'לא הצלחנו למצוא את המיקום') + '</div>'; searchStatus.textContent = T('Could not find location', 'לא הצלחנו למצוא את המיקום'); }
  });
- sections.push({ header: 'Location', items: [{ label: 'Search "' + q + '" on map', meta: 'Geocode search', actionIdx }] });
+ sections.push({ header: T('Location', 'מיקום'), items: [{ label: T('Search "' + q + '" on map', 'חיפוש "' + q + '" במפה'), meta: T('Geocode search', 'חיפוש כתובת'), actionIdx }] });
  }
 
  showDropdown(sections);
@@ -1263,11 +1269,11 @@ function showLocationPanel(loc) {
  document.getElementById('loc-panel-img-wrap').innerHTML = '';
  const content = document.getElementById('loc-panel-content');
  let out = '<h2 class="loc-panel-header">' + loc.address + '</h2>';
- out += '<div class="loc-panel-sub">' + loc.brands.length + ' brands at this address</div>';
+ out += '<div class="loc-panel-sub">' + T(loc.brands.length + ' brands at this address', loc.brands.length + ' מותגים בכתובת הזו') + '</div>';
  out += '<div style="margin-top:1.5rem">';
  loc.brands.forEach(function(d, i) {
  const thumb = d.img ? '<img class="loc-brand-thumb" src="' + d.img + '" alt=""/>' : '<div class="loc-brand-thumb-placeholder"></div>';
- const tags = d.tags.slice(0, 2).map(function(t){ return '<span class="loc-brand-tag">' + t + '</span>'; }).join('');
+ const tags = d.tags.slice(0, 2).map(function(t){ return '<span class="loc-brand-tag">' + tagLabel(t) + '</span>'; }).join('');
  out += '<div class="loc-brand-row" role="button" tabindex="0" data-bidx="' + i + '">' + thumb + '<div><div class="loc-brand-name">' + d.name + '</div><div class="loc-brand-tags">' + tags + '</div></div></div>';
  });
  out += '</div>';
@@ -1366,7 +1372,8 @@ locations.forEach(function(loc) {
 
 // Total pinned addresses (each location may host multiple brands)
 const TOTAL_PINNED = locations.reduce((sum, l) => sum + l.brands.length, 0);
-document.getElementById('map-count').textContent = TOTAL_PINNED + ' Locations';
+function updateMapCount() { document.getElementById('map-count').textContent = T(TOTAL_PINNED + ' Locations', TOTAL_PINNED + ' מיקומים'); }
+updateMapCount();
 
 // Show/hide labels based on zoom
 const LABEL_MIN_ZOOM = 14;
@@ -1397,84 +1404,18 @@ if (brandParam) {
  }
 }
 
-// Language support
-const MAP_TRANSLATIONS = {
- en: {
- navDesigners: "Designers", navStores: "Boutiques", navMap: "Map", navAbout: "About", navSubmit: "Talk To Me",
- searchPlaceholder: "Brand, city, or style…",
- visitWebsite: "Visit Website",
- panelAddress: "", panelPhone: "", panelEmail: "", panelHours: "",
- nearby: (n, r) => `${n} brand${n !== 1 ? 's' : ''} nearby · within ${r}km`,
- searching: "Searching location…",
- noLocation: "No location found",
- noResults: "No results found",
- noNearby: "No brands in this area",
- countFn: (n) => `${n} Locations`,
- },
- he: {
- navDesigners: "מעצבים", navStores: "בוטיקים", navMap: "מפה", navAbout: "אודות", navSubmit: "דברו איתי",
- searchPlaceholder: "מותג, עיר, או סגנון…",
- visitWebsite: "לאתר",
- panelAddress: "", panelPhone: "", panelEmail: "", panelHours: "",
- nearby: (n, r) => `${n} מותגים בקרבת מקום · ברדיוס ${r} ק"מ`,
- searching: "מחפש מיקום…",
- noLocation: "לא נמצא מיקום",
- noResults: "לא נמצאו תוצאות",
- noNearby: "אין מותגים באזור זה",
- countFn: (n) => `${n} מיקומים`,
+// Language switch (lang.js): re-render the script-drawn text
+if (window.ModeLang) ModeLang.onChange(() => {
+ updateMapCount();
+ if (searchInput.value.trim() && searchInput.getAttribute('aria-expanded') === 'true') runSearch(searchInput.value);
+ const panelEl = document.getElementById('panel');
+ const keepFocus = document.activeElement;
+ if (panelEl.classList.contains('open')) {
+  if (document.getElementById('location-panel').style.display === 'flex' && currentLocation && document.getElementById('loc-back-btn').style.display === 'none') showLocationPanel(currentLocation);
+  else if (window.__lastPanelBrand) openPanel(window.__lastPanelBrand);
  }
-};
-
-let mapLang = 'en';
-
-function applyMapLang() {
- const t = MAP_TRANSLATIONS[mapLang];
- const isHe = mapLang === 'he';
- document.documentElement.setAttribute('dir', isHe ? 'rtl' : 'ltr');
- document.documentElement.setAttribute('lang', isHe ? 'he' : 'en');
-
- document.getElementById('nav-designers').textContent = t.navDesigners;
- const navStoresEl = document.getElementById('nav-stores'); if (navStoresEl) navStoresEl.textContent = t.navStores;
- document.getElementById('nav-map').textContent = t.navMap;
- document.getElementById('nav-about').textContent = t.navAbout;
- document.getElementById('nav-submit').textContent = t.navSubmit;
- document.getElementById('map-search-input').placeholder = t.searchPlaceholder;
- document.getElementById('map-count').textContent = t.countFn(TOTAL_PINNED);
-
- // Update panel link if open
- const panelLink = document.getElementById('panel-link');
- if (panelLink) {
- const span = panelLink.querySelector('span.font-label, span:first-child');
- if (!span) panelLink.childNodes[0].textContent = t.visitWebsite + ' ';
- }
-}
-
-function toggleMapLang() {
- mapLang = mapLang === 'en' ? 'he' : 'en';
- document.getElementById('lang-toggle-map').textContent = mapLang === 'en' ? 'EN | עב' : 'עב | EN';
- applyMapLang();
-}
-
-// Sync lang from index if set
-if (mapLang === 'he') {
- document.getElementById('lang-toggle-map').textContent = 'עב | EN';
- applyMapLang();
-}
-// Update map mobile menu lang
-const _origApplyMapLang = applyMapLang;
-applyMapLang = function() {
- _origApplyMapLang();
- const t = MAP_TRANSLATIONS[mapLang];
- const d = document.getElementById('mmenu-designers');
- const m = document.getElementById('mmenu-map');
- const a = document.getElementById('mmenu-about');
- const s = document.getElementById('mmenu-submit');
- if (d) d.textContent = t.navDesigners;
- const ms = document.getElementById('mmenu-stores'); if (ms) ms.textContent = t.navStores;
- if (m) m.textContent = t.navMap;
- if (a) a.textContent = t.navAbout;
- if (s) s.textContent = t.navSubmit;
-};
+ if (keepFocus && document.contains(keepFocus)) keepFocus.focus(); // re-rendering the panel moves focus; keep it on the toggle
+});
 
 </script>
 
