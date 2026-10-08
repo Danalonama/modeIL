@@ -22,7 +22,12 @@ Swimwear, bags, footwear, menswear and activewear were reviewed on 5–6 Oct 202
 
 Bridal (6 Oct 2026, on the new Bridal page): added Dror Kontento, Dana Harel, Gali Karten, Luminary and Shani Zimmerman (Shani's card links to Instagram). Yanky & Nataf goes on the recheck list.
 
-Still to review: jewelry.
+Jewelry was reviewed on 8 Oct 2026:
+- **Added (15):** She-Ra Jewelry, HOTCROWN, LEVnARO, Creatures of Habit, Doubletiz, Bleecker & Prince, Milly Vishnia, MomoSara, Rimon Fine Jewelry, Ruby Star, Shuna, YAMA, Odd Pearls, Atua Studio, Yoster.
+- **Skipped:** Henia Danielle (Miami), White Petal (Berlin), Ateleia (Athens), LA LUNA (now a lifestyle brand), Dune (unclear whether it's the same brand).
+- **Still dead:** Born from Rock, Joy Savage, Lev and So, Bilisilver.
+
+All ARE groups are now reviewed.
 
 ## Womenswear (13 live)
 
