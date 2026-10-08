@@ -117,6 +117,8 @@
 
 
 <link rel="stylesheet" href="a11y.css">
+<link rel="stylesheet" href="lang.css">
+<script src="lang.js"></script>
 <body class="bg-background text-primary font-body selection:bg-primary-container selection:text-white" data-new-gr-c-s-check-loaded="14.1284.0" data-gr-ext-installed="" data-cc-id="cc-1" style="cursor: crosshair; font-family: ui-sans-serif;">
 <a class="skip-link" href="#main">Skip to content</a>
 
@@ -135,14 +137,15 @@
  <a class="text-black/60 hover:text-black transition-colors duration-300" href="About.html">About</a>
  <a class="text-black/60 hover:text-black transition-colors duration-300" href="Contact.html">Talk To Me</a>
  </div>
+ <button type="button" data-lang-toggle></button>
  </div>
  <div class="flex items-center gap-3">
  <div id="nav-search" role="search" class="flex items-center border border-black overflow-hidden" style="height:34px;width:34px;transition:width 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
- <button id="nav-search-toggle" type="button" onclick="toggleNavSearch()" class="flex items-center justify-center flex-shrink-0 hover:bg-black hover:text-[#fcf9f5] transition-colors duration-200" style="width:34px;height:34px;" aria-label="Search" aria-expanded="false" aria-controls="search-input">
+ <button id="nav-search-toggle" type="button" onclick="toggleNavSearch()" class="flex items-center justify-center flex-shrink-0 hover:bg-black hover:text-[#fcf9f5] transition-colors duration-200" style="width:34px;height:34px;" aria-label="Search" data-he-aria-label="חיפוש" aria-expanded="false" aria-controls="search-input">
  <span aria-hidden="true" class="material-symbols-outlined" style="font-size:18px;">search</span>
  </button>
- <input id="search-input" type="text" aria-label="Search designers" placeholder="Search by brand name" class="font-body text-sm outline-none px-2 bg-transparent" style="width:0;border:0;flex:1;min-width:0;"/>
- <button id="search-clear" type="button" onclick="clearNavSearch()" aria-label="Clear search" class="flex items-center justify-center flex-shrink-0 text-black/45 hover:text-black transition-colors duration-200" style="display:none;width:30px;height:34px;background:none;border:0;cursor:pointer;">
+ <input id="search-input" type="text" aria-label="Search designers" data-he-aria-label="חיפוש מעצבים" placeholder="Search by brand name" data-he-placeholder="חיפוש לפי שם מותג" class="font-body text-sm outline-none px-2 bg-transparent" style="width:0;border:0;flex:1;min-width:0;"/>
+ <button id="search-clear" type="button" onclick="clearNavSearch()" aria-label="Clear search" data-he-aria-label="ניקוי החיפוש" class="flex items-center justify-center flex-shrink-0 text-black/45 hover:text-black transition-colors duration-200" style="display:none;width:30px;height:34px;background:none;border:0;cursor:pointer;">
  <span aria-hidden="true" class="material-symbols-outlined" style="font-size:18px;">cancel</span>
  </button>
  </div>
@@ -165,6 +168,7 @@
  <a href="Map.html" class="font-headline font-black text-5xl uppercase tracking-tighter text-black hover:opacity-60 transition-opacity border-b border-[#1A1A18]/10 pb-6">Map</a>
  <a href="About.html" class="font-headline font-black text-5xl uppercase tracking-tighter text-black hover:opacity-60 transition-opacity border-b border-[#1A1A18]/10 pb-6">About</a>
  <a href="Contact.html" class="font-headline font-black text-5xl uppercase tracking-tighter text-black hover:opacity-60 transition-opacity pb-6">Talk To Me</a>
+   <button type="button" data-lang-toggle style="align-self:flex-start;margin-top:0.5rem"></button>
  </nav>
 </div>
  </div>
@@ -192,21 +196,21 @@
  <!-- Hero & Filter -->
  <header class="mb-10 flex flex-col gap-6">
  <div class="max-w-3xl">
- <h1 class="font-headline font-black leading-[0.82] tracking-tighter mb-8 uppercase" style="font-size: clamp(34px, 11vw, 82px); line-height: 0.8">FASHION DESIGNERS</h1>
+ <h1 class="font-headline font-black leading-[0.82] tracking-tighter mb-8 uppercase" style="font-size: clamp(34px, 11vw, 82px); line-height: 0.8" data-he="מעצבי אופנה">FASHION DESIGNERS</h1>
  <div class="font-body text-lg text-on-surface-variant max-w-xl leading-relaxed flex flex-col gap-3">
- <p>I track Israeli fashion, so you don't have to.</p>
+ <p data-he="אני עוקבת אחרי האופנה הישראלית, כדי שאתם לא תצטרכו.">I track Israeli fashion, so you don't have to.</p>
  </div>
  </div>
  <div class="w-full flex flex-col gap-4">
  <div class="flex flex-wrap items-center gap-2.5">
- <div class="fdrop"><button type="button" class="fdrop-trigger" data-drop="style">Style<span class="fdrop-caret" aria-hidden="true">▾</span></button><div class="fdrop-panel" id="style-panel"><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="artisan">Artisan</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="conceptual">Conceptual</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="contemporary">Contemporary</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="edgy">Edgy</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="festival">Festival</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="legacy">Legacy</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="luxury">Luxury</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="minimalist">Minimalist</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="natural">Natural Fabrics</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="prints">Prints</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="streetwear">Streetwear</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="surf">Surf</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="sustainable">Sustainable</button></div></div>
- <div class="fdrop"><button type="button" class="fdrop-trigger" data-drop="type">Type<span class="fdrop-caret" aria-hidden="true">▾</span></button><div class="fdrop-panel" id="type-panel"><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="accessories">Accessories</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="activewear">Activewear</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="bridal">Bridal</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="denim">Denim</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="footwear">Footwear</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="jewelry">Jewelry</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="knitwear">Knitwear</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="lingerie">Lingerie</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="menswear">Men</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="ready-to-wear">Ready-to-Wear</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="size-inclusive">Size Inclusive</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="swimwear">Swimwear</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="unisex">Unisex</button></div></div>
- <div class="fdrop"><button type="button" class="fdrop-trigger" data-drop="location">Location<span class="fdrop-caret" aria-hidden="true">▾</span></button><div class="fdrop-panel"><div id="area-bar" class="flex flex-wrap gap-2 items-center"></div></div></div>
- <div class="fdrop"><button type="button" class="fdrop-trigger" data-drop="az">A–Z<span class="fdrop-caret" aria-hidden="true">▾</span></button><div class="fdrop-panel"><div id="alpha-bar" class="flex flex-wrap gap-1"><button class="alpha-btn active font-label text-[10px] tracking-widest uppercase px-2.5 py-1.5 border border-black bg-white text-black" data-letter="all">All</button></div></div></div>
- <button class="fdrop-trigger filter-btn" data-filter="favorites" style="gap:7px;height:36px;box-sizing:border-box;padding:0 15px;line-height:1"><span aria-hidden="true" class="material-symbols-outlined" style="font-size:13px;line-height:1">favorite</span>Saved</button>
- <button class="fdrop-trigger filter-btn" id="sale-filter" data-filter="sale" style="display:none;height:36px;box-sizing:border-box;padding:0 15px;line-height:1">On Sale</button>
+ <div class="fdrop"><button type="button" class="fdrop-trigger" data-drop="style"><span data-he="סגנון">Style</span><span class="fdrop-caret" aria-hidden="true">▾</span></button><div class="fdrop-panel" id="style-panel"><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="artisan">Artisan</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="conceptual">Conceptual</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="contemporary">Contemporary</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="edgy">Edgy</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="festival">Festival</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="legacy">Legacy</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="luxury">Luxury</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="minimalist">Minimalist</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="natural">Natural Fabrics</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="prints">Prints</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="streetwear">Streetwear</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="surf">Surf</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="sustainable">Sustainable</button></div></div>
+ <div class="fdrop"><button type="button" class="fdrop-trigger" data-drop="type"><span data-he="סוג">Type</span><span class="fdrop-caret" aria-hidden="true">▾</span></button><div class="fdrop-panel" id="type-panel"><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="accessories">Accessories</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="activewear">Activewear</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="bridal">Bridal</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="denim">Denim</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="footwear">Footwear</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="jewelry">Jewelry</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="knitwear">Knitwear</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="lingerie">Lingerie</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="menswear">Men</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="ready-to-wear">Ready-to-Wear</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="size-inclusive">Size Inclusive</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="swimwear">Swimwear</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="unisex">Unisex</button></div></div>
+ <div class="fdrop"><button type="button" class="fdrop-trigger" data-drop="location"><span data-he="מיקום">Location</span><span class="fdrop-caret" aria-hidden="true">▾</span></button><div class="fdrop-panel"><div id="area-bar" class="flex flex-wrap gap-2 items-center"></div></div></div>
+ <div class="fdrop"><button type="button" class="fdrop-trigger" data-drop="az">A–Z<span class="fdrop-caret" aria-hidden="true">▾</span></button><div class="fdrop-panel"><div id="alpha-bar" class="flex flex-wrap gap-1"><button class="alpha-btn active font-label text-[10px] tracking-widest uppercase px-2.5 py-1.5 border border-black bg-white text-black" data-letter="all" data-he="הכול">All</button></div></div></div>
+ <button class="fdrop-trigger filter-btn" data-filter="favorites" style="gap:7px;height:36px;box-sizing:border-box;padding:0 15px;line-height:1"><span aria-hidden="true" class="material-symbols-outlined" style="font-size:13px;line-height:1">favorite</span><span data-he="שמורים">Saved</span></button>
+ <button class="fdrop-trigger filter-btn" id="sale-filter" data-filter="sale" style="display:none;height:36px;box-sizing:border-box;padding:0 15px;line-height:1" data-he="במבצע">On Sale</button>
  <button class="filter-btn active" data-filter="all" style="display:none">All</button>
- <button type="button" id="clear-all" onclick="clearAllFilters()" class="font-label text-[9px] tracking-widest uppercase text-[#9C5570] hover:opacity-60 transition-opacity" style="display:none;background:none;border:0;cursor:pointer;">Clear all <span aria-hidden="true">✕</span></button>
+ <button type="button" id="clear-all" onclick="clearAllFilters()" class="font-label text-[9px] tracking-widest uppercase text-[#9C5570] hover:opacity-60 transition-opacity" style="display:none;background:none;border:0;cursor:pointer;"><span data-he="ניקוי הכול">Clear all</span> <span aria-hidden="true">✕</span></button>
  </div>
  <div id="active-chips" class="flex flex-wrap items-center gap-2"></div>
  <div class="flex items-center gap-3 mt-4">
@@ -218,7 +222,7 @@
  </header>
 
  <!-- Grid: Pinterest masonry with row-major alphabetical reading (cards distributed by index % colCount across column buckets) -->
- <section id="designer-grid" class="masonry-grid" aria-label="Designers"></section>
+ <section id="designer-grid" class="masonry-grid" aria-label="Designers" data-he-aria-label="מעצבים"></section>
 
  <div id="no-results" class="hidden py-32 text-center" style="display: none;">
  <p class="font-label text-xs tracking-widest uppercase opacity-70">No designers match this filter</p>
@@ -228,7 +232,7 @@
  <section class="mt-56 mb-24 border-t border-[#1A1A18]/12 pt-24">
  <div class="flex flex-col md:flex-row items-start md:items-end justify-between gap-12" style="justify-content: flex-start">
  <div style="text-align: left; letter-spacing: -3px; height: 103px">
- <h2 class="font-headline font-black text-[clamp(3rem, 8vw, 6.5rem)] uppercase tracking-tighter leading-[0.85] mb-8" style="font-size: 62px">
+ <h2 class="font-headline font-black text-[clamp(3rem, 8vw, 6.5rem)] uppercase tracking-tighter leading-[0.85] mb-8" style="font-size: 62px" data-he="מכירים&lt;br&gt;מעצב/ת?">
  Know a<br>Designer?
  </h2>
  <p class="font-body text-lg text-on-surface-variant max-w-md leading-relaxed">
@@ -236,12 +240,12 @@
  </div>
  <div class="flex flex-col gap-6">
  <a class="group flex items-center gap-5 border-b border-black pb-3 hover:opacity-60 transition-opacity" href="Contact.html">
- <span class="font-label text-sm tracking-widest uppercase">Submit a Designer</span>
- <span aria-hidden="true" class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
+ <span class="font-label text-sm tracking-widest uppercase" data-he="הוספת מעצב/ת">Submit a Designer</span>
+ <span aria-hidden="true" class="material-symbols-outlined flip-rtl group-hover:translate-x-2 transition-transform">arrow_forward</span>
  </a>
  <a class="group flex items-center gap-5 border-b border-black pb-3 hover:opacity-60 transition-opacity" href="#">
- <span class="font-label text-sm tracking-widest uppercase">Browse A–Z</span>
- <span aria-hidden="true" class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
+ <span class="font-label text-sm tracking-widest uppercase" data-he="לכל המעצבים">Browse A–Z</span>
+ <span aria-hidden="true" class="material-symbols-outlined flip-rtl group-hover:translate-x-2 transition-transform">arrow_forward</span>
  </a>
  </div>
  </div>
@@ -4167,15 +4171,20 @@ function withUtm(url){
 }
 // Escape a value for use inside a double-quoted HTML attribute
 function attrEsc(v){ return String(v || '').replace(/&/g,'&amp;').replace(/"/g,'&quot;'); }
+// Hebrew mode (lang.js): T picks the string for the current language
+const T = (en, he) => window.ModeLang ? ModeLang.t(en, he) : en;
+const tagLabel = (l) => window.ModeLang ? ModeLang.tag(l) : l;
+const REGION_HE = {'All':'הכול','Tel Aviv':'תל אביב','HaSharon':'השרון','Center':'מרכז','Jerusalem':'ירושלים','North':'צפון','South':'דרום','Pardes Hanna':'פרדס חנה','Nationwide':'ארצי','Online':'אונליין'};
+const regionLabel = (r) => T(r, REGION_HE[r]);
 function accessLinks(d){
   const isStore = MAP_BRANDS.has(d.name);
   const addr = STORE_ADDRESSES[d.name] || '';
   const n = attrEsc(d.name);
   // aria-labels name the brand, so a list of links doesn't read as "Website, Website, Website…"
-  let out = '<a class="card-link" href="' + withUtm(d.url) + '" target="_blank" rel="noopener" aria-label="' + n + ' website (opens in a new tab)">Website</a>';
-  if (d.instagram) out += '<a class="card-link" href="https://instagram.com/' + d.instagram + '" target="_blank" rel="noopener" aria-label="' + n + ' on Instagram (opens in a new tab)">Instagram</a>';
-  if (isStore) out += '<a class="card-link" href="Map.html?brand=' + encodeURIComponent(d.name) + '"' + (addr ? ' title="' + addr.replace(/"/g,"&quot;") + '"' : '') + ' aria-label="View on Map: ' + n + '">View on Map</a>';
-  const status = isStore ? '<div class="card-status">In person</div>' : '<div class="card-status">Online only</div>';
+  let out = '<a class="card-link" href="' + withUtm(d.url) + '" target="_blank" rel="noopener" aria-label="' + T(n + ' website (opens in a new tab)', 'האתר של ' + n + ' (נפתח בלשונית חדשה)') + '">' + T('Website', 'לאתר') + '</a>';
+  if (d.instagram) out += '<a class="card-link" href="https://instagram.com/' + d.instagram + '" target="_blank" rel="noopener" aria-label="' + T(n + ' on Instagram (opens in a new tab)', n + ' באינסטגרם (נפתח בלשונית חדשה)') + '">' + T('Instagram', 'אינסטגרם') + '</a>';
+  if (isStore) out += '<a class="card-link" href="Map.html?brand=' + encodeURIComponent(d.name) + '"' + (addr ? ' title="' + addr.replace(/"/g,"&quot;") + '"' : '') + ' aria-label="' + T('View on Map: ' + n, n + ' במפה') + '">' + T('View on Map', 'במפה') + '</a>';
+  const status = isStore ? '<div class="card-status">' + T('In person', 'חנות פיזית') + '</div>' : '<div class="card-status">' + T('Online only', 'אונליין בלבד') + '</div>';
   return status + '<div class="card-links">' + out + '</div>';
 }
 // Returns the small access indicator: by-appointment studio, walk-in store, or online only.
@@ -4207,14 +4216,14 @@ function saleUntilLabel(s, lang){
 function saleLineHtml(d){
   const s = activeSale(d);
   if (!s) return '';
-  const lang = typeof currentLang !== 'undefined' ? currentLang : 'en';
+  const lang = window.ModeLang ? ModeLang.get() : 'en';
   const text = (lang === 'he' && s.textHe) || s.text || '';
   const esc = t => String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;');
   return '<div class="sale-line">' + (text ? esc(text) + ' <span class="card-link-sep" aria-hidden="true">·</span> ' : '') + saleUntilLabel(s, lang) + '</div>';
 }
 function saleFlagHtml(d){
   if (!activeSale(d)) return '';
-  const lang = typeof currentLang !== 'undefined' ? currentLang : 'en';
+  const lang = window.ModeLang ? ModeLang.get() : 'en';
   // The sale line under the tags carries the same information for screen readers
   return '<span class="sale-flag" aria-hidden="true">' + (lang === 'he' ? 'מבצע' : 'Sale') + '</span>';
 }
@@ -4247,7 +4256,7 @@ AREA_REGIONS.forEach(r => {
  const btn = document.createElement('button');
  btn.type = 'button';
  btn.className = 'area-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border transition-all duration-200';
- btn.textContent = r;
+ btn.textContent = regionLabel(r);
  btn.dataset.region = r;
  styleAreaBtn(btn);
  btn.onclick = () => { if(r === 'All'){ activeRegions.clear(); } else if(activeRegions.has(r)){ activeRegions.delete(r); } else { activeRegions.add(r); } document.querySelectorAll('.area-btn').forEach(styleAreaBtn); applyFilters(); };
@@ -4385,11 +4394,11 @@ function locationTagHtml(name){
   if(!label) return '';
   return '<span class="tag-location font-label text-[9px] tracking-widest uppercase px-2 py-1">'
     + '<svg aria-hidden="true" width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>'
-    + label + '</span>';
+    + regionLabel(label) + '</span>';
 }
 function tagHtml(labels) {
  return labels.map(l =>
- `<span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">${l}</span>`
+ `<span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">${tagLabel(l)}</span>`
  ).join('');
 }
 
@@ -4479,7 +4488,7 @@ function renderCards(filtered) {
  <div class="mt-6 flex flex-col gap-3">
  <div class="flex items-start justify-between gap-3">
  <h2 class="font-headline font-black text-2xl uppercase tracking-tighter leading-none">${d.name}</h2>
- <button type="button" class="heart-btn shrink-0${saved ? ' saved' : ''}" data-name="${name}" aria-label="Save ${name} to favorites" aria-pressed="${saved}" onclick="toggleFav(this)" style="margin-top:-2px">
+ <button type="button" class="heart-btn shrink-0${saved ? ' saved' : ''}" data-name="${name}" aria-label="${T(`Save ${name} to favorites`, `שמירת ${name} במועדפים`)}" aria-pressed="${saved}" onclick="toggleFav(this)" style="margin-top:-2px">
  <svg aria-hidden="true" class="heart-svg" width="22" height="22" viewBox="0 0 24 24" fill="${saved ? '#e53e3e' : 'none'}" stroke="${saved ? '#e53e3e' : '#111'}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78L12 21.23l8.8-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
  </button>
  </div>
@@ -4495,10 +4504,9 @@ function renderCards(filtered) {
  layoutMasonry();
 
  if (filtered.length === 0 && activeFilters.has('favorites')) {
- noResults.querySelector('p').textContent = 'No saved brands yet, heart the ones you love.';
+ noResults.querySelector('p').textContent = T('No saved brands yet, heart the ones you love.', 'עדיין אין מותגים שמורים, סמנו בלב את אלה שאהבתם.');
  } else {
- const _lang = typeof currentLang !== 'undefined' ? currentLang : 'en';
- noResults.querySelector('p').textContent = _lang === 'he' ? 'לא נמצאו מעצבים לפילטר זה' : 'No designers match this filter';
+ noResults.querySelector('p').textContent = T('No designers match this filter', 'אין מעצבים שמתאימים לסינון הזה');
  }
  noResults.style.display = filtered.length === 0 ? 'block' : 'none';
  updateCount(filtered.length);
@@ -4508,7 +4516,7 @@ function updateCount(n) {
  countEl.classList.remove('count-flash');
  void countEl.offsetWidth;
  countEl.classList.add('count-flash');
- countEl.textContent = n === total ? `${total} Designers` : `${n} of ${total} Designers`;
+ countEl.textContent = n === total ? T(`${total} Designers`, `${total} מעצבים`) : T(`${n} of ${total} Designers`, `${n} מתוך ${total} מעצבים`);
 }
 
 
@@ -4553,7 +4561,8 @@ document.querySelectorAll('.fdrop').forEach(drop => {
  tr.setAttribute('aria-controls', panel.id);
  tr.setAttribute('aria-expanded', 'false');
  panel.setAttribute('role', 'group');
- panel.setAttribute('aria-label', tr.firstChild.textContent.trim() + ' filters');
+ panel.setAttribute('aria-label', tr.dataset.drop + ' filters');
+ panel.dataset.en = tr.firstChild.textContent.trim();
  tr.addEventListener('click', (e) => {
  e.stopPropagation();
  const wasOpen = drop.classList.contains('open');
@@ -4577,7 +4586,7 @@ function setTrigger(name, active, badgeCount){
  let badge = t.querySelector('.fdrop-badge');
  if(badgeCount && badgeCount > 0){
  if(!badge){ badge = document.createElement('span'); badge.className = 'fdrop-badge'; t.appendChild(badge); }
- badge.innerHTML = badgeCount + '<span class="sr-only"> selected</span>';
+ badge.innerHTML = badgeCount + '<span class="sr-only">' + T(' selected', ' נבחרו') + '</span>';
  } else if(badge){ badge.remove(); }
 }
 function updateTriggers(){
@@ -4612,7 +4621,7 @@ function makeChip(label, onRemove){
  const c = document.createElement('button');
  c.type = 'button';
  c.className = 'active-chip';
- c.setAttribute('aria-label', 'Remove filter: ' + label);
+ c.setAttribute('aria-label', T('Remove filter: ', 'הסרת הסינון: ') + label);
  c.innerHTML = '<span>'+label+'</span><span class="chip-x" aria-hidden="true">\u2715</span>';
  c.addEventListener('click', () => {
  onRemove();
@@ -4638,7 +4647,7 @@ function renderChips(){
  });
  // favorites
  if(activeFilters.has('favorites')){
- bar.appendChild(makeChip('Saved', () => {
+ bar.appendChild(makeChip(T('Saved', 'שמורים'), () => {
  const b = document.querySelector('.filter-btn[data-filter="favorites"]');
  if(b) b.click();
  }));
@@ -4652,7 +4661,7 @@ function renderChips(){
  }
  // region(s)
  activeRegions.forEach(rg => {
- bar.appendChild(makeChip(rg, () => {
+ bar.appendChild(makeChip(regionLabel(rg), () => {
  activeRegions.delete(rg);
  if(typeof styleAreaBtn === 'function') document.querySelectorAll('.area-btn').forEach(styleAreaBtn);
  applyFilters();
@@ -4755,9 +4764,9 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
 if (IS_BRIDAL_VIEW) {
  document.title = 'Bridal — ModeIL';
  const h1 = document.querySelector('h1.font-headline');
- if (h1) h1.textContent = 'BRIDAL';
+ if (h1) { h1.textContent = 'BRIDAL'; h1.setAttribute('data-he', 'כלות'); }
  const heroP = document.querySelector('header p');
- if (heroP) heroP.textContent = 'Israeli bridal and evening houses, gathered in one place.';
+ if (heroP) { heroP.textContent = 'Israeli bridal and evening houses, gathered in one place.'; heroP.setAttribute('data-he', 'בתי אופנה ישראליים לכלות ולערב, במקום אחד.'); }
  document.querySelectorAll('a[href="index.html"][aria-current="page"]').forEach(a => {
   a.removeAttribute('aria-current');
   if (a.closest('.hidden.md\\:flex')) a.className = 'text-black/60 hover:text-black transition-colors duration-300';
@@ -4825,161 +4834,29 @@ if (document.fonts && document.fonts.ready) document.fonts.ready.then(layoutMaso
 
 
 <script>
-const TRANSLATIONS = {
- en: {
- tagline: "Tel Aviv · Jerusalem · New York · Paris · Global",
- heroTitle: "Israeli Fashion",
- heroDesc: "I track Israeli fashion so you don't have to. From small boutiques to established brands and everything in between - classic to quirky, formal to fun, morning to evening, work to play.",
- filterLabel: "Filter:",
- filterAll: "All",
- filterJewelry: "Jewelry", filterSwimwear: "Swimwear", filterKnitwear: "Knitwear",
- filterStreetwear: "Streetwear", filterPrints: "Prints", filterMinimalist: "Minimalist",
- filterEdgy: "Edgy",
- filterDenim: "Denim", filterFootwear: "Footwear", filterNatural: "Natural Fabrics", filterUnisex: "Unisex",
- filterSustainable: "Sustainable", filterActivewear: "Activewear", filterArtisan: "Artisan",
- filterHeritage: "Legacy", filterSurf: "Surf", filterLuxury: "Luxury",
- filterLingerie: "Lingerie", filterMen: "Men", filterAccessories: "Accessories", filterSizeInclusive: "Size Inclusive",
- filterSale: "On Sale",
- searchPlaceholder: "Search by brand name",
- visitWebsite: "Visit Website",
- designersCount: (n, t) => n === t ? `${t} Designers` : `${n} of ${t} Designers`,
- noResults: "No designers match this filter",
- ctaTitle: "Know a\nDesigner?",
- ctaDesc: "\n",
- ctaSubmit: "Submit a Designer",
- ctaBrowse: "Browse A–Z",
- navDesigners: "Designers", navMap: "Map", navAbout: "About", navSubmit: "Talk To Me",
- footerTagline: "Israeli Fashion Index · © 2026 · All Rights Reserved",
- footerContact: "Talk To Me",
- },
- he: {
- tagline: "תל אביב · ירושלים · ניו יורק · פריז · עולמי",
- heroTitle: "אינדקס\nאופנה\nישראלית",
- heroDesc: "אני עוקבת אחרי מותגים מהארץ מכל הסוגים ",
- filterLabel: "סינון:",
- filterAll: "הכל",
- filterJewelry: "תכשיטים", filterSwimwear: "בגדי ים", filterKnitwear: "סריגה",
- filterStreetwear: "סטריטוור", filterPrints: "הדפסים", filterMinimalist: "מינימליסטי",
- filterEdgy: "אדגי",
- filterDenim: "דנים", filterFootwear: "נעליים", filterNatural: "בדים טבעיים", filterUnisex: "יוניסקס",
- filterSustainable: "בר-קיימא", filterActivewear: "ספורטסוור", filterArtisan: "בוטיק",
- filterHeritage: "מורשת", filterSurf: "גלישה", filterLuxury: "יוקרה",
- filterLingerie: "לינג'רי", filterMen: "גברים", filterAccessories: "אקסססוריז", filterSizeInclusive: "מגוון מידות",
- filterSale: "במבצע",
- searchPlaceholder: "חיפוש לפי שם מותג",
- visitWebsite: "לאתר",
- designersCount: (n, t) => n === t ? `${t} מעצבים` : `${n} מתוך ${t} מעצבים`,
- noResults: "לא נמצאו מעצבים לפילטר זה",
- ctaTitle: "מכיר\nמעצב?",
- ctaDesc: "האופנה הישראלית נמצאת בכל מקום. אם פספסנו מישהו, ספרו לנו.",
- ctaSubmit: "הגשת מעצב",
- ctaBrowse: "עיון א–ת",
- navDesigners: "מעצבים", navMap: "מפה", navAbout: "אודות", navSubmit: "דברו איתי",
- footerTagline: "מדד האופנה הישראלית · © 2026 · כל הזכויות שמורות",
- footerContact: "דברו איתי",
- }
-};
-
-const TAG_LABELS = {
- en: { jewelry:"Jewelry", swimwear:"Swimwear", knitwear:"Knitwear", streetwear:"Streetwear", prints:"Prints", minimalist:"Minimalist", sustainable:"Sustainable", activewear:"Activewear", artisan:"Artisan", legacy:"Legacy", surf:"Surf", luxury:"Luxury", lingerie:"Lingerie", menswear:"Men", accessories:"Accessories", contemporary:"Contemporary" },
- he: { jewelry:"תכשיטים", swimwear:"בגדי ים", knitwear:"סריגה", streetwear:"סטריטוור", prints:"הדפסים", minimalist:"מינימליסטי", sustainable:"בר-קיימא", activewear:"ספורטסוור", artisan:"בוטיק", legacy:"מורשת", surf:"גלישה", luxury:"יוקרה", lingerie:"לינג'רי", menswear:"גברים", accessories:"אקסססוריז", contemporary:"עכשווי" }
-};
-
-let currentLang = 'en';
-
-function applyLang() {
- const t = TRANSLATIONS[currentLang];
- const isHe = currentLang === 'he';
- document.documentElement.setAttribute('dir', isHe ? 'rtl' : 'ltr');
- document.documentElement.setAttribute('lang', isHe ? 'he' : 'en');
-
- // Nav
- document.querySelector('a[href="index.html"].font-headline')?.setAttribute('title', 'ModeIL');
- const navLinks = document.querySelectorAll('.nav-links-items a, nav .hidden a');
- if (navLinks.length >= 4) {
- navLinks[0].textContent = t.navDesigners;
- navLinks[1].textContent = t.navMap;
- navLinks[2].textContent = t.navAbout;
- navLinks[3].textContent = t.navSubmit;
- }
-
- // Hero
- const tagline = document.querySelector('p[class*="tracking-[0.3em"]');
- if (tagline) tagline.textContent = t.tagline;
- const h1 = document.querySelector('h1.font-headline');
- if (h1) h1.innerHTML = t.heroTitle.replace(/\n/g, '<br>');
- const heroDesc = document.querySelector('p.font-body.text-lg');
- if (heroDesc) heroDesc.textContent = t.heroDesc;
-
- // Filter label
- const filterLabelEl = document.querySelector('#filter-bar span');
- if (filterLabelEl) filterLabelEl.textContent = t.filterLabel;
-
- // Filter buttons
- const filterMap = { all:t.filterAll, jewelry:t.filterJewelry, swimwear:t.filterSwimwear, knitwear:t.filterKnitwear, streetwear:t.filterStreetwear, prints:t.filterPrints, minimalist:t.filterMinimalist, sustainable:t.filterSustainable, activewear:t.filterActivewear, artisan:t.filterArtisan, legacy:t.filterHeritage, surf:t.filterSurf, luxury:t.filterLuxury, lingerie:t.filterLingerie, menswear:t.filterMen, accessories:t.filterAccessories, "size-inclusive":t.filterSizeInclusive, edgy:t.filterEdgy, denim:t.filterDenim, footwear:t.filterFootwear, natural:t.filterNatural, unisex:t.filterUnisex, sale:t.filterSale };
- document.querySelectorAll('.filter-btn').forEach(btn => {
- const f = btn.dataset.filter;
- if (filterMap[f]) btn.textContent = filterMap[f];
+// Language switch: the shared lang.js does the toggle, direction and static text
+// (elements marked data-he). This page re-draws its script-built text on change.
+const FILTER_PANEL_HE = { style: 'סינון לפי סגנון', type: 'סינון לפי סוג', location: 'סינון לפי מיקום', az: 'סינון לפי אות' };
+function relabelFilters() {
+ // Style and type buttons show tag names; keep the English label to switch back
+ document.querySelectorAll('.fdrop-panel .filter-btn').forEach(b => {
+  if (!b.dataset.en) b.dataset.en = b.textContent.trim();
+  b.textContent = tagLabel(b.dataset.en);
  });
-
- // Search
- const searchInput = document.getElementById('search-input');
- if (searchInput) searchInput.placeholder = t.searchPlaceholder;
- // CTA section
- const ctaH2 = document.querySelector('section.mt-56 h2');
- if (ctaH2) ctaH2.innerHTML = t.ctaTitle.replace(/\n/g, '<br>');
- const ctaDesc = document.querySelector('section.mt-56 p');
- if (ctaDesc) ctaDesc.textContent = t.ctaDesc;
- const ctaLinks = document.querySelectorAll('section.mt-56 a span.font-label');
- if (ctaLinks[0]) ctaLinks[0].textContent = t.ctaSubmit;
- if (ctaLinks[1]) ctaLinks[1].textContent = t.ctaBrowse;
-
- // Footer
- const footerTagline = document.querySelector('footer p[class*="tracking-[0.25em"]');
- if (footerTagline) footerTagline.textContent = t.footerTagline;
- const footerLinks = document.querySelectorAll('footer a');
- if (footerLinks[0]) footerLinks[0].textContent = t.footerContact;
-
- // No results
- const noRes = document.querySelector('#no-results p');
- if (noRes) noRes.textContent = t.noResults;
-
- // Re-render cards with new language
+ document.querySelectorAll('.area-btn').forEach(b => { b.textContent = regionLabel(b.dataset.region); });
+ document.querySelectorAll('.fdrop').forEach(drop => {
+  const tr = drop.querySelector('.fdrop-trigger'), panel = drop.querySelector('.fdrop-panel');
+  if (tr && panel) panel.setAttribute('aria-label', T((panel.dataset.en || tr.dataset.drop) + ' filters', FILTER_PANEL_HE[tr.dataset.drop]));
+ });
+}
+let shownLang = 'en'; // the language the grid was last drawn in
+if (window.ModeLang) ModeLang.onChange(lang => {
+ relabelFilters();
+ // English on first load is already drawn; anything else re-renders the cards, count and chips
+ if (lang === shownLang && lang === 'en') return;
+ shownLang = lang;
  applyFilters();
-}
-
-function toggleLang() {
- currentLang = currentLang === 'en' ? 'he' : 'en';
- updateLangToggle();
- applyLang();
- applyFilters();
-}
-
-function updateLangToggle() {
- const en = document.getElementById('lang-en');
- const he = document.getElementById('lang-he');
- if (!en || !he) return;
- if (currentLang === 'en') {
- en.className = 'px-2 py-1.5 bg-black text-[#fcf9f5]';
- he.className = 'px-2 py-1.5 text-black';
- } else {
- en.className = 'px-2 py-1.5 text-black';
- he.className = 'px-2 py-1.5 bg-black text-[#fcf9f5]';
- }
-}
-
-// Patch tagHtml to use current lang
-const _origTagHtml = tagHtml;
-window.tagHtml = function(labels) {
- if (currentLang === 'he') {
- return labels.map(l => {
- const key = l.toLowerCase().replace(/[^a-z]/g,'');
- const heLabel = TAG_LABELS.he[key] || l;
- return `<span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">${heLabel}</span>`;
- }).join('');
- }
- return _origTagHtml(labels);
-};
+});
 
 // Pre-authored English -> Hebrew description translations, baked into
 // the site. Populated over time; falls back to English for any missing
@@ -5387,7 +5264,7 @@ const descCache = (() => {
 })();
 
 function translateDescriptions() {
- if (currentLang !== 'he') return;
+ if (!ModeLang.isHe()) return;
  document.querySelectorAll('.desc-text').forEach(el => {
  const en = (el.dataset.descEn || '').replace(/&quot;/g, '"');
  if (descCache[en]) {
@@ -5397,33 +5274,16 @@ function translateDescriptions() {
  });
 }
 
-// Patch visitWebsite text
+// Hebrew descriptions are filled in after each render (DESC_HE lives in this later script)
 const _origRender = renderCards;
 window.renderCards = function(filtered) {
  _origRender(filtered);
- if (currentLang === 'he') {
- document.querySelectorAll('.designer-card a').forEach(a => {
- const span = a.querySelector('span.font-label');
- if (span && /visit website/i.test(span.textContent)) span.textContent = TRANSLATIONS.he.visitWebsite;
- });
- // Update count
- const n = document.querySelectorAll('.designer-card:not(.hidden-card)').length;
- countEl.textContent = TRANSLATIONS.he.designersCount(n, total);
- // Apply pre-authored Hebrew descriptions where available
+ if (ModeLang.isHe()) {
  translateDescriptions();
  // Hebrew text changes the card heights
  layoutMasonry();
  }
 };
-
-// Init lang on load
-document.addEventListener('DOMContentLoaded', () => {
- updateLangToggle();
- if (currentLang === 'he') {
- applyLang();
- applyFilters();
- }
-});
 </script>
 <script>
 // Nav search toggle

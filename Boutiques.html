@@ -68,6 +68,8 @@
 @media (max-width: 640px){ .fdrop-panel { max-width: 280px; left: 0; } }
 </style>
 <link rel="stylesheet" href="a11y.css">
+<link rel="stylesheet" href="lang.css">
+<script src="lang.js"></script>
 <link rel="stylesheet" href="assets/tailwind.css">
 </head>
 <body class="bg-background text-primary font-body selection:bg-primary-container selection:text-white" style="cursor: crosshair;">
@@ -88,6 +90,7 @@
  <a class="text-black/60 hover:text-black transition-colors duration-300" href="About.html">About</a>
  <a class="text-black/60 hover:text-black transition-colors duration-300" href="Contact.html">Talk To Me</a>
  </div>
+ <button type="button" data-lang-toggle></button>
  </div>
  <div class="flex items-center gap-4">
  <button id="mobile-menu-btn-stores" type="button" class="md:hidden flex items-center" onclick="toggleMobileMenu()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu-stores" data-mobile-menu-open>
@@ -111,6 +114,7 @@
  <a href="Map.html" class="font-headline font-black text-5xl uppercase tracking-tighter text-black border-b border-[#1A1A18]/10 pb-6">Map</a>
  <a href="About.html" class="font-headline font-black text-5xl uppercase tracking-tighter text-black border-b border-[#1A1A18]/10 pb-6">About</a>
  <a href="Contact.html" class="font-headline font-black text-5xl uppercase tracking-tighter text-black pb-6">Talk To Me</a>
+   <button type="button" data-lang-toggle style="align-self:flex-start;margin-top:0.5rem"></button>
  </nav>
 </div>
 
@@ -122,16 +126,16 @@
  <div class="max-w-3xl">
  <p class="font-label text-[10px] tracking-[0.3em] uppercase text-on-surface-variant mb-6 opacity-60">
 </p>
- <h1 class="font-headline font-black leading-[0.82] tracking-tighter mb-8 uppercase" style="font-size: clamp(34px, 11vw, 82px)">MULTI-BRAND
+ <h1 class="font-headline font-black leading-[0.82] tracking-tighter mb-8 uppercase" style="font-size: clamp(34px, 11vw, 82px)" data-he="בוטיקים&lt;br/&gt;רב-מותגיים">MULTI-BRAND
 BOUTIQUES</h1>
- <p class="font-body text-lg text-on-surface-variant max-w-lg leading-relaxed">
+ <p class="font-body text-lg text-on-surface-variant max-w-lg leading-relaxed" data-he="קונספט סטורים ובוטיקים רב-מותגיים - למדוד ולקנות מהסצנה המקומית, במקום אחד.">
  Concept stores, boutiques with multi brands - try on, and shop the local scene in one stop.
  </p>
  </div>
  <div class="w-full flex flex-col gap-4">
  <div class="flex flex-wrap items-center gap-2.5">
- <div class="fdrop"><button type="button" class="fdrop-trigger" data-drop="location" aria-expanded="false" aria-controls="location-panel">Location<span class="fdrop-caret" aria-hidden="true">▾</span></button><div class="fdrop-panel" id="location-panel" role="group" aria-label="Location filters"><div id="region-bar" class="flex flex-wrap gap-2 items-center"></div></div></div>
- <button type="button" id="saved-filter" class="fdrop-trigger" aria-pressed="false" style="gap:7px;height:36px;box-sizing:border-box;padding:0 15px;line-height:1"><span aria-hidden="true" class="material-symbols-outlined" style="font-size:13px;line-height:1">favorite</span>Saved</button>
+ <div class="fdrop"><button type="button" class="fdrop-trigger" data-drop="location" aria-expanded="false" aria-controls="location-panel" data-he-aria-label="מיקום"><span data-he="מיקום">Location</span><span class="fdrop-caret" aria-hidden="true">▾</span></button><div class="fdrop-panel" id="location-panel" role="group" aria-label="Location filters" data-he-aria-label="סינון לפי מיקום"><div id="region-bar" class="flex flex-wrap gap-2 items-center"></div></div></div>
+ <button type="button" id="saved-filter" class="fdrop-trigger" aria-pressed="false" style="gap:7px;height:36px;box-sizing:border-box;padding:0 15px;line-height:1"><span aria-hidden="true" class="material-symbols-outlined" style="font-size:13px;line-height:1">favorite</span><span data-he="שמורים">Saved</span></button>
  </div>
  <div class="flex items-center gap-3 mt-4">
  <div class="w-2 h-2 bg-primary"></div>
@@ -141,27 +145,27 @@ BOUTIQUES</h1>
  </header>
 
  <!-- List -->
- <section id="store-grid" aria-label="Boutiques" class="flex flex-col gap-16"></section>
+ <section id="store-grid" aria-label="Boutiques" data-he-aria-label="בוטיקים" class="flex flex-col gap-16"></section>
 
  <!-- CTA -->
  <section class="mt-56 mb-12 border-t border-[#1A1A18]/12 pt-24">
  <div class="flex flex-col md:flex-row items-start md:items-end justify-between gap-12">
  <div>
- <h2 class="font-headline font-black text-[clamp(3rem, 8vw, 6.5rem)] uppercase tracking-tighter leading-[0.85] mb-8">
+ <h2 class="font-headline font-black text-[clamp(3rem, 8vw, 6.5rem)] uppercase tracking-tighter leading-[0.85] mb-8" data-he="מכירים חנות?">
  Know a Store?
  </h2>
- <p class="font-body text-lg text-on-surface-variant max-w-md leading-relaxed">
+ <p class="font-body text-lg text-on-surface-variant max-w-md leading-relaxed" data-he="בוטיקים, קונספט סטורים, פופ-אפים שמוכרים מותגים ישראליים, אם פספסנו אחד, ספרו לנו.">
  Boutiques, concept stores, pop-ups stocking Israeli brands, if we're missing one, tell us.
  </p>
  </div>
  <div class="flex flex-col gap-6">
  <a class="group flex items-center gap-5 border-b border-black pb-3 hover:opacity-60 transition-opacity" href="Contact.html">
- <span class="font-label text-sm tracking-widest uppercase">Submit a Store</span>
- <span aria-hidden="true" class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
+ <span class="font-label text-sm tracking-widest uppercase" data-he="הוספת חנות">Submit a Store</span>
+ <span aria-hidden="true" class="material-symbols-outlined flip-rtl group-hover:translate-x-2 transition-transform">arrow_forward</span>
  </a>
  <a class="group flex items-center gap-5 border-b border-black pb-3 hover:opacity-60 transition-opacity" href="index.html">
- <span class="font-label text-sm tracking-widest uppercase">Browse Designers</span>
- <span aria-hidden="true" class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
+ <span class="font-label text-sm tracking-widest uppercase" data-he="לכל המעצבים">Browse Designers</span>
+ <span aria-hidden="true" class="material-symbols-outlined flip-rtl group-hover:translate-x-2 transition-transform">arrow_forward</span>
  </a>
  </div>
  </div>
@@ -390,6 +394,37 @@ const countEl = document.getElementById('store-count');
 let FAVORITES = new Set(JSON.parse(localStorage.getItem('modeil-favs') || '[]'));
 
 // Region filter
+// Hebrew for the Hebrew mode (lang.js). Descriptions are keyed by store name.
+const DESC_HE = {
+"CALA": "רשת בוטיקים ישראלית שנוסדה ב-2002 על ידי עדי גלר עם חזון ברור: בית אופנה שמקבל את כולם, בלי קשר למידה, לסגנון או למגדר. גישה אישית ואינטואיטיבית לעיצוב במקום טרנדים, חלק מיובא וחלק בעיצוב הבית. שינקין 18, תל אביב (עברו מדיזנגוף) · ההסתדרות 4, ירושלים.",
+"Seestarz": "נולד מאחוות אחיות ומבלוג אופנה מצליח באינסטגרם: הליקוט של אלונה ודניאלה כולל בגדי ים, סטריטוויר ועוד, ממותגים שהן אוהבות. חנות דגל אחת, ביג פאשן גלילות, קומה 2. שעות הקניון: א׳–ה׳ 9:30–22:00, ו׳ 9:00–17:00, פתוח גם בשבת.",
+"Zohi Sabina": "בוטיק רב-מותגי עם ליקוט מוקפד של אופנת נשים ואקססוריז ישראליים, בסיסיים בטוחים בעצמם ופריטים עונתיים מחושבים, במקום אחד. ברודצקי 15, רמת אביב · איסוף בתיאום מראש · 03-6416322.",
+"Shmua": "חנות אופנה שפתוחה שבוע אחד בחודש בבית יצחק, ליקוט מתחלף ותמיד רענן של בגדים, תכשיטים, נעליים ואקססוריז של מעצבים ישראלים, עם שירות אישי. כדאי לבדוק באתר מתי שבוע הפתיחה החודש לפני שמגיעים — הורדים 30, בית יצחק-שער חפר.",
+"Haparlament": "בוטיק רב-מותגי של מעצבים ישראלים, במתחם תחנת הרכבת בבית יהושע.",
+"DA Studio": "הסטודיו-חנות של המעצבת טולה בעמק חפר, שמוכרת את המותג שלה לצד ליקוט של מותגים ישראליים נוספים. גשר העץ, אזור התעשייה עמק חפר.",
+"Razili": "רזילי, שפועלת גם כחנות רב-מותגית עם ליקוט של מותגים ישראליים לצד הקולקציה שלה.",
+"Rene and Danielle": "קונספט סטור תל אביבי שהוא תיבת אוצרות, נפתח ב-2019 ונקרא על שם סבתה של הבעלים, רנה, אישה חדת עין ואוהבת יופי שהגיעה ממצרים בשנות החמישים. אוסף נבחר בקפידה של עבודות יד מקומיות, כלי בית, מתנות וחפצי לייפסטייל וטיפוח, שמחברים ביניהם חומרים טבעיים וצבעוניות רכה והרמונית. כל ביקור הוא מסע גילוי קטן.",
+"Belle and Sue": "בוטיק האופנה המקוון החלוצי של ישראל מאז 2010, שמלקט מותגים בינלאומיים, מקדם מעצבים מקומיים, והשיק את מותג הבית FEZ של בסיסים יומיומיים מחושבים.",
+"AKA My Culture": "ליקוט של מותגים בינלאומיים מודעי סביבה, DR. DENIM, THINKING MU, BAGGU, לצד מותג הבית IN BLOOM, שמעצב אופנה ישראלית יומיומית עם מצפון סביבתי. רמב״ם 43, גבעתיים.",
+"Story": "נוסדה ב-2008 כדי לכתוב מחדש את חוויית הקנייה בישראל: רשת רב-מותגית שבוחרת ביד מותגים עם מצפון. חומרים נכונים, ייצור הוגן, צער בעלי חיים, ופריטים שנועדו להחזיק. היופי חשוב, אבל גם הסיפור שמאחוריו.",
+"Comme il Faut": "קונספט סטור וגלריה פמיניסטיים, עם אופנת הנשים האמנותית של הבית לצד ליקוט של מותגים ישראליים נוספים. חנות דגל חדשה בלבונטין 28, תל אביב (03-5336405), וגם סטודיו אאוטלט/וינטג׳, ורמת השרון, רחובות וכיכר רבין.",
+"En Culture": "חלל קונספט ומעבדה יצירתית שנוסדו ב-2021 ברחוב לילינבלום, ומגדירים מחדש את הסטריטוויר בחיבור בין המזרח הרחוק למזרח התיכון. ליקוט של מעצבים אסייתים אוונגרדיים ובתי אופנה מתקדמים, Lu'u Dan, PAF, Kidill, Walter Van Beirendonck, Feng Chen Wang ועוד.",
+"Shtayim": "בוטיק רב-מותגי של אופנת נשים ועיצוב ישראלי. המלך ג׳ורג׳ 86, תל אביב · 050-3340018.",
+"Pink": "בוטיק רב-מותגי של אופנת נשים ועיצוב ישראלי. אוסישקין 29, רמת השרון · 03-5404124.",
+"Bashin VeAyin": "בוטיק רב-מותגי של אופנת נשים ועיצוב ישראלי. הצפצפה 1, רמת ישי · 04-983-0821.",
+"Ronita": "בוטיק רב-מותגי של אופנת נשים ועיצוב ישראלי. דרך האורן 1, קיבוץ מרחביה · 04-6898222.",
+"Lola": "בוטיק רב-מותגי של אופנת נשים ועיצוב ישראלי. המייסדים 25, כרכור · 04-6247192 / 058-6606123.",
+"Moment": "בוטיק רב-מותגי של אופנת נשים ועיצוב ישראלי. רחבת עדי 1, שוהם · 054-4972133.",
+"MYKI": "בוטיק אומנותי עם ליקוט קפדני שפועל מאז 2004 בעיר הלבנה של תל אביב. לצד מותג הבית מאיה צוקרמן, ליקוט אקולוגי ונבחר ביד של עיצוב יוניסקס עמיד מיצרנים קטנים באיטליה, צרפת, דנמרק, בלגיה, יפן, אוסטרליה, ארה״ב ועוד, אופנה איטית שנועדה להחזיק. יהודה הלוי 85, תל אביב · 03-5273992.",
+"Michali": "בוטיק רב-מותגי של אופנת נשים ועיצוב ישראלי. בצלאל 6, ירושלים · 02-6254303.",
+"Reuta": "בוטיק רב-מותגי של אופנת נשים ועיצוב ישראלי. שדרות המכבים 10, מרכז רננים, מכבים-רעות · 050-8928070.",
+"Kolavim": "קונספט סטור שנוסד לפני כ-17 שנה על ידי איריס שרפשטיין, ומרכז מעצבים ישראלים בולטים לצד שמות עולים, וגם אקססוריז, הנעלה ובגדי יום-ערב לכל הגילים. רחוב אחוזה, רעננה.",
+"Laliv": "בוטיק שפועל כ-30 שנה ברעננה, בבעלות לליב קליין. רק מותגי יבוא איטלקיים וצרפתיים, שנבחרים אישית על ידי הבעלים בנסיעותיה לשבוע האופנה במילאנו, עם שירות אישי מאוד בסגנון סטייליסטית פרטית. אחוזה 97, רעננה.",
+"Tali's": "בוטיק משפחתי במשמר השרון בניהול טליה והדס, שמתמקד קודם כול בבגדים שנעים למגע, עם קולקציות חדשות כל שבוע ממעצבים ישראלים מובילים לצד יבוא איטלקי וצרפתי, ותכשיטי שני קלאי. מתחם אלונית, משמר השרון."
+};
+const REG_HE = {"All": "הכול", "Tel Aviv": "תל אביב", "HaSharon": "השרון", "Center": "מרכז", "Jerusalem": "ירושלים", "North": "צפון", "Pardes Hanna": "פרדס חנה", "Nationwide": "ארצי", "Online": "אונליין", "Tel Aviv & Center": "תל אביב והמרכז"};
+const T = (en, he) => window.ModeLang ? ModeLang.t(en, he) : en;
+const regLabel = (r) => T(r, REG_HE[r]);
 const REGIONS = ['All','Tel Aviv','HaSharon','Center','Jerusalem','North','Pardes Hanna','Nationwide','Online'];
 let activeRegion = 'All';
 let showSaved = false;
@@ -398,7 +433,7 @@ REGIONS.forEach(r => {
  const btn = document.createElement('button');
  btn.type = 'button';
  btn.className = 'region-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border transition-all duration-200';
- btn.textContent = r;
+ btn.textContent = regLabel(r);
  btn.dataset.region = r;
  styleRegionBtn(btn);
  btn.onclick = () => { activeRegion = r; document.querySelectorAll('.region-btn').forEach(styleRegionBtn); updateTriggers(); render(); };
@@ -471,15 +506,15 @@ function cardHtml(s) {
  <div class="flex flex-col gap-3 justify-center min-w-0">
  <div class="flex items-start justify-between gap-3">
  <h3 class="font-headline font-black text-2xl md:text-3xl uppercase tracking-tighter leading-none">${s.name}</h3>
- <button type="button" class="heart-btn shrink-0${saved ? ' saved' : ''}" data-name="${n}" aria-label="Save ${n} to favorites" aria-pressed="${saved}" onclick="toggleFav(this)" style="margin-top:-2px">
+ <button type="button" class="heart-btn shrink-0${saved ? ' saved' : ''}" data-name="${n}" aria-label="${T(`Save ${n} to favorites`, `שמירת ${n} במועדפים`)}" aria-pressed="${saved}" onclick="toggleFav(this)" style="margin-top:-2px">
  <span aria-hidden="true" class="material-symbols-outlined heart-icon" style="font-size:20px;${FAVORITES.has(s.name) ? 'font-variation-settings:\'FILL\' 1,\'wght\' 400,\'GRAD\' 0,\'opsz\' 24;color:#9C5570' : ''}">favorite</span>
  </button>
  </div>
- <div class="flex flex-wrap gap-2">${s.region ? `<span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">${s.region}</span>` : ''}</div>
- <p class="font-body text-sm text-on-surface-variant leading-relaxed max-w-xl">${s.desc}</p>
+ <div class="flex flex-wrap gap-2">${s.region ? `<span class="font-label text-[9px] tracking-widest uppercase border border-outline-variant px-2 py-1">${regLabel(s.region)}</span>` : ''}</div>
+ <p class="font-body text-sm text-on-surface-variant leading-relaxed max-w-xl">${T(s.desc, DESC_HE[s.name])}</p>
  <div class="flex flex-wrap gap-4 items-center">
- ${s.url ? `<a class="font-label text-[10px] tracking-widest uppercase underline underline-offset-4 hover:opacity-60 transition-opacity w-fit" href="${withUtm(s.url)}" target="_blank" rel="noopener" aria-label="${n} website (opens in a new tab)">Website <span aria-hidden="true">→</span></a>` : ''}
- ${MAP_STORES.has(s.name) ? `<a class="font-label text-[10px] tracking-widest uppercase underline underline-offset-4 hover:opacity-60 transition-opacity w-fit" href="Map.html?brand=${encodeURIComponent(s.name)}" aria-label="View on Map: ${n}">View on Map <span aria-hidden="true">→</span></a>` : ''}
+ ${s.url ? `<a class="font-label text-[10px] tracking-widest uppercase underline underline-offset-4 hover:opacity-60 transition-opacity w-fit" href="${withUtm(s.url)}" target="_blank" rel="noopener" aria-label="${T(`${n} website (opens in a new tab)`, `האתר של ${n} (נפתח בלשונית חדשה)`)}">${T('Website', 'לאתר')} <span aria-hidden="true">${T('→', '←')}</span></a>` : ''}
+ ${MAP_STORES.has(s.name) ? `<a class="font-label text-[10px] tracking-widest uppercase underline underline-offset-4 hover:opacity-60 transition-opacity w-fit" href="Map.html?brand=${encodeURIComponent(s.name)}" aria-label="${T(`View on Map: ${n}`, `${n} במפה`)}">${T('View on Map', 'במפה')} <span aria-hidden="true">${T('→', '←')}</span></a>` : ''}
  </div>
  </div>
  `;
@@ -514,7 +549,7 @@ function updateTriggers() {
  const regionOn = activeRegion !== 'All';
  locTrigger.classList.toggle('has-active', regionOn);
  let badge = locTrigger.querySelector('.fdrop-badge');
- if (regionOn && !badge) { badge = document.createElement('span'); badge.className = 'fdrop-badge'; badge.innerHTML = '1<span class="sr-only"> selected</span>'; locTrigger.appendChild(badge); }
+ if (regionOn && !badge) { badge = document.createElement('span'); badge.className = 'fdrop-badge'; badge.innerHTML = `1<span class="sr-only">${T(' selected', ' נבחר')}</span>`; locTrigger.appendChild(badge); }
  if (!regionOn && badge) badge.remove();
  savedBtn.classList.toggle('has-active', showSaved);
  savedBtn.setAttribute('aria-pressed', String(showSaved));
@@ -532,7 +567,7 @@ function render() {
  total += items.length;
  const section = document.createElement('div');
  section.className = 'flex flex-col gap-6';
- section.innerHTML = `<h2 class="font-headline font-black uppercase tracking-tighter border-b border-[#1A1A18]/15 pb-4" style="font-size: clamp(22px, 3.4vw, 34px)">${group.label}</h2>`;
+ section.innerHTML = `<h2 class="font-headline font-black uppercase tracking-tighter border-b border-[#1A1A18]/15 pb-4" style="font-size: clamp(22px, 3.4vw, 34px)">${regLabel(group.label)}</h2>`;
  section.appendChild(buildList(items));
  grid.appendChild(section);
  });
@@ -542,8 +577,8 @@ function render() {
  if (items.length) grid.appendChild(buildList(items));
  }
 
- if (total === 0) grid.innerHTML = `<p class="py-24 text-center font-label text-xs tracking-widest uppercase opacity-70">${showSaved ? 'No saved boutiques yet, heart the ones you love.' : 'No boutiques in this area'}</p>`;
- countEl.textContent = `${total} ${total === 1 ? 'Boutique' : 'Boutiques'}`;
+ if (total === 0) grid.innerHTML = `<p class="py-24 text-center font-label text-xs tracking-widest uppercase opacity-70">${showSaved ? T('No saved boutiques yet, heart the ones you love.', 'עדיין אין בוטיקים שמורים, סמנו בלב את אלה שאהבתם.') : T('No boutiques in this area', 'אין בוטיקים באזור הזה')}</p>`;
+ countEl.textContent = T(`${total} ${total === 1 ? 'Boutique' : 'Boutiques'}`, total === 1 ? 'בוטיק אחד' : `${total} בוטיקים`);
 }
 
 function toggleFav(btn) {
@@ -568,6 +603,13 @@ function toggleFav(btn) {
 }
 
 render();
+// Language switch: relabel the region buttons and the badge, then redraw the list
+if (window.ModeLang) ModeLang.onChange(() => {
+ document.querySelectorAll('.region-btn').forEach(b => { b.textContent = regLabel(b.dataset.region); });
+ const badge = locTrigger.querySelector('.fdrop-badge'); if (badge) badge.remove();
+ updateTriggers();
+ render();
+});
 </script>
 
 <script src="a11y.js"></script>
