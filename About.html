@@ -34,10 +34,12 @@
    html, body { font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif !important; }
  main, nav, footer { position: relative; z-index: 1; }
   #lang-toggle { cursor: pointer; }
-  .pulse-dot { display: inline-block; width: 8px; height: 8px; background: #000; margin-right: 10px; animation: pulseAnim 1.6s ease-in-out 3; vertical-align: middle; }
+  .pulse-dot { display: inline-block; width: 8px; height: 8px; background: #000; margin-inline-end: 10px; animation: pulseAnim 1.6s ease-in-out 3; vertical-align: middle; }
   @keyframes pulseAnim { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
 </style>
 <link rel="stylesheet" href="a11y.css">
+<link rel="stylesheet" href="lang.css">
+<script src="lang.js"></script>
 <link rel="stylesheet" href="assets/tailwind.css">
 </head>
 <body class="bg-background text-primary font-body">
@@ -58,6 +60,7 @@
       <a aria-current="page" class="text-black border-b-2 border-black pb-1" href="About.html">About</a>
       <a class="text-black/60 hover:text-black transition-colors duration-300" href="Contact.html">Talk To Me</a>
     </div>
+    <button type="button" data-lang-toggle></button>
   </div>
   <div class="flex items-center gap-4">
     <button id="mobile-menu-btn" type="button" class="md:hidden flex items-center" onclick="toggleMobileMenu()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" data-mobile-menu-open>
@@ -81,17 +84,18 @@
     <a href="Map.html" class="font-headline font-black text-5xl uppercase tracking-tighter text-black hover:opacity-60 transition-opacity border-b border-[#1A1A18]/10 pb-6">Map</a>
     <a href="About.html" aria-current="page" class="font-headline font-black text-5xl uppercase tracking-tighter text-black hover:opacity-60 transition-opacity border-b border-[#1A1A18]/10 pb-6">About</a>
     <a href="Contact.html" class="font-headline font-black text-5xl uppercase tracking-tighter text-black hover:opacity-60 transition-opacity pb-6">Talk To Me</a>
+    <button type="button" data-lang-toggle style="align-self:flex-start;margin-top:0.5rem"></button>
   </nav>
 </div>
 
 <main id="main" tabindex="-1" class="min-h-screen flex flex-col items-start justify-center text-left px-6 md:px-12 pt-24 max-w-3xl" style="font-size: 14px">
-  <h1 class="font-label text-[10px] tracking-[0.3em] uppercase text-black/60 mb-8"><span class="pulse-dot"></span>So Why Are We Here</h1>
+  <h1 class="font-label text-[10px] tracking-[0.3em] uppercase text-black/60 mb-8" data-he="&lt;span class=&quot;pulse-dot&quot;&gt;&lt;/span&gt;אז למה אנחנו כאן"><span class="pulse-dot"></span>So Why Are We Here</h1>
   <div class="font-body font-light text-black/60 max-w-md mt-10 leading-relaxed space-y-4" style="text-align: left">
-    <p style="color: rgba(0, 0, 0, 0.8)">I am finally coming out of the closet. I love clothes.</p>
-    <p style="color: #000000cc">I can stare at fashion websites for hours, I recognize where someone got their shirt, and love walking around stores trying on things.</p>
-    <p style="color: rgba(0, 0, 0, 0.8)">I like many different styles – minimalist, asymmetrical, edgy &amp; cool, monochromatic, colorful &amp; bold, anything that is interesting or basic with a creative twist. Mostly, I wear things that are comfortable and soft – clothes - working from home as a product designer or dancing.</p>
-    <p style="color: rgba(0, 0, 0, 0.8)">There are so many amazing Israeli designers I wish people knew about, so I created this site. If you like fashion and local designers, this site is for you.</p>
-    <p style="color: #000000cc">Enjoy,<br/>Dana</p>
+    <p style="color: rgba(0, 0, 0, 0.8)" data-he="אני סוף סוף יוצאת מהארון. אני אוהבת בגדים.">I am finally coming out of the closet. I love clothes.</p>
+    <p style="color: #000000cc" data-he="אני יכולה לבהות באתרי אופנה שעות, אני מזהה מאיפה מישהו קנה את החולצה שלו, ואוהבת להסתובב בחנויות ולמדוד דברים.">I can stare at fashion websites for hours, I recognize where someone got their shirt, and love walking around stores trying on things.</p>
+    <p style="color: rgba(0, 0, 0, 0.8)" data-he="אני אוהבת המון סגנונות – מינימליסטי, א־סימטרי, אדג׳י וקול, מונוכרומטי, צבעוני ונועז, כל דבר מעניין או בסיסי עם טוויסט יצירתי. בעיקר אני לובשת דברים נוחים ורכים – בגדים לעבודה מהבית כמעצבת מוצר, או לריקוד.">I like many different styles – minimalist, asymmetrical, edgy &amp; cool, monochromatic, colorful &amp; bold, anything that is interesting or basic with a creative twist. Mostly, I wear things that are comfortable and soft – clothes - working from home as a product designer or dancing.</p>
+    <p style="color: rgba(0, 0, 0, 0.8)" data-he="יש כל כך הרבה מעצבים ישראלים מדהימים שהלוואי שאנשים היו מכירים, אז יצרתי את האתר הזה. אם אתם אוהבים אופנה ומעצבים מקומיים, האתר הזה בשבילכם.">There are so many amazing Israeli designers I wish people knew about, so I created this site. If you like fashion and local designers, this site is for you.</p>
+    <p style="color: #000000cc" data-he="תהנו,&lt;br/&gt;דנה">Enjoy,<br/>Dana</p>
   </div>
 </main>
 
@@ -108,7 +112,7 @@
  <a class="opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" href="Journal.html">Journal</a>
  <a class="opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" href="Contact.html">Talk To Me</a>
  <a class="opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" href="Accessibility.html">Accessibility</a>
- <a class="opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" href="https://buymeacoffee.com/modeil" target="_blank" rel="noopener" aria-label="Buy Me a Coffee (opens in a new tab)">Buy Me a Coffee</a>
+ <a hidden class="opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" href="https://buymeacoffee.com/modeil" target="_blank" rel="noopener" aria-label="Buy Me a Coffee (opens in a new tab)">Buy Me a Coffee</a>
  </nav>
 </footer>
 

@@ -27,7 +27,7 @@
   * { border-radius: 0px !important; }
   html, body { font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif !important; }
   main, nav, footer { position: relative; z-index: 1; }
-  .pulse-dot { display: inline-block; width: 8px; height: 8px; background: #000; margin-right: 10px; animation: pulseAnim 1.6s ease-in-out 3; vertical-align: middle; }
+  .pulse-dot { display: inline-block; width: 8px; height: 8px; background: #000; margin-inline-end: 10px; animation: pulseAnim 1.6s ease-in-out 3; vertical-align: middle; }
   @keyframes pulseAnim { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
   .disc-link { color: #1A1A18; text-decoration: underline; text-underline-offset: 3px; transition: opacity .2s; }
   .disc-link:hover { opacity: 0.65; }
@@ -35,9 +35,13 @@
   .stmt ul { list-style: disc; padding-inline-start: 1.25rem; }
   .stmt li + li { margin-top: 0.4rem; }
   .stmt-he h2 { letter-spacing: 0.02em; }
+  html[lang="he"] .stmt-en-only { display: none !important; }
+  html[lang="he"] #he { margin-top: 0 !important; padding-top: 0 !important; border-top: 0 !important; }
   .stmt-he, .stmt-he * { font-family: 'Noto Sans Hebrew', 'Plus Jakarta Sans', sans-serif !important; }
 </style>
 <link rel="stylesheet" href="a11y.css">
+<link rel="stylesheet" href="lang.css">
+<script src="lang.js"></script>
 <link rel="stylesheet" href="assets/tailwind.css">
 </head>
 <body class="bg-background text-primary font-body">
@@ -58,6 +62,7 @@
       <a class="text-black/60 hover:text-black transition-colors duration-300" href="About.html">About</a>
       <a class="text-black/60 hover:text-black transition-colors duration-300" href="Contact.html">Talk To Me</a>
     </div>
+    <button type="button" data-lang-toggle></button>
   </div>
   <div class="flex items-center gap-4">
     <button id="mobile-menu-btn" type="button" class="md:hidden flex items-center" onclick="toggleMobileMenu()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" data-mobile-menu-open>
@@ -81,15 +86,16 @@
     <a href="Map.html" class="font-headline font-black text-5xl uppercase tracking-tighter text-black hover:opacity-60 transition-opacity border-b border-[#1A1A18]/10 pb-6">Map</a>
     <a href="About.html" class="font-headline font-black text-5xl uppercase tracking-tighter text-black hover:opacity-60 transition-opacity border-b border-[#1A1A18]/10 pb-6">About</a>
     <a href="Contact.html" class="font-headline font-black text-5xl uppercase tracking-tighter text-black hover:opacity-60 transition-opacity pb-6">Talk To Me</a>
+    <button type="button" data-lang-toggle style="align-self:flex-start;margin-top:0.5rem"></button>
   </nav>
 </div>
 
 <main id="main" tabindex="-1" class="min-h-screen flex flex-col items-start text-left px-6 md:px-12 pt-32 pb-24 max-w-2xl mx-auto md:mx-0">
-  <div class="font-label text-[10px] tracking-[0.3em] uppercase text-black/60 mb-6"><span class="pulse-dot"></span>Accessibility</div>
-  <h1 class="font-headline font-black uppercase tracking-tighter text-black leading-[0.85] mb-10" style="font-size: clamp(30px, 9vw, 56px)">Accessibility<br/>Statement</h1>
-  <p class="font-label text-[11px] tracking-[0.2em] uppercase mb-8"><a class="disc-link" href="#he" lang="he">להצהרה בעברית</a></p>
+  <div class="stmt-en-only font-label text-[10px] tracking-[0.3em] uppercase text-black/60 mb-6"><span class="pulse-dot"></span>Accessibility</div>
+  <h1 class="stmt-en-only font-headline font-black uppercase tracking-tighter text-black leading-[0.85] mb-10" style="font-size: clamp(30px, 9vw, 56px)">Accessibility<br/>Statement</h1>
+  <p class="stmt-en-only font-label text-[11px] tracking-[0.2em] uppercase mb-8"><a class="disc-link" href="#he" lang="he">להצהרה בעברית</a></p>
 
-  <div class="stmt font-body font-light leading-relaxed space-y-5" style="color:#000000cc; font-size: 15px">
+  <div class="stmt stmt-en-only font-body font-light leading-relaxed space-y-5" style="color:#000000cc; font-size: 15px">
     <p>ModeIL is an independent index of Israeli fashion designers, and it should work for everyone, including people who browse with a screen reader, a keyboard alone, magnification or other assistive technology.</p>
 
     <h2>Standard</h2>
@@ -112,7 +118,7 @@
     <ul>
       <li>The brand websites ModeIL links to are run by the brands themselves, and their accessibility is outside my control.</li>
       <li>Map pins are small and some sit close together. The search above the map leads to the same information.</li>
-      <li>In Hebrew mode, some screen-reader labels are still in English.</li>
+      <li>Every page has a Hebrew version (the EN / עב switch in the menu). In Hebrew, brand names stay in English, and the short store descriptions inside the map stay in English for now.</li>
       <li>Brand photos are treated as decoration: each brand&rsquo;s name and description appear as text next to its photo.</li>
     </ul>
 
@@ -120,7 +126,7 @@
     <p>If something on ModeIL doesn&rsquo;t work for you, I want to hear about it. <a class="disc-link" href="Contact.html">Talk to me</a> and tell me which page you were on, what you were trying to do, and the device or assistive technology you were using. I&rsquo;ll get back to you.</p>
     <p><a class="disc-link" href="Contact.html">Contact about accessibility</a></p>
 
-    <p class="font-label text-[10px] tracking-[0.2em] uppercase text-black/60" style="margin-top:2.25rem">Last updated: 3 October 2026</p>
+    <p class="font-label text-[10px] tracking-[0.2em] uppercase text-black/60" style="margin-top:2.25rem">Last updated: 8 October 2026</p>
   </div>
 
   <section id="he" lang="he" dir="rtl" class="stmt stmt-he text-right font-body leading-relaxed space-y-5 w-full mt-20 pt-16 border-t border-[#1A1A18]/15" style="color:#000000cc; font-size: 15px" aria-labelledby="he-title">
@@ -147,7 +153,7 @@
     <ul>
       <li>אתרי המותגים שאליהם ModeIL מקשר מנוהלים על ידי המותגים עצמם, והנגישות שלהם אינה בשליטתי.</li>
       <li>נקודות המפה קטנות וחלקן צפופות. החיפוש שמעל המפה מוביל לאותו מידע.</li>
-      <li>במצב עברית, חלק מהתוויות לקוראי מסך עדיין באנגלית.</li>
+      <li>לכל העמודים יש גרסה בעברית (המתג EN / עב בתפריט). שמות המותגים נשארים באנגלית, והתיאורים הקצרים של החנויות בתוך המפה עדיין באנגלית בינתיים.</li>
       <li>תמונות המותגים מוצגות כקישוט: השם והתיאור של כל מותג מופיעים כטקסט לצד התמונה.</li>
     </ul>
 
@@ -155,7 +161,7 @@
     <p>אם משהו באתר לא עובד עבורכם, אשמח לשמוע. <a class="disc-link" href="Contact.html">דברו איתי</a> וספרו באיזה עמוד הייתם, מה ניסיתם לעשות ובאיזה מכשיר או טכנולוגיה מסייעת השתמשתם. אחזור אליכם בהקדם.</p>
     <p><a class="disc-link" href="Contact.html">לפניות בנושא נגישות</a></p>
 
-    <p class="text-[12px] text-black/60" style="margin-top:2.25rem">עדכון אחרון: 3 באוקטובר 2026</p>
+    <p class="text-[12px] text-black/60" style="margin-top:2.25rem">עדכון אחרון: 8 באוקטובר 2026</p>
   </section>
 </main>
 
@@ -172,7 +178,7 @@
  <a class="opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" href="Journal.html">Journal</a>
  <a class="opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" href="Contact.html">Talk To Me</a>
  <a aria-current="page" class="opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" href="Accessibility.html">Accessibility</a>
- <a class="opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" href="https://buymeacoffee.com/modeil" target="_blank" rel="noopener" aria-label="Buy Me a Coffee (opens in a new tab)">Buy Me a Coffee</a>
+ <a hidden class="opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" href="https://buymeacoffee.com/modeil" target="_blank" rel="noopener" aria-label="Buy Me a Coffee (opens in a new tab)">Buy Me a Coffee</a>
  </nav>
 </footer>
 

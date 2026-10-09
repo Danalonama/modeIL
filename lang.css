@@ -1,0 +1,30 @@
+/* English / Hebrew switch (see lang.js), shared by every page. */
+
+/* The toggle: two segments, the active language filled in black. */
+[data-lang-toggle] {
+  display: inline-flex; align-items: stretch; overflow: hidden;
+  border: 1px solid #1A1A18; background: none; padding: 0; cursor: pointer;
+  font-family: 'Plus Jakarta Sans', 'Noto Sans Hebrew', sans-serif;
+  font-size: 10px; letter-spacing: 0.12em; line-height: 1; color: #1A1A18;
+}
+[data-lang-toggle] span { padding: 6px 8px; }
+[data-lang-toggle] span[lang="he"] { letter-spacing: 0; font-family: 'Noto Sans Hebrew', sans-serif; }
+[data-lang-toggle]:not(.is-he) span[lang="en"],
+[data-lang-toggle].is-he span[lang="he"] { background: #1A1A18; color: #F4F4F4; }
+[data-lang-toggle]:hover { opacity: 0.8; }
+/* In RTL the segments flip; keep EN on the left in both languages so the control doesn't jump. */
+[dir="rtl"] [data-lang-toggle] { direction: ltr; }
+
+/* Hebrew typography: Noto Sans Hebrew everywhere except the icon font and the wordmark. */
+html[lang="he"] body,
+html[lang="he"] body *:not(.material-symbols-outlined):not([lang="en"]) {
+  font-family: 'Noto Sans Hebrew', 'Plus Jakarta Sans', sans-serif !important;
+}
+/* Hebrew has no capitals and reads badly with wide tracking. */
+html[lang="he"] .uppercase, html[lang="he"] [class*="tracking-"] { letter-spacing: 0 !important; }
+
+/* RTL layout fixes for inline styles that hard-code the English direction. */
+[dir="rtl"] [style*="text-align: left"], [dir="rtl"] [style*="text-align:left"], [dir="rtl"] .text-left { text-align: right !important; }
+/* Arrow icons (marked .flip-rtl) point forward in the reading direction. */
+[dir="rtl"] .flip-rtl { transform: scaleX(-1); }
+[dir="rtl"] .group:hover .flip-rtl { transform: scaleX(-1) translateX(0.5rem); }
