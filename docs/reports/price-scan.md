@@ -346,8 +346,107 @@ The `budget` field on each brand in `index.html` is set from this table by hand,
 | Re'em | ₪₪₪ | ₪4240 | ₪2849–4662 | 5 (USD) | few products; priced in USD, converted |
 | Tovale+ | ₪₪₪ | ₪7030 | ₪4455–10360 | 71 (USD) | priced in USD, converted |
 
-## No readable prices (91)
+## Estimated by hand (73)
 
-These shops don't publish a product feed (Wix, custom sites, Instagram-only, or a closed feed). They have no level yet and drop out while a Budget filter is on.
+No readable feed, so prices were read from each brand's own site (or, where it shows none, one published source). Kept in `docs/reports/price-estimates.json`.
 
-Above, AKA Rock, Alembika, All At Once, Alon Livné, Aluma, Anat Friedman, Anjaly, Ara Studio, ARATO, Bein Lebein, Berta, Bracha Baron, Chopshop Corp, Cocoral, Con.fail, Cottna, Dana Harel, Danit Peleg, David Weksler, Dorin Frankfurt, Dorit Sade, Eclat Chic, Edit, Flaeshwear, Forest, Frau Blau, Gala, Gali Karten, Giselle, Gogou Magog, Hane, Historic, HKN, Hoko, Honey, Hot Tuna, House of Jaffa, Hush Studio, IDA Studio, Inbal Dror, Inhale Exhale, Jollori, JOR-D, Kaisra Design, Keren Mualem, Kobi Levi, Lihi Hod, Luminary, Magia, Maim Jewelry, Maya Bash, Milly Vishnia, Mircka, Mishimono, Mlch, Mors, Muslin Brothers, Nani Lee, Ofnat Bracha, OM-ME, Orly Yaron, Panta Rei, PELEDNY, Precious Individuals, Rotma, Sages & Souls, Salon Berlin, Say Less Studios, Shahar Avnet, Shani Zimmerman, Shekel Klan, Shirly Halperin, Shuzi Jewelry, Sister M, Studio Ivria, Swebo, Taanug, Tami Chomsky, Tat Ve Koku, TenderHeart, Tetra Jewelry, VIL Unfold, Vivi Bellaish, Wear by Lilo, White Nilus, Yara Design, Yaron Minkowski, YER Studio, Yoske, Yoster
+| Brand | Level | Typical | Prices seen | Confidence | Source |
+|---|---|---|---|---|---|
+| Above | ₪₪ | ₪340 | 6 | medium | site home page (Wix store), 6 prices 250-460 |
+| Alembika | ₪₪₪ | ₪698 | 49 | high | site /collections/all products.json (Shopify), 49 products, regular prices |
+| All At Once | ₪₪ | ₪250 | 38 | medium | site home page (Shopify HTML), 38 prices; store is a streetwear collective so mix may include other labels |
+| Alon Livné | ₪₪₪ | ₪22000 | 8 | medium | search: Kleinfeld listings, gowns ~$4,500-9,800 (site has no prices; mostly bridal/couture) |
+| Aluma | ₪₪₪ | ₪944 | 6 | medium | site product pages: 6 handmade pieces $195-320 (all sold out; shop now mostly sells crochet courses), median $255 |
+| Anat Friedman | ₪₪ | ₪395 | 49 | high | site /collections/all products.json (Shopify), 49 products |
+| Anjaly | ₪₪ | ₪250 | 39 | high | site home page rendered in browser, 39 regular prices (sale prices excluded) |
+| Ara Studio | ₪₪₪ | ₪6350 | 36 | high | site home page (Wix store), 36 prices 920-9,700 |
+| ARATO | ₪ | ₪200 | 16 | high | site home page, 16 regular prices (₪160-250) |
+| Bein Lebein | ₪₪ | ₪248 | 4 | low | site winter-drop page (Wix), 4 prices 222-285 |
+| Berta | ₪₪₪ | ₪24000 | 0 | low | site blocked (Cloudflare 403); search: bridal price guides/forums cite ~$3k-10k, typically ~$6.5k |
+| Chopshop Corp | ₪₪ | ₪250 | 15 | high | site home page (Wix), 15 prices |
+| Cocoral | ₪ | ₪200 | 10 | medium | site home page, 10 regular prices 150-230 (shown with ~15% off) |
+| Con.fail | ₪ | ₪189 | 32 | high | site home page (Squarespace), 32 prices |
+| Cottna | ₪ | ₪147 | 3 | medium | site category page: period underwear 147 each (one style, 3 colours) |
+| Dana Harel | ₪₪₪ | ₪29600 | 0 | medium | no prices on site (bridal, by appointment); search: The Dress Theory retailer lists gowns at $6,000-10,000+, resale $4,000-8,500 |
+| Danit Peleg | ₪₪₪ | ₪5550 | 1 | low | search: 2017 press ($1,500 made-to-order 3D-printed jacket); site shows no prices |
+| David Weksler | ₪₪ | ₪364 | 21 | high | site all-products page (Wix), 21 prices |
+| Dorin Frankfurt | ₪₪₪ | ₪651 | 15 | medium | site search for dresses, 15 regular prices (all sold out/marked down; dresses only) |
+| Dorit Sade | ₪₪₪ | ₪620 | 12 | high | site home page, 12 clothing prices (₪360-2,100); evening-wear page higher still |
+| Eclat Chic | ₪ | ₪274 | 24 | high | site all-products page (Wix), 24 prices |
+| Flaeshwear | ₪₪ | ₪360 | 30 | high | site home page (Wix store), 30 prices 300-770 |
+| Forest | ₪₪₪ | ₪490 | 43 | high | site home page (Wix), 43 prices |
+| Frau Blau | ₪₪₪ | ₪750 | 24 | high | site all-products page (Wix), 24 prices |
+| Gala | ₪₪ | ₪285 | 15 | high | site home page (Wix product JSON), 15 prices |
+| Giselle | ₪₪ | ₪290 | 20 | high | site all-products page, 20 prices (mostly ₪290 tees/tops) |
+| Gogou Magog | ₪₪ | ₪330 | 6 | medium | site home page, 6 prices 225-410 |
+| Hane | ₪ | ₪170 | 17 | high | site home page (Wix product JSON), 17 prices, mostly 169.90 tees |
+| HKN | ₪₪₪ | ₪1166 | 20 | medium | site shop page, 20 prices in USD (median $315; knitwear $85-520, jewelry $420-1,200) |
+| Hoko | ₪₪₪ | ₪690 | 17 | high | site /shop page (Wix), 17 products |
+| Honey | ₪₪ | ₪249 | 29 | high | site shop page rendered in browser, all 29 products |
+| Hot Tuna | ₪ | ₪149 | 33 | medium | site 'new women' page, 33 prices 90-350 (mostly beachwear/apparel/sandals, not swimsuits) |
+| House of Jaffa | ₪₪₪ | ₪463 | 16 | medium | site home page, 16 prices in GBP (median £97.5, converted at ~4.75); borderline 2/3 |
+| Hush Studio | ₪ | ₪269 | 20 | high | site /shop page (Wix), 20 prices |
+| IDA Studio | ₪₪₪ | ₪600 | 12 | high | site evening page (7 distinct styles, 550-700) and bridal page (5 gowns, 5000-6500); median of evening line |
+| Inbal Dror | ₪₪₪ | ₪37000 | 3 | medium | search: People/boutique figures, couture gowns ~$8,000-12,000 |
+| Inhale Exhale | ₪₪ | ₪290 | 6 | medium | site home page, 6 scarf/shawl prices (₪190-495) |
+| Jollori | ₪ | ₪300 | 16 | high | site home page, 16 prices |
+| JOR-D | ₪₪₪ | ₪550 | 13 | medium | site home page (WooCommerce), 13 prices |
+| Kaisra Design | ₪₪ | ₪299 | 30 | medium | site home page (Wix store), 30 prices 170-470 (clothing plus jewelry) |
+| Keren Mualem | ₪₪ | ₪320 | 19 | high | site clothes category, 19 prices (₪190-680) |
+| Kobi Levi | ₪₪₪ | ₪5264 | 21 | high | site /shop (WooCommerce), 21 prices in EUR, median 1316 EUR |
+| Magia | ₪ | ₪180 | 20 | high | site home page (Wix), 20 prices |
+| Maim Jewelry | ₪₪ | ₪850 | 13 | medium | site all-products page (Wix), 13 jewelry prices (T-shirts excluded) |
+| Maya Bash | ₪₪₪ | ₪550 | 15 | high | site shop page (Hebrew, ILS), 15 regular prices; many items currently on sale ~200-300 |
+| Milly Vishnia | ₪ | ₪440 | 16 | medium | site best-seller page, 16 prices 200-830 (just under the 450 line) |
+| Mircka | ₪₪ | ₪240 | 15 | high | site store category, 15 prices (mostly ₪240 tees) |
+| Mishimono | ₪₪₪ | ₪690 | 161 | high | site /en/shop page, 161 products (incl. some bridal) |
+| Mlch | ₪ | ₪120 | 5 | high | site shop page rendered in browser, all 5 products (80-120) |
+| Mors | ₪₪₪ | ₪1800 | 10 | high | site home + shop page (WooCommerce), 10 regular prices 650-2,500 |
+| Muslin Brothers | ₪₪₪ | ₪796 | 8 | medium | site sale page, 8 regular prices in EUR (€110-199, median €199) |
+| Nani Lee | ₪ | ₪199 | 11 | medium | site dresses category (Konimbo), 11 prices 179-349 |
+| OM-ME | ₪₪ | ₪320 | 16 | high | site home page (Wix store), 16 prices 270-420 |
+| Panta Rei | ₪₪ | ₪220 | 20 | medium | site home page, 20 regular prices 120-300 (shown at 20% off) |
+| Precious Individuals | ₪₪₪ | ₪460 | 15 | medium | site shop page, 15 prices 360-980 (just over the 450 line) |
+| Rotma | ₪ | ₪140 | 11 | high | site new-drops data, 11 prices (₪140 tops/shorts, ₪245 dresses) |
+| Say Less Studios | ₪₪ | ₪299 | 15 | high | site /collections/all, 15 regular prices 179-350 |
+| Shahar Avnet | ₪₪₪ | ₪1450 | 12 | high | site home page, 12 regular (pre-sale) prices ₪390-2,700 |
+| Shekel Klan | ₪₪ | ₪320 | 4 | medium | site home page, 4 apparel items (jeans 450 x2, tees 190 x2; flags excluded) |
+| Shirly Halperin | ₪₪ | ₪390 | 29 | high | site new-in page (Squarespace JSON), 29 prices 230-620 |
+| Shuzi Jewelry | ₪₪ | ₪482 | 16 | high | site home page, 16 prices in USD (median $130) |
+| Sister M | ₪₪₪ | ₪680 | 39 | medium | site tops + pants categories, 39 regular prices (480-899); evening dresses 1200-2800 |
+| Swebo | ₪ | ₪169 | 102 | high | site home page, ~100 regular prices 99-399 |
+| Taanug | ₪ | ₪140 | 21 | high | site Big Cartel products feed, 21 prices |
+| Tat Ve Koku | ₪ | ₪199 | 30 | high | site home page (Wix product JSON), 30 prices |
+| TenderHeart | ₪₪ | ₪310 | 12 | medium | site shop page, 12 prices 190-850 (vintage/second-hand pieces) |
+| Tetra Jewelry | ₪₪ | ₪1315 | 52 | medium | site gold/silver rings, necklaces, earrings pages, 52 prices (₪150-12,000, wide spread) |
+| Wear by Lilo | ₪ | ₪130 | 11 | high | site home page (Wix store), 11 prices 125-159 (tote bag excluded) |
+| White Nilus | ₪₪ | ₪579 | 7 | medium | site home page, 7 prices (₪399-1,279) |
+| Yara Design | ₪₪ | ₪239 | 20 | medium | site /women page (Wix), 20 clothing prices 99-389 |
+| YER Studio | ₪ | ₪209 | 2 | low | site /collections/all, only 2 products (T-shirts, 209) |
+| Yoske | ₪ | ₪200 | 20 | medium | site shop page, 20 prices (mostly clothing: tees ₪120, jeans ₪220); median exactly at accessories cutoff |
+| Yoster | ₪₪ | ₪1130 | 16 | high | site home page, 16 prices in EUR, median 282.5 EUR |
+
+## No level (18)
+
+No prices found anywhere. These drop out while a Budget filter is on.
+
+| Brand | Why |
+|---|---|
+| AKA Rock | no prices: site is a Facebook page (login wall); search found nothing |
+| Bracha Baron | no prices: Instagram only; search found nothing |
+| Edit | no prices: Shopify store behind password page (Drop 04 coming soon) |
+| Gali Karten | no prices: bridal couture by appointment; search found no price |
+| Historic | no prices: JS-only site; in browser historiclub.com redirected to rotmaas.com (ROTMA), a different-looking brand - worth checking |
+| Lihi Hod | no prices: couture bridal site, no shop; search found nothing |
+| Luminary | no prices: bridal by appointment; search found nothing |
+| Ofnat Bracha | no prices: site under construction (archive sales in studio only); search found nothing |
+| Orly Yaron | no prices: Instagram only; search found nothing |
+| PELEDNY | no prices: Wix site shows collection text only, no reachable shop page; search found nothing |
+| Sages & Souls | no prices: store behind password page; search found nothing |
+| Salon Berlin | no prices: Instagram only |
+| Shani Zimmerman | no prices: Instagram only; search found nothing |
+| Studio Ivria | no prices: Instagram only |
+| Tami Chomsky | no prices: Instagram only, pop-up sales; search found none |
+| VIL Unfold | no prices: Instagram only; search found nothing |
+| Vivi Bellaish | no prices: site (victorbellaish.com) is an Under Construction page; search found nothing |
+| Yaron Minkowski | no prices: high-couture studio site with no shop; search found nothing |

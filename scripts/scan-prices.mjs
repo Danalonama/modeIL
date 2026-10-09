@@ -6,7 +6,7 @@
 //   node scripts/scan-prices.mjs --report   → rebuild the .md from the saved .json
 // Report only: the site reads the `budget` field on each brand, which is set by
 // hand from this report (see CLAUDE.md).
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import path from 'node:path';
 import { ROOT, loadDesigners } from './lib/brands.mjs';
 
@@ -37,7 +37,8 @@ async function get(url, json = true, tries = 4) {
 }
 
 async function shopify(origin) {
-  const first = await get(origin + '/products.json?limit=250');
+  // Some stores close /products.json but still answer the collection route
+  const first = (await get(origin + '/products.json?limit=250')) || (await get(origin + '/collections/all/products.json?limit=250'));
   if (!first || !Array.isArray(first.products)) return null;
   let products = first.products;
   if (products.length === 250) {
@@ -148,8 +149,19 @@ for (const cat of CATEGORIES.map(c => c[0])) {
   md += `\n## ${cat} (${rows.length})\n\n| Brand | Level | Typical | Middle half | Products | Check |\n|---|---|---|---|---|---|\n`;
   for (const r of rows) md += `| ${r.name} | ${signs(r.level)} | ₪${r.median} | ₪${r.p25}–${r.p75} | ${r.products}${r.converted ? ` (${r.currency})` : ''} | ${r.check} |\n`;
 }
+// Brands with no readable feed were priced by hand from their sites (docs/reports/price-estimates.json)
+const EST_PATH = path.join(dir, 'price-estimates.json');
+const estimates = existsSync(EST_PATH) ? JSON.parse(readFileSync(EST_PATH, 'utf8')) : [];
 const unpriced = results.filter(r => !r.median);
-md += `\n## No readable prices (${unpriced.length})\n\nThese shops don't publish a product feed (Wix, custom sites, Instagram-only, or a closed feed). They have no level yet and drop out while a Budget filter is on.\n\n`;
-md += unpriced.map(r => r.name).join(', ') + '\n';
+const est = new Map(estimates.map(e => [e.name, e]));
+const estimated = unpriced.filter(r => est.get(r.name)?.level);
+md += `\n## Estimated by hand (${estimated.length})\n\nNo readable feed, so prices were read from each brand's own site (or, where it shows none, one published source). Kept in \`docs/reports/price-estimates.json\`.\n\n| Brand | Level | Typical | Prices seen | Confidence | Source |\n|---|---|---|---|---|---|\n`;
+for (const r of estimated.sort((a, b) => a.name.localeCompare(b.name))) {
+  const e = est.get(r.name);
+  md += `| ${r.name} | ${signs(e.level)} | ${e.median_ils ? '₪' + e.median_ils : ''} | ${e.prices_seen ?? ''} | ${e.confidence} | ${String(e.source).replace(/\|/g, '/')} |\n`;
+}
+const unknown = unpriced.filter(r => !est.get(r.name)?.level);
+md += `\n## No level (${unknown.length})\n\nNo prices found anywhere. These drop out while a Budget filter is on.\n\n| Brand | Why |\n|---|---|\n`;
+for (const r of unknown) md += `| ${r.name} | ${String(est.get(r.name)?.source || 'not checked').replace(/\|/g, '/')} |\n`;
 writeFileSync(path.join(dir, 'price-scan.md'), md);
 console.log(`priced ${priced.length}/${designers.length} (shopify ${priced.filter(r => r.platform === 'shopify').length}, woo ${priced.filter(r => r.platform === 'woocommerce').length})`);
