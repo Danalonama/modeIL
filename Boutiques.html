@@ -45,13 +45,6 @@
  transition: filter 0.5s ease, transform 0.7s ease;
  }
  .group:hover .store-img { filter: grayscale(0%); }
- .placeholder-img {
- display: flex; align-items: center; justify-content: center;
- font-family: 'Plus Jakarta Sans', monospace; font-size: 10px;
- letter-spacing: 0.2em; text-transform: uppercase; color: #555;
- text-align: center; padding: 2rem;
- width: 100%; aspect-ratio: 4 / 3;
- }
  .store-img-wrap { aspect-ratio: 4 / 3; }
  .store-row + .store-row { border-top: 1px solid rgba(26,26,24,0.12); }
 /* Filter dropdowns: same as the Designers page */
@@ -463,17 +456,20 @@ function tagHtml(labels) {
  ).join('');
 }
 
-const PLACEHOLDER_COLORS = ['#D3EAF3','#E6E3CE','#EEFCD2','#D8ECE7','#D4E1E0'];
+// Boutiques with no usable photo get one of three ink drawings of a clothes rail,
+// picked from the name so a boutique always gets the same one. They're plainly
+// drawings, so nobody mistakes them for the shop itself.
+const PLACEHOLDER_IMGS = ['images/placeholders/rail-1.jpg','images/placeholders/rail-2.jpg','images/placeholders/rail-6.jpg'];
 function fallbackImg(name) {
  let h = 0;
  for (let i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) % 997;
- const c = PLACEHOLDER_COLORS[h % PLACEHOLDER_COLORS.length];
- return `<div class="placeholder-img w-full" style="background:${c}">${name}</div>`;
+ const src = PLACEHOLDER_IMGS[h % PLACEHOLDER_IMGS.length];
+ return `<img class="store-img placeholder-drawing w-full h-full object-cover block" src="${src}" alt="" loading="lazy"/>`;
 }
-// Swap a broken image for its colored placeholder (keeps the surrounding wrapper/link)
+// Swap a broken image for its drawing (keeps the surrounding wrapper/link)
 function storeImgFallback(img){
  const p = img.parentElement;
- if(p) p.innerHTML = fallbackImg(img.dataset.name || img.alt || '');
+ if(p) img.outerHTML = fallbackImg(img.dataset.name || img.alt || '');
 }
 window.storeImgFallback = storeImgFallback;
 
