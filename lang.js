@@ -26,6 +26,7 @@
     'about': 'אודות',
     'talk to me': 'דברו איתי',
     'accessibility': 'נגישות',
+    'journal': 'מגזין',
     'israeli fashion index': 'אינדקס האופנה הישראלית',
     'skip to content': 'דילוג לתוכן',
     'buy me a coffee': 'קנו לי קפה',

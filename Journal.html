@@ -55,6 +55,7 @@
   .j-more a:hover { color: #9C5570; border-color: #9C5570; }
   .j-note { margin-top: 28px; max-width: 34rem; font-weight: 300; font-size: 13px; line-height: 1.6; color: rgba(0,0,0,.7); }
   .j-note a { color: #1A1A18; text-decoration: underline; text-underline-offset: 3px; }
+  html[lang="he"] .j-kicker, html[lang="he"] .j-meta, html[lang="he"] .j-count, html[lang="he"] .j-where, html[lang="he"] .j-links, html[lang="he"] .j-more, html[lang="he"] .j-title, html[lang="he"] .j-post-title { letter-spacing: 0; }
   .j-posts { list-style: none; margin: 56px 0 0; padding: 0; border-top: 1px solid rgba(26,26,24,.15); max-width: 44rem; }
   .j-posts li { border-bottom: 1px solid rgba(26,26,24,.1); }
   .j-posts a { display: block; padding: 28px 0; color: #1A1A18; text-decoration: none; }
@@ -63,6 +64,8 @@
   .j-post-desc { display: block; font-weight: 300; font-size: 14px; line-height: 1.6; color: rgba(0,0,0,.75); margin-top: 10px; }
 </style>
 <link rel="stylesheet" href="a11y.css">
+<link rel="stylesheet" href="lang.css">
+<script src="lang.js"></script>
 <link rel="stylesheet" href="assets/tailwind.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"ModeIL Journal","url":"https://mode-il.com/Journal.html","description":"Short guides to Israeli fashion designers by what people are looking for, each with the designers that fit and where to buy.","publisher":{"@type":"Organization","name":"ModeIL","url":"https://mode-il.com/"},"blogPost":[{"@type":"BlogPosting","headline":"Minimalist jewelry from Israeli designers","url":"https://mode-il.com/journal/minimalist-jewelry.html","datePublished":"2026-10-07","dateModified":"2026-10-07"},{"@type":"BlogPosting","headline":"Men's clothing in natural fabrics from Israeli designers","url":"https://mode-il.com/journal/mens-natural-fabrics.html","datePublished":"2026-10-07","dateModified":"2026-10-07"}]}</script>
 </head>
@@ -83,6 +86,7 @@
       <a class="text-black/60 hover:text-black transition-colors duration-300" href="About.html">About</a>
       <a class="text-black/60 hover:text-black transition-colors duration-300" href="Contact.html">Talk To Me</a>
     </div>
+    <button type="button" data-lang-toggle></button>
   </div>
   <div class="flex items-center gap-4">
     <button id="mobile-menu-btn" type="button" class="md:hidden flex items-center" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" data-mobile-menu-open>
@@ -105,16 +109,17 @@
     <a href="Map.html" class="font-headline font-black text-5xl uppercase tracking-tighter text-black hover:opacity-60 transition-opacity border-b border-[#1A1A18]/10 pb-6">Map</a>
     <a href="About.html" class="font-headline font-black text-5xl uppercase tracking-tighter text-black hover:opacity-60 transition-opacity border-b border-[#1A1A18]/10 pb-6">About</a>
     <a href="Contact.html" class="font-headline font-black text-5xl uppercase tracking-tighter text-black hover:opacity-60 transition-opacity pb-6">Talk To Me</a>
+    <button type="button" data-lang-toggle style="align-self:flex-start;margin-top:0.5rem"></button>
   </nav>
 </div>
 
 <main id="main" tabindex="-1" class="j-wrap">
-  <p class="j-kicker">Journal</p>
-  <h1 class="j-title">Guides</h1>
-  <div class="j-intro"><p>Questions friends ask me, answered with the designers I'd send them to.</p></div>
+  <p class="j-kicker" data-he="מגזין">Journal</p>
+  <h1 class="j-title" data-he="מדריכים">Guides</h1>
+  <div class="j-intro"><p data-he="שאלות שחברות שואלות אותי, עם המעצבים שהייתי שולחת אותן אליהם.">Questions friends ask me, answered with the designers I'd send them to.</p></div>
   <ul class="j-posts">
-    <li><a href="journal/minimalist-jewelry.html"><span class="j-kicker">Jewelry · 7 designers</span><span class="j-post-title">Minimalist jewelry</span><span class="j-post-desc">Where to find minimalist jewelry by independent Israeli designers: clean gold and silver pieces, small studios, online and in Tel Aviv.</span></a></li>
-    <li><a href="journal/mens-natural-fabrics.html"><span class="j-kicker">Menswear · 13 designers</span><span class="j-post-title">Men's natural fabrics</span><span class="j-post-desc">Israeli designers making men's and unisex clothing in linen, cotton, wool and other natural fibers, with where to buy online or in a store.</span></a></li>
+    <li><a href="journal/minimalist-jewelry.html"><span class="j-kicker" data-he="תכשיטים · 9 מעצבים">Jewelry · 9 designers</span><span class="j-post-title" data-he="תכשיטים מינימליסטיים">Minimalist jewelry</span><span class="j-post-desc" data-he="איפה למצוא תכשיטים מינימליסטיים של מעצבים ישראלים עצמאיים: זהב וכסף נקיים, סטודיואים קטנים, אונליין ובתל אביב.">Where to find minimalist jewelry by independent Israeli designers: clean gold and silver pieces, small studios, online and in Tel Aviv.</span></a></li>
+    <li><a href="journal/mens-natural-fabrics.html"><span class="j-kicker" data-he="גברים · 13 מעצבים">Menswear · 13 designers</span><span class="j-post-title" data-he="בגדי גברים מבדים טבעיים">Men's natural fabrics</span><span class="j-post-desc" data-he="מעצבים ישראלים שעושים בגדי גברים ויוניסקס מפשתן, כותנה, צמר ובדים טבעיים אחרים, ואיפה לקנות אונליין או בחנות.">Israeli designers making men's and unisex clothing in linen, cotton, wool and other natural fibers, with where to buy online or in a store.</span></a></li>
   </ul>
 </main>
 
@@ -130,7 +135,7 @@
  <a aria-current="page" class="opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" href="Journal.html">Journal</a>
  <a class="opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" href="Contact.html">Talk To Me</a>
  <a class="opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" href="Accessibility.html">Accessibility</a>
- <a class="opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" href="https://buymeacoffee.com/modeil" target="_blank" rel="noopener" aria-label="Buy Me a Coffee (opens in a new tab)">Buy Me a Coffee</a>
+ <a hidden class="opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" href="https://buymeacoffee.com/modeil" target="_blank" rel="noopener" aria-label="Buy Me a Coffee (opens in a new tab)">Buy Me a Coffee</a>
  </nav>
 </footer>
 

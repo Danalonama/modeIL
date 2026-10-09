@@ -8,7 +8,7 @@
 //   node scripts/build-journal.mjs --check  → exit 1 if any file is out of date
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import path from 'node:path';
-import { ROOT, loadDesigners, loadMapBrands, loadStoreAddresses, loadAppointmentOnly } from './lib/brands.mjs';
+import { ROOT, loadDesigners, loadDescHe, loadMapBrands, loadStoreAddresses, loadAppointmentOnly } from './lib/brands.mjs';
 import { POSTS } from './journal-posts.mjs';
 
 const SITE = 'https://mode-il.com/';
@@ -18,11 +18,14 @@ const designers = loadDesigners();
 const mapBrands = new Set(loadMapBrands());
 const addresses = loadStoreAddresses();
 const appointment = new Set(loadAppointmentOnly());
+const descHe = loadDescHe();
 
 const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const sortKey = n => n.toLowerCase().replace(/^the\s+/, '').replace(/[^a-z0-9]/g, '');
 const jsonLd = obj => '<script type="application/ld+json">' + JSON.stringify(obj).replace(/</g, '\\u003c') + '</script>';
-const longDate = iso => new Date(iso + 'T12:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+const longDate = (iso, locale = 'en-GB') => new Date(iso + 'T12:00:00Z').toLocaleDateString(locale, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+// data-he="…" for lang.js: the Hebrew shown when the visitor switches to עב
+const he = text => text ? ` data-he="${esc(text)}"` : '';
 
 function withUtm(url) {
   try { const u = new URL(url); for (const p of UTM.split('&')) { const [k, v] = p.split('='); u.searchParams.set(k, v); } return u.toString(); }
@@ -42,16 +45,19 @@ function selectBrands({ all = [], any = [], none = [] }) {
     .sort((a, b) => sortKey(a.name).localeCompare(sortKey(b.name)));
 }
 
-// "Store · 23 King George St, Tel Aviv", "Studio by appointment · Tel Aviv", or "Online"
+// ["Store · 23 King George St, Tel Aviv", Hebrew], ["Studio by appointment · …", …] or ["Online", …]
 function whereToBuy(d) {
   const raw = addresses[d.name] || '';
   const more = raw.match(/\(\+(\d+) more\)/);
   const addr = raw.replace(/\s*\(\+\d+ more\)/, '').trim();
   const extra = more ? ` and ${more[1]} more location${more[1] === '1' ? '' : 's'}` : '';
-  if (appointment.has(d.name)) return 'Studio by appointment' + (addr ? ' · ' + addr : '');
-  if (mapBrands.has(d.name) && addr) return 'Store · ' + addr + extra;
-  if (mapBrands.has(d.name)) return 'Store';
-  return 'Online';
+  const extraHe = more ? ` ועוד ${more[1] === '1' ? 'סניף אחד' : more[1] + ' סניפים'}` : '';
+  // Hebrew is set as HTML, so the English address goes in <bdi> to keep its own word order
+  const addrHe = addr ? `<bdi>${esc(addr)}</bdi>` : '';
+  if (appointment.has(d.name)) return ['Studio by appointment' + (addr ? ' · ' + addr : ''), 'סטודיו בתיאום מראש' + (addr ? ' · ' + addrHe : '')];
+  if (mapBrands.has(d.name) && addr) return ['Store · ' + addr + extra, 'חנות · ' + addrHe + extraHe];
+  if (mapBrands.has(d.name)) return ['Store', 'חנות'];
+  return ['Online', 'אונליין'];
 }
 
 // ---------- shared page chrome (matches About.html) ----------
@@ -119,6 +125,7 @@ function head({ title, description, canonical, image, up, extra = '' }) {
   .j-more a:hover { color: #9C5570; border-color: #9C5570; }
   .j-note { margin-top: 28px; max-width: 34rem; font-weight: 300; font-size: 13px; line-height: 1.6; color: rgba(0,0,0,.7); }
   .j-note a { color: #1A1A18; text-decoration: underline; text-underline-offset: 3px; }
+  html[lang="he"] .j-kicker, html[lang="he"] .j-meta, html[lang="he"] .j-count, html[lang="he"] .j-where, html[lang="he"] .j-links, html[lang="he"] .j-more, html[lang="he"] .j-title, html[lang="he"] .j-post-title { letter-spacing: 0; }
   .j-posts { list-style: none; margin: 56px 0 0; padding: 0; border-top: 1px solid rgba(26,26,24,.15); max-width: 44rem; }
   .j-posts li { border-bottom: 1px solid rgba(26,26,24,.1); }
   .j-posts a { display: block; padding: 28px 0; color: #1A1A18; text-decoration: none; }
@@ -127,6 +134,8 @@ function head({ title, description, canonical, image, up, extra = '' }) {
   .j-post-desc { display: block; font-weight: 300; font-size: 14px; line-height: 1.6; color: rgba(0,0,0,.75); margin-top: 10px; }
 </style>
 <link rel="stylesheet" href="${up}a11y.css">
+<link rel="stylesheet" href="${up}lang.css">
+<script src="${up}lang.js"></script>
 <link rel="stylesheet" href="${up}assets/tailwind.css">
 ${extra}</head>`;
 }
@@ -146,6 +155,7 @@ function chrome(up, current) {
     <div class="flex gap-8 font-label uppercase tracking-widest text-sm">
 ${NAV.map(link).join('\n')}
     </div>
+    <button type="button" data-lang-toggle></button>
   </div>
   <div class="flex items-center gap-4">
     <button id="mobile-menu-btn" type="button" class="md:hidden flex items-center" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" data-mobile-menu-open>
@@ -163,6 +173,7 @@ ${NAV.map(link).join('\n')}
   </div>
   <nav aria-label="Mobile" class="flex flex-col gap-8">
 ${NAV.map(mob).join('\n')}
+    <button type="button" data-lang-toggle style="align-self:flex-start;margin-top:0.5rem"></button>
   </nav>
 </div>
 `;
@@ -177,7 +188,7 @@ function footer(up, current) {
  <div class="font-label text-[9px] tracking-[0.25em] uppercase opacity-70 mt-2">ISRAELI FASHION INDEX -MADE WITH ❤️ BY DANA SHIMONI · © 2026 · ALL RIGHTS RESERVED</div>
  <nav aria-label="Footer" class="flex flex-wrap gap-x-10 gap-y-3 mt-6 font-label text-[9px] tracking-[0.25em] uppercase">
 ${links}
- <a class="opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" href="https://buymeacoffee.com/modeil" target="_blank" rel="noopener" aria-label="Buy Me a Coffee (opens in a new tab)">Buy Me a Coffee</a>
+ <a hidden class="opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" href="https://buymeacoffee.com/modeil" target="_blank" rel="noopener" aria-label="Buy Me a Coffee (opens in a new tab)">Buy Me a Coffee</a>
  </nav>
 </footer>
 
@@ -202,15 +213,16 @@ function brandItem(d) {
   const img = d.img
     ? `<img src="${esc(d.img.startsWith('http') ? d.img : '../' + d.img.replace(/^\//, ''))}" alt="" loading="lazy" decoding="async" referrerpolicy="strict-origin-when-cross-origin" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:this.closest('li').dataset.name}))">`
     : `<span>${n}</span>`;
-  const links = [`<a href="${esc(withUtm(d.url))}" target="_blank" rel="noopener" aria-label="${n} website (opens in a new tab)">Website</a>`];
-  if (d.instagram) links.push(`<a href="https://instagram.com/${esc(d.instagram)}" target="_blank" rel="noopener" aria-label="${n} on Instagram (opens in a new tab)">Instagram</a>`);
-  if (mapBrands.has(d.name)) links.push(`<a href="../Map.html?brand=${encodeURIComponent(d.name)}" aria-label="${n} on the map">Map</a>`);
+  const links = [`<a href="${esc(withUtm(d.url))}" target="_blank" rel="noopener" aria-label="${n} website (opens in a new tab)" data-he-aria-label="האתר של ${n} (נפתח בלשונית חדשה)"${he('אתר')}>Website</a>`];
+  if (d.instagram) links.push(`<a href="https://instagram.com/${esc(d.instagram)}" target="_blank" rel="noopener" aria-label="${n} on Instagram (opens in a new tab)" data-he-aria-label="${n} באינסטגרם (נפתח בלשונית חדשה)"${he('אינסטגרם')}>Instagram</a>`);
+  if (mapBrands.has(d.name)) links.push(`<a href="../Map.html?brand=${encodeURIComponent(d.name)}" aria-label="${n} on the map" data-he-aria-label="${n} על המפה"${he('מפה')}>Map</a>`);
+  const [where, whereHe] = whereToBuy(d);
   return `    <li class="j-brand" data-name="${n}">
       <div class="j-img">${img}</div>
       <div>
         <h2 class="j-name">${n}</h2>
-        <p class="j-desc">${esc(d.desc)}</p>
-        <div class="j-where">${esc(whereToBuy(d))}</div>
+        <p class="j-desc"${he(descHe[d.desc])}>${esc(d.desc)}</p>
+        <div class="j-where"${he(whereHe)}>${esc(where)}</div>
         <div class="j-links">${links.join('')}</div>
       </div>
     </li>`;
@@ -243,21 +255,21 @@ function postPage(post, brands) {
   return head({ title: `${post.seoTitle || post.title} — ModeIL`, description: post.description, canonical, image: ogImage, up: '../', extra: ld + '\n' })
     + '\n' + chrome('../', null) + `
 <main id="main" tabindex="-1" class="j-wrap">
-  <p class="j-kicker"><a href="../Journal.html" style="color:inherit">Journal</a> · ${esc(post.kicker)}</p>
-  <h1 class="j-title">${esc(post.title)}</h1>
-  <p class="j-meta">By Dana · <time datetime="${post.updated}">${longDate(post.updated)}</time></p>
+  <p class="j-kicker"><a href="../Journal.html" style="color:inherit"${he('מגזין')}>Journal</a> · <span${he(post.kickerHe)}>${esc(post.kicker)}</span></p>
+  <h1 class="j-title"${he(post.titleHe)}>${esc(post.title)}</h1>
+  <p class="j-meta"${he(`מאת דנה · <time datetime="${post.updated}">${longDate(post.updated, 'he-IL')}</time>`)}>By Dana · <time datetime="${post.updated}">${longDate(post.updated)}</time></p>
   <div class="j-intro">
-${post.intro.map(p => `    <p>${esc(p)}</p>`).join('\n')}
-    <p class="j-sign">Dana</p>
+${post.intro.map((p, i) => `    <p${he(post.introHe?.[i])}>${esc(p)}</p>`).join('\n')}
+    <p class="j-sign"${he('דנה')}>Dana</p>
   </div>
 
-  <p class="j-count">${brands.length} designers</p>
+  <p class="j-count"${he(`${brands.length} מעצבים`)}>${brands.length} designers</p>
   <ul class="j-list">
 ${brands.map(brandItem).join('\n')}
   </ul>
 
-  <p class="j-more"><a href="${esc(post.indexLink)}">${esc(post.indexLinkText)} →</a></p>
-  <p class="j-note">Listing on ModeIL is free and never paid for. Some outbound links may earn a small commission that covers hosting; it never changes who is listed. <a href="../About.html">About ModeIL</a>.</p>
+  <p class="j-more"><a href="${esc(post.indexLink)}"${he(post.indexLinkTextHe && esc(post.indexLinkTextHe) + ' <span class="flip-rtl" aria-hidden="true">→</span>')}>${esc(post.indexLinkText)} <span class="flip-rtl" aria-hidden="true">→</span></a></p>
+  <p class="j-note"${he('ההופעה ב-ModeIL חינמית ואף פעם לא בתשלום. <a href="../About.html">על ModeIL</a>.')}>Listing on ModeIL is free and never paid for. <a href="../About.html">About ModeIL</a>.</p>
 </main>
 ` + footer('../', null);
 }
@@ -273,11 +285,11 @@ function hubPage(entries) {
   return head({ title: 'Journal — ModeIL', description, canonical, image: SITE + 'apple-touch-icon.png', up: '', extra: ld + '\n' })
     + '\n' + chrome('', null) + `
 <main id="main" tabindex="-1" class="j-wrap">
-  <p class="j-kicker">Journal</p>
-  <h1 class="j-title">Guides</h1>
-  <div class="j-intro"><p>Questions friends ask me, answered with the designers I'd send them to.</p></div>
+  <p class="j-kicker"${he('מגזין')}>Journal</p>
+  <h1 class="j-title"${he('מדריכים')}>Guides</h1>
+  <div class="j-intro"><p${he('שאלות שחברות שואלות אותי, עם המעצבים שהייתי שולחת אותן אליהם.')}>Questions friends ask me, answered with the designers I'd send them to.</p></div>
   <ul class="j-posts">
-${entries.map(({ post, brands }) => `    <li><a href="journal/${post.slug}.html"><span class="j-kicker">${esc(post.kicker)} · ${brands.length} designers</span><span class="j-post-title">${esc(post.title)}</span><span class="j-post-desc">${esc(post.description)}</span></a></li>`).join('\n')}
+${entries.map(({ post, brands }) => `    <li><a href="journal/${post.slug}.html"><span class="j-kicker"${he(post.kickerHe && `${post.kickerHe} · ${brands.length} מעצבים`)}>${esc(post.kicker)} · ${brands.length} designers</span><span class="j-post-title"${he(post.titleHe)}>${esc(post.title)}</span><span class="j-post-desc"${he(post.descriptionHe)}>${esc(post.description)}</span></a></li>`).join('\n')}
   </ul>
 </main>
 ` + footer('', 'Journal');
