@@ -262,6 +262,7 @@
  <a class="opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" href="bridal">Bridal</a>
  <a class="opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" href="Map.html">Map</a>
  <a class="opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" href="About.html">About</a>
+ <a class="opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" href="Journal.html">Journal</a>
  <a class="opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" href="Contact.html">Talk To Me</a>
  <a class="opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" href="Accessibility.html">Accessibility</a>
  <a hidden class="opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap" href="https://buymeacoffee.com/modeil" target="_blank" rel="noopener" aria-label="Buy Me a Coffee (opens in a new tab)">Buy Me a Coffee</a>
@@ -395,8 +396,8 @@ const DESIGNERS = [
  {
  name: "Ayala Vitkon",
  url: "https://ayalavjewelry.com/",
- tags: ["jewelry", "artisan"],
- tagLabels: ["Jewelry", "Artisan"],
+ tags: ["jewelry", "artisan", "minimalist"],
+ tagLabels: ["Jewelry", "Artisan", "Minimalist"],
  desc: "Sophisticated handmade jewelry from Ayala Vitkon's studio.",
  descFull: "Sophisticated handmade jewelry from Ayala Vitkon's studio. Hammered gold hoops, statement bangles, and bespoke bridal pieces, each one shaped by hand and finished with a love letter to its wearer.",
  img: "https://ayalavjewelry.com/cdn/shop/products/il_fullxfull.365002343_ltty_b16fa1fc-dd35-4158-95e6-87bccdcedb15_1024x1024.jpg?v=1590738026",
@@ -3440,8 +3441,8 @@ const DESIGNERS = [
   {
     name: "C's Cuffs",
     url: "https://cscuffs.com/",
-    tags: ["jewelry", "unisex", "artisan", "handmade"],
-    tagLabels: ["Jewelry", "Unisex", "Artisan", "Handmade"],
+    tags: ["jewelry", "unisex", "artisan", "minimalist", "handmade"],
+    tagLabels: ["Jewelry", "Unisex", "Artisan", "Minimalist", "Handmade"],
     desc: "Unisex jewelry and objects, meticulously handcrafted with love in Tel Aviv. Bold solid-brass cuffs drawn from basic shapes, set against the organic shapes of the body.",
     descFull: "C's is the studio of Yoni Chechick, working out of Simtat Shlush in Tel Aviv. It draws on natural elements and a deep appreciation for basic shapes, finding balance in their contrast with the organic shapes of the human body. What began as a vision for bold unisex metal cuffs grew into hexagon and square cuffs and rings, a Hai pendant, the Hamsa LeAnna, and design objects like a candle vase that holds either water or fire. Every cuff is hand bent and therefore one of a kind, made in five sizes so the opening stays proportional to the hand, with a stated commitment to quality, sustainability and fair trade.",
     address: "Simtat Shlush 6, Tel Aviv",
@@ -4366,6 +4367,35 @@ function applyFilters() {
  }).sort((a, b) => sortKey(a.name).localeCompare(sortKey(b.name)));
  renderCards(filtered);
  if (typeof updateTriggers === 'function') updateTriggers();
+ syncFiltersToUrl();
+}
+
+// Shareable filters: the address bar mirrors the current filters, so a filtered
+// view can be copied and sent (e.g. /?tags=minimalist,jewelry). Saved hearts stay
+// out of it because they're personal. Other params (view=bridal, utm_*) are kept.
+const URL_FILTER_KEYS = ['tags','area','letters','q'];
+function syncFiltersToUrl(){
+ if (!window.history || !history.replaceState) return;
+ const params = new URLSearchParams(location.search);
+ URL_FILTER_KEYS.forEach(k => params.delete(k));
+ const tags = [...activeFilters].filter(t => t !== 'favorites').sort();
+ if (tags.length) params.set('tags', tags.join(','));
+ if (activeRegions.size) params.set('area', [...activeRegions].join(','));
+ if (currentLetters.size) params.set('letters', [...currentLetters].sort().join(','));
+ if (currentSearch) params.set('q', currentSearch);
+ const qs = params.toString().replace(/%2C/g, ',').replace(/\+/g, '%20');
+ const next = location.pathname + (qs ? '?' + qs : '') + location.hash;
+ if (next !== location.pathname + location.search + location.hash) history.replaceState(history.state, '', next);
+}
+function readFiltersFromUrl(){
+ const params = new URLSearchParams(location.search);
+ const list = k => (params.get(k) || '').split(',').map(v => v.trim()).filter(Boolean);
+ const known = new Set([...STYLE_TAGS, ...TYPE_TAGS, 'sale']);
+ list('tags').map(t => t.toLowerCase()).filter(t => known.has(t)).forEach(t => activeFilters.add(t));
+ list('area').filter(r => r !== 'All' && AREA_REGIONS.includes(r)).forEach(r => activeRegions.add(r));
+ list('letters').map(l => l.toLowerCase()).filter(l => l.length === 1).forEach(l => currentLetters.add(l));
+ const q = (params.get('q') || '').trim().toLowerCase();
+ if (q.length >= 2) currentSearch = q;
 }
 
 const CITY_TO_REGION = {
@@ -4821,7 +4851,10 @@ if (IS_BRIDAL_VIEW) {
  styleAlphaBtns();
 })();
 
-// Init
+// Init: start from any filters carried in the link
+readFiltersFromUrl();
+if (typeof styleAlphaBtns === 'function') styleAlphaBtns();
+document.querySelectorAll('.area-btn').forEach(styleAreaBtn);
 applyFilters();
 
 // Re-flow the masonry when the window (and so the column count) changes
@@ -5339,6 +5372,13 @@ function clearNavSearch() {
 }
 document.addEventListener('DOMContentLoaded', () => {
  const input = document.getElementById('search-input');
+ // A shared link with ?q= opens the search field showing that text
+ if (input && currentSearch) {
+ input.value = currentSearch;
+ setNavSearchOpen(true);
+ const clearBtn = document.getElementById('search-clear');
+ if (clearBtn) clearBtn.style.display = 'flex';
+ }
  if (input) {
  input.addEventListener('input', e => {
  const v = e.target.value.trim().toLowerCase();

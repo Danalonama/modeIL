@@ -42,3 +42,6 @@ export function loadMapPins() {
 export function loadBoutiques() {
   return extractConst(readSite('Boutiques.html'), 'STORES', '[');
 }
+export function loadAppointmentOnly() {
+  return [...extractConst(readSite('index.html'), 'APPOINTMENT_ONLY', 'new Set(')];
+}
