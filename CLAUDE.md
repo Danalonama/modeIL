@@ -41,6 +41,7 @@ The founding user: someone abroad who wants to buy from Israeli designers but ha
   - `node scripts/build-seo.mjs` regenerates the brand-list JSON-LD in `index.html` from the `DESIGNERS` array. Run it after every add, remove, image swap or description edit. `--check` only reports whether it is out of date.
   - `node scripts/build-journal.mjs` builds the Journal: `Journal.html` (list of guides) and `journal/<slug>.html` (one page per guide), plus `sitemap.xml` and `llms.txt`. Posts are defined in `scripts/journal-posts.mjs`: an intro in Dana's voice and a tag rule (`select`) that picks the designers, so each list updates itself. Run it after any brand add, remove, retag, image or description change, and after editing a post. Don't edit the generated files, the sitemap or `llms.txt` by hand.
   - `node scripts/check-links.mjs` checks every brand image and site and writes `docs/reports/link-check.md`.
+  - `node scripts/scan-prices.mjs` reads every brand's Shopify or WooCommerce product feed (~20 minutes, it goes slowly because Shopify rate-limits) and writes `docs/reports/price-scan.md` with a proposed Budget level per brand. `--report` rebuilds the report from the saved `.json` without fetching. The levels on the site are the `budget` fields, set by hand from the report.
   - `node scripts/detect-sales.mjs` reads Shopify product feeds and writes `docs/reports/sales-scan.md`. It is a report only; nothing on the site reads it.
 - `docs/reports/` is where those scripts write their output.
 
@@ -57,6 +58,7 @@ The founding user: someone abroad who wants to buy from Israeli designers but ha
   instagram: "handle",                      // optional, no @
   address: "Street, City",                  // optional, used by only two entries; see the note below
   sale: { text: "Up to 30% off", until: "2026-10-31" },  // optional; see Sales under Features
+  budget: 2,                                // optional; 1 ₪ / 2 ₪₪ / 3 ₪₪₪, the Budget filter (see Features)
   bridalOnly: true,                         // optional; bridal houses: shown on /bridal only, not in the main grid
   imgBridal: "https://…",                   // optional; bridal photo shown instead of img on /bridal (brands on both pages)
   img: "https://brand-cdn/…",               // hotlinked from the brand's own site
@@ -95,6 +97,7 @@ There are two taxonomy axes, used together in filtering:
   - Nav, footer, mobile-menu and skip-link labels are translated once in `lang.js` (`COMMON`), keyed by their English text, so a renamed nav link needs its key updated there.
   - Script-built text: use `ModeLang.t(en, he)` (pages alias it as `T`) and `ModeLang.tag(label)` for tag names (shared `TAGS` map in `lang.js`), and re-render in `ModeLang.onChange(fn)`.
   - Hebrew mode uses Noto Sans Hebrew and zero letter-spacing; arrow icons that point "forward" carry the `flip-rtl` class. On Accessibility, Hebrew mode shows only the Hebrew statement.
+- **Budget filter:** a Budget dropdown (₪ Affordable, ₪₪ Mid-range, ₪₪₪ Investment) filters on each brand's `budget` field, and the card shows the level after "Online only" / "In person". The level is relative to the brand's own kind of product (jewelry, swimwear, footwear, lingerie, accessories, bridal-only houses, clothing), using the median price thresholds in `scripts/scan-prices.mjs`. Brands without a `budget` (no readable shop feed) drop out while the filter is on. Shareable as `?budget=1,2`.
 - **Sales (manual):** add `sale: { text: "Up to 30% off", until: "2026-10-31" }` to a brand. `until` is the last day of the sale and is required, so nothing stale can linger; `text` is optional and `textHe` is an optional Hebrew version. While the sale runs the card gets a small SALE flag on the image and a line under the tags, and an On Sale filter button appears next to Saved. The day after `until` all of it disappears with no edit. With no running sales the button is hidden and the page looks exactly as before.
 - **No affiliate links.** Skimlinks was removed in October 2026: it recognised none of the listed brands as merchants. Outbound links only get `withUtm()` referral tags (`utm_source=modeil`), which earn nothing. With nothing to disclose, the old `Affiliate.html` disclosure page was deleted (Vercel redirects it to the home page). If affiliate links, paid placements or gifted products ever come in, add a disclosure page first. Editorial rule regardless: commercial relationships **never** affect who gets listed or how they're described.
 
