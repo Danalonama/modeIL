@@ -68,7 +68,7 @@ The founding user: someone abroad who wants to buy from Israeli designers but ha
 
 New brands are appended just before the closing `];` of the array. Each new brand also needs its Hebrew description added to `DESC_HE`, and `node scripts/build-seo.mjs` run afterwards.
 
-Whether a brand counts as having a physical store is **not** decided by `address`. It comes from two lists further down in `index.html`: `MAP_BRANDS` (shows "In person" and the View on Map link) and `STORE_ADDRESSES` (drives the location tag and the Location filter). A brand with a store needs an entry in both, plus its pins in `Map.html`. By-appointment studios also go in `APPOINTMENT_ONLY`.
+Whether a brand counts as having a physical store is **not** decided by `address`. It comes from two lists further down in `index.html`: `MAP_BRANDS` (shows "In person" and the View on Map link) and `STORE_ADDRESSES` (drives the location tag and the Location filter). A brand with a store needs an entry in both, plus its pins in `Map.html`. By-appointment studios also go in `APPOINTMENT_ONLY`, which makes their card say "By appointment" instead of "In person".
 
 Filter keys must match the filter buttons exactly: `menswear` (label "Men") and `natural` (labels "Natural Fabrics" / "Natural Stones"). A key with no button, such as `men`, still displays its label but the brand won't show up under the filter.
 

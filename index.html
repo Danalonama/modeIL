@@ -48,7 +48,6 @@
  .heart-pulse { animation: heartPulse 0.35s ease forwards; }
  .insta-btn { background: none; border: none; cursor: pointer; padding: 0; line-height: 1; opacity: 0.75; transition: opacity 0.2s; }
  .insta-btn:hover { opacity: 1; }
- .access-line { display: flex; align-items: center; gap: 5px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.65; margin-top: 1px; }
  .card-links { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin-top: 4px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; }
  .card-link { text-decoration: underline; text-underline-offset: 4px; transition: opacity 0.2s; cursor: pointer; }
  .tag-location { display: inline-flex; align-items: center; gap: 4px; background: transparent; color: #1A1A18; border: 1px solid #c6c6c6; }
@@ -4595,18 +4594,12 @@ function accessLinks(d){
   if (isStore) out += '<a class="card-link" href="Map.html?brand=' + encodeURIComponent(d.name) + '"' + (addr ? ' title="' + addr.replace(/"/g,"&quot;") + '"' : '') + ' aria-label="' + T('View on Map: ' + n, n + ' במפה') + '">' + T('View on Map', 'במפה') + '</a>';
   const b = d.budget ? BUDGETS[d.budget - 1] : null;
   const price = b && SHOW_BUDGET ? ' · ' + budgetSignsHtml(b.level) + '<span class="sr-only">' + T(b.en, b.he) + '</span>' : '';
-  const status = '<div class="card-status">' + (isStore ? T('In person', 'חנות פיזית') : T('Online only', 'אונליין בלבד')) + price + '</div>';
+  // Appointment-only studios aren't walk-in stores, so they say so even when they have a pin
+  const access = APPOINTMENT_ONLY.has(d.name) ? T('By appointment', 'בתיאום מראש')
+    : isStore ? T('In person', 'חנות פיזית') : T('Online only', 'אונליין בלבד');
+  const status = '<div class="card-status">' + access + price + '</div>';
   return status + '<div class="card-links">' + out + '</div>';
 }
-// Returns the small access indicator: by-appointment studio, walk-in store, or online only.
-function accessHtml(d){
- let icon, label;
- if (APPOINTMENT_ONLY.has(d.name)) { icon = 'event_available'; label = 'By appointment'; }
- else if (MAP_BRANDS.has(d.name)) { icon = 'storefront'; label = 'Store'; }
- else { icon = 'language'; label = 'Online'; }
- return `<div class="access-line"><span aria-hidden="true" class="material-symbols-outlined" style="font-size:13px;line-height:1">${icon}</span>${label}</div>`;
-}
-
 // ===== Sales (manual) =====
 // To mark a brand as on sale, add to its entry in DESIGNERS:
 //   sale: { text: "Up to 30% off", until: "2026-10-31" },
