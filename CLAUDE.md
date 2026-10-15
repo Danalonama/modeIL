@@ -146,8 +146,10 @@ The site targets WCAG 2.1 AA. Keep it that way when editing:
 ## Routine tasks (most common first)
 
 1. **Swap a brand image:** replace the old URL in the card entry and in `Map.html` if the pin uses the same image, then run `node scripts/build-seo.mjs` and `node scripts/build-journal.mjs`.
-2. **Add a brand:** research the site, append the entry, add its `DESC_HE` line, add a map pin plus `MAP_BRANDS` / `STORE_ADDRESSES` entries if there's a store, then run `node scripts/build-seo.mjs` and `node scripts/build-journal.mjs`.
+2. **Add a brand:** research the site, append the entry, add its `DESC_HE` line, add a map pin plus `MAP_BRANDS` / `STORE_ADDRESSES` entries if there's a store, then run `node scripts/build-seo.mjs` and `node scripts/build-journal.mjs`. Give it a Budget level: `node scripts/scan-prices.mjs --only="Brand Name"` prices it from its shop feed and adds it to `docs/reports/price-scan.md`; copy the level into the entry as `budget: N`. If the shop has no readable feed, read a few prices off the site and add an entry to `docs/reports/price-estimates.json`.
 3. **Remove a brand:** delete it from the array, `DESC_HE`, `MAP_BRANDS`, `STORE_ADDRESSES` and `Map.html`, then run `node scripts/build-seo.mjs` and `node scripts/build-journal.mjs`.
+
+Before opening a PR that touches brand data, `node scripts/build-seo.mjs --check` and `node scripts/build-journal.mjs --check` should both pass; they fail when a generated file (JSON-LD, Journal pages, sitemap, `llms.txt`) is stale.
 
 ## Open / planned
 
