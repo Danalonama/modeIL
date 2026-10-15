@@ -84,9 +84,9 @@ export const POSTS = [
     // Rules are tried in order; a shop that matches none goes under "Elsewhere in Tel Aviv".
     neighbourhoods: [
       { en: 'Neve Tzedek', he: 'נווה צדק', streets: 'Shabazi|Chelouche|Pines|Shlush|Yehuda HaNasi|Yitzhak Elhanan' },
-      { en: 'Florentin & Levinsky', he: 'פלורנטין ולוינסקי', streets: 'Florentin|Abarbanel|Salame|HaShuk|Wolfson|Hahalutzim|Merkhavya|Herzl|Eilat|Elifelet|Shoken|Nahalat Binyamin 125' },
-      { en: 'Sheinkin, Allenby & Nahalat Binyamin', he: 'שינקין, אלנבי ונחלת בנימין', streets: 'Sheinkin|Shenkin|Allenby|Melchett|Barzil|Levontin|Mikveh Israel|Lilienblum|HaHashmal|Yehuda HaLevi|King George|Tchernihovsky|Nachalat Binyamin|Nahalat Binyamin|HaShomer' },
-      { en: 'Dizengoff & the Old North', he: 'דיזנגוף והצפון הישן', streets: 'Dizengoff|Ben Yehuda|Frishman|Pinsker|Masaryk|Ashtori HaFarhi|Basel|Eibeschuetz|Alkala|Shlomtzion HaMalka' },
+      { en: 'Florentin & Levinsky', he: 'פלורנטין ולוינסקי', streets: 'Florentin|Abarbanel|Salame|HaShuk|Wolfson|Hahalutzim|Merkhavya|Herzl 1\\d\\d|1\\d\\d Herzl|Moshe Maor|Eilat|Elifelet|Shoken|Nahalat Binyamin 125' },
+      { en: 'Sheinkin, Allenby & Nahalat Binyamin', he: 'שינקין, אלנבי ונחלת בנימין', streets: 'Sheinkin|Shenkin|Allenby|Melchett|Barzil|Levontin|Mikveh Israel|Lilienblum|HaHashmal|Yehuda HaLevi|King George|Tchernihovsky|Nachalat Binyamin|Nahalat Binyamin|HaShomer|Herzl' },
+      { en: 'Dizengoff & the Old North', he: 'דיזנגוף והצפון הישן', streets: 'Dizengoff|Ben Yehuda|Frishman|Pinsker|Masaryk|Ashtori Ha[FP]arhi|Basel|Eibeschuetz|Alkala|Shlomtzion HaMalka' },
       { en: 'Jaffa', he: 'יפו', streets: 'Jaffa|Yafo|Margoza|HaTsorfim|Tel Giborim|Ben Zvi' },
       { en: 'The Port & further out', he: 'הנמל ומעבר לו', streets: 'Yordei HaSira|Ramat Aviv|Nissim Aloni|Yigal Alon|Pinhas Rosen|Kehilat Venezia' },
     ],
