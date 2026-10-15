@@ -88,7 +88,7 @@ export const POSTS = [
       { en: 'Sheinkin, Allenby & Nahalat Binyamin', he: 'שינקין, אלנבי ונחלת בנימין', streets: 'Sheinkin|Shenkin|Allenby|Melchett|Barzil|Levontin|Mikveh Israel|Lilienblum|HaHashmal|Yehuda HaLevi|King George|Tchernihovsky|Nachalat Binyamin|Nahalat Binyamin|HaShomer|Herzl' },
       { en: 'Dizengoff & the Old North', he: 'דיזנגוף והצפון הישן', streets: 'Dizengoff|Ben Yehuda|Frishman|Pinsker|Masaryk|Ashtori Ha[FP]arhi|Basel|Eibeschuetz|Alkala|Shlomtzion HaMalka' },
       { en: 'Jaffa', he: 'יפו', streets: 'Jaffa|Yafo|Margoza|HaTsorfim|Tel Giborim|Ben Zvi' },
-      { en: 'The Port & further out', he: 'הנמל ומעבר לו', streets: 'Yordei HaSira|Ramat Aviv|Nissim Aloni|Yigal Alon|Pinhas Rosen|Kehilat Venezia' },
+      { en: 'The Port & further out', he: 'הנמל ומעבר לו', streets: 'Yordei HaSira|Ramat Aviv|Nissim Aloni|Yigal Alon|Pinhas Rosen|Kehilat Venezia|HaShlosha' },
     ],
     elsewhere: { en: 'Elsewhere in Tel Aviv', he: 'עוד בתל אביב' },
     indexLink: '../Map.html',
