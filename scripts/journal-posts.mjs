@@ -59,4 +59,40 @@ export const POSTS = [
     indexLinkText: "Men's natural fabrics on the index",
     indexLinkTextHe: 'בגדי גברים מבדים טבעיים באינדקס',
   },
+  {
+    slug: 'tel-aviv-studios',
+    title: 'Tel Aviv studios to visit',
+    seoTitle: 'Israeli designer shops and studios to visit in Tel Aviv',
+    titleHe: 'סטודיואים לבקר בתל אביב',
+    kicker: 'Tel Aviv',
+    kickerHe: 'תל אביב',
+    description: "Independent Israeli designers with a shop or studio in Tel Aviv and Jaffa, with addresses: where you can walk in, and where to book ahead.",
+    descriptionHe: 'מעצבים ישראלים עצמאיים עם חנות או סטודיו בתל אביב וביפו, עם כתובות: איפה אפשר פשוט להיכנס ואיפה צריך לתאם מראש.',
+    published: '2026-10-15',
+    updated: '2026-10-15',
+    intro: [
+      "When friends visit Tel Aviv, they usually ask me where to shop. Not the malls, but the places where the person who designed the clothes is sometimes the one behind the counter.",
+      "These are the independent designers in the index who have their own shop or studio in Tel Aviv or Jaffa. The walk-in shops come first. The studios after them work by appointment, so message them before you go. A lot of them are close together, around Neve Tzedek, Shenkin, Dizengoff and Jaffa, so it's easy to see a few in one afternoon.",
+    ],
+    introHe: [
+      'כשחברים מגיעים לתל אביב, הם בדרך כלל שואלים אותי איפה לקנות. לא בקניונים, אלא במקומות שבהם מי שעיצב את הבגדים עומד לפעמים בעצמו מאחורי הדלפק.',
+      'אלה המעצבים העצמאיים באינדקס שיש להם חנות או סטודיו משלהם בתל אביב או ביפו. קודם החנויות שאפשר פשוט להיכנס אליהן, ואחריהן הסטודיואים שעובדים בתיאום מראש, אז כדאי לשלוח להם הודעה לפני. הרבה מהם קרובים זה לזה, סביב נווה צדק, שינקין, דיזנגוף ויפו, כך שקל לראות כמה באותו אחר צהריים.',
+    ],
+    select: { place: 'Tel[- ]?Aviv|Jaffa|Yafo|Neve Tzedek', maxOtherBranches: 1 },
+    groupBy: 'access',
+    // Walk-in shops are grouped by neighbourhood, matched on the street in the address.
+    // Rules are tried in order; a shop that matches none goes under "Elsewhere in Tel Aviv".
+    neighbourhoods: [
+      { en: 'Neve Tzedek', he: 'נווה צדק', streets: 'Shabazi|Chelouche|Pines|Shlush|Yehuda HaNasi|Yitzhak Elhanan' },
+      { en: 'Florentin & Levinsky', he: 'פלורנטין ולוינסקי', streets: 'Florentin|Abarbanel|Salame|HaShuk|Wolfson|Hahalutzim|Merkhavya|Herzl 1\\d\\d|1\\d\\d Herzl|Moshe Maor|Eilat|Elifelet|Shoken|Nahalat Binyamin 125' },
+      { en: 'Sheinkin, Allenby & Nahalat Binyamin', he: 'שינקין, אלנבי ונחלת בנימין', streets: 'Sheinkin|Shenkin|Allenby|Melchett|Barzil|Levontin|Mikveh Israel|Lilienblum|HaHashmal|Yehuda HaLevi|King George|Tchernihovsky|Nachalat Binyamin|Nahalat Binyamin|HaShomer|Herzl' },
+      { en: 'Dizengoff & the Old North', he: 'דיזנגוף והצפון הישן', streets: 'Dizengoff|Ben Yehuda|Frishman|Pinsker|Masaryk|Ashtori Ha[FP]arhi|Basel|Eibeschuetz|Alkala|Shlomtzion HaMalka' },
+      { en: 'Jaffa', he: 'יפו', streets: 'Jaffa|Yafo|Margoza|HaTsorfim|Tel Giborim|Ben Zvi' },
+      { en: 'The Port & further out', he: 'הנמל ומעבר לו', streets: 'Yordei HaSira|Ramat Aviv|Nissim Aloni|Yigal Alon|Pinhas Rosen|Kehilat Venezia|HaShlosha' },
+    ],
+    elsewhere: { en: 'Elsewhere in Tel Aviv', he: 'עוד בתל אביב' },
+    indexLink: '../Map.html',
+    indexLinkText: 'All the shops on the map',
+    indexLinkTextHe: 'כל החנויות על המפה',
+  },
 ];
