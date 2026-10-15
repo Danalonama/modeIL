@@ -1,0 +1,730 @@
+[
+ {
+  "name": "Above",
+  "level": 2,
+  "median_ils": 340,
+  "prices_seen": 6,
+  "source": "site home page (Wix store), 6 prices 250-460",
+  "confidence": "medium"
+ },
+ {
+  "name": "AKA Rock",
+  "level": null,
+  "median_ils": null,
+  "prices_seen": 0,
+  "source": "no prices: site is a Facebook page (login wall); search found nothing",
+  "confidence": "low"
+ },
+ {
+  "name": "Alembika",
+  "level": 3,
+  "median_ils": 698,
+  "prices_seen": 49,
+  "source": "site /collections/all products.json (Shopify), 49 products, regular prices",
+  "confidence": "high"
+ },
+ {
+  "name": "All At Once",
+  "level": 2,
+  "median_ils": 250,
+  "prices_seen": 38,
+  "source": "site home page (Shopify HTML), 38 prices; store is a streetwear collective so mix may include other labels",
+  "confidence": "medium"
+ },
+ {
+  "name": "Alon Livné",
+  "level": 3,
+  "median_ils": 22000,
+  "prices_seen": 8,
+  "source": "search: Kleinfeld listings, gowns ~$4,500-9,800 (site has no prices; mostly bridal/couture)",
+  "confidence": "medium"
+ },
+ {
+  "name": "Aluma",
+  "level": 3,
+  "median_ils": 944,
+  "prices_seen": 6,
+  "source": "site product pages: 6 handmade pieces $195-320 (all sold out; shop now mostly sells crochet courses), median $255",
+  "confidence": "medium"
+ },
+ {
+  "name": "Anat Friedman",
+  "level": 2,
+  "median_ils": 395,
+  "prices_seen": 49,
+  "source": "site /collections/all products.json (Shopify), 49 products",
+  "confidence": "high"
+ },
+ {
+  "name": "Anjaly",
+  "level": 2,
+  "median_ils": 250,
+  "prices_seen": 39,
+  "source": "site home page rendered in browser, 39 regular prices (sale prices excluded)",
+  "confidence": "high"
+ },
+ {
+  "name": "Ara Studio",
+  "level": 3,
+  "median_ils": 6350,
+  "prices_seen": 36,
+  "source": "site home page (Wix store), 36 prices 920-9,700",
+  "confidence": "high"
+ },
+ {
+  "name": "ARATO",
+  "level": 1,
+  "median_ils": 200,
+  "prices_seen": 16,
+  "source": "site home page, 16 regular prices (₪160-250)",
+  "confidence": "high"
+ },
+ {
+  "name": "Bein Lebein",
+  "level": 2,
+  "median_ils": 248,
+  "prices_seen": 4,
+  "source": "site winter-drop page (Wix), 4 prices 222-285",
+  "confidence": "low"
+ },
+ {
+  "name": "Berta",
+  "level": 3,
+  "median_ils": 24000,
+  "prices_seen": 0,
+  "source": "site blocked (Cloudflare 403); search: bridal price guides/forums cite ~$3k-10k, typically ~$6.5k",
+  "confidence": "low"
+ },
+ {
+  "name": "Bracha Baron",
+  "level": null,
+  "median_ils": null,
+  "prices_seen": 0,
+  "source": "no prices: Instagram only; search found nothing",
+  "confidence": "low"
+ },
+ {
+  "name": "Chopshop Corp",
+  "level": 2,
+  "median_ils": 250,
+  "prices_seen": 15,
+  "source": "site home page (Wix), 15 prices",
+  "confidence": "high"
+ },
+ {
+  "name": "Cocoral",
+  "level": 1,
+  "median_ils": 200,
+  "prices_seen": 10,
+  "source": "site home page, 10 regular prices 150-230 (shown with ~15% off)",
+  "confidence": "medium"
+ },
+ {
+  "name": "Con.fail",
+  "level": 1,
+  "median_ils": 189,
+  "prices_seen": 32,
+  "source": "site home page (Squarespace), 32 prices",
+  "confidence": "high"
+ },
+ {
+  "name": "Cottna",
+  "level": 1,
+  "median_ils": 147,
+  "prices_seen": 3,
+  "source": "site category page: period underwear 147 each (one style, 3 colours)",
+  "confidence": "medium"
+ },
+ {
+  "name": "Dana Harel",
+  "level": 3,
+  "median_ils": 29600,
+  "prices_seen": 0,
+  "source": "no prices on site (bridal, by appointment); search: The Dress Theory retailer lists gowns at $6,000-10,000+, resale $4,000-8,500",
+  "confidence": "medium"
+ },
+ {
+  "name": "Danit Peleg",
+  "level": 3,
+  "median_ils": 5550,
+  "prices_seen": 1,
+  "source": "search: 2017 press ($1,500 made-to-order 3D-printed jacket); site shows no prices",
+  "confidence": "low"
+ },
+ {
+  "name": "David Weksler",
+  "level": 2,
+  "median_ils": 364,
+  "prices_seen": 21,
+  "source": "site all-products page (Wix), 21 prices",
+  "confidence": "high"
+ },
+ {
+  "name": "Dorin Frankfurt",
+  "level": 3,
+  "median_ils": 651,
+  "prices_seen": 15,
+  "source": "site search for dresses, 15 regular prices (all sold out/marked down; dresses only)",
+  "confidence": "medium"
+ },
+ {
+  "name": "Dorit Sade",
+  "level": 3,
+  "median_ils": 620,
+  "prices_seen": 12,
+  "source": "site home page, 12 clothing prices (₪360-2,100); evening-wear page higher still",
+  "confidence": "high"
+ },
+ {
+  "name": "Eclat Chic",
+  "level": 1,
+  "median_ils": 274,
+  "prices_seen": 24,
+  "source": "site all-products page (Wix), 24 prices",
+  "confidence": "high"
+ },
+ {
+  "name": "Edit",
+  "level": null,
+  "median_ils": null,
+  "prices_seen": 0,
+  "source": "no prices: Shopify store behind password page (Drop 04 coming soon)",
+  "confidence": "low"
+ },
+ {
+  "name": "Flaeshwear",
+  "level": 2,
+  "median_ils": 360,
+  "prices_seen": 30,
+  "source": "site home page (Wix store), 30 prices 300-770",
+  "confidence": "high"
+ },
+ {
+  "name": "Forest",
+  "level": 3,
+  "median_ils": 490,
+  "prices_seen": 43,
+  "source": "site home page (Wix), 43 prices",
+  "confidence": "high"
+ },
+ {
+  "name": "Frau Blau",
+  "level": 3,
+  "median_ils": 750,
+  "prices_seen": 24,
+  "source": "site all-products page (Wix), 24 prices",
+  "confidence": "high"
+ },
+ {
+  "name": "Gala",
+  "level": 2,
+  "median_ils": 285,
+  "prices_seen": 15,
+  "source": "site home page (Wix product JSON), 15 prices",
+  "confidence": "high"
+ },
+ {
+  "name": "Gali Karten",
+  "level": null,
+  "median_ils": null,
+  "prices_seen": 0,
+  "source": "no prices: bridal couture by appointment; search found no price",
+  "confidence": "low"
+ },
+ {
+  "name": "Giselle",
+  "level": 2,
+  "median_ils": 290,
+  "prices_seen": 20,
+  "source": "site all-products page, 20 prices (mostly ₪290 tees/tops)",
+  "confidence": "high"
+ },
+ {
+  "name": "Gogou Magog",
+  "level": 2,
+  "median_ils": 330,
+  "prices_seen": 6,
+  "source": "site home page, 6 prices 225-410",
+  "confidence": "medium"
+ },
+ {
+  "name": "Hane",
+  "level": 1,
+  "median_ils": 170,
+  "prices_seen": 17,
+  "source": "site home page (Wix product JSON), 17 prices, mostly 169.90 tees",
+  "confidence": "high"
+ },
+ {
+  "name": "Historic",
+  "level": null,
+  "median_ils": null,
+  "prices_seen": 0,
+  "source": "no prices: JS-only site; in browser historiclub.com redirected to rotmaas.com (ROTMA), a different-looking brand - worth checking",
+  "confidence": "low"
+ },
+ {
+  "name": "HKN",
+  "level": 3,
+  "median_ils": 1166,
+  "prices_seen": 20,
+  "source": "site shop page, 20 prices in USD (median $315; knitwear $85-520, jewelry $420-1,200)",
+  "confidence": "medium"
+ },
+ {
+  "name": "Hoko",
+  "level": 3,
+  "median_ils": 690,
+  "prices_seen": 17,
+  "source": "site /shop page (Wix), 17 products",
+  "confidence": "high"
+ },
+ {
+  "name": "Honey",
+  "level": 2,
+  "median_ils": 249,
+  "prices_seen": 29,
+  "source": "site shop page rendered in browser, all 29 products",
+  "confidence": "high"
+ },
+ {
+  "name": "Hot Tuna",
+  "level": 1,
+  "median_ils": 149,
+  "prices_seen": 33,
+  "source": "site 'new women' page, 33 prices 90-350 (mostly beachwear/apparel/sandals, not swimsuits)",
+  "confidence": "medium"
+ },
+ {
+  "name": "House of Jaffa",
+  "level": 3,
+  "median_ils": 463,
+  "prices_seen": 16,
+  "source": "site home page, 16 prices in GBP (median £97.5, converted at ~4.75); borderline 2/3",
+  "confidence": "medium"
+ },
+ {
+  "name": "Hush Studio",
+  "level": 1,
+  "median_ils": 269,
+  "prices_seen": 20,
+  "source": "site /shop page (Wix), 20 prices",
+  "confidence": "high"
+ },
+ {
+  "name": "IDA Studio",
+  "level": 3,
+  "median_ils": 600,
+  "prices_seen": 12,
+  "source": "site evening page (7 distinct styles, 550-700) and bridal page (5 gowns, 5000-6500); median of evening line",
+  "confidence": "high"
+ },
+ {
+  "name": "Inbal Dror",
+  "level": 3,
+  "median_ils": 37000,
+  "prices_seen": 3,
+  "source": "search: People/boutique figures, couture gowns ~$8,000-12,000",
+  "confidence": "medium"
+ },
+ {
+  "name": "Inhale Exhale",
+  "level": 2,
+  "median_ils": 290,
+  "prices_seen": 6,
+  "source": "site home page, 6 scarf/shawl prices (₪190-495)",
+  "confidence": "medium"
+ },
+ {
+  "name": "Jollori",
+  "level": 1,
+  "median_ils": 300,
+  "prices_seen": 16,
+  "source": "site home page, 16 prices",
+  "confidence": "high"
+ },
+ {
+  "name": "JOR-D",
+  "level": 3,
+  "median_ils": 550,
+  "prices_seen": 13,
+  "source": "site home page (WooCommerce), 13 prices",
+  "confidence": "medium"
+ },
+ {
+  "name": "Kaisra Design",
+  "level": 2,
+  "median_ils": 299,
+  "prices_seen": 30,
+  "source": "site home page (Wix store), 30 prices 170-470 (clothing plus jewelry)",
+  "confidence": "medium"
+ },
+ {
+  "name": "Keren Mualem",
+  "level": 2,
+  "median_ils": 320,
+  "prices_seen": 19,
+  "source": "site clothes category, 19 prices (₪190-680)",
+  "confidence": "high"
+ },
+ {
+  "name": "Kobi Levi",
+  "level": 3,
+  "median_ils": 5264,
+  "prices_seen": 21,
+  "source": "site /shop (WooCommerce), 21 prices in EUR, median 1316 EUR",
+  "confidence": "high"
+ },
+ {
+  "name": "Lihi Hod",
+  "level": null,
+  "median_ils": null,
+  "prices_seen": 0,
+  "source": "no prices: couture bridal site, no shop; search found nothing",
+  "confidence": "low"
+ },
+ {
+  "name": "Luminary",
+  "level": null,
+  "median_ils": null,
+  "prices_seen": 0,
+  "source": "no prices: bridal by appointment; search found nothing",
+  "confidence": "low"
+ },
+ {
+  "name": "Magia",
+  "level": 1,
+  "median_ils": 180,
+  "prices_seen": 20,
+  "source": "site home page (Wix), 20 prices",
+  "confidence": "high"
+ },
+ {
+  "name": "Maim Jewelry",
+  "level": 2,
+  "median_ils": 850,
+  "prices_seen": 13,
+  "source": "site all-products page (Wix), 13 jewelry prices (T-shirts excluded)",
+  "confidence": "medium"
+ },
+ {
+  "name": "Maya Bash",
+  "level": 3,
+  "median_ils": 550,
+  "prices_seen": 15,
+  "source": "site shop page (Hebrew, ILS), 15 regular prices; many items currently on sale ~200-300",
+  "confidence": "high"
+ },
+ {
+  "name": "Milly Vishnia",
+  "level": 1,
+  "median_ils": 440,
+  "prices_seen": 16,
+  "source": "site best-seller page, 16 prices 200-830 (just under the 450 line)",
+  "confidence": "medium"
+ },
+ {
+  "name": "Mircka",
+  "level": 2,
+  "median_ils": 240,
+  "prices_seen": 15,
+  "source": "site store category, 15 prices (mostly ₪240 tees)",
+  "confidence": "high"
+ },
+ {
+  "name": "Mishimono",
+  "level": 3,
+  "median_ils": 690,
+  "prices_seen": 161,
+  "source": "site /en/shop page, 161 products (incl. some bridal)",
+  "confidence": "high"
+ },
+ {
+  "name": "Mlch",
+  "level": 1,
+  "median_ils": 120,
+  "prices_seen": 5,
+  "source": "site shop page rendered in browser, all 5 products (80-120)",
+  "confidence": "high"
+ },
+ {
+  "name": "Mors",
+  "level": 3,
+  "median_ils": 1800,
+  "prices_seen": 10,
+  "source": "site home + shop page (WooCommerce), 10 regular prices 650-2,500",
+  "confidence": "high"
+ },
+ {
+  "name": "Muslin Brothers",
+  "level": 3,
+  "median_ils": 796,
+  "prices_seen": 8,
+  "source": "site sale page, 8 regular prices in EUR (€110-199, median €199)",
+  "confidence": "medium"
+ },
+ {
+  "name": "Nani Lee",
+  "level": 1,
+  "median_ils": 199,
+  "prices_seen": 11,
+  "source": "site dresses category (Konimbo), 11 prices 179-349",
+  "confidence": "medium"
+ },
+ {
+  "name": "Ofnat Bracha",
+  "level": null,
+  "median_ils": null,
+  "prices_seen": 0,
+  "source": "no prices: site under construction (archive sales in studio only); search found nothing",
+  "confidence": "low"
+ },
+ {
+  "name": "OM-ME",
+  "level": 2,
+  "median_ils": 320,
+  "prices_seen": 16,
+  "source": "site home page (Wix store), 16 prices 270-420",
+  "confidence": "high"
+ },
+ {
+  "name": "Orly Yaron",
+  "level": null,
+  "median_ils": null,
+  "prices_seen": 0,
+  "source": "no prices: Instagram only; search found nothing",
+  "confidence": "low"
+ },
+ {
+  "name": "Panta Rei",
+  "level": 2,
+  "median_ils": 220,
+  "prices_seen": 20,
+  "source": "site home page, 20 regular prices 120-300 (shown at 20% off)",
+  "confidence": "medium"
+ },
+ {
+  "name": "PELEDNY",
+  "level": null,
+  "median_ils": null,
+  "prices_seen": 0,
+  "source": "no prices: Wix site shows collection text only, no reachable shop page; search found nothing",
+  "confidence": "low"
+ },
+ {
+  "name": "Precious Individuals",
+  "level": 3,
+  "median_ils": 460,
+  "prices_seen": 15,
+  "source": "site shop page, 15 prices 360-980 (just over the 450 line)",
+  "confidence": "medium"
+ },
+ {
+  "name": "Rotma",
+  "level": 1,
+  "median_ils": 140,
+  "prices_seen": 11,
+  "source": "site new-drops data, 11 prices (₪140 tops/shorts, ₪245 dresses)",
+  "confidence": "high"
+ },
+ {
+  "name": "Sages & Souls",
+  "level": null,
+  "median_ils": null,
+  "prices_seen": 0,
+  "source": "no prices: store behind password page; search found nothing",
+  "confidence": "low"
+ },
+ {
+  "name": "Salon Berlin",
+  "level": null,
+  "median_ils": null,
+  "prices_seen": 0,
+  "source": "no prices: Instagram only",
+  "confidence": "low"
+ },
+ {
+  "name": "Say Less Studios",
+  "level": 2,
+  "median_ils": 299,
+  "prices_seen": 15,
+  "source": "site /collections/all, 15 regular prices 179-350",
+  "confidence": "high"
+ },
+ {
+  "name": "Shahar Avnet",
+  "level": 3,
+  "median_ils": 1450,
+  "prices_seen": 12,
+  "source": "site home page, 12 regular (pre-sale) prices ₪390-2,700",
+  "confidence": "high"
+ },
+ {
+  "name": "Shani Zimmerman",
+  "level": null,
+  "median_ils": null,
+  "prices_seen": 0,
+  "source": "no prices: Instagram only; search found nothing",
+  "confidence": "low"
+ },
+ {
+  "name": "Shekel Klan",
+  "level": 2,
+  "median_ils": 320,
+  "prices_seen": 4,
+  "source": "site home page, 4 apparel items (jeans 450 x2, tees 190 x2; flags excluded)",
+  "confidence": "medium"
+ },
+ {
+  "name": "Shirly Halperin",
+  "level": 2,
+  "median_ils": 390,
+  "prices_seen": 29,
+  "source": "site new-in page (Squarespace JSON), 29 prices 230-620",
+  "confidence": "high"
+ },
+ {
+  "name": "Shuzi Jewelry",
+  "level": 2,
+  "median_ils": 482,
+  "prices_seen": 16,
+  "source": "site home page, 16 prices in USD (median $130)",
+  "confidence": "high"
+ },
+ {
+  "name": "Sister M",
+  "level": 3,
+  "median_ils": 680,
+  "prices_seen": 39,
+  "source": "site tops + pants categories, 39 regular prices (480-899); evening dresses 1200-2800",
+  "confidence": "medium"
+ },
+ {
+  "name": "Studio Ivria",
+  "level": null,
+  "median_ils": null,
+  "prices_seen": 0,
+  "source": "no prices: Instagram only",
+  "confidence": "low"
+ },
+ {
+  "name": "Swebo",
+  "level": 1,
+  "median_ils": 169,
+  "prices_seen": 102,
+  "source": "site home page, ~100 regular prices 99-399",
+  "confidence": "high"
+ },
+ {
+  "name": "Taanug",
+  "level": 1,
+  "median_ils": 140,
+  "prices_seen": 21,
+  "source": "site Big Cartel products feed, 21 prices",
+  "confidence": "high"
+ },
+ {
+  "name": "Tami Chomsky",
+  "level": null,
+  "median_ils": null,
+  "prices_seen": 0,
+  "source": "no prices: Instagram only, pop-up sales; search found none",
+  "confidence": "low"
+ },
+ {
+  "name": "Tat Ve Koku",
+  "level": 1,
+  "median_ils": 199,
+  "prices_seen": 30,
+  "source": "site home page (Wix product JSON), 30 prices",
+  "confidence": "high"
+ },
+ {
+  "name": "TenderHeart",
+  "level": 2,
+  "median_ils": 310,
+  "prices_seen": 12,
+  "source": "site shop page, 12 prices 190-850 (vintage/second-hand pieces)",
+  "confidence": "medium"
+ },
+ {
+  "name": "Tetra Jewelry",
+  "level": 2,
+  "median_ils": 1315,
+  "prices_seen": 52,
+  "source": "site gold/silver rings, necklaces, earrings pages, 52 prices (₪150-12,000, wide spread)",
+  "confidence": "medium"
+ },
+ {
+  "name": "VIL Unfold",
+  "level": null,
+  "median_ils": null,
+  "prices_seen": 0,
+  "source": "no prices: Instagram only; search found nothing",
+  "confidence": "low"
+ },
+ {
+  "name": "Vivi Bellaish",
+  "level": null,
+  "median_ils": null,
+  "prices_seen": 0,
+  "source": "no prices: site (victorbellaish.com) is an Under Construction page; search found nothing",
+  "confidence": "low"
+ },
+ {
+  "name": "Wear by Lilo",
+  "level": 1,
+  "median_ils": 130,
+  "prices_seen": 11,
+  "source": "site home page (Wix store), 11 prices 125-159 (tote bag excluded)",
+  "confidence": "high"
+ },
+ {
+  "name": "White Nilus",
+  "level": 2,
+  "median_ils": 579,
+  "prices_seen": 7,
+  "source": "site home page, 7 prices (₪399-1,279)",
+  "confidence": "medium"
+ },
+ {
+  "name": "Yara Design",
+  "level": 2,
+  "median_ils": 239,
+  "prices_seen": 20,
+  "source": "site /women page (Wix), 20 clothing prices 99-389",
+  "confidence": "medium"
+ },
+ {
+  "name": "Yaron Minkowski",
+  "level": null,
+  "median_ils": null,
+  "prices_seen": 0,
+  "source": "no prices: high-couture studio site with no shop; search found nothing",
+  "confidence": "low"
+ },
+ {
+  "name": "YER Studio",
+  "level": 1,
+  "median_ils": 209,
+  "prices_seen": 2,
+  "source": "site /collections/all, only 2 products (T-shirts, 209)",
+  "confidence": "low"
+ },
+ {
+  "name": "Yoske",
+  "level": 1,
+  "median_ils": 200,
+  "prices_seen": 20,
+  "source": "site shop page, 20 prices (mostly clothing: tees ₪120, jeans ₪220); median exactly at accessories cutoff",
+  "confidence": "medium"
+ },
+ {
+  "name": "Yoster",
+  "level": 2,
+  "median_ils": 1130,
+  "prices_seen": 16,
+  "source": "site home page, 16 prices in EUR, median 282.5 EUR",
+  "confidence": "high"
+ }
+]

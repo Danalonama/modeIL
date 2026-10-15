@@ -4,6 +4,7 @@
 // typical price of what it sells.
 //   node scripts/scan-prices.mjs            → scan every shop, write docs/reports/price-scan.md + .json (~20 min)
 //   node scripts/scan-prices.mjs --report   → rebuild the .md from the saved .json
+//   node scripts/scan-prices.mjs --only="Brand A,Brand B"  → scan just those brands, merge into the saved .json
 // Report only: the site reads the `budget` field on each brand, which is set by
 // hand from this report (see CLAUDE.md).
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
@@ -92,9 +93,17 @@ async function scan(d) {
 const designers = loadDesigners();
 const JSON_PATH = path.join(ROOT, 'docs', 'reports', 'price-scan.json');
 let results = [];
+const onlyArg = process.argv.find(a => a.startsWith('--only='));
 if (process.argv.includes('--report')) {
   // Rebuild the report from the last scan without fetching anything
   results = JSON.parse(readFileSync(JSON_PATH, 'utf8'));
+} else if (onlyArg) {
+  // Scan just the named brands (e.g. newly added ones) and merge them into the last scan
+  const names = new Set(onlyArg.slice(7).split(',').map(s => s.trim()));
+  const missing = [...names].filter(n => !designers.some(d => d.name === n));
+  if (missing.length) throw new Error('Not in DESIGNERS: ' + missing.join(', '));
+  results = JSON.parse(readFileSync(JSON_PATH, 'utf8')).filter(r => !names.has(r.name));
+  for (const d of designers.filter(d => names.has(d.name))) { results.push(await scan(d)); await sleep(1500); }
 } else {
   let next = 0;
   await Promise.all(Array.from({ length: CONCURRENCY }, async () => {

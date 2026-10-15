@@ -1,0 +1,6241 @@
+[
+ {
+  "name": "101 Brand Jeans",
+  "url": "https://101brandjeans.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 82,
+  "p25": 89,
+  "median": 134,
+  "p75": 269,
+  "tags": [
+   "streetwear",
+   "minimalist",
+   "denim"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "2sis",
+  "url": "https://2sis.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 359,
+  "p25": 132,
+  "median": 132,
+  "p75": 140,
+  "tags": [
+   "ready-to-wear",
+   "artisan",
+   "minimalist"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "7 Generations",
+  "url": "https://7generations.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 143,
+  "p25": 199,
+  "median": 340,
+  "p75": 480,
+  "tags": [
+   "ready-to-wear",
+   "sustainable",
+   "natural"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "A by Anabelle",
+  "url": "https://byanabelle.com/",
+  "platform": "shopify",
+  "currency": "EUR",
+  "converted": true,
+  "products": 126,
+  "p25": 2660,
+  "median": 3800,
+  "p75": 3880,
+  "tags": [
+   "footwear",
+   "luxury",
+   "contemporary",
+   "bridal"
+  ],
+  "category": "footwear",
+  "level": 3,
+  "check": "priced in EUR, converted"
+ },
+ {
+  "name": "Above",
+  "url": "https://www.above-layers.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Addict",
+  "url": "https://addictonline.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 499,
+  "p25": 110,
+  "median": 140,
+  "p75": 180,
+  "tags": [
+   "contemporary",
+   "ready-to-wear"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "adios",
+  "url": "https://made-by-adios.myshopify.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 21,
+  "p25": 250,
+  "median": 320,
+  "p75": 320,
+  "tags": [
+   "accessories",
+   "handmade",
+   "prints",
+   "made-in-israel"
+  ],
+  "category": "accessories",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Agas & Tamar",
+  "url": "https://agasandtamar.com/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 65,
+  "p25": 3419,
+  "median": 4821,
+  "p75": 6693,
+  "tags": [
+   "jewelry",
+   "artisan",
+   "luxury"
+  ],
+  "category": "jewelry",
+  "level": 3,
+  "check": ""
+ },
+ {
+  "name": "Ainker",
+  "url": "https://ainker.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 500,
+  "p25": 499,
+  "median": 549,
+  "p75": 599,
+  "tags": [
+   "menswear",
+   "streetwear",
+   "luxury"
+  ],
+  "category": "clothing",
+  "level": 3,
+  "check": ""
+ },
+ {
+  "name": "AITO",
+  "url": "https://by-aito.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 95,
+  "p25": 560,
+  "median": 780,
+  "p75": 1200,
+  "tags": [
+   "menswear",
+   "minimalist",
+   "contemporary"
+  ],
+  "category": "clothing",
+  "level": 3,
+  "check": ""
+ },
+ {
+  "name": "AKA Rock",
+  "url": "https://facebook.com/AKAembroidery",
+  "platform": "instagram"
+ },
+ {
+  "name": "Akal",
+  "url": "https://www.akalonline.com/en",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 66,
+  "p25": 450,
+  "median": 800,
+  "p75": 1300,
+  "tags": [
+   "ready-to-wear",
+   "artisan",
+   "sustainable"
+  ],
+  "category": "clothing",
+  "level": 3,
+  "check": ""
+ },
+ {
+  "name": "AKASHA",
+  "url": "https://www.akashart.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 19,
+  "p25": 160,
+  "median": 195,
+  "p75": 195,
+  "tags": [
+   "streetwear",
+   "prints",
+   "unisex"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Albi",
+  "url": "https://albi-studio.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 18,
+  "p25": 480,
+  "median": 890,
+  "p75": 990,
+  "tags": [
+   "menswear",
+   "natural",
+   "artisan"
+  ],
+  "category": "clothing",
+  "level": 3,
+  "check": ""
+ },
+ {
+  "name": "Alef Alef",
+  "url": "https://www.alefalef.co.il/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 95,
+  "p25": 150,
+  "median": 210,
+  "p75": 340,
+  "tags": [
+   "ready-to-wear",
+   "minimalist"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Alembika",
+  "url": "https://alembika.co.il/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Alex Andra Pinto",
+  "url": "https://alex-andra-pinto.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 36,
+  "p25": 360,
+  "median": 380,
+  "p75": 495,
+  "tags": [
+   "contemporary",
+   "ready-to-wear",
+   "unisex"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "All At Once",
+  "url": "https://allatonce.store/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Alma Ola",
+  "url": "https://almaola.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 209,
+  "p25": 290,
+  "median": 310,
+  "p75": 320,
+  "tags": [
+   "swimwear",
+   "surf",
+   "sustainable",
+   "size-inclusive"
+  ],
+  "category": "swimwear",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Alon Livné",
+  "url": "https://alonlivne.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Aluma",
+  "url": "https://alumafashion.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Amare",
+  "url": "https://amare.store/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 311,
+  "p25": 99,
+  "median": 195,
+  "p75": 271,
+  "tags": [
+   "ready-to-wear",
+   "minimalist"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "AMRIA",
+  "url": "https://amriashoes.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 99,
+  "p25": 400,
+  "median": 654,
+  "p75": 841,
+  "tags": [
+   "footwear",
+   "contemporary",
+   "minimalist"
+  ],
+  "category": "footwear",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Anat Friedman",
+  "url": "https://anatfriedman.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Andro Lomusia",
+  "url": "https://androlomusia.com/",
+  "platform": "shopify",
+  "currency": "USD",
+  "converted": true,
+  "products": 48,
+  "p25": 278,
+  "median": 340,
+  "p75": 500,
+  "tags": [
+   "unisex",
+   "conceptual",
+   "edgy"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": "priced in USD, converted"
+ },
+ {
+  "name": "Anjaly",
+  "url": "https://anjaly.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Anne Studios",
+  "url": "https://annestudios.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 5,
+  "p25": 220,
+  "median": 220,
+  "p75": 220,
+  "tags": [
+   "ready-to-wear",
+   "minimalist",
+   "casual"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": "few products"
+ },
+ {
+  "name": "ANwear by Avigail",
+  "url": "https://anwearbyavigail.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 11,
+  "p25": 290,
+  "median": 390,
+  "p75": 419,
+  "tags": [
+   "menswear",
+   "minimalist"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "AP by Amit Philip",
+  "url": "https://apbyamitphilip.com/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 100,
+  "p25": 350,
+  "median": 450,
+  "p75": 600,
+  "tags": [
+   "ready-to-wear",
+   "minimalist"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Ara Studio",
+  "url": "https://www.arajewelrystudio.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "ARATO",
+  "url": "https://arato770.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Artwear",
+  "url": "https://artwear.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 164,
+  "p25": 199,
+  "median": 259,
+  "p75": 319,
+  "tags": [
+   "ready-to-wear",
+   "prints"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Asa Tamaka",
+  "url": "https://asatamaka.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 45,
+  "p25": 159,
+  "median": 159,
+  "p75": 199,
+  "tags": [
+   "unisex",
+   "denim",
+   "streetwear",
+   "edgy"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Assaf Peleg",
+  "url": "https://www.assafpelleg.com/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 100,
+  "p25": 299,
+  "median": 349,
+  "p75": 479,
+  "tags": [
+   "ready-to-wear",
+   "luxury"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Assemble",
+  "url": "https://assembleofficial.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 91,
+  "p25": 250,
+  "median": 340,
+  "p75": 590,
+  "tags": [
+   "ready-to-wear",
+   "streetwear",
+   "minimalist"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Atawear",
+  "url": "https://atawear.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 499,
+  "p25": 280,
+  "median": 350,
+  "p75": 490,
+  "tags": [
+   "ready-to-wear",
+   "menswear",
+   "legacy",
+   "streetwear"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Atua Studio",
+  "url": "https://www.atua-studio.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 157,
+  "p25": 670,
+  "median": 2200,
+  "p75": 5100,
+  "tags": [
+   "jewelry",
+   "edgy",
+   "artisan"
+  ],
+  "category": "jewelry",
+  "level": 3,
+  "check": ""
+ },
+ {
+  "name": "Aviva Zilberman",
+  "url": "https://avivazilberman.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 205,
+  "p25": 260,
+  "median": 350,
+  "p75": 400,
+  "tags": [
+   "ready-to-wear",
+   "luxury"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Ayala Vitkon",
+  "url": "https://ayalavjewelry.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 149,
+  "p25": 322,
+  "median": 390,
+  "p75": 490,
+  "tags": [
+   "jewelry",
+   "artisan",
+   "minimalist"
+  ],
+  "category": "jewelry",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Ayoola",
+  "url": "https://ayoola.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 27,
+  "p25": 179,
+  "median": 249,
+  "p75": 289,
+  "tags": [
+   "lingerie",
+   "size-inclusive",
+   "contemporary"
+  ],
+  "category": "lingerie",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "B.C. Atelier",
+  "url": "https://bc-atelier.com/",
+  "platform": "woocommerce",
+  "currency": "USD",
+  "converted": true,
+  "products": 35,
+  "p25": 211,
+  "median": 433,
+  "p75": 540,
+  "tags": [
+   "ready-to-wear",
+   "sustainable",
+   "edgy",
+   "handmade"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": "priced in USD, converted"
+ },
+ {
+  "name": "BANANHOT",
+  "url": "https://bananhot.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 499,
+  "p25": 399,
+  "median": 459,
+  "p75": 645,
+  "tags": [
+   "swimwear",
+   "prints"
+  ],
+  "category": "swimwear",
+  "level": 3,
+  "check": ""
+ },
+ {
+  "name": "Barbatana",
+  "url": "https://barbatana.shop/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 45,
+  "p25": 67,
+  "median": 127,
+  "p75": 180,
+  "tags": [
+   "unisex",
+   "streetwear",
+   "prints"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Bazz and Lutra",
+  "url": "https://bazzandlutra.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 264,
+  "p25": 2400,
+  "median": 4000,
+  "p75": 7250,
+  "tags": [
+   "ready-to-wear",
+   "jewelry",
+   "artisan",
+   "luxury"
+  ],
+  "category": "jewelry",
+  "level": 3,
+  "check": ""
+ },
+ {
+  "name": "Bein Lebein",
+  "url": "https://www.beinlebein.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Belov",
+  "url": "https://belovbrand.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 31,
+  "p25": 169,
+  "median": 199,
+  "p75": 219,
+  "tags": [
+   "unisex",
+   "streetwear",
+   "edgy"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Ben Ami",
+  "url": "https://www.benamijewelry.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 380,
+  "p25": 2075,
+  "median": 3675,
+  "p75": 6940,
+  "tags": [
+   "jewelry",
+   "luxury",
+   "artisan"
+  ],
+  "category": "jewelry",
+  "level": 3,
+  "check": ""
+ },
+ {
+  "name": "Ben Ben Studio",
+  "url": "https://benben-studio.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 34,
+  "p25": 185,
+  "median": 229,
+  "p75": 279,
+  "tags": [
+   "menswear",
+   "minimalist",
+   "sustainable"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Berta",
+  "url": "https://www.berta.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Bewear",
+  "url": "https://bewear.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 108,
+  "p25": 180,
+  "median": 230,
+  "p75": 310,
+  "tags": [
+   "activewear",
+   "minimalist"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Biliblond",
+  "url": "https://biliblond.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 500,
+  "p25": 200,
+  "median": 280,
+  "p75": 350,
+  "tags": [
+   "swimwear",
+   "contemporary"
+  ],
+  "category": "swimwear",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "BIV Street",
+  "url": "https://bivstreet.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 67,
+  "p25": 49,
+  "median": 100,
+  "p75": 180,
+  "tags": [
+   "footwear",
+   "minimalist"
+  ],
+  "category": "footwear",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Bleecker & Prince",
+  "url": "https://bleeckerandprincetlv.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 236,
+  "p25": 4270,
+  "median": 6880,
+  "p75": 11850,
+  "tags": [
+   "jewelry",
+   "luxury",
+   "edgy"
+  ],
+  "category": "jewelry",
+  "level": 3,
+  "check": ""
+ },
+ {
+  "name": "Blueberry TLV",
+  "url": "https://blueberrytlv.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 498,
+  "p25": 70,
+  "median": 89,
+  "p75": 129,
+  "tags": [
+   "ready-to-wear",
+   "contemporary"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Boe Body",
+  "url": "https://boebody.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 57,
+  "p25": 39,
+  "median": 79,
+  "p75": 119,
+  "tags": [
+   "lingerie",
+   "minimalist",
+   "size-inclusive"
+  ],
+  "category": "lingerie",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Boletet",
+  "url": "https://boletet.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 3,
+  "p25": 175,
+  "median": 294,
+  "p75": 511,
+  "tags": [
+   "prints",
+   "accessories"
+  ],
+  "category": "accessories",
+  "level": 2,
+  "check": "few products"
+ },
+ {
+  "name": "Bow M",
+  "url": "https://bow-m.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 70,
+  "p25": 690,
+  "median": 850,
+  "p75": 1000,
+  "tags": [
+   "ready-to-wear",
+   "contemporary"
+  ],
+  "category": "clothing",
+  "level": 3,
+  "check": ""
+ },
+ {
+  "name": "Bracha Baron",
+  "url": "https://www.instagram.com/brachabaron/",
+  "platform": "instagram"
+ },
+ {
+  "name": "Bring Wear",
+  "url": "https://bringwear.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 106,
+  "p25": 170,
+  "median": 195,
+  "p75": 280,
+  "tags": [
+   "streetwear",
+   "minimalist",
+   "unisex"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "C's Cuffs",
+  "url": "https://cscuffs.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 26,
+  "p25": 940,
+  "median": 1300,
+  "p75": 1660,
+  "tags": [
+   "jewelry",
+   "unisex",
+   "artisan",
+   "minimalist",
+   "handmade"
+  ],
+  "category": "jewelry",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Campy Street",
+  "url": "https://campystreet.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 500,
+  "p25": 89,
+  "median": 99,
+  "p75": 199,
+  "tags": [
+   "unisex",
+   "streetwear"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Chen Keidar",
+  "url": "https://chenkeidar.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 203,
+  "p25": 300,
+  "median": 690,
+  "p75": 990,
+  "tags": [
+   "contemporary",
+   "minimalist",
+   "ready-to-wear"
+  ],
+  "category": "clothing",
+  "level": 3,
+  "check": ""
+ },
+ {
+  "name": "Chopshop Corp",
+  "url": "https://www.chopshop.co.il/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Ciporkin by Dalit",
+  "url": "https://www.ciporkin.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 24,
+  "p25": 288,
+  "median": 380,
+  "p75": 616,
+  "tags": [
+   "ready-to-wear",
+   "minimalist",
+   "artisan"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Cnaan Studio",
+  "url": "https://cnaanstudio.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 36,
+  "p25": 320,
+  "median": 360,
+  "p75": 400,
+  "tags": [
+   "jewelry",
+   "artisan",
+   "minimalist"
+  ],
+  "category": "jewelry",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Co.Co",
+  "url": "https://collectivecollection.co.il/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 100,
+  "p25": 220,
+  "median": 270,
+  "p75": 420,
+  "tags": [
+   "ready-to-wear",
+   "contemporary"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Coco & Palm",
+  "url": "https://cocoandpalm.co.il/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 67,
+  "p25": 230,
+  "median": 290,
+  "p75": 390,
+  "tags": [
+   "jewelry",
+   "artisan",
+   "natural",
+   "unisex"
+  ],
+  "category": "jewelry",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Cocoral",
+  "url": "https://cocoral.co.il/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Color Me In",
+  "url": "https://colormein.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 97,
+  "p25": 150,
+  "median": 180,
+  "p75": 180,
+  "tags": [
+   "ready-to-wear",
+   "prints",
+   "contemporary"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Comme il Faut",
+  "url": "https://www.comme-il-faut.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 500,
+  "p25": 499,
+  "median": 1032,
+  "p75": 1990,
+  "tags": [
+   "minimalist",
+   "prints",
+   "legacy"
+  ],
+  "category": "clothing",
+  "level": 3,
+  "check": ""
+ },
+ {
+  "name": "Complete",
+  "url": "https://complete-women.co.il/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 12,
+  "p25": 100,
+  "median": 180,
+  "p75": 249,
+  "tags": [
+   "lingerie",
+   "size-inclusive"
+  ],
+  "category": "lingerie",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Con.fail",
+  "url": "https://www.con.fail/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "CoolYou",
+  "url": "https://coolyouofficial.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 55,
+  "p25": 140,
+  "median": 190,
+  "p75": 240,
+  "tags": [
+   "streetwear",
+   "artisan",
+   "unisex"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Cor-e",
+  "url": "https://www.cor-e.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 116,
+  "p25": 319,
+  "median": 429,
+  "p75": 594,
+  "tags": [
+   "jewelry",
+   "artisan",
+   "minimalist"
+  ],
+  "category": "jewelry",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Cottna",
+  "url": "https://www.cottna.co.il/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Cotton",
+  "url": "https://cottonet.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 495,
+  "p25": 199,
+  "median": 249,
+  "p75": 329,
+  "tags": [
+   "ready-to-wear",
+   "natural",
+   "sustainable",
+   "minimalist"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Creatures of Habit",
+  "url": "https://cohjewelry.com/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 57,
+  "p25": 1500,
+  "median": 3100,
+  "p75": 4350,
+  "tags": [
+   "jewelry",
+   "luxury",
+   "sustainable"
+  ],
+  "category": "jewelry",
+  "level": 3,
+  "check": ""
+ },
+ {
+  "name": "Cringe",
+  "url": "https://mymerch.co.il/store/cringe/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 100,
+  "p25": 60,
+  "median": 80,
+  "p75": 99,
+  "tags": [
+   "prints",
+   "streetwear",
+   "unisex"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Dalit Peer",
+  "url": "https://dalitpeer.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 500,
+  "p25": 239,
+  "median": 319,
+  "p75": 389,
+  "tags": [
+   "ready-to-wear",
+   "minimalist"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Dana Ashkenazy",
+  "url": "https://www.danaashkenazi.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 499,
+  "p25": 150,
+  "median": 250,
+  "p75": 350,
+  "tags": [
+   "ready-to-wear",
+   "contemporary"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Dana Harel",
+  "url": "https://www.danahareldesign.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Danielle Gerber",
+  "url": "https://daniellegerber.com/",
+  "platform": "shopify",
+  "currency": "USD",
+  "converted": true,
+  "products": 483,
+  "p25": 4810,
+  "median": 8880,
+  "p75": 17390,
+  "tags": [
+   "jewelry",
+   "luxury"
+  ],
+  "category": "jewelry",
+  "level": 3,
+  "check": "priced in USD, converted"
+ },
+ {
+  "name": "Danit Peleg",
+  "url": "https://www.danitpeleg.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "David Elharar Studio",
+  "url": "https://davidelhararstudio.com/",
+  "platform": "shopify",
+  "currency": "USD",
+  "converted": true,
+  "products": 17,
+  "p25": 155,
+  "median": 833,
+  "p75": 5365,
+  "tags": [
+   "unisex",
+   "prints",
+   "streetwear",
+   "handmade"
+  ],
+  "category": "clothing",
+  "level": 3,
+  "check": "priced in USD, converted"
+ },
+ {
+  "name": "David Weksler",
+  "url": "https://www.davidweksler.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "De Base",
+  "url": "https://de-base.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 500,
+  "p25": 282,
+  "median": 360,
+  "p75": 442,
+  "tags": [
+   "minimalist",
+   "ready-to-wear"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "DeconEight",
+  "url": "https://deconeight.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 32,
+  "p25": 279,
+  "median": 369,
+  "p75": 449,
+  "tags": [
+   "contemporary",
+   "minimalist",
+   "ready-to-wear"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Desert Queen",
+  "url": "https://www.desertqueen.shop/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 211,
+  "p25": 400,
+  "median": 600,
+  "p75": 890,
+  "tags": [
+   "prints",
+   "ready-to-wear"
+  ],
+  "category": "clothing",
+  "level": 3,
+  "check": ""
+ },
+ {
+  "name": "Disrupted Fashion Lab",
+  "url": "https://disruptedfashionlab.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 9,
+  "p25": 299,
+  "median": 300,
+  "p75": 567,
+  "tags": [
+   "unisex",
+   "streetwear",
+   "contemporary"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "DN.H",
+  "url": "https://dnhonline.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 38,
+  "p25": 120,
+  "median": 150,
+  "p75": 188,
+  "tags": [
+   "menswear",
+   "streetwear",
+   "contemporary"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Dodo Bar Or",
+  "url": "https://dodobaror.com/",
+  "platform": "shopify",
+  "currency": "USD",
+  "converted": true,
+  "products": 500,
+  "p25": 407,
+  "median": 666,
+  "p75": 1221,
+  "tags": [
+   "ready-to-wear",
+   "luxury",
+   "prints"
+  ],
+  "category": "clothing",
+  "level": 3,
+  "check": "priced in USD, converted"
+ },
+ {
+  "name": "Dorin Frankfurt",
+  "url": "https://www.dorinfrankfurt.com/he",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Dorit Sade",
+  "url": "https://www.doritsade.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Doron Ashkenazi",
+  "url": "https://doronashkenazi.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 135,
+  "p25": 380,
+  "median": 420,
+  "p75": 750,
+  "tags": [
+   "menswear",
+   "luxury"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Dostix",
+  "url": "https://dostix.com/",
+  "platform": "shopify",
+  "currency": "USD",
+  "converted": true,
+  "products": 15,
+  "p25": 518,
+  "median": 814,
+  "p75": 999,
+  "tags": [
+   "ready-to-wear",
+   "menswear",
+   "streetwear"
+  ],
+  "category": "clothing",
+  "level": 3,
+  "check": "priced in USD, converted"
+ },
+ {
+  "name": "Doubletiz",
+  "url": "https://doubletiz.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 80,
+  "p25": 346,
+  "median": 444,
+  "p75": 490,
+  "tags": [
+   "jewelry",
+   "sustainable",
+   "artisan"
+  ],
+  "category": "jewelry",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Dropout",
+  "url": "https://www.dropoutstreetwear.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 72,
+  "p25": 180,
+  "median": 195,
+  "p75": 220,
+  "tags": [
+   "unisex",
+   "streetwear",
+   "edgy"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Dror Kontento",
+  "url": "https://drorkontento.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 326,
+  "p25": 13000,
+  "median": 13000,
+  "p75": 14000,
+  "tags": [
+   "bridal",
+   "luxury",
+   "size-inclusive"
+  ],
+  "category": "bridal",
+  "level": 3,
+  "check": "shop may list accessories, not gowns"
+ },
+ {
+  "name": "Eclat Chic",
+  "url": "https://www.eclatchic.shop/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Edit",
+  "url": "https://editstyle.co.il/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Eladan",
+  "url": "https://www.eladan.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 500,
+  "p25": 130,
+  "median": 199,
+  "p75": 299,
+  "tags": [
+   "unisex",
+   "festival",
+   "natural"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Figura",
+  "url": "https://www.figurashoes.com/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 100,
+  "p25": 529,
+  "median": 529,
+  "p75": 549,
+  "tags": [
+   "footwear",
+   "artisan",
+   "legacy"
+  ],
+  "category": "footwear",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Flaeshwear",
+  "url": "https://www.flaeshwear.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Flawless",
+  "url": "https://shop-flawless.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 35,
+  "p25": 239,
+  "median": 299,
+  "p75": 339,
+  "tags": [
+   "streetwear",
+   "unisex",
+   "prints"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Flo by Ella Braitman",
+  "url": "https://flobyella.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 303,
+  "p25": 280,
+  "median": 368,
+  "p75": 590,
+  "tags": [
+   "ready-to-wear",
+   "luxury"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Fly Rooster",
+  "url": "https://www.flyrooster.co.il/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 48,
+  "p25": 79,
+  "median": 179,
+  "p75": 289,
+  "tags": [
+   "sustainable",
+   "artisan",
+   "accessories"
+  ],
+  "category": "accessories",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Foof",
+  "url": "https://foof.co.il/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 92,
+  "p25": 35,
+  "median": 95,
+  "p75": 300,
+  "tags": [
+   "swimwear",
+   "artisan"
+  ],
+  "category": "swimwear",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Forest",
+  "url": "https://www.forest-tlv.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Foshu Studios",
+  "url": "https://foshustudios.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 71,
+  "p25": 250,
+  "median": 420,
+  "p75": 490,
+  "tags": [
+   "minimalist",
+   "swimwear",
+   "unisex"
+  ],
+  "category": "swimwear",
+  "level": 3,
+  "check": ""
+ },
+ {
+  "name": "Frau Blau",
+  "url": "https://www.fraublau.haus/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Frett",
+  "url": "https://frett.life/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 154,
+  "p25": 398,
+  "median": 590,
+  "p75": 790,
+  "tags": [
+   "knitwear",
+   "sustainable",
+   "minimalist",
+   "natural"
+  ],
+  "category": "clothing",
+  "level": 3,
+  "check": ""
+ },
+ {
+  "name": "Gala",
+  "url": "https://www.galalabel.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Gali Karten",
+  "url": "https://galikarten.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Galia Lahav",
+  "url": "https://www.galialahav.com/",
+  "platform": "shopify",
+  "currency": "USD",
+  "converted": true,
+  "products": 249,
+  "p25": 5550,
+  "median": 10730,
+  "p75": 27195,
+  "tags": [
+   "bridal",
+   "luxury",
+   "legacy"
+  ],
+  "category": "bridal",
+  "level": 3,
+  "check": "priced in USD, converted; shop may list accessories, not gowns"
+ },
+ {
+  "name": "Galili.Gold",
+  "url": "https://galili.gold/",
+  "platform": "shopify",
+  "currency": "EUR",
+  "converted": true,
+  "products": 14,
+  "p25": 320,
+  "median": 320,
+  "p75": 320,
+  "tags": [
+   "unisex",
+   "prints",
+   "conceptual",
+   "sustainable"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": "priced in EUR, converted"
+ },
+ {
+  "name": "Galler",
+  "url": "https://gallerdesign.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 216,
+  "p25": 149,
+  "median": 249,
+  "p75": 329,
+  "tags": [
+   "ready-to-wear",
+   "prints"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Gartenbanken Shoes",
+  "url": "https://gartenbankshoes.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 285,
+  "p25": 690,
+  "median": 1050,
+  "p75": 1200,
+  "tags": [
+   "footwear",
+   "artisan",
+   "minimalist"
+  ],
+  "category": "footwear",
+  "level": 3,
+  "check": ""
+ },
+ {
+  "name": "Gelfer Design",
+  "url": "https://gelferdesign.com/",
+  "platform": "shopify",
+  "currency": "USD",
+  "converted": true,
+  "products": 39,
+  "p25": 481,
+  "median": 611,
+  "p75": 736,
+  "tags": [
+   "ready-to-wear",
+   "artisan",
+   "prints"
+  ],
+  "category": "clothing",
+  "level": 3,
+  "check": "priced in USD, converted"
+ },
+ {
+  "name": "Gershon Bram",
+  "url": "https://gershon-bram.com/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 100,
+  "p25": 295,
+  "median": 480,
+  "p75": 590,
+  "tags": [
+   "ready-to-wear",
+   "legacy",
+   "luxury",
+   "artisan"
+  ],
+  "category": "clothing",
+  "level": 3,
+  "check": ""
+ },
+ {
+  "name": "Gertrud",
+  "url": "https://gertrudshop.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 249,
+  "p25": 220,
+  "median": 300,
+  "p75": 510,
+  "tags": [
+   "ready-to-wear",
+   "contemporary"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Giselle",
+  "url": "https://www.gisellet.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Gladis",
+  "url": "https://www.gladis-shop.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 28,
+  "p25": 249,
+  "median": 300,
+  "p75": 329,
+  "tags": [
+   "ready-to-wear",
+   "minimalist"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Gogou Magog",
+  "url": "https://www.gogoumagog.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Gon Surfing",
+  "url": "https://houseofgon.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 500,
+  "p25": 112,
+  "median": 182,
+  "p75": 240,
+  "tags": [
+   "surf",
+   "streetwear",
+   "unisex"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Gottex",
+  "url": "https://gottex.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 500,
+  "p25": 59,
+  "median": 99,
+  "p75": 119,
+  "tags": [
+   "swimwear",
+   "legacy",
+   "luxury"
+  ],
+  "category": "swimwear",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Haarchion",
+  "url": "https://haarchion.myshopify.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 12,
+  "p25": 95,
+  "median": 159,
+  "p75": 169,
+  "tags": [
+   "unisex",
+   "prints",
+   "streetwear"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Hadas Mor",
+  "url": "https://hadasmor.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 66,
+  "p25": 200,
+  "median": 285,
+  "p75": 315,
+  "tags": [
+   "lingerie",
+   "swimwear",
+   "natural"
+  ],
+  "category": "swimwear",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Hagar Satat",
+  "url": "https://www.hagar-satat.com/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 96,
+  "p25": 189,
+  "median": 219,
+  "p75": 267,
+  "tags": [
+   "jewelry",
+   "artisan",
+   "luxury"
+  ],
+  "category": "jewelry",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Hagara",
+  "url": "https://www.hagara.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 500,
+  "p25": 80,
+  "median": 120,
+  "p75": 149,
+  "tags": [
+   "ready-to-wear",
+   "size-inclusive",
+   "contemporary",
+   "minimalist"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Hagit Tassa",
+  "url": "https://hagitassa.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 500,
+  "p25": 269,
+  "median": 369,
+  "p75": 529,
+  "tags": [
+   "minimalist",
+   "denim"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Hagomels",
+  "url": "https://hagomels.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 54,
+  "p25": 220,
+  "median": 250,
+  "p75": 400,
+  "tags": [
+   "unisex",
+   "streetwear",
+   "prints"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Haia",
+  "url": "https://www.haia.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 77,
+  "p25": 340,
+  "median": 540,
+  "p75": 940,
+  "tags": [
+   "ready-to-wear",
+   "artisan"
+  ],
+  "category": "clothing",
+  "level": 3,
+  "check": ""
+ },
+ {
+  "name": "Halel",
+  "url": "https://www.halel.online/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 169,
+  "p25": 289,
+  "median": 329,
+  "p75": 429,
+  "tags": [
+   "jewelry",
+   "minimalist",
+   "artisan"
+  ],
+  "category": "jewelry",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Hane",
+  "url": "https://www.haneofficial.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Haptic Path",
+  "url": "https://shop.hapticpath.com/",
+  "platform": "shopify",
+  "currency": "USD",
+  "converted": true,
+  "products": 44,
+  "p25": 326,
+  "median": 400,
+  "p75": 463,
+  "tags": [
+   "sustainable",
+   "natural",
+   "unisex",
+   "minimalist"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": "priced in USD, converted"
+ },
+ {
+  "name": "Heartbit Culture",
+  "url": "https://heartbit-culture.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 34,
+  "p25": 160,
+  "median": 200,
+  "p75": 280,
+  "tags": [
+   "ready-to-wear",
+   "streetwear",
+   "festival"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Heroic",
+  "url": "https://heroic-online.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 146,
+  "p25": 350,
+  "median": 420,
+  "p75": 520,
+  "tags": [
+   "ready-to-wear",
+   "menswear",
+   "contemporary"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Hila Feinberg",
+  "url": "https://hilafeinberg.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 12,
+  "p25": 200,
+  "median": 200,
+  "p75": 200,
+  "tags": [
+   "ready-to-wear",
+   "minimalist",
+   "natural"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Hila Shemesh",
+  "url": "https://hilashemesh.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 104,
+  "p25": 235,
+  "median": 360,
+  "p75": 432,
+  "tags": [
+   "ready-to-wear",
+   "sustainable",
+   "minimalist"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Hilal Studio",
+  "url": "https://www.hilal-studio.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 32,
+  "p25": 600,
+  "median": 900,
+  "p75": 1600,
+  "tags": [
+   "sustainable",
+   "artisan",
+   "ready-to-wear"
+  ],
+  "category": "clothing",
+  "level": 3,
+  "check": ""
+ },
+ {
+  "name": "Historic",
+  "url": "https://www.historiclub.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "HKN",
+  "url": "https://www.hknstudio.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Hoko",
+  "url": "https://www.hoko-studio.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Holyland Civilians",
+  "url": "https://holylandcivilians.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 78,
+  "p25": 180,
+  "median": 220,
+  "p75": 290,
+  "tags": [
+   "unisex",
+   "streetwear",
+   "edgy"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Honey",
+  "url": "https://honey-il.co.il/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "HOP",
+  "url": "https://h-o-p.co.il/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 100,
+  "p25": 239,
+  "median": 289,
+  "p75": 329,
+  "tags": [
+   "ready-to-wear",
+   "minimalist"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Hosh Studio",
+  "url": "https://hosh-studio.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 31,
+  "p25": 185,
+  "median": 260,
+  "p75": 299,
+  "tags": [
+   "minimalist"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Hot Seasons",
+  "url": "https://hotseasons.co/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 56,
+  "p25": 289,
+  "median": 329,
+  "p75": 389,
+  "tags": [
+   "ready-to-wear",
+   "streetwear"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Hot Tuna",
+  "url": "https://www.hotuna.co.il/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "HOTCROWN",
+  "url": "https://hotcrown.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 476,
+  "p25": 1330,
+  "median": 2350,
+  "p75": 4830,
+  "tags": [
+   "jewelry",
+   "contemporary",
+   "luxury"
+  ],
+  "category": "jewelry",
+  "level": 3,
+  "check": ""
+ },
+ {
+  "name": "House of Jaffa",
+  "url": "https://www.houseofjaffa.shop/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "House of Shine",
+  "url": "https://www.houseofshine.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 438,
+  "p25": 199,
+  "median": 240,
+  "p75": 310,
+  "tags": [
+   "ready-to-wear",
+   "contemporary"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Hush Studio",
+  "url": "https://www.hushstudioo.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "IDA Studio",
+  "url": "https://idastudio.online/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "IDEE",
+  "url": "https://idee.co.il/en",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 89,
+  "p25": 169,
+  "median": 199,
+  "p75": 299,
+  "tags": [
+   "ready-to-wear",
+   "minimalist",
+   "natural"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "IDIOM",
+  "url": "https://byidiom.com/",
+  "platform": "shopify",
+  "currency": "USD",
+  "converted": true,
+  "products": 54,
+  "p25": 2664,
+  "median": 3818,
+  "p75": 13283,
+  "tags": [
+   "ready-to-wear",
+   "bridal",
+   "luxury",
+   "minimalist"
+  ],
+  "category": "clothing",
+  "level": 3,
+  "check": "priced in USD, converted"
+ },
+ {
+  "name": "Idol Studios",
+  "url": "https://www.idolstudios.co/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 148,
+  "p25": 348,
+  "median": 448,
+  "p75": 498,
+  "tags": [
+   "unisex",
+   "streetwear",
+   "luxury"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Inbal Dror",
+  "url": "https://www.inbaldror.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Inhale Exhale",
+  "url": "https://www.inhaleexhale.co.il/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Itay Brands",
+  "url": "https://itaybrands.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 500,
+  "p25": 108,
+  "median": 160,
+  "p75": 200,
+  "tags": [
+   "minimalist",
+   "unisex",
+   "menswear"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Jessa Grey",
+  "url": "https://jessagrey.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 164,
+  "p25": 199,
+  "median": 240,
+  "p75": 320,
+  "tags": [
+   "minimalist",
+   "size-inclusive"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Jetski Fashion",
+  "url": "https://jetskifashion.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 44,
+  "p25": 260,
+  "median": 300,
+  "p75": 400,
+  "tags": [
+   "unisex",
+   "streetwear",
+   "edgy"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Jilardo",
+  "url": "https://www.jilardo.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 124,
+  "p25": 127,
+  "median": 169,
+  "p75": 269,
+  "tags": [
+   "ready-to-wear",
+   "contemporary",
+   "minimalist"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Jin-G",
+  "url": "https://jin-g.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 500,
+  "p25": 270,
+  "median": 350,
+  "p75": 520,
+  "tags": [
+   "streetwear"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Jollori",
+  "url": "https://www.jollori.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "JOR-D",
+  "url": "https://jor-d.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Jul Fashion",
+  "url": "https://julfashion.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 368,
+  "p25": 149,
+  "median": 150,
+  "p75": 200,
+  "tags": [
+   "ready-to-wear",
+   "size-inclusive",
+   "contemporary"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Justine Hats",
+  "url": "https://justinehats.com/",
+  "platform": "woocommerce",
+  "currency": "USD",
+  "converted": true,
+  "products": 99,
+  "p25": 366,
+  "median": 444,
+  "p75": 518,
+  "tags": [
+   "accessories",
+   "artisan"
+  ],
+  "category": "accessories",
+  "level": 2,
+  "check": "priced in USD, converted"
+ },
+ {
+  "name": "Justwo Jewelry",
+  "url": "https://justwo-jewelry.co.il/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 35,
+  "p25": 370,
+  "median": 2200,
+  "p75": 4000,
+  "tags": [
+   "jewelry",
+   "artisan"
+  ],
+  "category": "jewelry",
+  "level": 3,
+  "check": ""
+ },
+ {
+  "name": "JUV Activewear",
+  "url": "https://www.juv-activewear.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 249,
+  "p25": 45,
+  "median": 60,
+  "p75": 120,
+  "tags": [
+   "activewear",
+   "contemporary"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Kahiko",
+  "url": "https://kahikoswimwear.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 499,
+  "p25": 100,
+  "median": 195,
+  "p75": 200,
+  "tags": [
+   "swimwear",
+   "sustainable",
+   "natural"
+  ],
+  "category": "swimwear",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Kaisra Design",
+  "url": "https://www.kaisradesign.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Karen Mizrahi",
+  "url": "https://karenmizrahi.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 160,
+  "p25": 150,
+  "median": 250,
+  "p75": 350,
+  "tags": [
+   "ready-to-wear",
+   "contemporary"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Karen Shavit",
+  "url": "https://karen-shavit.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 276,
+  "p25": 299,
+  "median": 390,
+  "p75": 490,
+  "tags": [
+   "prints",
+   "size-inclusive"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Kedem Sasson",
+  "url": "https://www.kedem-sasson.com",
+  "platform": "shopify",
+  "currency": "USD",
+  "converted": true,
+  "products": 263,
+  "p25": 851,
+  "median": 1006,
+  "p75": 1402,
+  "tags": [
+   "ready-to-wear",
+   "artisan",
+   "luxury"
+  ],
+  "category": "clothing",
+  "level": 3,
+  "check": "priced in USD, converted"
+ },
+ {
+  "name": "Keren Mualem",
+  "url": "https://www.kerenmualem.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Keren Wolf",
+  "url": "https://kerenwolf.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 494,
+  "p25": 490,
+  "median": 637,
+  "p75": 790,
+  "tags": [
+   "jewelry",
+   "bridal",
+   "luxury"
+  ],
+  "category": "jewelry",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Kianne Frankfurt",
+  "url": "https://kiannefrankfurt.com/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 67,
+  "p25": 380,
+  "median": 540,
+  "p75": 680,
+  "tags": [
+   "ready-to-wear",
+   "bridal",
+   "luxury"
+  ],
+  "category": "clothing",
+  "level": 3,
+  "check": ""
+ },
+ {
+  "name": "Kid A",
+  "url": "https://thisiskida.com/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 59,
+  "p25": 229,
+  "median": 239,
+  "p75": 279,
+  "tags": [
+   "size-inclusive",
+   "unisex",
+   "prints",
+   "streetwear"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Kim Perets",
+  "url": "https://kimperets.com/",
+  "platform": "woocommerce",
+  "currency": "USD",
+  "converted": true,
+  "products": 41,
+  "p25": 1018,
+  "median": 1554,
+  "p75": 3145,
+  "tags": [
+   "conceptual",
+   "edgy",
+   "bridal",
+   "unisex"
+  ],
+  "category": "clothing",
+  "level": 3,
+  "check": "priced in USD, converted"
+ },
+ {
+  "name": "Kimka Studio",
+  "url": "https://kimka-studio.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 32,
+  "p25": 290,
+  "median": 390,
+  "p75": 690,
+  "tags": [
+   "ready-to-wear",
+   "artisan",
+   "natural",
+   "sustainable"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Kimos",
+  "url": "https://www.kimos.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 41,
+  "p25": 90,
+  "median": 150,
+  "p75": 200,
+  "tags": [
+   "artisan",
+   "minimalist",
+   "natural",
+   "unisex"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Kisim",
+  "url": "https://kisim.com/he/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 100,
+  "p25": 192,
+  "median": 340,
+  "p75": 493,
+  "tags": [
+   "accessories",
+   "artisan"
+  ],
+  "category": "accessories",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Kobi Levi",
+  "url": "https://kobilevidesign.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Konki Collection",
+  "url": "https://konkicollection.com/en",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 62,
+  "p25": 180,
+  "median": 280,
+  "p75": 340,
+  "tags": [
+   "unisex",
+   "streetwear",
+   "prints"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "KPRA",
+  "url": "https://kpraonu.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 38,
+  "p25": 135,
+  "median": 155,
+  "p75": 160,
+  "tags": [
+   "unisex",
+   "streetwear",
+   "prints"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Kvish 1",
+  "url": "https://kvish1.co.il/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 71,
+  "p25": 45,
+  "median": 80,
+  "p75": 89,
+  "tags": [
+   "unisex",
+   "streetwear",
+   "prints"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Lahover",
+  "url": "https://lahoverjewelry.com/",
+  "platform": "shopify",
+  "currency": "USD",
+  "converted": true,
+  "products": 71,
+  "p25": 16650,
+  "median": 24420,
+  "p75": 36260,
+  "tags": [
+   "jewelry",
+   "artisan",
+   "natural"
+  ],
+  "category": "jewelry",
+  "level": 3,
+  "check": "priced in USD, converted"
+ },
+ {
+  "name": "Lara Rosnovsky",
+  "url": "https://www.lararosnovsky.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 284,
+  "p25": 665,
+  "median": 950,
+  "p75": 1323,
+  "tags": [
+   "ready-to-wear",
+   "prints"
+  ],
+  "category": "clothing",
+  "level": 3,
+  "check": ""
+ },
+ {
+  "name": "Larus",
+  "url": "https://larus.co.il/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 100,
+  "p25": 560,
+  "median": 595,
+  "p75": 670,
+  "tags": [
+   "accessories",
+   "footwear"
+  ],
+  "category": "footwear",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Latto Velara",
+  "url": "https://lattovelara.com/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 84,
+  "p25": 132,
+  "median": 154,
+  "p75": 248,
+  "tags": [
+   "ready-to-wear",
+   "prints",
+   "edgy"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "LAX",
+  "url": "https://laxshoes.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 83,
+  "p25": 255,
+  "median": 355,
+  "p75": 519,
+  "tags": [
+   "footwear",
+   "minimalist",
+   "contemporary"
+  ],
+  "category": "footwear",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Layou",
+  "url": "https://layoudesign.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 83,
+  "p25": 89,
+  "median": 129,
+  "p75": 169,
+  "tags": [
+   "minimalist",
+   "size-inclusive"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Lazyeyeppl",
+  "url": "https://lazyeyeppl.com",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 14,
+  "p25": 245,
+  "median": 270,
+  "p75": 360,
+  "tags": [
+   "unisex",
+   "streetwear",
+   "prints"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "LEVnARO",
+  "url": "https://www.levnaro.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 275,
+  "p25": 4800,
+  "median": 7900,
+  "p75": 11500,
+  "tags": [
+   "jewelry",
+   "luxury",
+   "contemporary"
+  ],
+  "category": "jewelry",
+  "level": 3,
+  "check": ""
+ },
+ {
+  "name": "Liah by Liat Raziel",
+  "url": "https://www.liah-online.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 317,
+  "p25": 199,
+  "median": 217,
+  "p75": 249,
+  "tags": [
+   "ready-to-wear",
+   "contemporary"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Lihi Hod",
+  "url": "https://www.lihihod.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Lika Swimwear",
+  "url": "https://likaswimwear.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 228,
+  "p25": 160,
+  "median": 230,
+  "p75": 250,
+  "tags": [
+   "swimwear",
+   "contemporary"
+  ],
+  "category": "swimwear",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Lily and Lola Studio",
+  "url": "https://lilyandlolastudio.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 57,
+  "p25": 222,
+  "median": 230,
+  "p75": 320,
+  "tags": [
+   "ready-to-wear",
+   "artisan",
+   "prints"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Linné",
+  "url": "https://linnetlv.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 8,
+  "p25": 215,
+  "median": 215,
+  "p75": 215,
+  "tags": [
+   "streetwear",
+   "unisex"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Lokita",
+  "url": "https://lokita.co.il/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 100,
+  "p25": 294,
+  "median": 318,
+  "p75": 343,
+  "tags": [
+   "ready-to-wear",
+   "minimalist",
+   "prints"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Luka Chari",
+  "url": "https://lukachari.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 6,
+  "p25": 80,
+  "median": 150,
+  "p75": 150,
+  "tags": [
+   "menswear",
+   "minimalist"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Luminary",
+  "url": "https://luminary.co.il/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Maayan Paz",
+  "url": "https://maayanpaz.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 280,
+  "p25": 158,
+  "median": 207,
+  "p75": 400,
+  "tags": [
+   "ready-to-wear",
+   "minimalist"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Macchia Studio",
+  "url": "https://macchiastudio.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 312,
+  "p25": 139,
+  "median": 219,
+  "p75": 380,
+  "tags": [
+   "ready-to-wear",
+   "activewear",
+   "sustainable",
+   "natural"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Madam Bubu",
+  "url": "https://madambubu.com/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 100,
+  "p25": 289,
+  "median": 329,
+  "p75": 419,
+  "tags": [
+   "ready-to-wear",
+   "size-inclusive",
+   "minimalist"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Made by Har",
+  "url": "https://madebyhar.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 414,
+  "p25": 870,
+  "median": 1090,
+  "p75": 1290,
+  "tags": [
+   "ready-to-wear",
+   "sustainable",
+   "artisan"
+  ],
+  "category": "clothing",
+  "level": 3,
+  "check": ""
+ },
+ {
+  "name": "Magia",
+  "url": "https://www.magiaworldwide.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Maim Jewelry",
+  "url": "https://www.maimjewelry.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Mantra",
+  "url": "https://our-mantra.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 208,
+  "p25": 199,
+  "median": 249,
+  "p75": 260,
+  "tags": [
+   "menswear",
+   "streetwear",
+   "minimalist"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Maskit",
+  "url": "https://maskit.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 500,
+  "p25": 300,
+  "median": 400,
+  "p75": 599,
+  "tags": [
+   "ready-to-wear",
+   "bridal",
+   "legacy",
+   "luxury"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Maya Bash",
+  "url": "https://www.mayabash.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Maya Negri",
+  "url": "https://mayanegri.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 500,
+  "p25": 399,
+  "median": 522,
+  "p75": 756,
+  "tags": [
+   "ready-to-wear",
+   "minimalist"
+  ],
+  "category": "clothing",
+  "level": 3,
+  "check": ""
+ },
+ {
+  "name": "Maya Zukerman",
+  "url": "https://mykiboutique.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 500,
+  "p25": 632,
+  "median": 1035,
+  "p75": 1460,
+  "tags": [
+   "minimalist",
+   "sustainable"
+  ],
+  "category": "clothing",
+  "level": 3,
+  "check": ""
+ },
+ {
+  "name": "MC by Meital Carmeli",
+  "url": "https://meitalcarmeli.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 69,
+  "p25": 1290,
+  "median": 1780,
+  "p75": 3400,
+  "tags": [
+   "luxury",
+   "contemporary",
+   "ready-to-wear"
+  ],
+  "category": "clothing",
+  "level": 3,
+  "check": ""
+ },
+ {
+  "name": "Medina Studio",
+  "url": "https://www.medina-studio.com/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 7,
+  "p25": 750,
+  "median": 1200,
+  "p75": 1500,
+  "tags": [
+   "bridal",
+   "luxury",
+   "legacy"
+  ],
+  "category": "bridal",
+  "level": 2,
+  "check": "shop may list accessories, not gowns"
+ },
+ {
+  "name": "MeLe",
+  "url": "https://melewear.com/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 100,
+  "p25": 149,
+  "median": 189,
+  "p75": 298,
+  "tags": [
+   "natural",
+   "minimalist",
+   "ready-to-wear"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Mia Luz",
+  "url": "https://mia-luz.com/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 100,
+  "p25": 390,
+  "median": 690,
+  "p75": 750,
+  "tags": [
+   "ready-to-wear",
+   "prints"
+  ],
+  "category": "clothing",
+  "level": 3,
+  "check": ""
+ },
+ {
+  "name": "Michal Negrin",
+  "url": "https://michalnegrin.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 500,
+  "p25": 399,
+  "median": 588,
+  "p75": 944,
+  "tags": [
+   "jewelry",
+   "legacy",
+   "prints"
+  ],
+  "category": "jewelry",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Milly Vishnia",
+  "url": "https://www.millyvishnia.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Mircka",
+  "url": "https://www.mircka.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Mirza",
+  "url": "https://mirza-il.co.il/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 97,
+  "p25": 400,
+  "median": 450,
+  "p75": 600,
+  "tags": [
+   "menswear",
+   "luxury"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Mishi",
+  "url": "https://mishi.style/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 427,
+  "p25": 260,
+  "median": 305,
+  "p75": 399,
+  "tags": [
+   "minimalist"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Mishimono",
+  "url": "https://mishimono.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Miss Nori",
+  "url": "https://missnori.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 495,
+  "p25": 89,
+  "median": 129,
+  "p75": 159,
+  "tags": [
+   "ready-to-wear",
+   "contemporary"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Mlch",
+  "url": "https://mlch.store/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Moma",
+  "url": "https://www.momafashion.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 499,
+  "p25": 120,
+  "median": 179,
+  "p75": 229,
+  "tags": [
+   "ready-to-wear",
+   "minimalist",
+   "contemporary"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "MomoSara",
+  "url": "https://momosara.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 192,
+  "p25": 234,
+  "median": 327,
+  "p75": 395,
+  "tags": [
+   "jewelry",
+   "artisan"
+  ],
+  "category": "jewelry",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Montevideo.6",
+  "url": "https://montevideo6.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 22,
+  "p25": 340,
+  "median": 365,
+  "p75": 470,
+  "tags": [
+   "menswear",
+   "contemporary",
+   "prints",
+   "casual"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Mors",
+  "url": "https://morsdesigners.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Mother of All",
+  "url": "https://www.mother-ofall.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 499,
+  "p25": 295,
+  "median": 495,
+  "p75": 820,
+  "tags": [
+   "ready-to-wear",
+   "luxury",
+   "contemporary"
+  ],
+  "category": "clothing",
+  "level": 3,
+  "check": ""
+ },
+ {
+  "name": "Mudcan",
+  "url": "https://mudcan.co/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 26,
+  "p25": 160,
+  "median": 220,
+  "p75": 290,
+  "tags": [
+   "streetwear",
+   "menswear"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Mundo",
+  "url": "https://mundobeachwear.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 37,
+  "p25": 155,
+  "median": 155,
+  "p75": 165,
+  "tags": [
+   "swimwear",
+   "prints",
+   "unisex"
+  ],
+  "category": "swimwear",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Muslin Brothers",
+  "url": "https://www.muslinbrothers.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Mystified Labor",
+  "url": "https://mystifiedlabor.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 10,
+  "p25": 180,
+  "median": 230,
+  "p75": 400,
+  "tags": [
+   "unisex",
+   "streetwear",
+   "conceptual"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Naama Bezalel",
+  "url": "https://naamabezalel.com/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 100,
+  "p25": 199,
+  "median": 219,
+  "p75": 299,
+  "tags": [
+   "ready-to-wear",
+   "prints",
+   "legacy"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Nani Lee",
+  "url": "https://www.nanilee.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Nataly Shevilly",
+  "url": "https://natalyshevilly.co.il/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 100,
+  "p25": 439,
+  "median": 489,
+  "p75": 549,
+  "tags": [
+   "ready-to-wear",
+   "contemporary"
+  ],
+  "category": "clothing",
+  "level": 3,
+  "check": ""
+ },
+ {
+  "name": "Nefartiti",
+  "url": "https://www.nefartiti.co.il/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 93,
+  "p25": 204,
+  "median": 272,
+  "p75": 408,
+  "tags": [
+   "size-inclusive",
+   "contemporary"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Neko",
+  "url": "https://neko-brand.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 38,
+  "p25": 169,
+  "median": 220,
+  "p75": 220,
+  "tags": [
+   "menswear",
+   "natural",
+   "made-in-israel",
+   "minimalist"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Nesh",
+  "url": "https://neshclub.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 8,
+  "p25": 189,
+  "median": 189,
+  "p75": 189,
+  "tags": [
+   "activewear",
+   "streetwear"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Neta Efrati",
+  "url": "https://netaefrati.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 380,
+  "p25": 168,
+  "median": 390,
+  "p75": 780,
+  "tags": [
+   "ready-to-wear",
+   "bridal",
+   "luxury"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "NewG Lingerie",
+  "url": "https://newglingerie.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 22,
+  "p25": 129,
+  "median": 249,
+  "p75": 289,
+  "tags": [
+   "lingerie",
+   "activewear",
+   "size-inclusive"
+  ],
+  "category": "lingerie",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Nina by Mili",
+  "url": "https://www.ninabymili.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 202,
+  "p25": 99,
+  "median": 150,
+  "p75": 199,
+  "tags": [
+   "ready-to-wear",
+   "minimalist",
+   "natural"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Nine to Five TLV",
+  "url": "https://ninetofivetlv.com/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 100,
+  "p25": 269,
+  "median": 369,
+  "p75": 369,
+  "tags": [
+   "accessories",
+   "minimalist"
+  ],
+  "category": "accessories",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Nivi Scrunchies",
+  "url": "https://niviscrunchies.co.il/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 55,
+  "p25": 45,
+  "median": 45,
+  "p75": 45,
+  "tags": [
+   "accessories",
+   "artisan"
+  ],
+  "category": "accessories",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Noah's",
+  "url": "https://www.noahs.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 111,
+  "p25": 349,
+  "median": 429,
+  "p75": 499,
+  "tags": [
+   "streetwear",
+   "prints",
+   "unisex"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Noon",
+  "url": "https://noonstudio.online/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 179,
+  "p25": 249,
+  "median": 360,
+  "p75": 699,
+  "tags": [
+   "footwear",
+   "ready-to-wear",
+   "minimalist"
+  ],
+  "category": "footwear",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Noritamy",
+  "url": "https://www.noritamy.com/",
+  "platform": "shopify",
+  "currency": "USD",
+  "converted": true,
+  "products": 287,
+  "p25": 888,
+  "median": 1221,
+  "p75": 1776,
+  "tags": [
+   "jewelry",
+   "artisan"
+  ],
+  "category": "jewelry",
+  "level": 2,
+  "check": "priced in USD, converted"
+ },
+ {
+  "name": "Northern Star",
+  "url": "https://northern-star.co.il/he",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 355,
+  "p25": 250,
+  "median": 350,
+  "p75": 450,
+  "tags": [
+   "ready-to-wear",
+   "size-inclusive",
+   "prints"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Not For Sale",
+  "url": "https://notforsaletlv.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 312,
+  "p25": 200,
+  "median": 300,
+  "p75": 500,
+  "tags": [
+   "streetwear",
+   "edgy"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Noyka",
+  "url": "https://www.noyka.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 337,
+  "p25": 87,
+  "median": 100,
+  "p75": 150,
+  "tags": [
+   "swimwear",
+   "prints",
+   "size-inclusive"
+  ],
+  "category": "swimwear",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Oceanholic",
+  "url": "https://oceanholic-surf.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 104,
+  "p25": 200,
+  "median": 225,
+  "p75": 300,
+  "tags": [
+   "swimwear",
+   "surf",
+   "prints"
+  ],
+  "category": "swimwear",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Odd Pearls",
+  "url": "https://oddpearls.com/",
+  "platform": "shopify",
+  "currency": "USD",
+  "converted": true,
+  "products": 69,
+  "p25": 740,
+  "median": 995,
+  "p75": 1184,
+  "tags": [
+   "jewelry",
+   "artisan",
+   "unisex"
+  ],
+  "category": "jewelry",
+  "level": 2,
+  "check": "priced in USD, converted"
+ },
+ {
+  "name": "Ofer Dabush",
+  "url": "https://oferdabush.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 41,
+  "p25": 149,
+  "median": 200,
+  "p75": 249,
+  "tags": [
+   "unisex",
+   "accessories",
+   "conceptual"
+  ],
+  "category": "accessories",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Ofir Ivgi",
+  "url": "https://ofirivgi.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 240,
+  "p25": 250,
+  "median": 400,
+  "p75": 550,
+  "tags": [
+   "ready-to-wear",
+   "menswear",
+   "prints",
+   "artisan"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Ofnat Bracha",
+  "url": "https://www.ofnatbracha.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "OM-ME",
+  "url": "https://www.ommetlv.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Omer Ash",
+  "url": "https://omerash.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 112,
+  "p25": 200,
+  "median": 250,
+  "p75": 350,
+  "tags": [
+   "unisex",
+   "streetwear",
+   "artisan"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Omi",
+  "url": "https://omi-brand.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 19,
+  "p25": 130,
+  "median": 190,
+  "p75": 190,
+  "tags": [
+   "unisex",
+   "streetwear"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "On'nanoko",
+  "url": "https://www.onnanoko.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 364,
+  "p25": 200,
+  "median": 288,
+  "p75": 370,
+  "tags": [
+   "ready-to-wear",
+   "menswear",
+   "natural",
+   "minimalist"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Or Paz",
+  "url": "https://orpazstudio.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 37,
+  "p25": 590,
+  "median": 590,
+  "p75": 890,
+  "tags": [
+   "contemporary",
+   "ready-to-wear"
+  ],
+  "category": "clothing",
+  "level": 3,
+  "check": ""
+ },
+ {
+  "name": "Ori Tamir",
+  "url": "https://www.oritamir.com/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 58,
+  "p25": 430,
+  "median": 560,
+  "p75": 1200,
+  "tags": [
+   "jewelry",
+   "artisan"
+  ],
+  "category": "jewelry",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Orli Golan",
+  "url": "https://orligolan.online/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 100,
+  "p25": 129,
+  "median": 155,
+  "p75": 249,
+  "tags": [
+   "contemporary",
+   "ready-to-wear"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Orly Yaron",
+  "url": "https://www.instagram.com/orlyyaron/",
+  "platform": "instagram"
+ },
+ {
+  "name": "Osef Prati",
+  "url": "https://ronitnisan.co.il/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 5,
+  "p25": 200,
+  "median": 200,
+  "p75": 250,
+  "tags": [
+   "lingerie",
+   "size-inclusive",
+   "activewear",
+   "contemporary"
+  ],
+  "category": "lingerie",
+  "level": 2,
+  "check": "few products"
+ },
+ {
+  "name": "OT Couture",
+  "url": "https://ot-couture.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 10,
+  "p25": 220,
+  "median": 300,
+  "p75": 400,
+  "tags": [
+   "ready-to-wear",
+   "prints",
+   "conceptual"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Otot",
+  "url": "https://otot.shop/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 25,
+  "p25": 200,
+  "median": 350,
+  "p75": 400,
+  "tags": [
+   "conceptual",
+   "edgy",
+   "ready-to-wear"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "OVERSEAZ",
+  "url": "https://overseaz.store/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 9,
+  "p25": 129,
+  "median": 149,
+  "p75": 249,
+  "tags": [
+   "menswear",
+   "streetwear",
+   "edgy"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "OZ Capsule",
+  "url": "https://ozcapsule.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 70,
+  "p25": 69,
+  "median": 149,
+  "p75": 269,
+  "tags": [
+   "ready-to-wear",
+   "minimalist"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Palette Swimwear",
+  "url": "https://paletteswimwear.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 108,
+  "p25": 125,
+  "median": 249,
+  "p75": 405,
+  "tags": [
+   "swimwear",
+   "prints",
+   "contemporary"
+  ],
+  "category": "swimwear",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Palms and Tigers",
+  "url": "https://palmsandtigers.info/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 146,
+  "p25": 260,
+  "median": 370,
+  "p75": 420,
+  "tags": [
+   "ready-to-wear",
+   "prints",
+   "artisan"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Panta Rei",
+  "url": "https://www.panta-rei.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Partizano",
+  "url": "https://www.partizano.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 326,
+  "p25": 99,
+  "median": 149,
+  "p75": 199,
+  "tags": [
+   "menswear",
+   "streetwear"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Pasiim",
+  "url": "https://pasiim.com/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 100,
+  "p25": 159,
+  "median": 189,
+  "p75": 195,
+  "tags": [
+   "ready-to-wear",
+   "prints",
+   "natural"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Pattern Streetwear",
+  "url": "https://patternstreetwear.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 136,
+  "p25": 250,
+  "median": 290,
+  "p75": 350,
+  "tags": [
+   "menswear",
+   "streetwear",
+   "prints"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "PELEDNY",
+  "url": "https://www.peledny.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Petit Pois Studio",
+  "url": "https://petitpoistudio.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 321,
+  "p25": 300,
+  "median": 750,
+  "p75": 1400,
+  "tags": [
+   "lingerie",
+   "ready-to-wear",
+   "bridal",
+   "natural"
+  ],
+  "category": "lingerie",
+  "level": 3,
+  "check": ""
+ },
+ {
+  "name": "PinPerfect",
+  "url": "https://www.pinperfect.store/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 66,
+  "p25": 21,
+  "median": 26,
+  "p75": 26,
+  "tags": [
+   "accessories",
+   "artisan"
+  ],
+  "category": "accessories",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Pioo Pioo",
+  "url": "https://pioopioo.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 32,
+  "p25": 249,
+  "median": 792,
+  "p75": 900,
+  "tags": [
+   "ready-to-wear",
+   "prints",
+   "luxury"
+  ],
+  "category": "clothing",
+  "level": 3,
+  "check": ""
+ },
+ {
+  "name": "Plastic Jus",
+  "url": "https://plasticjus.com/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 95,
+  "p25": 199,
+  "median": 199,
+  "p75": 199,
+  "tags": [
+   "streetwear",
+   "prints",
+   "unisex"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Plazmalab",
+  "url": "https://plazmalab.com/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 100,
+  "p25": 300,
+  "median": 380,
+  "p75": 600,
+  "tags": [
+   "ready-to-wear",
+   "menswear",
+   "festival",
+   "prints"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Precious Individuals",
+  "url": "https://www.precious-individuals.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Pupik",
+  "url": "https://pupikstore.com/",
+  "platform": "shopify",
+  "currency": "USD",
+  "converted": true,
+  "products": 44,
+  "p25": 200,
+  "median": 241,
+  "p75": 241,
+  "tags": [
+   "unisex",
+   "streetwear",
+   "edgy",
+   "conceptual"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": "priced in USD, converted"
+ },
+ {
+  "name": "Rams",
+  "url": "https://www.ramstreetwear.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 15,
+  "p25": 180,
+  "median": 250,
+  "p75": 370,
+  "tags": [
+   "menswear",
+   "minimalist"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Rana",
+  "url": "https://ranasoulfashion.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 13,
+  "p25": 140,
+  "median": 195,
+  "p75": 210,
+  "tags": [
+   "minimalist",
+   "unisex",
+   "natural"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Raven",
+  "url": "https://raven.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 247,
+  "p25": 130,
+  "median": 180,
+  "p75": 320,
+  "tags": [
+   "activewear",
+   "minimalist"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Razili",
+  "url": "https://www.razili.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 497,
+  "p25": 190,
+  "median": 200,
+  "p75": 300,
+  "tags": [
+   "minimalist",
+   "artisan",
+   "legacy"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Re'em",
+  "url": "https://reem.one/",
+  "platform": "shopify",
+  "currency": "USD",
+  "converted": true,
+  "products": 5,
+  "p25": 2849,
+  "median": 4240,
+  "p75": 4662,
+  "tags": [
+   "unisex",
+   "natural",
+   "conceptual",
+   "artisan"
+  ],
+  "category": "clothing",
+  "level": 3,
+  "check": "few products; priced in USD, converted"
+ },
+ {
+  "name": "Rebeeca",
+  "url": "https://rebeeca.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 28,
+  "p25": 139,
+  "median": 289,
+  "p75": 289,
+  "tags": [
+   "lingerie",
+   "size-inclusive"
+  ],
+  "category": "lingerie",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Reggie Studio",
+  "url": "https://reggiestudio.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 313,
+  "p25": 570,
+  "median": 820,
+  "p75": 3600,
+  "tags": [
+   "artisan",
+   "jewelry",
+   "sustainable"
+  ],
+  "category": "jewelry",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Resonance",
+  "url": "https://resonance-store.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 7,
+  "p25": 159,
+  "median": 185,
+  "p75": 225,
+  "tags": [
+   "unisex",
+   "streetwear",
+   "prints"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Reut Harel",
+  "url": "https://reutharel.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 156,
+  "p25": 389,
+  "median": 429,
+  "p75": 1075,
+  "tags": [
+   "ready-to-wear",
+   "accessories",
+   "edgy",
+   "prints"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Reverb Outfitters",
+  "url": "https://reverboutfitters.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 23,
+  "p25": 90,
+  "median": 120,
+  "p75": 170,
+  "tags": [
+   "activewear",
+   "minimalist"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Ri Collection",
+  "url": "https://www.ricollection.store/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 84,
+  "p25": 265,
+  "median": 330,
+  "p75": 370,
+  "tags": [
+   "jewelry",
+   "minimalist"
+  ],
+  "category": "jewelry",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Rimon Fine Jewelry",
+  "url": "https://rimon-jewelry.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 311,
+  "p25": 2250,
+  "median": 3300,
+  "p75": 4800,
+  "tags": [
+   "jewelry",
+   "bridal",
+   "luxury"
+  ],
+  "category": "jewelry",
+  "level": 3,
+  "check": ""
+ },
+ {
+  "name": "Ripple Yoga Wear",
+  "url": "https://rippleyogawear.com/",
+  "platform": "shopify",
+  "currency": "USD",
+  "converted": true,
+  "products": 299,
+  "p25": 1036,
+  "median": 1277,
+  "p75": 1758,
+  "tags": [
+   "activewear",
+   "sustainable",
+   "minimalist"
+  ],
+  "category": "clothing",
+  "level": 3,
+  "check": "priced in USD, converted"
+ },
+ {
+  "name": "Rona Clogs",
+  "url": "https://ronaclogs.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 166,
+  "p25": 250,
+  "median": 490,
+  "p75": 520,
+  "tags": [
+   "footwear",
+   "artisan"
+  ],
+  "category": "footwear",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Ronen Chen",
+  "url": "https://ronenchen.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 500,
+  "p25": 249,
+  "median": 359,
+  "p75": 499,
+  "tags": [
+   "ready-to-wear",
+   "minimalist",
+   "legacy"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Roni Arbiv",
+  "url": "https://roniarbiv.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 65,
+  "p25": 290,
+  "median": 340,
+  "p75": 380,
+  "tags": [
+   "ready-to-wear",
+   "minimalist"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Roni Bar",
+  "url": "https://www.ronibar.com/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 100,
+  "p25": 200,
+  "median": 320,
+  "p75": 480,
+  "tags": [
+   "ready-to-wear",
+   "minimalist"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Rosery Jewelry",
+  "url": "https://roseryjewelry.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 119,
+  "p25": 180,
+  "median": 220,
+  "p75": 260,
+  "tags": [
+   "jewelry",
+   "artisan"
+  ],
+  "category": "jewelry",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Rotma",
+  "url": "https://www.rotmaas.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Ruby Star",
+  "url": "https://rubystarstudio.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 261,
+  "p25": 980,
+  "median": 2000,
+  "p75": 3650,
+  "tags": [
+   "jewelry",
+   "contemporary",
+   "luxury"
+  ],
+  "category": "jewelry",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "SAAG",
+  "url": "https://saag.co.il/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 100,
+  "p25": 219,
+  "median": 269,
+  "p75": 319,
+  "tags": [
+   "ready-to-wear",
+   "accessories",
+   "contemporary"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Sabina Musayev",
+  "url": "https://sabinamusayev.com/",
+  "platform": "shopify",
+  "currency": "USD",
+  "converted": true,
+  "products": 500,
+  "p25": 766,
+  "median": 1092,
+  "p75": 1462,
+  "tags": [
+   "ready-to-wear",
+   "luxury"
+  ],
+  "category": "clothing",
+  "level": 3,
+  "check": "priced in USD, converted"
+ },
+ {
+  "name": "Sages & Souls",
+  "url": "https://sagesandsouls.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Saisei",
+  "url": "https://wearesaisei.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 313,
+  "p25": 229,
+  "median": 289,
+  "p75": 349,
+  "tags": [
+   "activewear",
+   "lingerie",
+   "minimalist",
+   "sustainable"
+  ],
+  "category": "lingerie",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Salon Berlin",
+  "url": "https://www.instagram.com/salon.berlin.store/",
+  "platform": "instagram"
+ },
+ {
+  "name": "Say Less Studios",
+  "url": "https://sayless-studios.com/en-il",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Sayla",
+  "url": "https://sayla.co.il/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 99,
+  "p25": 189,
+  "median": 229,
+  "p75": 289,
+  "tags": [
+   "ready-to-wear",
+   "prints",
+   "artisan",
+   "contemporary"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Sdom TLV",
+  "url": "https://sdomtlv.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 45,
+  "p25": 180,
+  "median": 219,
+  "p75": 219,
+  "tags": [
+   "unisex",
+   "streetwear",
+   "prints",
+   "edgy"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Seestarz",
+  "url": "https://seestarz.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 500,
+  "p25": 240,
+  "median": 280,
+  "p75": 320,
+  "tags": [
+   "contemporary",
+   "ready-to-wear",
+   "swimwear"
+  ],
+  "category": "swimwear",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Semek Studio",
+  "url": "https://semekstudio.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 35,
+  "p25": 99,
+  "median": 199,
+  "p75": 199,
+  "tags": [
+   "unisex",
+   "conceptual",
+   "artisan"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Shahar Avnet",
+  "url": "https://shahar-avnet.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Shams",
+  "url": "https://www.shamsconcept.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 183,
+  "p25": 89,
+  "median": 149,
+  "p75": 289,
+  "tags": [
+   "artisan",
+   "accessories",
+   "handmade"
+  ],
+  "category": "accessories",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Shani Bar",
+  "url": "https://www.shanibar.com/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 99,
+  "p25": 139,
+  "median": 745,
+  "p75": 769,
+  "tags": [
+   "footwear",
+   "minimalist",
+   "artisan"
+  ],
+  "category": "footwear",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Shani Shemer",
+  "url": "https://shanishemer.com/",
+  "platform": "shopify",
+  "currency": "USD",
+  "converted": true,
+  "products": 329,
+  "p25": 666,
+  "median": 881,
+  "p75": 1177,
+  "tags": [
+   "swimwear",
+   "luxury",
+   "prints",
+   "ready-to-wear"
+  ],
+  "category": "swimwear",
+  "level": 3,
+  "check": "priced in USD, converted"
+ },
+ {
+  "name": "Shani Zimmerman",
+  "url": "https://www.instagram.com/shani_zimmerman/",
+  "platform": "instagram"
+ },
+ {
+  "name": "She-Ra Jewelry",
+  "url": "https://www.she-ra-jewelry.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 494,
+  "p25": 850,
+  "median": 1400,
+  "p75": 2600,
+  "tags": [
+   "jewelry",
+   "minimalist",
+   "artisan"
+  ],
+  "category": "jewelry",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Shekel Klan",
+  "url": "https://shekel-klan.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Sheron Designs",
+  "url": "https://www.sherondesigns.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 168,
+  "p25": 120,
+  "median": 220,
+  "p75": 250,
+  "tags": [
+   "ready-to-wear",
+   "menswear",
+   "festival",
+   "prints"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Shirly Halperin",
+  "url": "https://www.shirlyhalperin.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Shiruetto",
+  "url": "https://shiruetto.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 354,
+  "p25": 250,
+  "median": 300,
+  "p75": 365,
+  "tags": [
+   "ready-to-wear",
+   "minimalist",
+   "prints"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Shuna",
+  "url": "https://shunastudio.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 275,
+  "p25": 2500,
+  "median": 4200,
+  "p75": 6700,
+  "tags": [
+   "jewelry",
+   "bridal",
+   "artisan"
+  ],
+  "category": "jewelry",
+  "level": 3,
+  "check": ""
+ },
+ {
+  "name": "Shuzi Jewelry",
+  "url": "https://www.shuzi-jewelry.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Sister M",
+  "url": "https://www.sisterm.co.il/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Skirtly",
+  "url": "https://skirtly.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 70,
+  "p25": 199,
+  "median": 300,
+  "p75": 420,
+  "tags": [
+   "ready-to-wear",
+   "minimalist"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Slimz",
+  "url": "https://slimz.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 48,
+  "p25": 250,
+  "median": 250,
+  "p75": 250,
+  "tags": [
+   "ready-to-wear",
+   "minimalist"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Sorry Design",
+  "url": "https://sorrydesign.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 31,
+  "p25": 50,
+  "median": 220,
+  "p75": 260,
+  "tags": [
+   "unisex",
+   "streetwear",
+   "edgy"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Souvenir Studio",
+  "url": "https://this-is-souvenir-studio.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 59,
+  "p25": 340,
+  "median": 460,
+  "p75": 890,
+  "tags": [
+   "contemporary",
+   "bridal",
+   "ready-to-wear"
+  ],
+  "category": "clothing",
+  "level": 3,
+  "check": ""
+ },
+ {
+  "name": "Stella and Lori",
+  "url": "https://www.stellaandlori.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 299,
+  "p25": 250,
+  "median": 350,
+  "p75": 500,
+  "tags": [
+   "ready-to-wear",
+   "accessories",
+   "artisan",
+   "sustainable"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Studio Ivria",
+  "url": "https://www.instagram.com/studio_ivria/",
+  "platform": "instagram"
+ },
+ {
+  "name": "Studio Noa",
+  "url": "https://www.studio-noa.co.il/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 100,
+  "p25": 349,
+  "median": 469,
+  "p75": 569,
+  "tags": [
+   "ready-to-wear",
+   "artisan",
+   "minimalist"
+  ],
+  "category": "clothing",
+  "level": 3,
+  "check": ""
+ },
+ {
+  "name": "Studio Oh",
+  "url": "https://studioohdesign.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 141,
+  "p25": 240,
+  "median": 340,
+  "p75": 430,
+  "tags": [
+   "jewelry",
+   "ready-to-wear",
+   "artisan",
+   "minimalist"
+  ],
+  "category": "jewelry",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Subtle Body",
+  "url": "https://subtlebody.store/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 33,
+  "p25": 300,
+  "median": 400,
+  "p75": 600,
+  "tags": [
+   "unisex",
+   "conceptual",
+   "minimalist"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Sugar & Spice TLV",
+  "url": "https://sugarandspicetlv.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 149,
+  "p25": 140,
+  "median": 230,
+  "p75": 330,
+  "tags": [
+   "ready-to-wear",
+   "minimalist"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Sunshine",
+  "url": "https://www.sunshine-shop.co.il/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 100,
+  "p25": 69,
+  "median": 119,
+  "p75": 150,
+  "tags": [
+   "unisex",
+   "prints",
+   "casual"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Suzi Porat",
+  "url": "https://www.suziporat.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 202,
+  "p25": 239,
+  "median": 329,
+  "p75": 475,
+  "tags": [
+   "accessories",
+   "artisan",
+   "contemporary"
+  ],
+  "category": "accessories",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Swebo",
+  "url": "https://www.swebo.co.il/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Taanug",
+  "url": "https://www.taanugshop.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Take a Nap",
+  "url": "https://takeanap.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 210,
+  "p25": 89,
+  "median": 189,
+  "p75": 349,
+  "tags": [
+   "activewear",
+   "minimalist"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Tal Maslavi",
+  "url": "https://talmaslavi.com/",
+  "platform": "shopify",
+  "currency": "USD",
+  "converted": true,
+  "products": 40,
+  "p25": 500,
+  "median": 681,
+  "p75": 962,
+  "tags": [
+   "jewelry",
+   "edgy",
+   "artisan"
+  ],
+  "category": "jewelry",
+  "level": 2,
+  "check": "priced in USD, converted"
+ },
+ {
+  "name": "Tali Dadon",
+  "url": "https://www.talidadon.com/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 99,
+  "p25": 249,
+  "median": 259,
+  "p75": 349,
+  "tags": [
+   "activewear",
+   "swimwear",
+   "sustainable"
+  ],
+  "category": "swimwear",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Tamara Gartenberg",
+  "url": "https://www.tamaragartenberg.com/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 99,
+  "p25": 60,
+  "median": 229,
+  "p75": 429,
+  "tags": [
+   "jewelry",
+   "artisan",
+   "prints"
+  ],
+  "category": "jewelry",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Tami Chomsky",
+  "url": "https://www.instagram.com/tamichomski/",
+  "platform": "instagram"
+ },
+ {
+  "name": "Tamu",
+  "url": "https://tamupants.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 196,
+  "p25": 250,
+  "median": 390,
+  "p75": 500,
+  "tags": [
+   "ready-to-wear",
+   "minimalist"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Tat Ve Koku",
+  "url": "https://www.tat-ve-koku.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Tel A'vive",
+  "url": "https://tel-avive.com/",
+  "platform": "shopify",
+  "currency": "USD",
+  "converted": true,
+  "products": 48,
+  "p25": 426,
+  "median": 636,
+  "p75": 1158,
+  "tags": [
+   "streetwear",
+   "accessories",
+   "unisex"
+  ],
+  "category": "accessories",
+  "level": 3,
+  "check": "priced in USD, converted"
+ },
+ {
+  "name": "TenderHeart",
+  "url": "https://www.tenderheart.shop/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "TES",
+  "url": "https://tesbags.co.il/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 100,
+  "p25": 820,
+  "median": 1670,
+  "p75": 2020,
+  "tags": [
+   "accessories",
+   "artisan"
+  ],
+  "category": "accessories",
+  "level": 3,
+  "check": ""
+ },
+ {
+  "name": "Tetra Jewelry",
+  "url": "https://www.tetrajewelry.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "The Fluff",
+  "url": "https://the-fluff.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 250,
+  "p25": 129,
+  "median": 249,
+  "p75": 329,
+  "tags": [
+   "lingerie",
+   "minimalist"
+  ],
+  "category": "lingerie",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "The Freeder",
+  "url": "https://thefreeder.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 71,
+  "p25": 133,
+  "median": 189,
+  "p75": 240,
+  "tags": [
+   "activewear",
+   "unisex",
+   "streetwear"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "The Little Camel",
+  "url": "https://thelittlecamel.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 225,
+  "p25": 105,
+  "median": 130,
+  "p75": 200,
+  "tags": [
+   "accessories",
+   "artisan"
+  ],
+  "category": "accessories",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Tiago",
+  "url": "https://tiago.store/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 498,
+  "p25": 179,
+  "median": 239,
+  "p75": 299,
+  "tags": [
+   "ready-to-wear",
+   "contemporary",
+   "natural",
+   "casual"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Toda & Co",
+  "url": "https://todaxco.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 193,
+  "p25": 200,
+  "median": 220,
+  "p75": 250,
+  "tags": [
+   "ready-to-wear",
+   "streetwear",
+   "prints",
+   "edgy"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Tomer Landau",
+  "url": "https://tomer-landau.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 150,
+  "p25": 249,
+  "median": 299,
+  "p75": 319,
+  "tags": [
+   "menswear",
+   "artisan",
+   "minimalist",
+   "natural"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Toppatsu",
+  "url": "https://toppatsu.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 301,
+  "p25": 100,
+  "median": 100,
+  "p75": 200,
+  "tags": [
+   "streetwear",
+   "prints"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Tovale+",
+  "url": "https://tovale.fashion/",
+  "platform": "woocommerce",
+  "currency": "USD",
+  "converted": true,
+  "products": 71,
+  "p25": 4455,
+  "median": 7030,
+  "p75": 10360,
+  "tags": [
+   "ready-to-wear",
+   "luxury",
+   "artisan",
+   "legacy"
+  ],
+  "category": "clothing",
+  "level": 3,
+  "check": "priced in USD, converted"
+ },
+ {
+  "name": "TRES TLV",
+  "url": "https://trestlv.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 497,
+  "p25": 232,
+  "median": 400,
+  "p75": 540,
+  "tags": [
+   "ready-to-wear",
+   "minimalist",
+   "sustainable"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Tula",
+  "url": "https://tula-tula.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 223,
+  "p25": 150,
+  "median": 200,
+  "p75": 294,
+  "tags": [
+   "ready-to-wear",
+   "size-inclusive",
+   "contemporary"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Ugly Duckling TLV",
+  "url": "https://gal-angel.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 51,
+  "p25": 100,
+  "median": 200,
+  "p75": 290,
+  "tags": [
+   "swimwear",
+   "lingerie"
+  ],
+  "category": "swimwear",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Ulla",
+  "url": "https://ulla.co.il/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 98,
+  "p25": 60,
+  "median": 76,
+  "p75": 181,
+  "tags": [
+   "ready-to-wear",
+   "size-inclusive",
+   "sustainable"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Under the Rock",
+  "url": "https://www.undertherock.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 143,
+  "p25": 289,
+  "median": 459,
+  "p75": 549,
+  "tags": [
+   "minimalist",
+   "denim"
+  ],
+  "category": "clothing",
+  "level": 3,
+  "check": ""
+ },
+ {
+  "name": "Uniform Apparel",
+  "url": "https://shopuniformapparel.com/",
+  "platform": "shopify",
+  "currency": "USD",
+  "converted": true,
+  "products": 64,
+  "p25": 514,
+  "median": 625,
+  "p75": 958,
+  "tags": [
+   "sustainable",
+   "minimalist",
+   "natural"
+  ],
+  "category": "clothing",
+  "level": 3,
+  "check": "priced in USD, converted"
+ },
+ {
+  "name": "Ustabelle",
+  "url": "https://ustabelle.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 499,
+  "p25": 125,
+  "median": 250,
+  "p75": 450,
+  "tags": [
+   "ready-to-wear",
+   "knitwear",
+   "luxury",
+   "minimalist"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Vague Black",
+  "url": "https://vagueblack.com/",
+  "platform": "shopify",
+  "currency": "USD",
+  "converted": true,
+  "products": 220,
+  "p25": 1110,
+  "median": 1665,
+  "p75": 2294,
+  "tags": [
+   "minimalist",
+   "sustainable"
+  ],
+  "category": "clothing",
+  "level": 3,
+  "check": "priced in USD, converted"
+ },
+ {
+  "name": "Valcro",
+  "url": "https://valcro.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 14,
+  "p25": 120,
+  "median": 140,
+  "p75": 219,
+  "tags": [
+   "streetwear",
+   "menswear"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Vandalized",
+  "url": "https://www.vandalized.store/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 17,
+  "p25": 129,
+  "median": 129,
+  "p75": 129,
+  "tags": [
+   "unisex",
+   "streetwear",
+   "conceptual"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Vered Grebelsky",
+  "url": "https://www.veredgrebelsky.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 122,
+  "p25": 345,
+  "median": 480,
+  "p75": 550,
+  "tags": [
+   "ready-to-wear",
+   "size-inclusive",
+   "sustainable",
+   "artisan"
+  ],
+  "category": "clothing",
+  "level": 3,
+  "check": ""
+ },
+ {
+  "name": "VIL Unfold",
+  "url": "https://www.instagram.com/vil.unfold/",
+  "platform": "instagram"
+ },
+ {
+  "name": "Vivi Bellaish",
+  "url": "https://www.victorbellaish.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Vivo",
+  "url": "https://vivoofficial.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 33,
+  "p25": 130,
+  "median": 169,
+  "p75": 169,
+  "tags": [
+   "unisex",
+   "minimalist",
+   "streetwear"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "VOLT",
+  "url": "https://volt-il.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 62,
+  "p25": 240,
+  "median": 260,
+  "p75": 480,
+  "tags": [
+   "swimwear",
+   "size-inclusive",
+   "sustainable"
+  ],
+  "category": "swimwear",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Wear by Lilo",
+  "url": "https://www.wearbylilo.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "White Nilus",
+  "url": "https://www.white-nilus.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Wine Not",
+  "url": "https://winenotbrands.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 64,
+  "p25": 185,
+  "median": 220,
+  "p75": 269,
+  "tags": [
+   "ready-to-wear",
+   "minimalist",
+   "sustainable"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Yael Orgad",
+  "url": "https://yaelorgad.co.il/en",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 487,
+  "p25": 87,
+  "median": 135,
+  "p75": 150,
+  "tags": [
+   "ready-to-wear",
+   "size-inclusive",
+   "minimalist"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Yael Rozmarin",
+  "url": "https://yaelrozmarin.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 134,
+  "p25": 200,
+  "median": 340,
+  "p75": 390,
+  "tags": [
+   "ready-to-wear",
+   "natural",
+   "artisan"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Yam David Designs",
+  "url": "https://yamdavidesigns.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 20,
+  "p25": 212,
+  "median": 250,
+  "p75": 323,
+  "tags": [
+   "contemporary",
+   "ready-to-wear"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "YAMA",
+  "url": "https://yamajewelry.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 484,
+  "p25": 3900,
+  "median": 6490,
+  "p75": 10800,
+  "tags": [
+   "jewelry",
+   "minimalist",
+   "luxury"
+  ],
+  "category": "jewelry",
+  "level": 3,
+  "check": ""
+ },
+ {
+  "name": "Yara Design",
+  "url": "https://www.yaradesign.co.il/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Yaron Minkowski",
+  "url": "https://www.minkowski.co.il/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "YER Studio",
+  "url": "https://shirelyer.com/",
+  "platform": "shopify",
+  "products": 2
+ },
+ {
+  "name": "Yifat Finkelstein",
+  "url": "https://yifatfinkelshtein.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 21,
+  "p25": 1100,
+  "median": 1250,
+  "p75": 1530,
+  "tags": [
+   "menswear",
+   "minimalist",
+   "natural"
+  ],
+  "category": "clothing",
+  "level": 3,
+  "check": ""
+ },
+ {
+  "name": "YN 10.56.5",
+  "url": "https://yn10565.com/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 100,
+  "p25": 349,
+  "median": 449,
+  "p75": 549,
+  "tags": [
+   "streetwear",
+   "menswear"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Yodfat",
+  "url": "https://yodfat.shop/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 100,
+  "p25": 89,
+  "median": 239,
+  "p75": 329,
+  "tags": [
+   "minimalist"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Yoske",
+  "url": "https://www.wearyourheart-yoske.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "Yoster",
+  "url": "https://www.b-yoster.com/",
+  "platform": "other",
+  "products": 0
+ },
+ {
+  "name": "YYS",
+  "url": "https://yys.co.il/",
+  "platform": "woocommerce",
+  "currency": "ILS",
+  "converted": false,
+  "products": 80,
+  "p25": 189,
+  "median": 209,
+  "p75": 299,
+  "tags": [
+   "activewear",
+   "minimalist",
+   "casual"
+  ],
+  "category": "clothing",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Zikger",
+  "url": "https://zikger.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 419,
+  "p25": 285,
+  "median": 419,
+  "p75": 449,
+  "tags": [
+   "ready-to-wear",
+   "size-inclusive",
+   "prints"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ },
+ {
+  "name": "Zohara",
+  "url": "https://zoharatights.co.il/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 489,
+  "p25": 55,
+  "median": 120,
+  "p75": 225,
+  "tags": [
+   "lingerie",
+   "swimwear",
+   "accessories",
+   "contemporary"
+  ],
+  "category": "swimwear",
+  "level": 1,
+  "check": ""
+ },
+ {
+  "name": "Zucker Studio",
+  "url": "https://zuckerstudio.com/",
+  "platform": "shopify",
+  "currency": "ILS",
+  "converted": false,
+  "products": 186,
+  "p25": 290,
+  "median": 450,
+  "p75": 620,
+  "tags": [
+   "ready-to-wear",
+   "minimalist"
+  ],
+  "category": "clothing",
+  "level": 2,
+  "check": ""
+ }
+]

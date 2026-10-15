@@ -34,3 +34,6 @@ brands.tsv
 
 # Raw script output; the .md reports next to them are the readable versions
 docs/reports/*.json
+# …except the price data: the Budget levels are built from these, and the estimates were made by hand
+!docs/reports/price-scan.json
+!docs/reports/price-estimates.json
