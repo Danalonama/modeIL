@@ -113,6 +113,8 @@ function head({ title, description, canonical, image, up, extra = '' }) {
   .j-sign { margin-top: 1em; }
   .j-group { font-weight: 800; font-size: clamp(24px, 3.6vw, 34px); letter-spacing: -.02em; line-height: 1.1; margin: 72px 0 0; }
   .j-group + .j-count { margin-top: 12px; }
+  .j-area { font-weight: 700; font-size: 13px; letter-spacing: .2em; text-transform: uppercase; margin: 48px 0 0; padding-bottom: 12px; border-bottom: 1px solid rgba(26,26,24,.15); }
+  html[lang="he"] .j-area { letter-spacing: 0; }
   .j-count { font-size: 10px; letter-spacing: .25em; text-transform: uppercase; color: rgba(0,0,0,.6); margin: 64px 0 0; padding-bottom: 14px; border-bottom: 1px solid rgba(26,26,24,.15); }
   .j-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr; }
   @media (min-width: 768px) { .j-list { grid-template-columns: 1fr 1fr; column-gap: 48px; } }
@@ -235,17 +237,26 @@ function brandItem(d, nameTag = 'h2') {
     </li>`;
 }
 
-// Walk-in shops first, then studios you book ahead
-function accessGroups(brands) {
-  const groups = [
-    ['Walk-in shops', 'חנויות שאפשר פשוט להיכנס אליהן', brands.filter(d => !appointment.has(d.name))],
-    ['Studios by appointment', 'סטודיואים בתיאום מראש', brands.filter(d => appointment.has(d.name))],
-  ];
-  return groups.filter(([, , list]) => list.length).map(([en, heText, list]) => `  <h2 class="j-group"${he(heText)}>${esc(en)}</h2>
-  <p class="j-count"${he(`${list.length} מעצבים`)}>${list.length} designers</p>
-  <ul class="j-list">
-${list.map(d => brandItem(d, 'h3')).join('\n')}
-  </ul>`).join('\n');
+// Walk-in shops first (by neighbourhood when the post defines them), then studios you book ahead
+function accessGroups(brands, post) {
+  const list = (items, tag) => `  <ul class="j-list">\n${items.map(d => brandItem(d, tag)).join('\n')}\n  </ul>`;
+  const count = n => `  <p class="j-count"${he(`${n} מעצבים`)}>${n} designers</p>`;
+  const walkIn = brands.filter(d => !appointment.has(d.name));
+  const byAppt = brands.filter(d => appointment.has(d.name));
+  let html = '';
+  if (walkIn.length) {
+    html += `  <h2 class="j-group"${he('חנויות שאפשר פשוט להיכנס אליהן')}>Walk-in shops</h2>\n${count(walkIn.length)}\n`;
+    if (post.neighbourhoods) {
+      const areas = post.neighbourhoods.map(n => ({ ...n, re: new RegExp(n.streets, 'i'), items: [] }));
+      const other = { ...post.elsewhere, items: [] };
+      for (const d of walkIn) (areas.find(a => a.re.test(addresses[d.name] || '')) || other).items.push(d);
+      for (const a of [...areas, other].filter(a => a.items.length)) {
+        html += `  <h3 class="j-area"${he(`${a.he} · ${a.items.length}`)}>${esc(a.en)} · ${a.items.length}</h3>\n${list(a.items, 'h4')}\n`;
+      }
+    } else html += list(walkIn, 'h3') + '\n';
+  }
+  if (byAppt.length) html += `  <h2 class="j-group"${he('סטודיואים בתיאום מראש')}>Studios by appointment</h2>\n${count(byAppt.length)}\n${list(byAppt, 'h3')}\n`;
+  return html;
 }
 
 function postPage(post, brands) {
@@ -283,7 +294,7 @@ ${post.intro.map((p, i) => `    <p${he(post.introHe?.[i])}>${esc(p)}</p>`).join(
     <p class="j-sign"${he('דנה')}>Dana</p>
   </div>
 
-${post.groupBy === 'access' ? accessGroups(brands) : `  <p class="j-count"${he(`${brands.length} מעצבים`)}>${brands.length} designers</p>
+${post.groupBy === 'access' ? accessGroups(brands, post) : `  <p class="j-count"${he(`${brands.length} מעצבים`)}>${brands.length} designers</p>
   <ul class="j-list">
 ${brands.map(d => brandItem(d)).join('\n')}
   </ul>`}
