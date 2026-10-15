@@ -36,9 +36,14 @@ function absImg(src) {
   return /^https?:\/\//i.test(src) ? src : SITE + src.replace(/^\//, '');
 }
 
-function selectBrands({ all = [], any = [], none = [] }) {
+// place: brands with a shop or studio whose address matches (e.g. 'Tel Aviv|Jaffa')
+// maxOtherBranches: leave out chains with more branches elsewhere than this
+function selectBrands({ all = [], any = [], none = [], place, maxOtherBranches }) {
+  const placeRe = place && new RegExp(place, 'i');
   return designers
     .filter(d => !d.bridalOnly)
+    .filter(d => !placeRe || (mapBrands.has(d.name) && placeRe.test(addresses[d.name] || '')))
+    .filter(d => maxOtherBranches == null || +((addresses[d.name] || '').match(/\(\+(\d+) more\)/)?.[1] || 0) <= maxOtherBranches)
     .filter(d => all.every(t => d.tags.includes(t)))
     .filter(d => !any.length || any.some(t => d.tags.includes(t)))
     .filter(d => !none.some(t => d.tags.includes(t)))
@@ -106,6 +111,8 @@ function head({ title, description, canonical, image, up, extra = '' }) {
   .j-intro { max-width: 34rem; margin-top: 40px; font-weight: 300; font-size: 16px; line-height: 1.7; color: rgba(0,0,0,.82); }
   .j-intro p + p { margin-top: 1em; }
   .j-sign { margin-top: 1em; }
+  .j-group { font-weight: 800; font-size: clamp(24px, 3.6vw, 34px); letter-spacing: -.02em; line-height: 1.1; margin: 72px 0 0; }
+  .j-group + .j-count { margin-top: 12px; }
   .j-count { font-size: 10px; letter-spacing: .25em; text-transform: uppercase; color: rgba(0,0,0,.6); margin: 64px 0 0; padding-bottom: 14px; border-bottom: 1px solid rgba(26,26,24,.15); }
   .j-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr; }
   @media (min-width: 768px) { .j-list { grid-template-columns: 1fr 1fr; column-gap: 48px; } }
@@ -208,7 +215,7 @@ ${links}
 }
 
 // ---------- pages ----------
-function brandItem(d) {
+function brandItem(d, nameTag = 'h2') {
   const n = esc(d.name);
   const img = d.img
     ? `<img src="${esc(d.img.startsWith('http') ? d.img : '../' + d.img.replace(/^\//, ''))}" alt="" loading="lazy" decoding="async" referrerpolicy="strict-origin-when-cross-origin" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:this.closest('li').dataset.name}))">`
@@ -220,12 +227,25 @@ function brandItem(d) {
   return `    <li class="j-brand" data-name="${n}">
       <div class="j-img">${img}</div>
       <div>
-        <h2 class="j-name">${n}</h2>
+        <${nameTag} class="j-name">${n}</${nameTag}>
         <p class="j-desc"${he(descHe[d.desc])}>${esc(d.desc)}</p>
         <div class="j-where"${he(whereHe)}>${esc(where)}</div>
         <div class="j-links">${links.join('')}</div>
       </div>
     </li>`;
+}
+
+// Walk-in shops first, then studios you book ahead
+function accessGroups(brands) {
+  const groups = [
+    ['Walk-in shops', 'חנויות שאפשר פשוט להיכנס אליהן', brands.filter(d => !appointment.has(d.name))],
+    ['Studios by appointment', 'סטודיואים בתיאום מראש', brands.filter(d => appointment.has(d.name))],
+  ];
+  return groups.filter(([, , list]) => list.length).map(([en, heText, list]) => `  <h2 class="j-group"${he(heText)}>${esc(en)}</h2>
+  <p class="j-count"${he(`${list.length} מעצבים`)}>${list.length} designers</p>
+  <ul class="j-list">
+${list.map(d => brandItem(d, 'h3')).join('\n')}
+  </ul>`).join('\n');
 }
 
 function postPage(post, brands) {
@@ -263,10 +283,10 @@ ${post.intro.map((p, i) => `    <p${he(post.introHe?.[i])}>${esc(p)}</p>`).join(
     <p class="j-sign"${he('דנה')}>Dana</p>
   </div>
 
-  <p class="j-count"${he(`${brands.length} מעצבים`)}>${brands.length} designers</p>
+${post.groupBy === 'access' ? accessGroups(brands) : `  <p class="j-count"${he(`${brands.length} מעצבים`)}>${brands.length} designers</p>
   <ul class="j-list">
-${brands.map(brandItem).join('\n')}
-  </ul>
+${brands.map(d => brandItem(d)).join('\n')}
+  </ul>`}
 
   <p class="j-more"><a href="${esc(post.indexLink)}"${he(post.indexLinkTextHe && esc(post.indexLinkTextHe) + ' <span class="flip-rtl" aria-hidden="true">→</span>')}>${esc(post.indexLinkText)} <span class="flip-rtl" aria-hidden="true">→</span></a></p>
   <p class="j-note"${he('ההופעה ב-ModeIL חינמית ואף פעם לא בתשלום. <a href="../About.html">על ModeIL</a>.')}>Listing on ModeIL is free and never paid for. <a href="../About.html">About ModeIL</a>.</p>
