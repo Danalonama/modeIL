@@ -89,12 +89,12 @@
  .desc-text { }
  /* Masonry grid. Cards stay in alphabetical DOM order (so Tab and screen readers follow the
     same left-to-right reading as the eye); JS places each one absolutely in column i % cols. */
- .masonry-grid { position: relative; display: flex; flex-direction: column; gap: 64px; }
+ .masonry-grid { --gx: 32px; position: relative; display: flex; flex-direction: column; gap: 64px; }
  .masonry-grid.is-masonry { display: block; }
  .masonry-grid.is-masonry > .designer-card {
  position: absolute;
- width: calc((100% - 32px * (var(--cols) - 1)) / var(--cols));
- inset-inline-start: calc(var(--c) * (100% + 32px) / var(--cols));
+ width: calc((100% - var(--gx) * (var(--cols) - 1)) / var(--cols));
+ inset-inline-start: calc(var(--c) * (100% + var(--gx)) / var(--cols));
  }
  /* Search field: ring goes on the whole box (the input itself is clipped by it) */
  #search-input:focus-visible { outline: none !important; }
@@ -189,20 +189,80 @@
 .active-chip:hover { opacity: .65; }
 .active-chip .chip-x { font-size: 9px; opacity: .7; }
 @media (max-width: 640px){ .fdrop-panel { max-width: 280px; left: 0; } }
+
+/* ===== Phones (under 640px) =====
+   Compact top, a filter bar that stays pinned under the nav, filter panels as bottom sheets,
+   a two-column grid of small cards, and a full-screen designer view for everything else.
+   Desktop and tablet are untouched: every rule here sits inside this media query, and the
+   phone-only elements (.card-open, .card-meta, .fdrop-done, #fdrop-scrim) are hidden by default. */
+.card-open, .card-meta, .fdrop-done, #fdrop-scrim { display: none; }
+#designer-sheet { margin: 0; padding: 0; border: 0; width: 100%; max-width: 100%; height: 100%; max-height: 100%; background: #F4F4F4; color: #1A1A18; overflow-y: auto; }
+#designer-sheet::backdrop { background: rgba(26,26,24,0.4); }
+#designer-sheet .sheet-bar { position: sticky; top: 0; z-index: 3; display: flex; align-items: center; height: 56px; padding: 0 8px; background: #F4F4F4; border-bottom: 1px solid rgba(26,26,24,0.1); }
+#designer-sheet .sheet-close { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 8px; background: none; border: 0; cursor: pointer; color: #1A1A18; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; }
+#designer-sheet .sheet-body { padding: 16px 16px 48px; font-size: 27px; line-height: 1.1; }
+#designer-sheet .card-open, #designer-sheet .card-meta { display: none !important; }
+#designer-sheet .card-links { gap: 20px; font-size: 11px; }
+#designer-sheet .card-link { display: inline-flex; align-items: center; min-height: 44px; }
+body.sheet-open { overflow: hidden; }
+
+@media (max-width: 639px) {
+ /* Top: shorter nav, smaller title, less air before the first card */
+ nav[aria-label="Main"] { padding: 10px 16px !important; }
+ #mobile-menu-btn { min-width: 44px; min-height: 44px; justify-content: center; }
+ #main { padding-top: calc(var(--nav-h, 56px) + 20px) !important; padding-left: 16px !important; padding-right: 16px !important; }
+ #main > header { margin-bottom: 12px !important; }
+ #main > header h1 { font-size: 34px !important; line-height: 0.9 !important; margin-bottom: 10px !important; }
+ #main > header .font-body { font-size: 15px; line-height: 1.4; }
+
+ /* Filter bar: one sideways-scrolling row, pinned under the nav */
+ #filter-bar { width: auto !important; position: sticky; top: var(--nav-h, 56px); z-index: 40; background: #F4F4F4; margin: 0 -16px; padding: 8px 16px; gap: 8px !important; border-bottom: 1px solid rgba(26,26,24,0.1); }
+ #filter-row, #active-chips { flex-wrap: nowrap !important; overflow-x: auto; scrollbar-width: none; gap: 8px !important; }
+ #filter-row::-webkit-scrollbar, #active-chips::-webkit-scrollbar { display: none; }
+ #filter-row > *, #active-chips > * { flex-shrink: 0; }
+ #active-chips:empty { display: none; }
+ .fdrop-trigger { height: 44px !important; font-size: 11px; white-space: nowrap; }
+ .active-chip { min-height: 44px; font-size: 11px; white-space: nowrap; }
+ #clear-all { min-height: 44px; white-space: nowrap; }
+ #count-line { margin-top: 12px !important; margin-bottom: 16px !important; }
+
+ /* Filter panels open as a sheet from the bottom of the screen */
+ .fdrop-panel { position: fixed; top: auto; left: 0 !important; right: 0; bottom: 0; z-index: 2; min-width: 0; max-width: none !important; max-height: 70vh; overflow-y: auto; border: 0; border-top: 1px solid #1A1A18; padding: 20px 16px calc(16px + env(safe-area-inset-bottom)); box-shadow: none; gap: 8px; }
+ .fdrop-panel button:not(.fdrop-done) { min-height: 44px; font-size: 11px !important; }
+ #alpha-bar .alpha-btn { min-width: 44px; }
+ .fdrop-done { display: block; flex-basis: 100%; height: 48px; margin-top: 12px; background: #1A1A18; color: #fff; border: 0; cursor: pointer; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; }
+ /* main is its own stacking layer (z-index 1, like the footer), so lift it while a sheet is open */
+ body.drop-open #main { z-index: 60; }
+ body.drop-open #fdrop-scrim { display: block; position: fixed; inset: 0; z-index: 1; background: rgba(26,26,24,0.4); border: 0; padding: 0; }
+
+ /* Grid: two columns of compact cards. Description, tags and links move to the designer view. */
+ .masonry-grid { --gx: 12px; }
+ #designer-grid .card-body { margin-top: 10px !important; gap: 4px !important; }
+ #designer-grid h2 { font-size: 15px !important; line-height: 1.15 !important; letter-spacing: -0.02em; }
+ #designer-grid .card-tags, #designer-grid .sale-line, #designer-grid .desc-text,
+ #designer-grid .card-status, #designer-grid .card-links { display: none !important; }
+ #designer-grid .card-meta { display: block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #5e5e5e; line-height: 1.4; }
+ #designer-grid .heart-btn { position: relative; z-index: 2; min-width: 44px; min-height: 44px; display: inline-flex; align-items: flex-start; justify-content: flex-end; margin: -2px -6px -18px 0; margin-inline: 0 -6px; }
+ #designer-grid .card-open { display: block; position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; background: transparent; border: 0; padding: 0; cursor: pointer; }
+}
 </style>
 <!-- Main -->
 <main id="main" tabindex="-1" class="pt-40 pb-24 px-6 md:px-12 max-w-[1800px]" style="font-size: 27px; line-height: 1.1">
 
  <!-- Hero & Filter -->
- <header class="mb-10 flex flex-col gap-6">
+ <header class="flex flex-col gap-6" style="margin-bottom:24px">
  <div class="max-w-3xl">
- <h1 class="font-headline font-black leading-[0.82] tracking-tighter mb-8 uppercase" style="font-size: clamp(34px, 11vw, 82px); line-height: 0.8" data-he="מעצבי אופנה">FASHION DESIGNERS</h1>
+ <h1 class="font-headline font-black leading-[0.82] tracking-tighter mb-8 uppercase" style="font-size: clamp(34px, 11vw, 82px); line-height: 0.8" data-he="מעצבי אופנה ישראלים">ISRAELI FASHION DESIGNERS</h1>
  <div class="font-body text-lg text-on-surface-variant max-w-xl leading-relaxed flex flex-col gap-3">
  <p data-he="אני עוקבת אחרי האופנה הישראלית, כדי שאתם לא תצטרכו.">I track Israeli fashion, so you don't have to.</p>
  </div>
  </div>
- <div class="w-full flex flex-col gap-4">
- <div class="flex flex-wrap items-center gap-2.5">
+ </header>
+
+ <!-- Filters: outside the header so they can stay pinned under the nav on phones -->
+ <div id="filter-bar" class="w-full flex flex-col gap-4">
+ <button type="button" id="fdrop-scrim" tabindex="-1" aria-hidden="true" onclick="closeAllDrops(); scrollToResults()"></button>
+ <div id="filter-row" class="flex flex-wrap items-center gap-2.5">
  <div class="fdrop"><button type="button" class="fdrop-trigger" data-drop="style"><span data-he="סגנון">Style</span><span class="fdrop-caret" aria-hidden="true">▾</span></button><div class="fdrop-panel" id="style-panel"><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="artisan">Artisan</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="conceptual">Conceptual</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="contemporary">Contemporary</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="edgy">Edgy</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="festival">Festival</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="legacy">Legacy</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="luxury">Luxury</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="minimalist">Minimalist</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="natural">Natural Fabrics</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="prints">Prints</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="streetwear">Streetwear</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="surf">Surf</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="sustainable">Sustainable</button></div></div>
  <div class="fdrop"><button type="button" class="fdrop-trigger" data-drop="type"><span data-he="סוג">Type</span><span class="fdrop-caret" aria-hidden="true">▾</span></button><div class="fdrop-panel" id="type-panel"><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="accessories">Accessories</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="activewear">Activewear</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="bridal">Bridal</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="denim">Denim</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="footwear">Footwear</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="jewelry">Jewelry</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="knitwear">Knitwear</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="lingerie">Lingerie</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="menswear">Men</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="ready-to-wear">Ready-to-Wear</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="size-inclusive">Size Inclusive</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="swimwear">Swimwear</button><button class="filter-btn font-label text-[9px] tracking-widest uppercase px-3.5 py-2 border border-transparent bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200" data-filter="unisex">Unisex</button></div></div>
  <div class="fdrop"><button type="button" class="fdrop-trigger" data-drop="location"><span data-he="מיקום">Location</span><span class="fdrop-caret" aria-hidden="true">▾</span></button><div class="fdrop-panel"><div id="area-bar" class="flex flex-wrap gap-2 items-center"></div></div></div>
@@ -214,13 +274,11 @@
  <button type="button" id="clear-all" onclick="clearAllFilters()" class="font-label text-[9px] tracking-widest uppercase text-[#9C5570] hover:opacity-60 transition-opacity" style="display:none;background:none;border:0;cursor:pointer;"><span data-he="ניקוי הכול">Clear all</span> <span aria-hidden="true">✕</span></button>
  </div>
  <div id="active-chips" class="flex flex-wrap items-center gap-2"></div>
- <div class="flex items-center gap-3 mt-4">
+ </div>
+ <div id="count-line" class="flex items-center gap-3" style="margin-top:32px;margin-bottom:40px">
  <div class="w-2 h-2 bg-primary"></div>
  <span id="designer-count" role="status" class="font-label text-[9px] tracking-[0.25em] uppercase opacity-70 count-flash">154 Designers</span>
  </div>
- </div>
-
- </header>
 
  <!-- Grid: Pinterest masonry with row-major alphabetical reading (cards distributed by index % colCount across column buckets) -->
  <section id="designer-grid" class="masonry-grid" aria-label="Designers" data-he-aria-label="מעצבים"></section>
@@ -252,6 +310,14 @@
  </div>
  </section>
 </main>
+
+<!-- Phones: tapping a card opens the full designer view (description, tags, links) -->
+<dialog id="designer-sheet" aria-labelledby="sheet-title">
+ <div class="sheet-bar">
+ <button type="button" class="sheet-close" onclick="closeDesigner()"><span aria-hidden="true" class="material-symbols-outlined flip-rtl" style="font-size:18px">arrow_back</span><span data-he="כל המעצבים">All designers</span></button>
+ </div>
+ <div class="sheet-body"><article id="sheet-card" class="designer-card flex flex-col"></article></div>
+</dialog>
 
 <!-- Footer -->
 <footer class="bg-[#F4F4F4] text-black border-t border-[#1A1A18]/10 w-full px-8 md:px-12 py-14">
@@ -4934,15 +5000,15 @@ window.imgFallback = imgFallback;
 function getColCount() {
  const w = window.innerWidth;
  if (w >= 1024) return 3;
- if (w >= 640) return 2;
- return 1;
+ // Phones get two narrow columns of compact cards too (see the phone CSS)
+ return 2;
 }
 
 // Masonry layout. Cards are appended in alphabetical order and positioned absolutely:
 // card i sits in column i % cols, directly under the previous card of that column.
 // That keeps the left-to-right alphabetical reading on screen AND in the DOM, so keyboard
 // focus and screen readers move through brands in the same order the eye does.
-const MASONRY_GAP_Y = 64;
+const masonryGapY = () => window.innerWidth < 640 ? 28 : 64;
 function layoutMasonry() {
  const cols = getColCount();
  const cards = grid.children;
@@ -4955,9 +5021,9 @@ function layoutMasonry() {
  const c = i % cols;
  cards[i].style.setProperty('--c', c);
  cards[i].style.top = tops[c] + 'px';
- tops[c] += heights[i] + MASONRY_GAP_Y;
+ tops[c] += heights[i] + masonryGapY();
  }
- grid.style.height = Math.max(0, Math.max(...tops) - MASONRY_GAP_Y) + 'px';
+ grid.style.height = Math.max(0, Math.max(...tops) - masonryGapY()) + 'px';
 }
 // Card heights change as lazy images load and when the language switches
 const cardObserver = new ResizeObserver(layoutMasonry);
@@ -4971,13 +5037,23 @@ function renderCards(filtered) {
  const card = document.createElement('article');
  card.className = `designer-card flex flex-col group`;
  card.dataset.tags = d.tags.join(' ');
+ card.innerHTML = cardInnerHtml(d);
+ grid.appendChild(card);
+ cardObserver.observe(card);
+ });
+ layoutMasonry();
+ finishRender(filtered);
+}
 
+// One card's markup. The grid and the phone designer view both use it; on phones the
+// grid hides everything below the name (CSS) and .card-open opens the designer view.
+function cardInnerHtml(d) {
  const name = attrEsc(d.name);
  const saved = FAVORITES.has(d.name);
-
  // The image link repeats the "Website" link below, so it is kept out of the tab order
  // and hidden from screen readers; the heading and text links carry the card.
- card.innerHTML = `
+ return `
+ <button type="button" class="card-open" data-name="${name}" aria-label="${T(`${name}: details and links`, `${name}: פרטים וקישורים`)}"></button>
  <div class="relative overflow-hidden bg-surface-container-low">
  ${saleFlagHtml(d)}
  <a href="${withUtm(d.url)}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true" class="block w-full">
@@ -4989,24 +5065,31 @@ function renderCards(filtered) {
  <div class="absolute inset-0 bg-primary/8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
  </a>
  </div>
- <div class="mt-6 flex flex-col gap-3">
+ <div class="card-body mt-6 flex flex-col gap-3">
  <div class="flex items-start justify-between gap-3">
  <h2 class="font-headline font-black text-2xl uppercase tracking-tighter leading-none">${d.name}</h2>
  <button type="button" class="heart-btn shrink-0${saved ? ' saved' : ''}" data-name="${name}" aria-label="${T(`Save ${name} to favorites`, `שמירת ${name} במועדפים`)}" aria-pressed="${saved}" onclick="toggleFav(this)" style="margin-top:-2px">
  <svg aria-hidden="true" class="heart-svg" width="22" height="22" viewBox="0 0 24 24" fill="${saved ? '#e53e3e' : 'none'}" stroke="${saved ? '#e53e3e' : '#111'}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78L12 21.23l8.8-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
  </button>
  </div>
- <div class="flex flex-wrap gap-2">${tagHtml(d.tagLabels)}${locationTagHtml(d.name)}</div>
+ <div class="card-meta">${cardMeta(d)}</div>
+ <div class="card-tags flex flex-wrap gap-2">${tagHtml(d.tagLabels)}${locationTagHtml(d.name)}</div>
  ${saleLineHtml(d)}
  <p class="font-body text-sm text-on-surface-variant leading-relaxed desc-text" data-desc-en="${(d.desc || '').replace(/"/g, '&quot;')}">${d.desc}</p>
  ${accessLinks(d)}
  </div>
  `;
- grid.appendChild(card);
- cardObserver.observe(card);
- });
- layoutMasonry();
+}
 
+// Phone card line under the name: the brand's type (Knitwear, Jewelry...) and its area
+function cardMeta(d) {
+ const i = d.tags.findIndex(t => TYPE_TAGS.includes(t));
+ const type = i >= 0 ? tagLabel(d.tagLabels[i]) : (d.tagLabels[0] ? tagLabel(d.tagLabels[0]) : '');
+ const area = locationLabel(d.name);
+ return [type, area ? regionLabel(area) : ''].filter(Boolean).join(' · ');
+}
+
+function finishRender(filtered) {
  if (filtered.length === 0 && activeFilters.has('favorites')) {
  noResults.querySelector('p').textContent = T('No saved brands yet, heart the ones you love.', 'עדיין אין מותגים שמורים, סמנו בלב את אלה שאהבתם.');
  } else {
@@ -5029,22 +5112,19 @@ let FAVORITES = new Set(JSON.parse(localStorage.getItem('modeil-favs') || '[]'))
 
 function toggleFav(btn) {
  const name = btn.dataset.name;
- const svg = btn.querySelector('.heart-svg');
  btn.classList.remove('heart-pulse');
  void btn.offsetWidth;
  btn.classList.add('heart-pulse');
- if (FAVORITES.has(name)) {
- FAVORITES.delete(name);
- btn.classList.remove('saved');
- if (svg) { svg.setAttribute('fill','none'); svg.setAttribute('stroke','#111'); }
- 
- } else {
- FAVORITES.add(name);
- btn.classList.add('saved');
- if (svg) { svg.setAttribute('fill','#e53e3e'); svg.setAttribute('stroke','#e53e3e'); }
- 
- }
- btn.setAttribute('aria-pressed', String(FAVORITES.has(name)));
+ if (FAVORITES.has(name)) FAVORITES.delete(name); else FAVORITES.add(name);
+ const on = FAVORITES.has(name);
+ // The same brand can have two hearts at once (its card and the phone designer view)
+ document.querySelectorAll('.heart-btn').forEach(b => {
+ if (b.dataset.name !== name) return;
+ b.classList.toggle('saved', on);
+ b.setAttribute('aria-pressed', String(on));
+ const svg = b.querySelector('.heart-svg');
+ if (svg) { svg.setAttribute('fill', on ? '#e53e3e' : 'none'); svg.setAttribute('stroke', on ? '#e53e3e' : '#111'); }
+ });
  localStorage.setItem('modeil-favs', JSON.stringify([...FAVORITES]));
 }
 
@@ -5055,6 +5135,17 @@ function setDropOpen(drop, open){
  drop.classList.toggle('open', open);
  const t = drop.querySelector('.fdrop-trigger');
  if (t) t.setAttribute('aria-expanded', String(open));
+ // Phones: an open panel is a bottom sheet with a scrim behind it (CSS)
+ document.body.classList.toggle('drop-open', !!document.querySelector('.fdrop.open'));
+}
+// Phones: after choosing filters further down the page, bring the first results back
+// into view just under the pinned filter bar (otherwise a short list leaves you at the footer)
+function scrollToResults(){
+ if (window.innerWidth >= 640) return;
+ const line = document.getElementById('count-line'), bar = document.getElementById('filter-bar');
+ if (!line || !bar) return;
+ const target = line.getBoundingClientRect().top + window.scrollY - bar.getBoundingClientRect().bottom - 8;
+ if (window.scrollY > target) window.scrollTo({ top: Math.max(0, target) });
 }
 function closeAllDrops(){ document.querySelectorAll('.fdrop').forEach(d => setDropOpen(d, false)); }
 document.querySelectorAll('.fdrop').forEach(drop => {
@@ -5063,6 +5154,14 @@ document.querySelectorAll('.fdrop').forEach(drop => {
  if (!tr || !panel) return;
  if (!panel.id) panel.id = tr.dataset.drop + '-panel';
  tr.setAttribute('aria-controls', panel.id);
+ // Phones only (hidden by CSS elsewhere): closes the sheet and returns to the trigger
+ const done = document.createElement('button');
+ done.type = 'button';
+ done.className = 'fdrop-done';
+ done.setAttribute('data-he', 'הצגת התוצאות');
+ done.textContent = T('Show results', 'הצגת התוצאות');
+ done.addEventListener('click', (e) => { e.stopPropagation(); setDropOpen(drop, false); tr.focus(); scrollToResults(); });
+ panel.appendChild(done);
  tr.setAttribute('aria-expanded', 'false');
  panel.setAttribute('role', 'group');
  panel.setAttribute('aria-label', tr.dataset.drop + ' filters');
@@ -5350,6 +5449,50 @@ window.addEventListener('resize', layoutMasonry);
 // Web fonts and late styles change text height after the first layout
 window.addEventListener('load', layoutMasonry);
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(layoutMasonry);
+
+// Phones: the filter bar pins under the fixed nav, so the CSS needs the nav's real height
+(function trackNavHeight(){
+ const nav = document.querySelector('nav[aria-label="Main"]');
+ if (!nav) return;
+ const set = () => document.documentElement.style.setProperty('--nav-h', nav.offsetHeight + 'px');
+ set();
+ if (window.ResizeObserver) new ResizeObserver(set).observe(nav);
+})();
+
+// Phones: designer view. Cards there show only photo, name and heart; .card-open
+// (an invisible button over the card) opens this dialog with the full card.
+const designerSheet = document.getElementById('designer-sheet');
+let sheetOpener = null;
+function openDesigner(name, opener){
+ const d = VIEW_DESIGNERS.find(x => x.name === name);
+ if (!d || !designerSheet || typeof designerSheet.showModal !== 'function') return;
+ sheetOpener = opener || null;
+ const card = document.getElementById('sheet-card');
+ card.innerHTML = cardInnerHtml(d);
+ const h = card.querySelector('h2');
+ if (h) h.id = 'sheet-title';
+ if (typeof translateDescriptions === 'function') translateDescriptions();
+ designerSheet.showModal();
+ designerSheet.scrollTop = 0;
+ document.body.classList.add('sheet-open');
+}
+function closeDesigner(){ if (designerSheet && designerSheet.open) designerSheet.close(); }
+window.closeDesigner = closeDesigner;
+if (designerSheet) {
+ designerSheet.addEventListener('close', () => {
+ document.body.classList.remove('sheet-open');
+ if (sheetOpener && document.contains(sheetOpener)) sheetOpener.focus();
+ sheetOpener = null;
+ });
+ // A tap on the dimmed area outside the dialog's box closes it
+ designerSheet.addEventListener('click', (e) => { if (e.target === designerSheet) closeDesigner(); });
+}
+grid.addEventListener('click', (e) => {
+ const b = e.target.closest('.card-open');
+ if (b) openDesigner(b.dataset.name, b);
+});
+// The view is phone-only: close it if the window grows past the phone layout
+window.addEventListener('resize', () => { if (window.innerWidth >= 640) closeDesigner(); });
 </script>
 
 
@@ -5374,6 +5517,7 @@ function relabelFilters() {
 let shownLang = 'en'; // the language the grid was last drawn in
 if (window.ModeLang) ModeLang.onChange(lang => {
  relabelFilters();
+ if (typeof closeDesigner === 'function') closeDesigner();
  // English on first load is already drawn; anything else re-renders the cards, count and chips
  if (lang === shownLang && lang === 'en') return;
  shownLang = lang;
